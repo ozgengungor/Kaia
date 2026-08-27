@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lezen met Kaya — begrijpend lezen groep 8</title>
+<meta name="description" content="Oefenen met begrijpend lezen voor groep 8, samen met Kaya de capybara.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦫</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#hoofd">Naar de inhoud</a>
+
+<header class="balk">
+  <button class="balk-logo" id="knop-home" title="Terug naar het begin">
+    <span class="balk-logo-icoon">📖</span>
+    <span>Lezen met <b>Kaya</b></span>
+  </button>
+  <div class="balk-knoppen">
+    <button class="icoonknop" id="knop-tekstgrootte" aria-label="Letters groter of kleiner maken" title="Lettergrootte">A<sup>+</sup></button>
+    <button class="icoonknop" id="knop-geluid" aria-label="Voorleesstem aan of uit" title="Voorlezen">🔊</button>
+  </div>
+</header>
+
+<main id="hoofd">
+
+  <!-- ================= STARTSCHERM ================= -->
+  <section class="scherm actief" id="scherm-start">
+    <div class="welkom">
+      <div class="capy capy-groot" id="capy-start"></div>
+      <div class="bubbel bubbel-links">
+        <p id="welkom-tekst">Hoi! Ik ben Kaya. Zullen we samen oefenen met begrijpend lezen?</p>
+      </div>
+    </div>
+
+    <h1 class="titel">Kies een tekst</h1>
+    <p class="ondertitel">Lees eerst rustig de tekst. Daarna stel ik je een paar vragen.</p>
+
+    <div class="kaarten" id="kaarten"></div>
+
+    <div class="voortgang-blok">
+      <p id="totaal-tekst">Je hebt nog geen sterren verdiend. Begin maar gewoon — je mag alles zo vaak doen als je wilt!</p>
+      <button class="tekstknop" id="knop-reset">Voortgang wissen</button>
+    </div>
+  </section>
+
+  <!-- ================= LEESSCHERM ================= -->
+  <section class="scherm" id="scherm-lezen">
+    <button class="terugknop" data-terug>← Andere tekst kiezen</button>
+
+    <div class="lees-kop">
+      <span class="label" id="lees-soort"></span>
+      <h1 class="titel" id="lees-titel"></h1>
+    </div>
+
+    <div class="coach-strook">
+      <div class="capy capy-klein" id="capy-lezen"></div>
+      <div class="bubbel"><p id="lees-tip"></p></div>
+    </div>
+
+    <article class="tekst" id="tekst-inhoud"></article>
+
+    <div class="woordkaart" id="woordkaart" hidden>
+      <button class="woordkaart-sluit" id="woordkaart-sluit" aria-label="Sluiten">✕</button>
+      <p class="woordkaart-woord" id="woordkaart-woord"></p>
+      <p class="woordkaart-uitleg" id="woordkaart-uitleg"></p>
+    </div>
+
+    <div class="onderbalk">
+      <button class="grote-knop" id="knop-start-vragen">Ik heb het gelezen — begin met de vragen →</button>
+    </div>
+  </section>
+
+  <!-- ================= VRAGENSCHERM ================= -->
+  <section class="scherm" id="scherm-vragen">
+    <div class="vragen-kop">
+      <button class="terugknop" data-terug>← Stoppen</button>
+      <div class="stippen" id="stippen" aria-label="Voortgang door de vragen"></div>
+    </div>
+
+    <details class="tekst-lade" id="tekst-lade">
+      <summary>📄 Bekijk de tekst nog een keer</summary>
+      <article class="tekst tekst-klein" id="tekst-herhaling"></article>
+    </details>
+
+    <div class="vraag-kaart">
+      <span class="label label-vaardigheid" id="vraag-vaardigheid"></span>
+      <h2 class="vraag" id="vraag-tekst"></h2>
+      <div id="antwoord-gebied"></div>
+
+      <div class="hint-blok">
+        <button class="hintknop" id="knop-hint">💡 Hint van Kaya</button>
+        <div class="hint" id="hint-tekst" hidden></div>
+      </div>
+    </div>
+
+    <div class="feedback" id="feedback" hidden aria-live="polite">
+      <div class="capy capy-klein" id="capy-feedback"></div>
+      <div class="feedback-tekst">
+        <p class="feedback-kop" id="feedback-kop"></p>
+        <p class="feedback-uitleg" id="feedback-uitleg"></p>
+      </div>
+    </div>
+
+    <div class="onderbalk">
+      <button class="grote-knop" id="knop-nakijken" disabled>Nakijken</button>
+      <button class="grote-knop" id="knop-volgende" hidden>Volgende vraag →</button>
+    </div>
+  </section>
+
+  <!-- ================= EINDSCHERM ================= -->
+  <section class="scherm" id="scherm-klaar">
+    <div class="welkom">
+      <div class="capy capy-groot" id="capy-klaar"></div>
+      <div class="bubbel bubbel-links"><p id="klaar-tekst"></p></div>
+    </div>
+
+    <div class="score-blok">
+      <div class="sterren" id="sterren"></div>
+      <p class="score-getal" id="score-getal"></p>
+    </div>
+
+    <h2 class="titel-klein">Zo ging het per vraag</h2>
+    <ul class="overzicht" id="overzicht"></ul>
+
+    <div class="onderbalk onderbalk-dubbel">
+      <button class="grote-knop knop-grijs" id="knop-opnieuw">🔁 Nog een keer</button>
+      <button class="grote-knop" id="knop-andere">Andere tekst kiezen →</button>
+    </div>
+  </section>
+
+</main>
+
+<script src="exercises.js"></script>
+<script src="capybara.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
