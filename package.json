@@ -1,10 +1,11 @@
 {
-  "name": "lezen-met-kaya",
+  "name": "lezen-met-kaia",
   "version": "1.0.0",
-  "description": "Begrijpend lezen oefenen voor groep 8, met Kaya de capybara als coach",
+  "description": "Begrijpend lezen en spelling oefenen voor groep 8, met Kaia de capybara als coach",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "audio": "node genereer-audio.js"
   },
   "engines": {
     "node": ">=18"

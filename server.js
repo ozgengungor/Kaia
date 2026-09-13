@@ -1,4 +1,4 @@
-// Statische server voor "Lezen met Kaya".
+// Statische server voor "Lezen met Kaia".
 // Geen dependencies: alleen de standaardmodules van Node.
 
 const http = require('http');
@@ -15,6 +15,7 @@ const MIME_TYPES = {
   '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.mp3': 'audio/mpeg',
   '.jpg': 'image/jpeg',
   '.ico': 'image/x-icon',
   '.woff2': 'font/woff2'
@@ -45,5 +46,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Lezen met Kaya draait op http://localhost:${PORT}`);
+  console.log(`Lezen met Kaia draait op http://localhost:${PORT}`);
 });

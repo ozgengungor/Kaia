@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lezen met Kaya — begrijpend lezen groep 8</title>
-<meta name="description" content="Oefenen met begrijpend lezen voor groep 8, samen met Kaya de capybara.">
+<title>Oefenen met Kaia — begrijpend lezen, spelling en taalverzorging groep 8</title>
+<meta name="description" content="Begrijpend lezen, spelling en taalverzorging oefenen voor groep 8, samen met Kaia de capybara.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
 
 <header class="balk">
   <button class="balk-logo" id="knop-home" title="Terug naar het begin">
-    <span class="balk-logo-icoon">📖</span>
-    <span>Lezen met <b>Kaya</b></span>
+    <span class="balk-logo-icoon" id="balk-icoon">📖</span>
+    <span>Oefenen met <b>Kaia</b></span>
   </button>
   <div class="balk-knoppen">
     <button class="icoonknop" id="knop-tekstgrootte" aria-label="Letters groter of kleiner maken" title="Lettergrootte">A<sup>+</sup></button>
@@ -33,12 +33,30 @@
     <div class="welkom">
       <div class="capy capy-groot" id="capy-start"></div>
       <div class="bubbel bubbel-links">
-        <p id="welkom-tekst">Hoi! Ik ben Kaya. Zullen we samen oefenen met begrijpend lezen?</p>
+        <p id="welkom-tekst">Hoi! Ik ben Kaia. Zullen we samen oefenen met begrijpend lezen?</p>
       </div>
     </div>
 
-    <h1 class="titel">Kies een tekst</h1>
-    <p class="ondertitel">Lees eerst rustig de tekst. Daarna stel ik je een paar vragen.</p>
+    <div class="modus-keuze" role="tablist" aria-label="Kies wat je wilt oefenen">
+      <button class="modus-knop actief" type="button" role="tab" aria-selected="true" data-modus="lezen">
+        <span class="modus-emoji">📖</span>
+        <span class="modus-naam">Lezen</span>
+        <span class="modus-uitleg">Begrijpend lezen</span>
+      </button>
+      <button class="modus-knop" type="button" role="tab" aria-selected="false" data-modus="spelling">
+        <span class="modus-emoji">✍️</span>
+        <span class="modus-naam">Spelling</span>
+        <span class="modus-uitleg">Schrijf je het goed?</span>
+      </button>
+      <button class="modus-knop" type="button" role="tab" aria-selected="false" data-modus="taal">
+        <span class="modus-emoji">📝</span>
+        <span class="modus-naam">Taal</span>
+        <span class="modus-uitleg">Taalverzorging</span>
+      </button>
+    </div>
+
+    <h1 class="titel" id="start-titel">Kies een tekst</h1>
+    <p class="ondertitel" id="start-ondertitel">Lees eerst rustig de tekst. Daarna stel ik je een paar vragen.</p>
 
     <div class="kaarten" id="kaarten"></div>
 
@@ -75,6 +93,27 @@
     </div>
   </section>
 
+  <!-- ================= REGELSCHERM (spelling) ================= -->
+  <section class="scherm" id="scherm-regel">
+    <button class="terugknop" data-terug>← Andere regel kiezen</button>
+
+    <div class="lees-kop">
+      <span class="label" id="regel-soort"></span>
+      <h1 class="titel" id="regel-titel"></h1>
+    </div>
+
+    <div class="coach-strook">
+      <div class="capy capy-klein" id="capy-regel"></div>
+      <div class="bubbel"><p id="regel-tip"></p></div>
+    </div>
+
+    <article class="regelkaart" id="regel-inhoud"></article>
+
+    <div class="onderbalk">
+      <button class="grote-knop" id="knop-start-spelling">Ik snap het — begin met de oefening →</button>
+    </div>
+  </section>
+
   <!-- ================= VRAGENSCHERM ================= -->
   <section class="scherm" id="scherm-vragen">
     <div class="vragen-kop">
@@ -83,7 +122,7 @@
     </div>
 
     <details class="tekst-lade" id="tekst-lade">
-      <summary>📄 Bekijk de tekst nog een keer</summary>
+      <summary id="lade-titel">📄 Bekijk de tekst nog een keer</summary>
       <article class="tekst tekst-klein" id="tekst-herhaling"></article>
     </details>
 
@@ -93,7 +132,7 @@
       <div id="antwoord-gebied"></div>
 
       <div class="hint-blok">
-        <button class="hintknop" id="knop-hint">💡 Hint van Kaya</button>
+        <button class="hintknop" id="knop-hint">💡 Hint van Kaia</button>
         <div class="hint" id="hint-tekst" hidden></div>
       </div>
     </div>
@@ -136,6 +175,8 @@
 </main>
 
 <script src="exercises.js"></script>
+<script src="spelling.js"></script>
+<script src="taal.js"></script>
 <script src="capybara.js"></script>
 <script src="app.js"></script>
 </body>

@@ -1,8 +1,8 @@
 /*
- * Kaya de capybara — de coach van de app.
+ * Kaia de capybara — de coach van de app.
  *
  * Eén SVG-tekening waarvan alleen de ogen, de mond en een "extraatje"
- * veranderen. Zo kan Kaya reageren op wat het kind doet zonder dat we voor
+ * veranderen. Zo kan Kaia reageren op wat het kind doet zonder dat we voor
  * elke stemming een apart plaatje nodig hebben.
  *
  * Gebruik:  Capybara.render(element, 'blij')
@@ -55,7 +55,7 @@ const Capybara = (() => {
       extra: `
         <g stroke="#f0932b" stroke-width="4" stroke-linecap="round">
           <path d="M28 34 l-9 -11"/><path d="M172 34 l9 -11"/>
-          <path d="M20 62 l-13 -3"/><path d="M180 62 l13 -3"/>
+          <path d="M24 84 l-13 -4"/><path d="M176 84 l13 -4"/>
         </g>`
     },
     troost: {
@@ -100,7 +100,7 @@ const Capybara = (() => {
   function svg(stemming) {
     const g = GEZICHTEN[stemming] || GEZICHTEN.blij;
     return `
-    <svg class="capy-svg" viewBox="0 0 200 200" role="img" aria-label="Kaya de capybara">
+    <svg class="capy-svg" viewBox="0 0 200 200" role="img" aria-label="Kaia de capybara">
       <ellipse cx="100" cy="190" rx="62" ry="8" fill="#000" opacity=".08"/>
 
       <!-- lijf met pootjes -->
@@ -108,11 +108,12 @@ const Capybara = (() => {
       <rect x="60" y="172" width="26" height="18" rx="9" fill="${KLEUR.vacht}"/>
       <rect x="114" y="172" width="26" height="18" rx="9" fill="${KLEUR.vacht}"/>
 
-      <!-- oren, laag en klein zoals bij een echte capybara -->
-      <ellipse cx="46" cy="58" rx="11" ry="9.5" transform="rotate(-16 46 58)" fill="${KLEUR.vachtDonker}"/>
-      <ellipse cx="47" cy="59" rx="5.5" ry="4.5" transform="rotate(-16 47 59)" fill="${KLEUR.oor}"/>
-      <ellipse cx="154" cy="58" rx="11" ry="9.5" transform="rotate(16 154 58)" fill="${KLEUR.vachtDonker}"/>
-      <ellipse cx="153" cy="59" rx="5.5" ry="4.5" transform="rotate(16 153 59)" fill="${KLEUR.oor}"/>
+      <!-- oren: klein en rond, opzij van de kop. De kop wordt hierna getekend,
+           dus de aanzet valt netjes achter de kop weg. -->
+      <ellipse cx="31" cy="54" rx="13" ry="11" transform="rotate(-18 31 54)" fill="${KLEUR.vachtDonker}"/>
+      <ellipse cx="29" cy="55" rx="6.5" ry="5" transform="rotate(-18 29 55)" fill="${KLEUR.oor}"/>
+      <ellipse cx="169" cy="54" rx="13" ry="11" transform="rotate(18 169 54)" fill="${KLEUR.vachtDonker}"/>
+      <ellipse cx="171" cy="55" rx="6.5" ry="5" transform="rotate(18 171 55)" fill="${KLEUR.oor}"/>
 
       <!-- kop: een blok met afgeronde hoeken, breder onderaan -->
       <path d="M62 34 h76 a26 26 0 0 1 26 26 v56 a34 34 0 0 1 -34 34 h-60 a34 34 0 0 1 -34 -34 v-56 a26 26 0 0 1 26 -26 z"

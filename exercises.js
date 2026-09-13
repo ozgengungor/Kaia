@@ -11,7 +11,7 @@
  *   soort       tekstsoort, wordt als label getoond ("Informatief", "Verhalend", ...)
  *   emoji       plaatje op de keuzekaart
  *   niveau      1 = makkelijker, 2 = gemiddeld, 3 = pittig
- *   intro       een zin van Kaya (de capybara) om de tekst te introduceren
+ *   intro       een zin van Kaia (de capybara) om de tekst te introduceren
  *   alinea's    array van alinea's; elke alinea is platte tekst
  *   woorden     [{ woord, uitleg }] — deze woorden worden in de tekst aanklikbaar
  *   vragen      array met vragen, zie hieronder

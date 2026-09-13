@@ -1,9 +1,13 @@
 /*
- * Lezen met Kaya — app-logica.
+ * Oefenen met Kaia — app-logica.
  *
  * Bewust zonder framework of build-stap: dit bestand wordt direct door de
- * browser geladen. De oefeningen komen uit exercises.js; deze code kent geen
- * enkele oefening bij naam, zodat er later een editor bovenop kan.
+ * browser geladen. De oefeningen komen uit exercises.js (begrijpend lezen),
+ * spelling.js en taal.js (taalverzorging); deze code kent geen enkele oefening
+ * bij naam, zodat er later een editor bovenop kan.
+ *
+ * De oefenvormen delen alles behalve het scherm vóór de vragen: bij lezen is
+ * dat de tekst, bij spelling en taalverzorging de regelkaart van Kaia.
  */
 
 (() => {
@@ -14,8 +18,8 @@
   /* ------------------------------------------------------------------ */
 
   const $ = (sel) => document.querySelector(sel);
-  const OPSLAG_SLEUTEL = 'lezen-met-kaya:voortgang:v1';
-  const INSTELLING_SLEUTEL = 'lezen-met-kaya:instellingen:v1';
+  const OPSLAG_SLEUTEL = 'lezen-met-kaia:voortgang:v1';
+  const INSTELLING_SLEUTEL = 'lezen-met-kaia:instellingen:v1';
   const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   function escapeHtml(s) {
@@ -37,19 +41,14 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /*  Wat Kaya zegt                                                      */
+  /*  Wat Kaia zegt                                                      */
   /* ------------------------------------------------------------------ */
 
   const PRAATJES = {
-    welkom: [
-      'Hoi! Ik ben Kaya. Zullen we samen oefenen met begrijpend lezen?',
-      'Fijn dat je er bent! Kies een tekst, dan lezen we samen.',
-      'Klaar voor een tekst? Rustig lezen mag altijd — daar wordt je brein blij van.'
-    ],
     terug: [
-      'Daar ben je weer! Welke tekst pakken we nu?',
+      'Daar ben je weer! Wat pakken we nu?',
       'Goed bezig. Nog eentje doen?',
-      'Kies maar een tekst. Ik wacht wel even.'
+      'Kies maar iets uit. Ik wacht wel even.'
     ],
     goed: [
       'Helemaal goed!', 'Top gedaan!', 'Precies!', 'Ja! Goed gelezen.', 'Knap hoor!'
@@ -67,14 +66,75 @@
       'Lees rustig. Kom je een moeilijk woord tegen? Klik erop, dan leg ik het uit.',
       'Tip: lees de tekst één keer helemaal door voordat je aan de vragen begint.',
       'Onderstreepte woorden kun je aanklikken. En je mag de tekst straks terugkijken!'
+    ],
+    spellen: [
+      'Lees de regel eerst rustig door. Je mag hem straks bij elke vraag terugkijken.',
+      'Snap je de regel? Dan zijn de vragen zo gepiept.',
+      'Zeg de voorbeelden hardop. Spelling zit half in je oren en half in je ogen.'
     ]
+  };
+
+  /* ------------------------------------------------------------------ */
+  /*  De oefenvormen                                                     */
+  /* ------------------------------------------------------------------ */
+
+  // Alles wat per oefenvorm verschilt staat hier bij elkaar. De rest van de
+  // app (vragen, nakijken, score) werkt voor alle vormen hetzelfde.
+  // `stof` zegt wat het kind vóór de vragen te zien krijgt: de tekst of een
+  // regelkaart van Kaia.
+  const MODI = {
+    lezen: {
+      icoon: '📖',
+      stof: 'tekst',
+      titel: 'Kies een tekst',
+      ondertitel: 'Lees eerst rustig de tekst. Daarna stel ik je een paar vragen.',
+      lade: '📄 Bekijk de tekst nog een keer',
+      andere: 'Andere tekst kiezen →',
+      woord: 'lezen',
+      lijst: () => OEFENINGEN,
+      welkom: [
+        'Hoi! Ik ben Kaia. Zullen we samen oefenen met begrijpend lezen?',
+        'Fijn dat je er bent! Kies een tekst, dan lezen we samen.',
+        'Klaar voor een tekst? Rustig lezen mag altijd — daar wordt je brein blij van.'
+      ]
+    },
+    spelling: {
+      icoon: '✍️',
+      stof: 'regel',
+      titel: 'Kies een spellingregel',
+      ondertitel: 'Ik leg de regel eerst uit. Daarna oefen je hem meteen.',
+      lade: '📐 Bekijk de regel nog een keer',
+      andere: 'Andere regel kiezen →',
+      woord: 'spelling',
+      lijst: () => SPELLINGOEFENINGEN,
+      welkom: [
+        'Spelling! Elke regel die je snapt, scheelt straks een heleboel twijfelen.',
+        'Kies een regel. Ik leg hem uit en daarna oefenen we samen.',
+        'Word of wordt? Kies maar een regel, dan weet je het zo.'
+      ]
+    },
+    taal: {
+      icoon: '📝',
+      stof: 'regel',
+      titel: 'Kies een taalregel',
+      ondertitel: 'Hoofdletters, leestekens, zinnen: ik leg de regel uit en dan oefen je hem meteen.',
+      lade: '📐 Bekijk de regel nog een keer',
+      andere: 'Andere regel kiezen →',
+      woord: 'taalverzorging',
+      lijst: () => TAALOEFENINGEN,
+      welkom: [
+        'Taalverzorging! Hoofdletters, komma\'s en zinsdelen: na vandaag zie je ze overal.',
+        'Kies een regel. Ik leg hem uit en daarna oefenen we samen.',
+        'Groter als of groter dan? Kies maar een regel, dan weet je het zo.'
+      ]
+    }
   };
 
   /* ------------------------------------------------------------------ */
   /*  Instellingen (lettergrootte en voorlezen)                          */
   /* ------------------------------------------------------------------ */
 
-  const instellingen = laad(INSTELLING_SLEUTEL, { letters: 0, voorlezen: false });
+  const instellingen = laad(INSTELLING_SLEUTEL, { letters: 0, voorlezen: false, modus: 'lezen' });
   const LETTERKLASSEN = ['', 'letters-groot', 'letters-extra'];
 
   function pasLettersToe() {
@@ -83,11 +143,35 @@
     if (klasse) document.body.classList.add(klasse);
   }
 
+  // Voorlezen gaat het liefst met een opgenomen stem: genereer-audio.js maakt
+  // met ElevenLabs een mp3 per tekst, regelkaart en hint en zet die in
+  // audio/manifest.json. Is er voor een stuk tekst geen opname (vragen,
+  // uitleg), dan valt Kaia terug op de Nederlandse stem van de browser.
   const kanSpreken = 'speechSynthesis' in window;
+  const kanAfspelen = 'Audio' in window;
+  let opnames = {};
+  if (kanAfspelen) {
+    fetch('audio/manifest.json')
+      .then((r) => (r.ok ? r.json() : {}))
+      .then((m) => { opnames = (m && m.opnames) || {}; })
+      .catch(() => { /* geen opnames; browserstem doet het werk */ });
+  }
+  const speler = kanAfspelen ? new Audio() : null;
 
-  function spreek(tekst) {
-    if (!kanSpreken || !instellingen.voorlezen || !tekst) return;
-    window.speechSynthesis.cancel();
+  function spreek(tekst, sleutel) {
+    if (!instellingen.voorlezen || !tekst) return;
+    stopSpreken();
+    const opname = sleutel && speler && opnames[sleutel];
+    if (opname) {
+      speler.src = `audio/${opname.bestand}`;
+      speler.play().catch(() => spreekMetBrowser(tekst));
+      return;
+    }
+    spreekMetBrowser(tekst);
+  }
+
+  function spreekMetBrowser(tekst) {
+    if (!kanSpreken) return;
     const uiting = new SpeechSynthesisUtterance(tekst);
     uiting.lang = 'nl-NL';
     uiting.rate = 0.95;
@@ -96,7 +180,10 @@
     window.speechSynthesis.speak(uiting);
   }
 
-  function stopSpreken() { if (kanSpreken) window.speechSynthesis.cancel(); }
+  function stopSpreken() {
+    if (kanSpreken) window.speechSynthesis.cancel();
+    if (speler && !speler.paused) { speler.pause(); speler.currentTime = 0; }
+  }
 
   /* ------------------------------------------------------------------ */
   /*  Voortgang                                                          */
@@ -115,12 +202,15 @@
   /*  Toestand van de huidige ronde                                      */
   /* ------------------------------------------------------------------ */
 
+  let modus = MODI[instellingen.modus] ? instellingen.modus : 'lezen';
   let oefening = null;      // de gekozen oefening
   let vraagNr = 0;          // index in oefening.vragen
   let antwoorden = [];      // { punten: 0 | 0.5 | 1, gekozen: ... } per vraag
   let reeks = 0;            // aantal goede antwoorden op rij
   let keuze = null;         // huidige keuze (mc: index, volgorde: array, open: tekst)
   let nagekeken = false;
+
+  function huidigeLijst() { return MODI[modus].lijst(); }
 
   /* ------------------------------------------------------------------ */
   /*  Schermen wisselen                                                  */
@@ -137,8 +227,18 @@
 
   function toonStart(praatje) {
     stopSpreken();
+    const m = MODI[modus];
     Capybara.render($('#capy-start'), 'zwaai');
-    $('#welkom-tekst').textContent = praatje || kies(PRAATJES.welkom);
+    $('#welkom-tekst').textContent = praatje || kies(m.welkom);
+    $('#start-titel').textContent = m.titel;
+    $('#start-ondertitel').textContent = m.ondertitel;
+    $('#balk-icoon').textContent = m.icoon;
+    $('#knop-andere').textContent = m.andere;
+    document.querySelectorAll('.modus-knop').forEach((knop) => {
+      const aan = knop.dataset.modus === modus;
+      knop.classList.toggle('actief', aan);
+      knop.setAttribute('aria-selected', String(aan));
+    });
     tekenKaarten();
     tekenTotaal();
     toonScherm('scherm-start');
@@ -147,7 +247,7 @@
   function tekenKaarten() {
     const houder = $('#kaarten');
     houder.innerHTML = '';
-    OEFENINGEN.forEach((oef) => {
+    huidigeLijst().forEach((oef) => {
       const opgeslagen = voortgang[oef.id];
       const knop = document.createElement('button');
       knop.className = 'kaart';
@@ -170,14 +270,16 @@
     });
   }
 
+  // De sterren tellen per oefenvorm: elke vorm heeft zijn eigen rijtje.
   function tekenTotaal() {
-    const sterren = Object.values(voortgang).reduce((n, v) => n + v.sterren, 0);
-    const max = OEFENINGEN.length * 3;
+    const lijst = huidigeLijst();
+    const sterren = lijst.reduce((n, oef) => n + (voortgang[oef.id] ? voortgang[oef.id].sterren : 0), 0);
+    const max = lijst.length * 3;
     const el = $('#totaal-tekst');
     if (!sterren) {
-      el.textContent = 'Je hebt nog geen sterren verdiend. Begin maar gewoon — je mag alles zo vaak doen als je wilt!';
+      el.textContent = 'Je hebt hier nog geen sterren verdiend. Begin maar gewoon — je mag alles zo vaak doen als je wilt!';
     } else {
-      el.textContent = `Je hebt ${sterren} van de ${max} sterren verdiend. ${
+      el.textContent = `Je hebt ${sterren} van de ${max} sterren verdiend bij ${MODI[modus].woord}. ${
         sterren === max ? 'Alles compleet — wat een topper! 🎉' : 'Ga zo door!'}`;
     }
   }
@@ -192,17 +294,55 @@
     antwoorden = [];
     reeks = 0;
 
+    // Wat er in de lade bij de vragen zit: de tekst, of de regel van Kaia.
+    const metRegel = MODI[modus].stof === 'regel';
+    $('#lade-titel').textContent = MODI[modus].lade;
+    $('#tekst-herhaling').className = metRegel ? 'regelkaart regelkaart-klein' : 'tekst tekst-klein';
+    $('#tekst-herhaling').innerHTML = metRegel ? regelAlsHtml(oef) : tekstAlsHtml(oef, false);
+
+    if (metRegel) toonRegel(oef);
+    else toonLeestekst(oef);
+  }
+
+  function toonLeestekst(oef) {
     Capybara.render($('#capy-lezen'), 'lezen');
     $('#lees-soort').textContent = oef.soort;
     $('#lees-titel').textContent = oef.titel;
     $('#lees-tip').textContent = oef.intro || kies(PRAATJES.lezen);
 
     $('#tekst-inhoud').innerHTML = tekstAlsHtml(oef, true);
-    $('#tekst-herhaling').innerHTML = tekstAlsHtml(oef, false);
     verbergWoordkaart();
 
     toonScherm('scherm-lezen');
-    spreek(`${oef.titel}. ${oef.alineas.join(' ')}`);
+    spreek(`${oef.titel}. ${oef.alineas.join(' ')}`, `lees:${oef.id}`);
+  }
+
+  function toonRegel(oef) {
+    Capybara.render($('#capy-regel'), 'denk');
+    $('#regel-soort').textContent = oef.soort;
+    $('#regel-titel').textContent = oef.titel;
+    $('#regel-tip').textContent = oef.intro || kies(PRAATJES.spellen);
+    $('#regel-inhoud').innerHTML = regelAlsHtml(oef);
+
+    toonScherm('scherm-regel');
+    spreek(`${oef.titel}. ${((oef.regel && oef.regel.stappen) || []).join(' ').replace(/\*/g, '')}`, `regel:${oef.id}`);
+  }
+
+  // In de regelteksten mag *een stukje tussen sterretjes* staan; dat wordt vet.
+  function nadruk(tekst) {
+    return escapeHtml(tekst).replace(/\*([^*]+)\*/g, '<b>$1</b>');
+  }
+
+  function regelAlsHtml(oef) {
+    const regel = oef.regel || {};
+    const stappen = (regel.stappen || []).map((s) => `<li>${nadruk(s)}</li>`).join('');
+    const voorbeelden = (regel.voorbeelden || []).map((v) =>
+      `<li><span class="vb-woord">${escapeHtml(v.woord)}</span><span class="vb-uitleg">${nadruk(v.uitleg)}</span></li>`).join('');
+    return [
+      stappen ? `<ol class="regel-stappen">${stappen}</ol>` : '',
+      voorbeelden ? `<h3 class="regel-kop">Zo ziet dat eruit</h3><ul class="regel-voorbeelden">${voorbeelden}</ul>` : '',
+      regel.letop ? `<p class="letop"><b>Let op!</b> ${nadruk(regel.letop)}</p>` : ''
+    ].join('');
   }
 
   // Zet de alinea's om in HTML en maak de moeilijke woorden aanklikbaar.
@@ -245,7 +385,7 @@
     $('#hint-tekst').hidden = true;
     $('#hint-tekst').textContent = v.hint || '';
     $('#knop-hint').hidden = !v.hint;
-    $('#knop-hint').textContent = '💡 Hint van Kaya';
+    $('#knop-hint').textContent = '💡 Hint van Kaia';
     $('#feedback').hidden = true;
     $('#feedback').className = 'feedback';
     $('#knop-nakijken').hidden = false;
@@ -258,10 +398,22 @@
     gebied.innerHTML = '';
     if (v.type === 'open') tekenOpen(gebied, v);
     else if (v.type === 'volgorde') tekenVolgorde(gebied, v);
+    else if (v.type === 'invul') tekenInvul(gebied, v);
+    else if (v.type === 'sorteer') tekenSorteer(gebied, v);
     else tekenMeerkeuze(gebied, v);
 
     toonScherm('scherm-vragen');
-    spreek(v.vraag + (v.type === 'mc' ? '. ' + v.opties.join('. ') : ''));
+    spreek(vraagAlsSpraak(v));
+  }
+
+  // Bij spelling en taalverzorging klinken de antwoorden vaak precies
+  // hetzelfde ("word" en "wordt", een komma meer of minder), dus die leest
+  // Kaia niet voor — dan zou de vraag geen vraag meer zijn. De zin van een
+  // invulvraag juist wél, met een stilte op het gat.
+  function vraagAlsSpraak(v) {
+    if (v.type === 'invul') return `${v.vraag} ${String(v.zin || '').replace('___', '...')}`;
+    if (v.type === 'mc' && modus === 'lezen') return `${v.vraag}. ${v.opties.join('. ')}`;
+    return v.vraag;
   }
 
   function tekenStippen() {
@@ -306,7 +458,7 @@
       $('#knop-nakijken').disabled = keuze.length < 2;
     });
     gebied.appendChild(veld);
-    $('#knop-nakijken').textContent = 'Vergelijk met Kaya';
+    $('#knop-nakijken').textContent = 'Vergelijk met Kaia';
   }
 
   function tekenVolgorde(gebied, v) {
@@ -354,6 +506,99 @@
     }
   }
 
+  // Invulvraag: het kind typt het woord in het gat in de zin. Dit type kijkt
+  // de app wél zelf na — bij spelling is er maar één goede schrijfwijze.
+  function tekenInvul(gebied, v) {
+    const goedeWoorden = alsLijst(v.goed);
+    const zin = document.createElement('p');
+    zin.className = 'invul-zin';
+    const delen = String(v.zin || '___').split('___');
+
+    const veld = document.createElement('input');
+    veld.type = 'text';
+    veld.id = 'invul-veld';
+    veld.className = 'invul-veld';
+    veld.autocomplete = 'off';
+    veld.spellcheck = false;                      // anders verklapt de browser het antwoord
+    veld.setAttribute('autocorrect', 'off');
+    veld.setAttribute('aria-label', 'Vul het goede woord in');
+    veld.style.width = `${Math.max(8, goedeWoorden[0].length + 3)}ch`;
+
+    zin.appendChild(document.createTextNode(delen[0]));
+    zin.appendChild(veld);
+    zin.appendChild(document.createTextNode(delen.slice(1).join('___')));
+    gebied.appendChild(zin);
+
+    if (v.cue) {
+      const cue = document.createElement('p');
+      cue.className = 'invul-cue';
+      cue.textContent = v.cue;
+      gebied.appendChild(cue);
+    }
+
+    veld.addEventListener('input', () => {
+      keuze = veld.value.trim();
+      $('#knop-nakijken').disabled = keuze.length < 1;
+    });
+    veld.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      if (!nagekeken && !$('#knop-nakijken').disabled) nakijken();
+    });
+    // Op een tablet zou dit meteen het toetsenbord opgooien; alleen met muis.
+    if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+      veld.focus({ preventScroll: true });
+    }
+  }
+
+  // Sorteervraag: elk woord hoort in een van de twee vakjes.
+  function tekenSorteer(gebied, v) {
+    const gekozen = new Array(v.items.length).fill(-1);
+
+    const hulp = document.createElement('p');
+    hulp.className = 'sorteer-hulp';
+    hulp.id = 'sorteer-hulp';
+    hulp.textContent = 'Kies bij elk woord het goede vakje.';
+    gebied.appendChild(hulp);
+
+    const lijst = document.createElement('div');
+    lijst.className = 'sorteer';
+    v.items.forEach((tekst, i) => {
+      const rij = document.createElement('div');
+      rij.className = 'sorteer-rij';
+      rij.dataset.index = i;
+      rij.innerHTML = `<span class="sorteer-woord">${escapeHtml(tekst)}</span>`;
+
+      const knoppen = document.createElement('div');
+      knoppen.className = 'sorteer-knoppen';
+      v.categorieen.forEach((categorie, ci) => {
+        const knop = document.createElement('button');
+        knop.type = 'button';
+        knop.className = 'sorteer-knop';
+        knop.textContent = categorie;
+        knop.setAttribute('aria-label', `${tekst}: ${categorie}`);
+        knop.addEventListener('click', () => {
+          if (nagekeken) return;
+          gekozen[i] = ci;
+          ververs();
+        });
+        knoppen.appendChild(knop);
+      });
+      rij.appendChild(knoppen);
+      lijst.appendChild(rij);
+    });
+    gebied.appendChild(lijst);
+
+    function ververs() {
+      lijst.querySelectorAll('.sorteer-rij').forEach((rij, i) => {
+        rij.querySelectorAll('.sorteer-knop').forEach((knop, ci) =>
+          knop.classList.toggle('gekozen', gekozen[i] === ci));
+      });
+      keuze = gekozen.slice();
+      $('#knop-nakijken').disabled = gekozen.some((g) => g === -1);
+    }
+  }
+
   /* ------------------------------------------------------------------ */
   /*  Nakijken                                                           */
   /* ------------------------------------------------------------------ */
@@ -361,6 +606,8 @@
   function nakijken() {
     const v = oefening.vragen[vraagNr];
     if (v.type === 'open') { nakijkenOpen(v); return; }
+    if (v.type === 'invul') { nakijkenInvul(v); return; }
+    if (v.type === 'sorteer') { nakijkenSorteer(v); return; }
 
     nagekeken = true;
     let goed;
@@ -430,6 +677,62 @@
     });
   }
 
+  function alsLijst(waarde) { return Array.isArray(waarde) ? waarde : [waarde]; }
+
+  // Hoofdletters, spaties en een punt aan het eind laten we door de vingers
+  // glippen: het gaat om het woord zelf.
+  function normaliseer(woord) {
+    return String(woord).toLowerCase().trim().replace(/\s+/g, ' ').replace(/[.,!?;:]+$/, '');
+  }
+  function zonderTekentjes(woord) {
+    return normaliseer(woord).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function nakijkenInvul(v) {
+    nagekeken = true;
+    const goedeWoorden = alsLijst(v.goed);
+    const gegeven = String(keuze || '');
+    const veld = $('#invul-veld');
+    if (veld) veld.disabled = true;
+
+    let punten = 0;
+    if (goedeWoorden.some((w) => normaliseer(w) === normaliseer(gegeven))) punten = 1;
+    // Alleen een trema of een accent vergeten telt als half goed.
+    else if (goedeWoorden.some((w) => zonderTekentjes(w) === zonderTekentjes(gegeven))) punten = 0.5;
+
+    if (veld) veld.classList.add(punten >= 1 ? 'is-goed' : 'is-fout');
+    if (punten < 1) {
+      const antwoord = document.createElement('p');
+      antwoord.className = 'invul-antwoord';
+      antwoord.innerHTML = `Zo schrijf je het: <b>${escapeHtml(goedeWoorden[0])}</b>`;
+      $('#antwoord-gebied').appendChild(antwoord);
+    }
+    noteer(punten, v);
+  }
+
+  function nakijkenSorteer(v) {
+    nagekeken = true;
+    let aantalGoed = 0;
+
+    document.querySelectorAll('.sorteer-rij').forEach((rij, i) => {
+      const juist = keuze[i] === v.goed[i];
+      if (juist) aantalGoed++;
+      rij.classList.add(juist ? 'is-goed' : 'is-fout');
+      rij.querySelectorAll('.sorteer-knop').forEach((knop, ci) => {
+        knop.disabled = true;
+        knop.classList.remove('gekozen');
+        if (ci === v.goed[i]) knop.classList.add('is-goed');
+        else if (ci === keuze[i]) knop.classList.add('is-fout');
+      });
+    });
+
+    const hulp = document.getElementById('sorteer-hulp');
+    if (hulp) hulp.textContent = `Je had er ${aantalGoed} van de ${v.items.length} goed. Groen is de goede plek.`;
+
+    const alles = aantalGoed === v.items.length;
+    noteer(alles ? 1 : aantalGoed > v.items.length / 2 ? 0.5 : 0, v);
+  }
+
   function noteer(punten, v) {
     antwoorden[vraagNr] = { punten, gekozen: keuze };
     reeks = punten >= 1 ? reeks + 1 : 0;
@@ -439,7 +742,7 @@
 
     let kop;
     if (goed) kop = reeks >= 3 ? kies(PRAATJES.reeks).replace('{n}', reeks) : kies(PRAATJES.goed);
-    else if (bijna) kop = 'Deels goed — mooi dat je eerlijk bent!';
+    else if (bijna) kop = v.type === 'open' ? 'Deels goed — mooi dat je eerlijk bent!' : 'Net niet — je was er heel dichtbij!';
     else kop = kies(PRAATJES.fout);
 
     const vak = $('#feedback');
@@ -456,7 +759,7 @@
       vraagNr === oefening.vragen.length - 1 ? 'Bekijk je resultaat 🎉' : 'Volgende vraag →';
     $('#knop-volgende').focus({ preventScroll: true });
     // De onderbalk plakt onderaan het scherm; even scrollen zodat de feedback
-    // van Kaya niet achter die knop verdwijnt.
+    // van Kaia niet achter die knop verdwijnt.
     vak.scrollIntoView({ behavior: 'smooth', block: 'center' });
     spreek(`${kop} ${v.uitleg || ''}`);
   }
@@ -514,10 +817,15 @@
   }
 
   function eindPraatje(sterren, percentage) {
-    if (sterren === 3) return `Wauw! ${percentage}% goed. Je leest de tekst echt goed door. Ik ben trots op je!`;
+    const stof = MODI[modus].stof;
+    if (sterren === 3) {
+      return stof === 'regel'
+        ? `Wauw! ${percentage}% goed. Deze regel zit echt in je hoofd. Ik ben trots op je!`
+        : `Wauw! ${percentage}% goed. Je leest de tekst echt goed door. Ik ben trots op je!`;
+    }
     if (sterren === 2) return `Goed gedaan! ${percentage}% goed. Kijk hieronder nog even bij de vragen die misgingen — dan zit je er volgende keer bovenop.`;
-    if (sterren === 1) return `Je hebt ${percentage}% goed. Deze tekst was pittig. Lees hem gerust nog een keer, dan gaat het vaak veel beter.`;
-    return 'Deze was lastig, maar opgeven doen we niet. Zullen we de tekst nog een keer samen doorlezen?';
+    if (sterren === 1) return `Je hebt ${percentage}% goed. Deze ${stof} was pittig. Lees hem gerust nog een keer, dan gaat het vaak veel beter.`;
+    return `Deze was lastig, maar opgeven doen we niet. Zullen we de ${stof} nog een keer samen doorlezen?`;
   }
 
   /* ------------------------------------------------------------------ */
@@ -528,7 +836,18 @@
   document.querySelectorAll('[data-terug]').forEach((k) =>
     k.addEventListener('click', () => toonStart(kies(PRAATJES.terug))));
 
+  document.querySelectorAll('.modus-knop').forEach((knop) => {
+    knop.addEventListener('click', () => {
+      if (knop.dataset.modus === modus) return;
+      modus = knop.dataset.modus;
+      instellingen.modus = modus;
+      bewaar(INSTELLING_SLEUTEL, instellingen);
+      toonStart();
+    });
+  });
+
   $('#knop-start-vragen').addEventListener('click', () => { stopSpreken(); toonVraag(); });
+  $('#knop-start-spelling').addEventListener('click', () => { stopSpreken(); toonVraag(); });
   $('#knop-nakijken').addEventListener('click', nakijken);
   $('#knop-volgende').addEventListener('click', volgende);
   $('#knop-opnieuw').addEventListener('click', () => startOefening(oefening));
@@ -537,10 +856,10 @@
   $('#knop-hint').addEventListener('click', () => {
     const hint = $('#hint-tekst');
     hint.hidden = !hint.hidden;
-    $('#knop-hint').textContent = hint.hidden ? '💡 Hint van Kaya' : '💡 Hint verbergen';
+    $('#knop-hint').textContent = hint.hidden ? '💡 Hint van Kaia' : '💡 Hint verbergen';
     if (!hint.hidden) {
       Capybara.render($('#capy-feedback'), 'denk');
-      spreek(hint.textContent);
+      spreek(hint.textContent, `hint:${oefening.id}:${vraagNr}`);
     }
   });
 
@@ -565,7 +884,7 @@
   });
 
   const geluidKnop = $('#knop-geluid');
-  if (!kanSpreken) {
+  if (!kanSpreken && !kanAfspelen) {
     geluidKnop.hidden = true;
   } else {
     geluidKnop.addEventListener('click', () => {

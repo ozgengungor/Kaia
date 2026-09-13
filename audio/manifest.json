@@ -1,0 +1,805 @@
+{
+  "stem": "EXAVITQu4vr4xnSDxMaL",
+  "model": "eleven_multilingual_v2",
+  "bijgewerkt": "2026-09-13T17:23:48.334Z",
+  "opnames": {
+    "lees:wolf": {
+      "bestand": "lees-wolf.mp3",
+      "titel": "De wolf is terug in Nederland",
+      "hash": "5e1696e9a48509e7b931fb0be6056f9573073f60",
+      "tekens": 1986,
+      "opgenomen": "2026-09-11T14:02:56.839Z"
+    },
+    "lees:gapen": {
+      "bestand": "lees-gapen.mp3",
+      "titel": "Waarom gapen aanstekelijk is",
+      "hash": "8f15b6e12d257fa5d0c699a0e1fb6af63b5b5992",
+      "tekens": 1679,
+      "opgenomen": "2026-09-11T14:03:10.312Z"
+    },
+    "lees:smartphone": {
+      "bestand": "lees-smartphone.mp3",
+      "titel": "Moet de smartphone de klas uit?",
+      "hash": "4aa3c24c499dc98d65e42ec83bf3be6c20aa3a46",
+      "tekens": 1882,
+      "opgenomen": "2026-09-11T14:03:25.161Z"
+    },
+    "lees:vuurtoren": {
+      "bestand": "lees-vuurtoren.mp3",
+      "titel": "De sleutel van de vuurtoren",
+      "hash": "be315f5448e1116814e7a5fa3dc336c36024eda3",
+      "tekens": 1740,
+      "opgenomen": "2026-09-11T14:03:39.980Z"
+    },
+    "regel:sp-klankgroepen": {
+      "bestand": "regel-sp-klankgroepen.mp3",
+      "titel": "Verdubbelen of verenkelen",
+      "hash": "2591ecb9bf21b4aabcf3c74e3a97e4cb4ee0fe50",
+      "tekens": 713,
+      "opgenomen": "2026-09-11T14:03:46.153Z"
+    },
+    "regel:sp-tegenwoordige-tijd": {
+      "bestand": "regel-sp-tegenwoordige-tijd.mp3",
+      "titel": "Werkwoorden in de tegenwoordige tijd",
+      "hash": "c245623961fa7b050dc469080afca677f475f82a",
+      "tekens": 617,
+      "opgenomen": "2026-09-11T14:03:52.135Z"
+    },
+    "regel:sp-kofschip": {
+      "bestand": "regel-sp-kofschip.mp3",
+      "titel": "'t Kofschip: -te of -de",
+      "hash": "71c24ec9ffa2e7a9a58e35c9ef3aa53effb1f96e",
+      "tekens": 712,
+      "opgenomen": "2026-09-11T14:03:58.823Z"
+    },
+    "regel:sp-voltooid-deelwoord": {
+      "bestand": "regel-sp-voltooid-deelwoord.mp3",
+      "titel": "Voltooid deelwoord: -d of -t",
+      "hash": "ece8bcb408858a28ba7380d8d0db9738cb713668",
+      "tekens": 750,
+      "opgenomen": "2026-09-11T14:04:05.946Z"
+    },
+    "regel:sp-woordstukjes": {
+      "bestand": "regel-sp-woordstukjes.mp3",
+      "titel": "Woorden die je anders schrijft dan je hoort",
+      "hash": "9def9432428c6dfca746087a6025bf03eada368f",
+      "tekens": 662,
+      "opgenomen": "2026-09-11T14:04:11.500Z"
+    },
+    "regel:sp-samenstellingen": {
+      "bestand": "regel-sp-samenstellingen.mp3",
+      "titel": "Samenstellingen, trema en koppelteken",
+      "hash": "22221e3ffb1bc0d8a5b8f08e69dd37ceb3a39663",
+      "tekens": 878,
+      "opgenomen": "2026-09-11T14:04:19.692Z"
+    },
+    "regel:tv-hoofdletters": {
+      "bestand": "regel-tv-hoofdletters.mp3",
+      "titel": "Hoofdletters: wanneer wel en wanneer niet",
+      "hash": "e44a33498b40e4230ab34060c7df6e63084fe7b7",
+      "tekens": 785,
+      "opgenomen": "2026-09-13T17:22:31.292Z"
+    },
+    "regel:tv-leestekens": {
+      "bestand": "regel-tv-leestekens.mp3",
+      "titel": "Punt, vraagteken, uitroepteken en komma",
+      "hash": "921c13fd579031f5ea7dd65203be97a0c5de922e",
+      "tekens": 883,
+      "opgenomen": "2026-09-13T17:22:39.130Z"
+    },
+    "regel:tv-directe-rede": {
+      "bestand": "regel-tv-directe-rede.mp3",
+      "titel": "Aanhalingstekens: wie zegt wat?",
+      "hash": "f6fcb1e1771689ed55188df46f7baa1fa331fbdb",
+      "tekens": 1156,
+      "opgenomen": "2026-09-13T17:22:48.621Z"
+    },
+    "regel:tv-woordsoorten": {
+      "bestand": "regel-tv-woordsoorten.mp3",
+      "titel": "Woordsoorten: wat voor woord is het?",
+      "hash": "856f4bd5f5ace62573a8454d94a8208fdf169812",
+      "tekens": 1194,
+      "opgenomen": "2026-09-13T17:22:59.597Z"
+    },
+    "regel:tv-zinsdelen": {
+      "bestand": "regel-tv-zinsdelen.mp3",
+      "titel": "Zinsdelen: persoonsvorm, onderwerp en meer",
+      "hash": "d9e750205fa069b7c6430ec82d666c0bd885b536",
+      "tekens": 1084,
+      "opgenomen": "2026-09-13T17:23:09.570Z"
+    },
+    "regel:tv-woordparen": {
+      "bestand": "regel-tv-woordparen.mp3",
+      "titel": "Lastige woordparen: als of dan, hun of zij",
+      "hash": "14288f2fb184f82275158334a19f3bb5345f5c85",
+      "tekens": 1037,
+      "opgenomen": "2026-09-13T17:23:19.151Z"
+    },
+    "hint:wolf:0": {
+      "bestand": "hint-wolf-1.mp3",
+      "titel": "De wolf is terug in Nederland — hint 1",
+      "hash": "6454fe01715870f855f850f998a7d8caac346a4b",
+      "tekens": 102,
+      "opgenomen": "2026-09-11T14:40:32.958Z"
+    },
+    "hint:wolf:1": {
+      "bestand": "hint-wolf-2.mp3",
+      "titel": "De wolf is terug in Nederland — hint 2",
+      "hash": "6a0a2ffc3a621ab9e8f8ef59aca3452cd4920756",
+      "tekens": 117,
+      "opgenomen": "2026-09-11T14:40:34.217Z"
+    },
+    "hint:wolf:2": {
+      "bestand": "hint-wolf-3.mp3",
+      "titel": "De wolf is terug in Nederland — hint 3",
+      "hash": "ad3ef4381a685cc5e856757b6ebe2af6f1b4ddd8",
+      "tekens": 74,
+      "opgenomen": "2026-09-11T14:40:35.031Z"
+    },
+    "hint:wolf:3": {
+      "bestand": "hint-wolf-4.mp3",
+      "titel": "De wolf is terug in Nederland — hint 4",
+      "hash": "797648b16021859eded9db3b9d29fd889064f1ea",
+      "tekens": 68,
+      "opgenomen": "2026-09-11T14:40:35.859Z"
+    },
+    "hint:wolf:4": {
+      "bestand": "hint-wolf-5.mp3",
+      "titel": "De wolf is terug in Nederland — hint 5",
+      "hash": "b50a1e351006dc86b1223000e41cf1b010d4edb6",
+      "tekens": 76,
+      "opgenomen": "2026-09-11T14:40:36.794Z"
+    },
+    "hint:wolf:5": {
+      "bestand": "hint-wolf-6.mp3",
+      "titel": "De wolf is terug in Nederland — hint 6",
+      "hash": "1c970d33205ba54afaf8603c8391ea3b0cf54a99",
+      "tekens": 63,
+      "opgenomen": "2026-09-11T14:40:37.666Z"
+    },
+    "hint:wolf:6": {
+      "bestand": "hint-wolf-7.mp3",
+      "titel": "De wolf is terug in Nederland — hint 7",
+      "hash": "bf8bb59f92f7c2008ff5d623b91a6d7733c9c9ce",
+      "tekens": 43,
+      "opgenomen": "2026-09-11T14:40:38.396Z"
+    },
+    "hint:gapen:0": {
+      "bestand": "hint-gapen-1.mp3",
+      "titel": "Waarom gapen aanstekelijk is — hint 1",
+      "hash": "3edc433d4cc5d8d49b264f60260581f4cfdb9e71",
+      "tekens": 66,
+      "opgenomen": "2026-09-11T14:40:39.248Z"
+    },
+    "hint:gapen:1": {
+      "bestand": "hint-gapen-2.mp3",
+      "titel": "Waarom gapen aanstekelijk is — hint 2",
+      "hash": "4c1df9563663d148b078a9b3c868f5c78b154c30",
+      "tekens": 68,
+      "opgenomen": "2026-09-11T14:40:40.061Z"
+    },
+    "hint:gapen:2": {
+      "bestand": "hint-gapen-3.mp3",
+      "titel": "Waarom gapen aanstekelijk is — hint 3",
+      "hash": "194f33e1730347f38b94aef5483bd6c7aabe4368",
+      "tekens": 62,
+      "opgenomen": "2026-09-11T14:40:40.893Z"
+    },
+    "hint:gapen:3": {
+      "bestand": "hint-gapen-4.mp3",
+      "titel": "Waarom gapen aanstekelijk is — hint 4",
+      "hash": "6d5d5c66c366b7af214ba51aae89d4e0e7e7be02",
+      "tekens": 67,
+      "opgenomen": "2026-09-11T14:40:41.723Z"
+    },
+    "hint:gapen:4": {
+      "bestand": "hint-gapen-5.mp3",
+      "titel": "Waarom gapen aanstekelijk is — hint 5",
+      "hash": "e2d9fa5ab4ca19fdc1eb8edbf6553d3a2021d73a",
+      "tekens": 71,
+      "opgenomen": "2026-09-11T14:40:42.833Z"
+    },
+    "hint:gapen:5": {
+      "bestand": "hint-gapen-6.mp3",
+      "titel": "Waarom gapen aanstekelijk is — hint 6",
+      "hash": "683c532021dbf07b1c960bbc3ad215d6dd7efbd3",
+      "tekens": 88,
+      "opgenomen": "2026-09-11T14:40:43.772Z"
+    },
+    "hint:smartphone:0": {
+      "bestand": "hint-smartphone-1.mp3",
+      "titel": "Moet de smartphone de klas uit? — hint 1",
+      "hash": "0049596e44913907994d38b86887bb29cf088f36",
+      "tekens": 84,
+      "opgenomen": "2026-09-11T14:40:44.661Z"
+    },
+    "hint:smartphone:1": {
+      "bestand": "hint-smartphone-2.mp3",
+      "titel": "Moet de smartphone de klas uit? — hint 2",
+      "hash": "393356db71f6bf34538b1c3d620a501062cf7ad9",
+      "tekens": 90,
+      "opgenomen": "2026-09-11T14:40:45.563Z"
+    },
+    "hint:smartphone:2": {
+      "bestand": "hint-smartphone-3.mp3",
+      "titel": "Moet de smartphone de klas uit? — hint 3",
+      "hash": "627e1f145784741b2b1bd47354ae07efc4d38135",
+      "tekens": 59,
+      "opgenomen": "2026-09-11T14:40:46.321Z"
+    },
+    "hint:smartphone:3": {
+      "bestand": "hint-smartphone-4.mp3",
+      "titel": "Moet de smartphone de klas uit? — hint 4",
+      "hash": "bbc8e97aa36762aff330eb3b7943968b1f774405",
+      "tekens": 84,
+      "opgenomen": "2026-09-11T14:40:47.192Z"
+    },
+    "hint:smartphone:4": {
+      "bestand": "hint-smartphone-5.mp3",
+      "titel": "Moet de smartphone de klas uit? — hint 5",
+      "hash": "49885d1e96af93b2c7e885d3b4e0d594c5f4933d",
+      "tekens": 68,
+      "opgenomen": "2026-09-11T14:40:48.066Z"
+    },
+    "hint:smartphone:5": {
+      "bestand": "hint-smartphone-6.mp3",
+      "titel": "Moet de smartphone de klas uit? — hint 6",
+      "hash": "ebc8926e86f28cd7d40bdfd9cf499a8c10777324",
+      "tekens": 90,
+      "opgenomen": "2026-09-11T14:40:48.976Z"
+    },
+    "hint:smartphone:6": {
+      "bestand": "hint-smartphone-7.mp3",
+      "titel": "Moet de smartphone de klas uit? — hint 7",
+      "hash": "b20846b8937967727218dec6e930ee114a4f2e4c",
+      "tekens": 46,
+      "opgenomen": "2026-09-11T14:40:49.658Z"
+    },
+    "hint:vuurtoren:0": {
+      "bestand": "hint-vuurtoren-1.mp3",
+      "titel": "De sleutel van de vuurtoren — hint 1",
+      "hash": "21babba9eec30d5815ae6d37c8b3fef955891af2",
+      "tekens": 77,
+      "opgenomen": "2026-09-11T14:40:50.475Z"
+    },
+    "hint:vuurtoren:1": {
+      "bestand": "hint-vuurtoren-2.mp3",
+      "titel": "De sleutel van de vuurtoren — hint 2",
+      "hash": "ae3217bdfd1215c7988f596a338db096c9e9d786",
+      "tekens": 38,
+      "opgenomen": "2026-09-11T14:40:51.161Z"
+    },
+    "hint:vuurtoren:2": {
+      "bestand": "hint-vuurtoren-3.mp3",
+      "titel": "De sleutel van de vuurtoren — hint 3",
+      "hash": "37a74f39fbf6851cbfbfb1ff5b7669ff1fd97be3",
+      "tekens": 94,
+      "opgenomen": "2026-09-11T14:40:52.076Z"
+    },
+    "hint:vuurtoren:3": {
+      "bestand": "hint-vuurtoren-4.mp3",
+      "titel": "De sleutel van de vuurtoren — hint 4",
+      "hash": "aa21ff8234a51ecc6617f3d6d0c1d8af79270b0a",
+      "tekens": 69,
+      "opgenomen": "2026-09-11T14:40:52.866Z"
+    },
+    "hint:vuurtoren:4": {
+      "bestand": "hint-vuurtoren-5.mp3",
+      "titel": "De sleutel van de vuurtoren — hint 5",
+      "hash": "c228e9252fd76cce65a900e4adc260e73d842885",
+      "tekens": 45,
+      "opgenomen": "2026-09-11T14:40:53.604Z"
+    },
+    "hint:vuurtoren:5": {
+      "bestand": "hint-vuurtoren-6.mp3",
+      "titel": "De sleutel van de vuurtoren — hint 6",
+      "hash": "118b089a68cb2b956032c8a08f81413a7f3f1cee",
+      "tekens": 94,
+      "opgenomen": "2026-09-11T14:40:54.621Z"
+    },
+    "hint:sp-klankgroepen:0": {
+      "bestand": "hint-sp-klankgroepen-1.mp3",
+      "titel": "Verdubbelen of verenkelen — hint 1",
+      "hash": "506d2450ff75643f106d9eddc94511170a94b19c",
+      "tekens": 102,
+      "opgenomen": "2026-09-11T14:40:55.672Z"
+    },
+    "hint:sp-klankgroepen:1": {
+      "bestand": "hint-sp-klankgroepen-2.mp3",
+      "titel": "Verdubbelen of verenkelen — hint 2",
+      "hash": "55dbe0481a44e9fd23284281296d6f3000c28b7a",
+      "tekens": 84,
+      "opgenomen": "2026-09-11T14:40:56.560Z"
+    },
+    "hint:sp-klankgroepen:2": {
+      "bestand": "hint-sp-klankgroepen-3.mp3",
+      "titel": "Verdubbelen of verenkelen — hint 3",
+      "hash": "5f8afa8f3448eadc94b92bea1c6319a0bb44ab0b",
+      "tekens": 66,
+      "opgenomen": "2026-09-11T14:40:57.335Z"
+    },
+    "hint:sp-klankgroepen:3": {
+      "bestand": "hint-sp-klankgroepen-4.mp3",
+      "titel": "Verdubbelen of verenkelen — hint 4",
+      "hash": "7c6d3c4d83228037de9e9bc8c6dfa116f2de5b9a",
+      "tekens": 94,
+      "opgenomen": "2026-09-11T14:40:58.294Z"
+    },
+    "hint:sp-klankgroepen:4": {
+      "bestand": "hint-sp-klankgroepen-5.mp3",
+      "titel": "Verdubbelen of verenkelen — hint 5",
+      "hash": "43f798d3c2a4a56a0ce4b4283b5b71b949e6b896",
+      "tekens": 64,
+      "opgenomen": "2026-09-11T14:40:59.096Z"
+    },
+    "hint:sp-klankgroepen:5": {
+      "bestand": "hint-sp-klankgroepen-6.mp3",
+      "titel": "Verdubbelen of verenkelen — hint 6",
+      "hash": "93b8e7a96489808c6af0592c3cf069a20294d2e6",
+      "tekens": 51,
+      "opgenomen": "2026-09-11T14:40:59.867Z"
+    },
+    "hint:sp-tegenwoordige-tijd:0": {
+      "bestand": "hint-sp-tegenwoordige-tijd-1.mp3",
+      "titel": "Werkwoorden in de tegenwoordige tijd — hint 1",
+      "hash": "03d6c8071adedb76f282172f7a633e34b377676f",
+      "tekens": 86,
+      "opgenomen": "2026-09-11T14:41:00.780Z"
+    },
+    "hint:sp-tegenwoordige-tijd:1": {
+      "bestand": "hint-sp-tegenwoordige-tijd-2.mp3",
+      "titel": "Werkwoorden in de tegenwoordige tijd — hint 2",
+      "hash": "b9db10c150f18c4c4a29b06689852145e91e5d1a",
+      "tekens": 81,
+      "opgenomen": "2026-09-11T14:41:01.708Z"
+    },
+    "hint:sp-tegenwoordige-tijd:2": {
+      "bestand": "hint-sp-tegenwoordige-tijd-3.mp3",
+      "titel": "Werkwoorden in de tegenwoordige tijd — hint 3",
+      "hash": "07716891e91157be30a8d8522943097151902fa5",
+      "tekens": 57,
+      "opgenomen": "2026-09-11T14:41:02.486Z"
+    },
+    "hint:sp-tegenwoordige-tijd:3": {
+      "bestand": "hint-sp-tegenwoordige-tijd-4.mp3",
+      "titel": "Werkwoorden in de tegenwoordige tijd — hint 4",
+      "hash": "9aa73052decea2a99db230380fcded7ff9412022",
+      "tekens": 60,
+      "opgenomen": "2026-09-11T14:41:03.291Z"
+    },
+    "hint:sp-tegenwoordige-tijd:4": {
+      "bestand": "hint-sp-tegenwoordige-tijd-5.mp3",
+      "titel": "Werkwoorden in de tegenwoordige tijd — hint 5",
+      "hash": "5e7b729f7450c577484f46d5b9eb3c4eae13e7f7",
+      "tekens": 73,
+      "opgenomen": "2026-09-11T14:41:04.190Z"
+    },
+    "hint:sp-tegenwoordige-tijd:5": {
+      "bestand": "hint-sp-tegenwoordige-tijd-6.mp3",
+      "titel": "Werkwoorden in de tegenwoordige tijd — hint 6",
+      "hash": "20f1566845403f7f108e1a1ba8879f974a20bd03",
+      "tekens": 49,
+      "opgenomen": "2026-09-11T14:41:04.918Z"
+    },
+    "hint:sp-kofschip:0": {
+      "bestand": "hint-sp-kofschip-1.mp3",
+      "titel": "'t Kofschip: -te of -de — hint 1",
+      "hash": "0cb7284eb4ae0554a5b8fccf8d6594f0bdea0d00",
+      "tekens": 54,
+      "opgenomen": "2026-09-11T14:41:05.636Z"
+    },
+    "hint:sp-kofschip:1": {
+      "bestand": "hint-sp-kofschip-2.mp3",
+      "titel": "'t Kofschip: -te of -de — hint 2",
+      "hash": "a87fa68e8e678458e284de25d5cf0d2a5dd55d94",
+      "tekens": 76,
+      "opgenomen": "2026-09-11T14:41:06.584Z"
+    },
+    "hint:sp-kofschip:2": {
+      "bestand": "hint-sp-kofschip-3.mp3",
+      "titel": "'t Kofschip: -te of -de — hint 3",
+      "hash": "678cc5df19bb7200c69b2f8c3ae9e855429da077",
+      "tekens": 58,
+      "opgenomen": "2026-09-11T14:41:07.326Z"
+    },
+    "hint:sp-kofschip:3": {
+      "bestand": "hint-sp-kofschip-4.mp3",
+      "titel": "'t Kofschip: -te of -de — hint 4",
+      "hash": "3ce095f9310407fa117abb1ad51d40ad108755e2",
+      "tekens": 93,
+      "opgenomen": "2026-09-11T14:41:08.332Z"
+    },
+    "hint:sp-kofschip:4": {
+      "bestand": "hint-sp-kofschip-5.mp3",
+      "titel": "'t Kofschip: -te of -de — hint 5",
+      "hash": "2599c35cefca26a7127cb1e6a0409b8818c747ee",
+      "tekens": 100,
+      "opgenomen": "2026-09-11T14:41:09.301Z"
+    },
+    "hint:sp-kofschip:5": {
+      "bestand": "hint-sp-kofschip-6.mp3",
+      "titel": "'t Kofschip: -te of -de — hint 6",
+      "hash": "30906cb7f9e238d46f5d9379d9620c6ec5317bc6",
+      "tekens": 84,
+      "opgenomen": "2026-09-11T14:41:10.197Z"
+    },
+    "hint:sp-voltooid-deelwoord:0": {
+      "bestand": "hint-sp-voltooid-deelwoord-1.mp3",
+      "titel": "Voltooid deelwoord: -d of -t — hint 1",
+      "hash": "374225ca95dda419ff809feacc3e7e02b542a13c",
+      "tekens": 104,
+      "opgenomen": "2026-09-11T14:41:11.208Z"
+    },
+    "hint:sp-voltooid-deelwoord:1": {
+      "bestand": "hint-sp-voltooid-deelwoord-2.mp3",
+      "titel": "Voltooid deelwoord: -d of -t — hint 2",
+      "hash": "fe5d2278020608e2bf807db9c26648fdd66a1bab",
+      "tekens": 98,
+      "opgenomen": "2026-09-11T14:41:12.156Z"
+    },
+    "hint:sp-voltooid-deelwoord:2": {
+      "bestand": "hint-sp-voltooid-deelwoord-3.mp3",
+      "titel": "Voltooid deelwoord: -d of -t — hint 3",
+      "hash": "979e78142a4eb0a42333b74d780f47a8a082287a",
+      "tekens": 57,
+      "opgenomen": "2026-09-11T14:41:13.013Z"
+    },
+    "hint:sp-voltooid-deelwoord:3": {
+      "bestand": "hint-sp-voltooid-deelwoord-4.mp3",
+      "titel": "Voltooid deelwoord: -d of -t — hint 4",
+      "hash": "0879a3a4e7736261a2b088a41c7578a366efa488",
+      "tekens": 78,
+      "opgenomen": "2026-09-11T14:41:13.868Z"
+    },
+    "hint:sp-voltooid-deelwoord:4": {
+      "bestand": "hint-sp-voltooid-deelwoord-5.mp3",
+      "titel": "Voltooid deelwoord: -d of -t — hint 5",
+      "hash": "7f21812dc7e5b7595939b50c367f4b9ddf5b4971",
+      "tekens": 81,
+      "opgenomen": "2026-09-11T14:41:14.806Z"
+    },
+    "hint:sp-voltooid-deelwoord:5": {
+      "bestand": "hint-sp-voltooid-deelwoord-6.mp3",
+      "titel": "Voltooid deelwoord: -d of -t — hint 6",
+      "hash": "f6a4425f5ece35e3d6aa4ba863d94b531c302b45",
+      "tekens": 89,
+      "opgenomen": "2026-09-11T14:41:15.748Z"
+    },
+    "hint:sp-woordstukjes:0": {
+      "bestand": "hint-sp-woordstukjes-1.mp3",
+      "titel": "Woorden die je anders schrijft dan je hoort — hint 1",
+      "hash": "692e18e891515ced65c53ad6ad689983f768f12c",
+      "tekens": 57,
+      "opgenomen": "2026-09-11T14:41:16.457Z"
+    },
+    "hint:sp-woordstukjes:1": {
+      "bestand": "hint-sp-woordstukjes-2.mp3",
+      "titel": "Woorden die je anders schrijft dan je hoort — hint 2",
+      "hash": "571bda8d78038f7791879ee00da55e85ef9120fa",
+      "tekens": 66,
+      "opgenomen": "2026-09-11T14:41:17.207Z"
+    },
+    "hint:sp-woordstukjes:2": {
+      "bestand": "hint-sp-woordstukjes-3.mp3",
+      "titel": "Woorden die je anders schrijft dan je hoort — hint 3",
+      "hash": "03c5afbb4ad589277c9670d6a2831d63431337a8",
+      "tekens": 54,
+      "opgenomen": "2026-09-11T14:41:17.975Z"
+    },
+    "hint:sp-woordstukjes:3": {
+      "bestand": "hint-sp-woordstukjes-4.mp3",
+      "titel": "Woorden die je anders schrijft dan je hoort — hint 4",
+      "hash": "79d4f0e33a433ab322549ff702b9b8a33bc0fb8c",
+      "tekens": 47,
+      "opgenomen": "2026-09-11T14:41:18.741Z"
+    },
+    "hint:sp-woordstukjes:4": {
+      "bestand": "hint-sp-woordstukjes-5.mp3",
+      "titel": "Woorden die je anders schrijft dan je hoort — hint 5",
+      "hash": "9e4f3a6a619bc6da8adab724e2a33c497ec81773",
+      "tekens": 73,
+      "opgenomen": "2026-09-11T14:41:19.589Z"
+    },
+    "hint:sp-woordstukjes:5": {
+      "bestand": "hint-sp-woordstukjes-6.mp3",
+      "titel": "Woorden die je anders schrijft dan je hoort — hint 6",
+      "hash": "00208cb0ae6048bc0c1528f20fefbbfbd2ca8ed6",
+      "tekens": 46,
+      "opgenomen": "2026-09-11T14:41:20.313Z"
+    },
+    "hint:sp-samenstellingen:0": {
+      "bestand": "hint-sp-samenstellingen-1.mp3",
+      "titel": "Samenstellingen, trema en koppelteken — hint 1",
+      "hash": "5f3d3fe27b545216d15b58a6892f4949dc0b0141",
+      "tekens": 47,
+      "opgenomen": "2026-09-11T14:41:21.013Z"
+    },
+    "hint:sp-samenstellingen:1": {
+      "bestand": "hint-sp-samenstellingen-2.mp3",
+      "titel": "Samenstellingen, trema en koppelteken — hint 2",
+      "hash": "aa4c068d42db801d660cc9bd0e9a78b626f8f11b",
+      "tekens": 28,
+      "opgenomen": "2026-09-11T14:41:21.616Z"
+    },
+    "hint:sp-samenstellingen:2": {
+      "bestand": "hint-sp-samenstellingen-3.mp3",
+      "titel": "Samenstellingen, trema en koppelteken — hint 3",
+      "hash": "3c42357cb045e4cb8a9a321cd0943c2716108185",
+      "tekens": 53,
+      "opgenomen": "2026-09-11T14:41:22.408Z"
+    },
+    "hint:sp-samenstellingen:3": {
+      "bestand": "hint-sp-samenstellingen-4.mp3",
+      "titel": "Samenstellingen, trema en koppelteken — hint 4",
+      "hash": "f8135f74b68b8794568719c27ad10fc50bb4e906",
+      "tekens": 75,
+      "opgenomen": "2026-09-11T14:41:23.270Z"
+    },
+    "hint:sp-samenstellingen:4": {
+      "bestand": "hint-sp-samenstellingen-5.mp3",
+      "titel": "Samenstellingen, trema en koppelteken — hint 5",
+      "hash": "4425619a226d7a0361690636dcc48a611fdf621f",
+      "tekens": 65,
+      "opgenomen": "2026-09-11T14:41:24.144Z"
+    },
+    "hint:sp-samenstellingen:5": {
+      "bestand": "hint-sp-samenstellingen-6.mp3",
+      "titel": "Samenstellingen, trema en koppelteken — hint 6",
+      "hash": "a1ba6fc7f876fb9bf75b53537b94129e82c6cc3a",
+      "tekens": 81,
+      "opgenomen": "2026-09-11T14:41:25.051Z"
+    },
+    "hint:tv-hoofdletters:0": {
+      "bestand": "hint-tv-hoofdletters-1.mp3",
+      "titel": "Hoofdletters: wanneer wel en wanneer niet — hint 1",
+      "hash": "67c02968d778ff97dac35cb73c01050042ef4e20",
+      "tekens": 47,
+      "opgenomen": "2026-09-13T17:23:20.056Z"
+    },
+    "hint:tv-hoofdletters:1": {
+      "bestand": "hint-tv-hoofdletters-2.mp3",
+      "titel": "Hoofdletters: wanneer wel en wanneer niet — hint 2",
+      "hash": "f213320ab25a73db7985b246e422c3dd4cf2081d",
+      "tekens": 72,
+      "opgenomen": "2026-09-13T17:23:20.925Z"
+    },
+    "hint:tv-hoofdletters:2": {
+      "bestand": "hint-tv-hoofdletters-3.mp3",
+      "titel": "Hoofdletters: wanneer wel en wanneer niet — hint 3",
+      "hash": "a7de17feb17284da3a0383c8eb374326903792cf",
+      "tekens": 65,
+      "opgenomen": "2026-09-13T17:23:21.735Z"
+    },
+    "hint:tv-hoofdletters:3": {
+      "bestand": "hint-tv-hoofdletters-4.mp3",
+      "titel": "Hoofdletters: wanneer wel en wanneer niet — hint 4",
+      "hash": "fe146f578d362c901f88e7a53126987204678840",
+      "tekens": 49,
+      "opgenomen": "2026-09-13T17:23:22.500Z"
+    },
+    "hint:tv-hoofdletters:4": {
+      "bestand": "hint-tv-hoofdletters-5.mp3",
+      "titel": "Hoofdletters: wanneer wel en wanneer niet — hint 5",
+      "hash": "5c62ee4de51d4724e36d2951cc23c33ea5e4856e",
+      "tekens": 92,
+      "opgenomen": "2026-09-13T17:23:23.383Z"
+    },
+    "hint:tv-hoofdletters:5": {
+      "bestand": "hint-tv-hoofdletters-6.mp3",
+      "titel": "Hoofdletters: wanneer wel en wanneer niet — hint 6",
+      "hash": "94a14cfbce315a266670920d809b790fd63c4536",
+      "tekens": 100,
+      "opgenomen": "2026-09-13T17:23:24.318Z"
+    },
+    "hint:tv-leestekens:0": {
+      "bestand": "hint-tv-leestekens-1.mp3",
+      "titel": "Punt, vraagteken, uitroepteken en komma — hint 1",
+      "hash": "5148a308194c636fa07dff68602e616fdfbc0a02",
+      "tekens": 62,
+      "opgenomen": "2026-09-13T17:23:25.077Z"
+    },
+    "hint:tv-leestekens:1": {
+      "bestand": "hint-tv-leestekens-2.mp3",
+      "titel": "Punt, vraagteken, uitroepteken en komma — hint 2",
+      "hash": "739fae9538bec8aa1d153b69f0037cd83d56ee7d",
+      "tekens": 65,
+      "opgenomen": "2026-09-13T17:23:25.857Z"
+    },
+    "hint:tv-leestekens:2": {
+      "bestand": "hint-tv-leestekens-3.mp3",
+      "titel": "Punt, vraagteken, uitroepteken en komma — hint 3",
+      "hash": "ea82b1864d24e15b3bda62815d3c019300b897aa",
+      "tekens": 65,
+      "opgenomen": "2026-09-13T17:23:26.694Z"
+    },
+    "hint:tv-leestekens:3": {
+      "bestand": "hint-tv-leestekens-4.mp3",
+      "titel": "Punt, vraagteken, uitroepteken en komma — hint 4",
+      "hash": "0de9214b3ffa83ee8a4a18bd638da22e9af2f75e",
+      "tekens": 52,
+      "opgenomen": "2026-09-13T17:23:27.451Z"
+    },
+    "hint:tv-leestekens:4": {
+      "bestand": "hint-tv-leestekens-5.mp3",
+      "titel": "Punt, vraagteken, uitroepteken en komma — hint 5",
+      "hash": "4efc81cc616aba2afd45a7d02006547cb5e15559",
+      "tekens": 79,
+      "opgenomen": "2026-09-13T17:23:28.288Z"
+    },
+    "hint:tv-leestekens:5": {
+      "bestand": "hint-tv-leestekens-6.mp3",
+      "titel": "Punt, vraagteken, uitroepteken en komma — hint 6",
+      "hash": "a5db775b3b419364c67c2d757ea533fb6db68b79",
+      "tekens": 66,
+      "opgenomen": "2026-09-13T17:23:29.082Z"
+    },
+    "hint:tv-directe-rede:0": {
+      "bestand": "hint-tv-directe-rede-1.mp3",
+      "titel": "Aanhalingstekens: wie zegt wat? — hint 1",
+      "hash": "73bf657c335c1bc9917ea9b93343f8f509be06ed",
+      "tekens": 83,
+      "opgenomen": "2026-09-13T17:23:30.008Z"
+    },
+    "hint:tv-directe-rede:1": {
+      "bestand": "hint-tv-directe-rede-2.mp3",
+      "titel": "Aanhalingstekens: wie zegt wat? — hint 2",
+      "hash": "fff83765a9abb9b3b9d2b5ad8e73cb013cc734a4",
+      "tekens": 94,
+      "opgenomen": "2026-09-13T17:23:30.963Z"
+    },
+    "hint:tv-directe-rede:2": {
+      "bestand": "hint-tv-directe-rede-3.mp3",
+      "titel": "Aanhalingstekens: wie zegt wat? — hint 3",
+      "hash": "7c353241dfc3edb5c99f613e0704547a704e2b71",
+      "tekens": 84,
+      "opgenomen": "2026-09-13T17:23:31.892Z"
+    },
+    "hint:tv-directe-rede:3": {
+      "bestand": "hint-tv-directe-rede-4.mp3",
+      "titel": "Aanhalingstekens: wie zegt wat? — hint 4",
+      "hash": "24ba65d80790ff4e9c808a5b07a11af884cc8beb",
+      "tekens": 74,
+      "opgenomen": "2026-09-13T17:23:32.757Z"
+    },
+    "hint:tv-directe-rede:4": {
+      "bestand": "hint-tv-directe-rede-5.mp3",
+      "titel": "Aanhalingstekens: wie zegt wat? — hint 5",
+      "hash": "a62ad667b4c3a3202e8ef74054477b7b910ec60a",
+      "tekens": 86,
+      "opgenomen": "2026-09-13T17:23:33.663Z"
+    },
+    "hint:tv-directe-rede:5": {
+      "bestand": "hint-tv-directe-rede-6.mp3",
+      "titel": "Aanhalingstekens: wie zegt wat? — hint 6",
+      "hash": "166db4b9a779e66c699727be7b6b2e85d64d8b15",
+      "tekens": 82,
+      "opgenomen": "2026-09-13T17:23:34.561Z"
+    },
+    "hint:tv-woordsoorten:0": {
+      "bestand": "hint-tv-woordsoorten-1.mp3",
+      "titel": "Woordsoorten: wat voor woord is het? — hint 1",
+      "hash": "9ba6b303a46d20be2a64ece5376b75020ac8b61e",
+      "tekens": 99,
+      "opgenomen": "2026-09-13T17:23:35.563Z"
+    },
+    "hint:tv-woordsoorten:1": {
+      "bestand": "hint-tv-woordsoorten-2.mp3",
+      "titel": "Woordsoorten: wat voor woord is het? — hint 2",
+      "hash": "121978c996a89de25129bc78252201207d5b5e08",
+      "tekens": 33,
+      "opgenomen": "2026-09-13T17:23:36.248Z"
+    },
+    "hint:tv-woordsoorten:2": {
+      "bestand": "hint-tv-woordsoorten-3.mp3",
+      "titel": "Woordsoorten: wat voor woord is het? — hint 3",
+      "hash": "589eb6bc9d1d764c0df5b1ffd145be0704796a6f",
+      "tekens": 101,
+      "opgenomen": "2026-09-13T17:23:37.259Z"
+    },
+    "hint:tv-woordsoorten:3": {
+      "bestand": "hint-tv-woordsoorten-4.mp3",
+      "titel": "Woordsoorten: wat voor woord is het? — hint 4",
+      "hash": "af11d0133951cb1ae10e5535139ab59ecb9e0192",
+      "tekens": 44,
+      "opgenomen": "2026-09-13T17:23:38.002Z"
+    },
+    "hint:tv-woordsoorten:4": {
+      "bestand": "hint-tv-woordsoorten-5.mp3",
+      "titel": "Woordsoorten: wat voor woord is het? — hint 5",
+      "hash": "8de5725c76f7a35a5eb6652e8ca168f7234b96bc",
+      "tekens": 43,
+      "opgenomen": "2026-09-13T17:23:38.709Z"
+    },
+    "hint:tv-woordsoorten:5": {
+      "bestand": "hint-tv-woordsoorten-6.mp3",
+      "titel": "Woordsoorten: wat voor woord is het? — hint 6",
+      "hash": "5d62bb4bde34c87c177ca32ef08ed9f203315d35",
+      "tekens": 71,
+      "opgenomen": "2026-09-13T17:23:39.464Z"
+    },
+    "hint:tv-zinsdelen:0": {
+      "bestand": "hint-tv-zinsdelen-1.mp3",
+      "titel": "Zinsdelen: persoonsvorm, onderwerp en meer — hint 1",
+      "hash": "75db4bb0cc18f99d388304fd9c5e556e977da3c4",
+      "tekens": 49,
+      "opgenomen": "2026-09-13T17:23:40.283Z"
+    },
+    "hint:tv-zinsdelen:1": {
+      "bestand": "hint-tv-zinsdelen-2.mp3",
+      "titel": "Zinsdelen: persoonsvorm, onderwerp en meer — hint 2",
+      "hash": "209fb8f740204fc63e9e41a662d9f6c2ba0d43f2",
+      "tekens": 17,
+      "opgenomen": "2026-09-13T17:23:40.925Z"
+    },
+    "hint:tv-zinsdelen:2": {
+      "bestand": "hint-tv-zinsdelen-3.mp3",
+      "titel": "Zinsdelen: persoonsvorm, onderwerp en meer — hint 3",
+      "hash": "d857d6678dda3352a961551fcf56f6f926885573",
+      "tekens": 23,
+      "opgenomen": "2026-09-13T17:23:41.528Z"
+    },
+    "hint:tv-zinsdelen:3": {
+      "bestand": "hint-tv-zinsdelen-4.mp3",
+      "titel": "Zinsdelen: persoonsvorm, onderwerp en meer — hint 4",
+      "hash": "4a2e0edab4114f326380b0bc9479456b66461b38",
+      "tekens": 59,
+      "opgenomen": "2026-09-13T17:23:42.379Z"
+    },
+    "hint:tv-zinsdelen:4": {
+      "bestand": "hint-tv-zinsdelen-5.mp3",
+      "titel": "Zinsdelen: persoonsvorm, onderwerp en meer — hint 5",
+      "hash": "80117a1a08030326a98d633af8c22a3b2023e1cc",
+      "tekens": 36,
+      "opgenomen": "2026-09-13T17:23:43.018Z"
+    },
+    "hint:tv-zinsdelen:5": {
+      "bestand": "hint-tv-zinsdelen-6.mp3",
+      "titel": "Zinsdelen: persoonsvorm, onderwerp en meer — hint 6",
+      "hash": "0bd730d87037f6f57712e28d401e254b3440d188",
+      "tekens": 78,
+      "opgenomen": "2026-09-13T17:23:43.951Z"
+    },
+    "hint:tv-woordparen:0": {
+      "bestand": "hint-tv-woordparen-1.mp3",
+      "titel": "Lastige woordparen: als of dan, hun of zij — hint 1",
+      "hash": "838ebfb3d33c232fea7d32fde65ffebe58a9e3e3",
+      "tekens": 42,
+      "opgenomen": "2026-09-13T17:23:44.591Z"
+    },
+    "hint:tv-woordparen:1": {
+      "bestand": "hint-tv-woordparen-2.mp3",
+      "titel": "Lastige woordparen: als of dan, hun of zij — hint 2",
+      "hash": "b91b947ad031bb0bf92ce8913c460e39239d6c03",
+      "tekens": 45,
+      "opgenomen": "2026-09-13T17:23:45.293Z"
+    },
+    "hint:tv-woordparen:2": {
+      "bestand": "hint-tv-woordparen-3.mp3",
+      "titel": "Lastige woordparen: als of dan, hun of zij — hint 3",
+      "hash": "5e9b2efc5a255dacde69a7c849d12bafd86cfbca",
+      "tekens": 69,
+      "opgenomen": "2026-09-13T17:23:46.112Z"
+    },
+    "hint:tv-woordparen:3": {
+      "bestand": "hint-tv-woordparen-4.mp3",
+      "titel": "Lastige woordparen: als of dan, hun of zij — hint 4",
+      "hash": "f3df2a723bffb8302beab1e3f64d526fe8b1a512",
+      "tekens": 41,
+      "opgenomen": "2026-09-13T17:23:46.772Z"
+    },
+    "hint:tv-woordparen:4": {
+      "bestand": "hint-tv-woordparen-5.mp3",
+      "titel": "Lastige woordparen: als of dan, hun of zij — hint 5",
+      "hash": "0794776a470065ade35c64115fb4d0a5bd901c4b",
+      "tekens": 23,
+      "opgenomen": "2026-09-13T17:23:47.407Z"
+    },
+    "hint:tv-woordparen:5": {
+      "bestand": "hint-tv-woordparen-6.mp3",
+      "titel": "Lastige woordparen: als of dan, hun of zij — hint 6",
+      "hash": "a8a0f328e3808589aebec909f3f3da74ca92ca21",
+      "tekens": 89,
+      "opgenomen": "2026-09-13T17:23:48.334Z"
+    }
+  }
+}
