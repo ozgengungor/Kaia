@@ -47,6 +47,18 @@ ronde van acht woorden. Alle vier de spellen werken met alle pakketten.
 | eeuw, ieuw of uw | regelwoorden | 9 |
 | aai, ooi of oei | regelwoorden | 12 |
 
+Onder de spellen staan twee **dictees**, zoals op school: de woorden komen
+door elkaar uit alle pakketten en er wordt pas aan het eind nagekeken.
+
+| Dictee | Hoe het gaat |
+| --- | --- |
+| 📝 Woorddictee | Tien woorden, eerlijk verdeeld over de pakketten. Na afloop staat erbij uit welk pakket een fout woord kwam, met het advies dat pakket nog eens te oefenen. |
+| ✏️ Zinnendictee | Vijf hele zinnen. Alle woorden goed én een hoofdletter én een punt is 1 punt; woorden goed maar hoofdletter of punt vergeten is een half punt. Foute woorden worden onderstreept. |
+
+Voor het zinnendictee worden de dicteezinnen van de woorden hergebruikt. Een
+zin met een naam of een te lastig woord erin krijgt `zinDictee: false` en doet
+dan niet mee.
+
 Een woord is 1 punt, een half punt als het pas in de tweede poging (of na extra
 kijken) goed gaat, en anders 0. Bij een fout legt Pluis de regel van het pakket
 uit; bij d/t maakt Pluis het woord langer (hond → honden). De sterren gaan per
@@ -145,8 +157,24 @@ echo 'ELEVENLABS_API_KEY=sk_...' > .env    # staat in .gitignore
 npm run audio                              # alleen wat veranderd is
 node genereer-audio.js --alles             # alles opnieuw
 node genereer-audio.js lees:wolf           # één opname (lees:<id>, regel:<id>, hint:<id>:<vraagnr>,
-                                           #   woord:<woord>, g5:spel:<id>, g5:pakket:<id>)
+                                           #   woord:<woord>, zin:<woord>, g5:spel:<id>, g5:pakket:<id>)
 ```
+
+Alles wat de app uitspreekt heeft een eigen opname: teksten, regelkaarten,
+vragen, hints, uitleg, voorbeeldantwoorden, woordkaarten, de korte reacties van
+Kaia ("Helemaal goed!"), de eindschermen en alles van groep 5. De browserstem
+is alleen nog een vangnet voor als een opname ontbreekt. Vaste zinnen van Kaia
+staan daarom in `zinnen.js` en die van Pluis in `groep5.js`: zonder getallen,
+zodat ze op te nemen zijn. De score staat los onder de tekst.
+
+```bash
+node genereer-audio.js --droog             # wat moet er nog, en hoeveel tekens kost dat?
+```
+
+Is het tegoed bij ElevenLabs op, dan stopt het script met een duidelijke
+melding. Wat al is opgenomen wordt na elke opname bewaard, dus opnieuw draaien
+gaat verder waar het bleef. Twee keer precies dezelfde tekst wordt maar één keer
+opgenomen en daarna gekopieerd.
 
 Het script vergelijkt een vingerafdruk van tekst + stem + model met het
 manifest en slaat ongewijzigde opnames over, dus herhaald draaien kost geen
@@ -162,7 +190,8 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 | `exercises.js` | **Alle leesteksten**, hardcoded in één array. |
 | `spelling.js` | **Alle spellingregels**, in dezelfde stijl. |
 | `taal.js` | **Alle taalverzorgingsregels**, zelfde structuur als spelling. |
-| `groep5.js` | **Groep 5**: de vier spellen en alle woordpakketten. |
+| `groep5.js` | **Groep 5**: de vier spellen, de dictees en alle woordpakketten. |
+| `zinnen.js` | De vaste, opneembare zinnen van Kaia: reacties na een vraag en de eindschermen. |
 | `capybara.js` | Kaia als SVG, met zes stemmingen. |
 | `konijn.js` | Pluis als SVG, met zeven stemmingen; het bewegen zit in `styles.css`. |
 | `app.js` | Groep kiezen en alle logica van groep 8: schermen, nakijken, score, voortgang. |

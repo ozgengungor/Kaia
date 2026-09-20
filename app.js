@@ -54,18 +54,6 @@
       'Goed bezig. Nog eentje doen?',
       'Kies maar iets uit. Ik wacht wel even.'
     ],
-    goed: [
-      'Helemaal goed!', 'Top gedaan!', 'Precies!', 'Ja! Goed gelezen.', 'Knap hoor!'
-    ],
-    reeks: [
-      'Wauw, {n} goed op rij!', 'Je bent lekker bezig: {n} achter elkaar goed!', '{n} op rij! Doorgaan zo.'
-    ],
-    fout: [
-      'Bijna! Kijk maar even mee.',
-      'Niet erg — hier leer je juist van.',
-      'Deze was lastig. Ik leg hem uit.',
-      'Nog niet goed, maar je bent op de goede weg.'
-    ],
     lezen: [
       'Lees rustig. Kom je een moeilijk woord tegen? Klik erop, dan leg ik het uit.',
       'Tip: lees de tekst één keer helemaal door voordat je aan de vragen begint.',
@@ -161,6 +149,17 @@
       .catch(() => { /* geen opnames; browserstem doet het werk */ });
   }
   const speler = kanAfspelen ? new Audio() : null;
+  let wachtrij = [];        // opnames die na de huidige nog afgespeeld worden
+  if (speler) {
+    speler.addEventListener('ended', () => {
+      const volgende = wachtrij.shift();
+      if (volgende) { speler.src = volgende; speler.play().catch(() => { wachtrij = []; }); }
+    });
+  }
+
+  // De vingerafdruk in de URL zorgt dat de browser na opnieuw opnemen (andere
+  // stem, andere tekst) niet de oude mp3 uit zijn cache haalt.
+  function urlVan(opname) { return `audio/${opname.bestand}?v=${String(opname.hash || '').slice(0, 10)}`; }
 
   // Voorlezen: alleen als de voorleesknop aan staat.
   function spreek(tekst, sleutel) {
@@ -170,14 +169,22 @@
 
   // Altijd afspelen, ook als voorlezen uit staat. Voor de spelletjes van
   // groep 5, waar het gesproken woord bij het spel zelf hoort.
+  // `sleutel` mag ook een rijtje sleutels zijn; die worden dan achter elkaar
+  // afgespeeld ("Helemaal goed!" en daarna de uitleg). Ontbreekt er ook maar
+  // één opname, dan leest de browserstem de hele tekst voor.
   function speelOpname(sleutel, tekst) {
     stopSpreken();
-    const opname = sleutel && speler && opnames[sleutel];
-    if (opname) {
-      // De vingerafdruk in de URL zorgt dat de browser na opnieuw opnemen
-      // (andere stem, andere tekst) niet de oude mp3 uit zijn cache haalt.
-      speler.src = `audio/${opname.bestand}?v=${String(opname.hash || '').slice(0, 10)}`;
-      speler.play().catch(() => spreekMetBrowser(tekst));
+    const gevonden = [].concat(sleutel || []).filter(Boolean).map((s) => opnames[s]);
+    if (speler && gevonden.length && gevonden.every(Boolean)) {
+      wachtrij = gevonden.slice(1).map(urlVan);
+      speler.src = urlVan(gevonden[0]);
+      // Een AbortError betekent alleen dat het afspelen onderbroken is (het kind
+      // klikte al verder). Dan moet de browserstem het niet alsnog overnemen.
+      speler.play().catch((fout) => {
+        if (fout && fout.name === 'AbortError') return;
+        wachtrij = [];
+        spreekMetBrowser(tekst);
+      });
       return;
     }
     spreekMetBrowser(tekst);
@@ -194,6 +201,7 @@
   }
 
   function stopSpreken() {
+    wachtrij = [];
     if (kanSpreken) window.speechSynthesis.cancel();
     if (speler && !speler.paused) { speler.pause(); speler.currentTime = 0; }
   }
@@ -404,7 +412,7 @@
     $('#woordkaart-woord').textContent = w.woord;
     $('#woordkaart-uitleg').textContent = w.uitleg;
     $('#woordkaart').hidden = false;
-    spreek(`${w.woord}. ${w.uitleg}`);
+    spreek(`${w.woord}. ${w.uitleg}`, `woordkaart:${oefening.id}:${index}`);
   }
   function verbergWoordkaart() { $('#woordkaart').hidden = true; }
 
@@ -441,7 +449,7 @@
     else tekenMeerkeuze(gebied, v);
 
     toonScherm('scherm-vragen');
-    spreek(vraagAlsSpraak(v));
+    spreek(vraagAlsSpraak(v), `vraag:${oefening.id}:${vraagNr}`);
   }
 
   // Bij spelling en taalverzorging klinken de antwoorden vaak precies
@@ -704,7 +712,7 @@
         <button type="button" data-punten="0">❌ Nee, dit was anders</button>
       </div>`;
     $('#antwoord-gebied').appendChild(blok);
-    spreek(`Zo had je het ongeveer kunnen opschrijven. ${v.voorbeeldantwoord}`);
+    spreek(`${VASTE_ZINNEN.voorbeeldIntro} ${v.voorbeeldantwoord}`, `voorbeeld:${oefening.id}:${vraagNr}`);
 
     blok.querySelectorAll('.zelfcheck button').forEach((knop) => {
       knop.addEventListener('click', () => {
@@ -778,10 +786,27 @@
     const goed = punten >= 1;
     const bijna = punten > 0 && punten < 1;
 
+    // De kop komt uit zinnen.js; de sleutel wijst naar de opname ervan.
+    const K = VASTE_ZINNEN.kop;
+    const willekeurig = (lijst) => Math.floor(Math.random() * lijst.length);
     let kop;
-    if (goed) kop = reeks >= 3 ? kies(PRAATJES.reeks).replace('{n}', reeks) : kies(PRAATJES.goed);
-    else if (bijna) kop = v.type === 'open' ? 'Deels goed — mooi dat je eerlijk bent!' : 'Net niet — je was er heel dichtbij!';
-    else kop = kies(PRAATJES.fout);
+    let kopSleutel;
+    if (goed && reeks >= 3) {
+      const i = willekeurig(K.reeks);
+      kop = K.reeks[i].replace('{n}', reeks);
+      kopSleutel = `kop:reeks:${i}:${reeks}`;
+    } else if (goed) {
+      const i = willekeurig(K.goed);
+      kop = K.goed[i];
+      kopSleutel = `kop:goed:${i}`;
+    } else if (bijna) {
+      kop = v.type === 'open' ? K.bijnaOpen : K.bijna;
+      kopSleutel = v.type === 'open' ? 'kop:bijna-open' : 'kop:bijna';
+    } else {
+      const i = willekeurig(K.fout);
+      kop = K.fout[i];
+      kopSleutel = `kop:fout:${i}`;
+    }
 
     const vak = $('#feedback');
     vak.className = 'feedback ' + (goed ? 'goed' : bijna ? '' : 'fout');
@@ -799,7 +824,7 @@
     // De onderbalk plakt onderaan het scherm; even scrollen zodat de feedback
     // van Kaia niet achter die knop verdwijnt.
     vak.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    spreek(`${kop} ${v.uitleg || ''}`);
+    spreek(`${kop} ${v.uitleg || ''}`, v.uitleg ? [kopSleutel, `uitleg:${oefening.id}:${vraagNr}`] : kopSleutel);
   }
 
   function volgende() {
@@ -851,19 +876,13 @@
     });
 
     toonScherm('scherm-klaar');
-    spreek($('#klaar-tekst').textContent);
+    spreek($('#klaar-tekst').textContent, `eind:${MODI[modus].stof}:${sterren}`);
   }
 
-  function eindPraatje(sterren, percentage) {
-    const stof = MODI[modus].stof;
-    if (sterren === 3) {
-      return stof === 'regel'
-        ? `Wauw! ${percentage}% goed. Deze regel zit echt in je hoofd. Ik ben trots op je!`
-        : `Wauw! ${percentage}% goed. Je leest de tekst echt goed door. Ik ben trots op je!`;
-    }
-    if (sterren === 2) return `Goed gedaan! ${percentage}% goed. Kijk hieronder nog even bij de vragen die misgingen — dan zit je er volgende keer bovenop.`;
-    if (sterren === 1) return `Je hebt ${percentage}% goed. Deze ${stof} was pittig. Lees hem gerust nog een keer, dan gaat het vaak veel beter.`;
-    return `Deze was lastig, maar opgeven doen we niet. Zullen we de ${stof} nog een keer samen doorlezen?`;
+  // De tekst van Kaia op het eindscherm is vast per aantal sterren, zodat hij
+  // opgenomen kan worden. Het percentage staat eronder bij de sterren.
+  function eindPraatje(sterren) {
+    return VASTE_ZINNEN.einde[MODI[modus].stof][sterren];
   }
 
   /* ------------------------------------------------------------------ */
@@ -938,7 +957,7 @@
       geluidKnop.textContent = instellingen.voorlezen ? '🔊' : '🔇';
       bewaar(INSTELLING_SLEUTEL, instellingen);
       if (!instellingen.voorlezen) stopSpreken();
-      else spreek('Ik lees voortaan met je mee.', 'ui:voorlezen-aan');
+      else spreek(VASTE_ZINNEN.voorlezenAan, 'ui:voorlezen-aan');
     });
     geluidKnop.setAttribute('aria-pressed', String(instellingen.voorlezen));
     geluidKnop.textContent = instellingen.voorlezen ? '🔊' : '🔇';

@@ -580,6 +580,17 @@ body.groep-5 .balk { background: rgba(254,243,245,.92); }
 .spel-nakijk b { font-family: 'Baloo 2', sans-serif; font-size: 1.7rem; letter-spacing: .04em; }
 .overzicht-woord { font-family: 'Baloo 2', sans-serif; font-size: 1.3rem; letter-spacing: .03em; }
 
+/* Dictee */
+.wortel.gedaan { opacity: .9; filter: grayscale(.15); }
+.dictee-teller { margin: 0 0 6px; color: var(--inkt-zacht); font-weight: 700; }
+.dictee-zin-invoer { width: 100% !important; font-size: 1.5rem; letter-spacing: .01em; text-align: left; padding: 10px 12px; }
+.dictee-advies {
+  margin: 18px 0 0; padding: 12px 16px; border-radius: 14px;
+  background: var(--oranje-licht); color: #97591a; font-weight: 700;
+}
+.fout-woord { color: var(--rood); text-decoration: underline wavy; text-underline-offset: 4px; }
+.overzicht-zin { font-size: 1.1rem; letter-spacing: 0; }
+
 @media (prefers-reduced-motion: reduce) {
   .wortel, .wortel-knop, .bouw-vakjes, .flits-vak { animation: none !important; }
 }

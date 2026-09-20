@@ -1,7 +1,7 @@
 {
   "stem": "YUdpWWny7k5yb4QCeweX",
   "model": "eleven_multilingual_v2",
-  "bijgewerkt": "2026-09-20T16:46:38.066Z",
+  "bijgewerkt": "2026-09-20T17:02:41.122Z",
   "opnames": {
     "lees:wolf": {
       "bestand": "lees-wolf.mp3",
@@ -815,12 +815,26 @@
       "tekens": 33,
       "opgenomen": "2026-09-20T16:41:05.528Z"
     },
+    "zin:geit": {
+      "bestand": "zin-geit.mp3",
+      "titel": "Groep 5 — zin bij geit",
+      "hash": "02652b4ac4d239388c0726b067a7c2280b626d77",
+      "tekens": 27,
+      "opgenomen": "2026-09-20T16:54:05.902Z"
+    },
     "woord:klein": {
       "bestand": "woord-klein.mp3",
       "titel": "Groep 5 — klein",
       "hash": "b0670b11b1a080d4c5e1880247c9169d71676ade",
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:06.443Z"
+    },
+    "zin:klein": {
+      "bestand": "zin-klein.mp3",
+      "titel": "Groep 5 — zin bij klein",
+      "hash": "b8a65e91bbdf0b1120eed9b4598ecebea229f93c",
+      "tekens": 27,
+      "opgenomen": "2026-09-20T16:54:06.822Z"
     },
     "woord:reis": {
       "bestand": "woord-reis.mp3",
@@ -836,12 +850,26 @@
       "tekens": 39,
       "opgenomen": "2026-09-20T16:41:08.292Z"
     },
+    "zin:plein": {
+      "bestand": "zin-plein.mp3",
+      "titel": "Groep 5 — zin bij plein",
+      "hash": "13e8c1f7704532486bde753b0b14259476e24e1c",
+      "tekens": 32,
+      "opgenomen": "2026-09-20T16:54:07.789Z"
+    },
     "woord:zeil": {
       "bestand": "woord-zeil.mp3",
       "titel": "Groep 5 — zeil",
       "hash": "6babe7a72819c0f0382e2f01c9d194314b953c6b",
       "tekens": 33,
       "opgenomen": "2026-09-20T16:41:09.220Z"
+    },
+    "zin:zeil": {
+      "bestand": "zin-zeil.mp3",
+      "titel": "Groep 5 — zin bij zeil",
+      "hash": "deb1a4d69a6bf90aa80b8eb6c7587fecbd274cfb",
+      "tekens": 27,
+      "opgenomen": "2026-09-20T16:54:08.670Z"
     },
     "woord:ijs": {
       "bestand": "woord-ijs.mp3",
@@ -850,12 +878,26 @@
       "tekens": 30,
       "opgenomen": "2026-09-20T16:41:10.248Z"
     },
+    "zin:ijs": {
+      "bestand": "zin-ijs.mp3",
+      "titel": "Groep 5 — zin bij ijs",
+      "hash": "9d1c66281d1add6c1b510d6374929d775cacca93",
+      "tekens": 25,
+      "opgenomen": "2026-09-20T16:54:09.526Z"
+    },
     "woord:tijd": {
       "bestand": "woord-tijd.mp3",
       "titel": "Groep 5 — tijd",
       "hash": "6d6ac5c17352693ebecdd1e177bdfd560a912e17",
       "tekens": 38,
       "opgenomen": "2026-09-20T16:41:11.158Z"
+    },
+    "zin:tijd": {
+      "bestand": "zin-tijd.mp3",
+      "titel": "Groep 5 — zin bij tijd",
+      "hash": "1fa4c6f8604bb4806a1754d1bf8541c75fe6190d",
+      "tekens": 32,
+      "opgenomen": "2026-09-20T16:54:10.395Z"
     },
     "woord:prijs": {
       "bestand": "woord-prijs.mp3",
@@ -864,12 +906,26 @@
       "tekens": 32,
       "opgenomen": "2026-09-20T16:41:12.057Z"
     },
+    "zin:prijs": {
+      "bestand": "zin-prijs.mp3",
+      "titel": "Groep 5 — zin bij prijs",
+      "hash": "96dc960ec15ba9fb6b9e3bf5ae34a3237a362cdb",
+      "tekens": 25,
+      "opgenomen": "2026-09-20T16:54:11.312Z"
+    },
     "woord:vijf": {
       "bestand": "woord-vijf.mp3",
       "titel": "Groep 5 — vijf",
       "hash": "b04eb87e7386e09c1ccb2e3a924f5087951e06b4",
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:12.965Z"
+    },
+    "zin:vijf": {
+      "bestand": "zin-vijf.mp3",
+      "titel": "Groep 5 — zin bij vijf",
+      "hash": "d1728337652eb6b08a7de2d64b5659b9bd3bb565",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:12.189Z"
     },
     "woord:bij": {
       "bestand": "woord-bij.mp3",
@@ -878,12 +934,26 @@
       "tekens": 28,
       "opgenomen": "2026-09-20T16:41:13.917Z"
     },
+    "zin:bij": {
+      "bestand": "zin-bij.mp3",
+      "titel": "Groep 5 — zin bij bij",
+      "hash": "fe8f24ad04a87e120d1a1f6c65f2ec4ca19735b6",
+      "tekens": 23,
+      "opgenomen": "2026-09-20T16:54:13.042Z"
+    },
     "woord:pijl": {
       "bestand": "woord-pijl.mp3",
       "titel": "Groep 5 — pijl",
       "hash": "31e4b33d024a339c6d3b0eedee32a278da875e1c",
       "tekens": 31,
       "opgenomen": "2026-09-20T16:41:14.819Z"
+    },
+    "zin:pijl": {
+      "bestand": "zin-pijl.mp3",
+      "titel": "Groep 5 — zin bij pijl",
+      "hash": "91b14eb7985b8708a02e76b126666914f4bca1bd",
+      "tekens": 25,
+      "opgenomen": "2026-09-20T16:54:13.906Z"
     },
     "g5:pakket:eij": {
       "bestand": "g5-pakket-eij.mp3",
@@ -899,12 +969,26 @@
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:17.144Z"
     },
+    "zin:auto": {
+      "bestand": "zin-auto.mp3",
+      "titel": "Groep 5 — zin bij auto",
+      "hash": "c8ed5804979418e9ab38c654d3a5b9ca281ed27a",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:14.792Z"
+    },
     "woord:blauw": {
       "bestand": "woord-blauw.mp3",
       "titel": "Groep 5 — blauw",
       "hash": "74e582f8734c7c8ea117eebfa7c1ec8e780bc6a6",
       "tekens": 38,
       "opgenomen": "2026-09-20T16:41:18.110Z"
+    },
+    "zin:blauw": {
+      "bestand": "zin-blauw.mp3",
+      "titel": "Groep 5 — zin bij blauw",
+      "hash": "cedc2afd6d0168354f0258419ecfb21b6c3f6e62",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:54:15.716Z"
     },
     "woord:pauw": {
       "bestand": "woord-pauw.mp3",
@@ -927,12 +1011,26 @@
       "tekens": 39,
       "opgenomen": "2026-09-20T16:41:21.146Z"
     },
+    "zin:gauw": {
+      "bestand": "zin-gauw.mp3",
+      "titel": "Groep 5 — zin bij gauw",
+      "hash": "daa06db3d410e6721cd9e9126abd9ce6bc14a527",
+      "tekens": 33,
+      "opgenomen": "2026-09-20T16:54:16.691Z"
+    },
     "woord:hout": {
       "bestand": "woord-hout.mp3",
       "titel": "Groep 5 — hout",
       "hash": "571d73b3d253be54dc9fb6259e31805078ccd95f",
       "tekens": 35,
       "opgenomen": "2026-09-20T16:41:22.109Z"
+    },
+    "zin:hout": {
+      "bestand": "zin-hout.mp3",
+      "titel": "Groep 5 — zin bij hout",
+      "hash": "acbab334062a83678244d9304840519de272dfa3",
+      "tekens": 29,
+      "opgenomen": "2026-09-20T16:54:17.570Z"
     },
     "woord:goud": {
       "bestand": "woord-goud.mp3",
@@ -941,12 +1039,26 @@
       "tekens": 31,
       "opgenomen": "2026-09-20T16:41:23.049Z"
     },
+    "zin:goud": {
+      "bestand": "zin-goud.mp3",
+      "titel": "Groep 5 — zin bij goud",
+      "hash": "c3284449a72202601c02c3862b26bd944a7f423c",
+      "tekens": 25,
+      "opgenomen": "2026-09-20T16:54:18.479Z"
+    },
     "woord:koud": {
       "bestand": "woord-koud.mp3",
       "titel": "Groep 5 — koud",
       "hash": "8afb2049d0667193e5b0bbe1a49a2306fc25b1d1",
       "tekens": 38,
       "opgenomen": "2026-09-20T16:41:24.018Z"
+    },
+    "zin:koud": {
+      "bestand": "zin-koud.mp3",
+      "titel": "Groep 5 — zin bij koud",
+      "hash": "98dcc1d39393859d522a8dd02742166ddf0aedbd",
+      "tekens": 32,
+      "opgenomen": "2026-09-20T16:54:19.404Z"
     },
     "woord:zout": {
       "bestand": "woord-zout.mp3",
@@ -955,12 +1067,26 @@
       "tekens": 37,
       "opgenomen": "2026-09-20T16:41:24.944Z"
     },
+    "zin:zout": {
+      "bestand": "zin-zout.mp3",
+      "titel": "Groep 5 — zin bij zout",
+      "hash": "0cc4a59d8bb33bb18e2bd28ccf69bdd737e4ca6e",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:54:20.355Z"
+    },
     "woord:touw": {
       "bestand": "woord-touw.mp3",
       "titel": "Groep 5 — touw",
       "hash": "b7e0af4ee6223fbeec53aa008f2b118464256226",
       "tekens": 37,
       "opgenomen": "2026-09-20T16:41:25.978Z"
+    },
+    "zin:touw": {
+      "bestand": "zin-touw.mp3",
+      "titel": "Groep 5 — zin bij touw",
+      "hash": "b950f5f07e689da43bbe8bc553964f9b0b0769e0",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:54:21.211Z"
     },
     "woord:kous": {
       "bestand": "woord-kous.mp3",
@@ -969,12 +1095,26 @@
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:26.911Z"
     },
+    "zin:kous": {
+      "bestand": "zin-kous.mp3",
+      "titel": "Groep 5 — zin bij kous",
+      "hash": "5de7f64ef0fa0aab037f0a4ebb27fa4b45cba280",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:22.114Z"
+    },
     "woord:vrouw": {
       "bestand": "woord-vrouw.mp3",
       "titel": "Groep 5 — vrouw",
       "hash": "0d11839a5632736fbdffc0d05032db0f1694de61",
       "tekens": 38,
       "opgenomen": "2026-09-20T16:41:27.874Z"
+    },
+    "zin:vrouw": {
+      "bestand": "zin-vrouw.mp3",
+      "titel": "Groep 5 — zin bij vrouw",
+      "hash": "fa7df04be9530a68594f0bcbe525419ef6dcaf6c",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:54:23.004Z"
     },
     "g5:pakket:auou": {
       "bestand": "g5-pakket-auou.mp3",
@@ -990,12 +1130,26 @@
       "tekens": 37,
       "opgenomen": "2026-09-20T16:41:30.586Z"
     },
+    "zin:hond": {
+      "bestand": "zin-hond.mp3",
+      "titel": "Groep 5 — zin bij hond",
+      "hash": "9c82f19c8ebd9bcd5a057aebe8803204db139d30",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:54:23.863Z"
+    },
     "woord:paard": {
       "bestand": "woord-paard.mp3",
       "titel": "Groep 5 — paard",
       "hash": "49e6bdc11855437777a84fb099b32349e14e58e1",
       "tekens": 33,
       "opgenomen": "2026-09-20T16:41:31.599Z"
+    },
+    "zin:paard": {
+      "bestand": "zin-paard.mp3",
+      "titel": "Groep 5 — zin bij paard",
+      "hash": "77598cb9a33a3fde9a7f209bf7c6c10cf2d501a1",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:54:24.726Z"
     },
     "woord:brood": {
       "bestand": "woord-brood.mp3",
@@ -1004,12 +1158,26 @@
       "tekens": 29,
       "opgenomen": "2026-09-20T16:41:32.485Z"
     },
+    "zin:brood": {
+      "bestand": "zin-brood.mp3",
+      "titel": "Groep 5 — zin bij brood",
+      "hash": "f2a65cad6ca65c24b9753812a47f4b9ce6d91790",
+      "tekens": 22,
+      "opgenomen": "2026-09-20T16:54:25.638Z"
+    },
     "woord:hand": {
       "bestand": "woord-hand.mp3",
       "titel": "Groep 5 — hand",
       "hash": "3840ad0debdac795d71736cebd9f54f3f0481055",
       "tekens": 29,
       "opgenomen": "2026-09-20T16:41:33.381Z"
+    },
+    "zin:hand": {
+      "bestand": "zin-hand.mp3",
+      "titel": "Groep 5 — zin bij hand",
+      "hash": "275f196d7ec260c603601c90b916e5bf5f95e88c",
+      "tekens": 23,
+      "opgenomen": "2026-09-20T16:54:26.646Z"
     },
     "woord:strand": {
       "bestand": "woord-strand.mp3",
@@ -1025,12 +1193,26 @@
       "tekens": 24,
       "opgenomen": "2026-09-20T16:41:35.221Z"
     },
+    "zin:tand": {
+      "bestand": "zin-tand.mp3",
+      "titel": "Groep 5 — zin bij tand",
+      "hash": "9272c41d9b607d80ca4e1303d07d0b85ce64438d",
+      "tekens": 18,
+      "opgenomen": "2026-09-20T16:54:27.461Z"
+    },
     "woord:bed": {
       "bestand": "woord-bed.mp3",
       "titel": "Groep 5 — bed",
       "hash": "97df3a8a449b319cf02b1422fc78548440c395b9",
       "tekens": 31,
       "opgenomen": "2026-09-20T16:41:36.194Z"
+    },
+    "zin:bed": {
+      "bestand": "zin-bed.mp3",
+      "titel": "Groep 5 — zin bij bed",
+      "hash": "de3b8c6e8d7a152a5e0f01748e9dc81956230664",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:54:28.309Z"
     },
     "woord:boot": {
       "bestand": "woord-boot.mp3",
@@ -1039,12 +1221,26 @@
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:37.115Z"
     },
+    "zin:boot": {
+      "bestand": "zin-boot.mp3",
+      "titel": "Groep 5 — zin bij boot",
+      "hash": "5564361118f0a7d142ef78b42dd5edd9234b04d1",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:29.333Z"
+    },
     "woord:voet": {
       "bestand": "woord-voet.mp3",
       "titel": "Groep 5 — voet",
       "hash": "ce0584b016cb993e580d8edd5c8ae85401cab1dc",
       "tekens": 40,
       "opgenomen": "2026-09-20T16:41:38.092Z"
+    },
+    "zin:voet": {
+      "bestand": "zin-voet.mp3",
+      "titel": "Groep 5 — zin bij voet",
+      "hash": "274c947e6af35dd84b2cd3202b6c1fea91c65555",
+      "tekens": 34,
+      "opgenomen": "2026-09-20T16:54:30.317Z"
     },
     "woord:krant": {
       "bestand": "woord-krant.mp3",
@@ -1053,6 +1249,13 @@
       "tekens": 35,
       "opgenomen": "2026-09-20T16:41:39.081Z"
     },
+    "zin:krant": {
+      "bestand": "zin-krant.mp3",
+      "titel": "Groep 5 — zin bij krant",
+      "hash": "f14d945d98332eecc6c02a1542f18f0550f44f2a",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:31.205Z"
+    },
     "woord:taart": {
       "bestand": "woord-taart.mp3",
       "titel": "Groep 5 — taart",
@@ -1060,12 +1263,26 @@
       "tekens": 36,
       "opgenomen": "2026-09-20T16:41:40.021Z"
     },
+    "zin:taart": {
+      "bestand": "zin-taart.mp3",
+      "titel": "Groep 5 — zin bij taart",
+      "hash": "a1a133507abfb406d6add4e03a39830773de60b0",
+      "tekens": 29,
+      "opgenomen": "2026-09-20T16:54:32.067Z"
+    },
     "woord:tent": {
       "bestand": "woord-tent.mp3",
       "titel": "Groep 5 — tent",
       "hash": "f10a60eac7887bba5edb75653431675899a7a158",
       "tekens": 29,
       "opgenomen": "2026-09-20T16:41:40.926Z"
+    },
+    "zin:tent": {
+      "bestand": "zin-tent.mp3",
+      "titel": "Groep 5 — zin bij tent",
+      "hash": "37510aa2e573e08be6f82e59a6927c0c346b9e37",
+      "tekens": 23,
+      "opgenomen": "2026-09-20T16:54:32.935Z"
     },
     "g5:pakket:dt": {
       "bestand": "g5-pakket-dt.mp3",
@@ -1081,12 +1298,26 @@
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:43.276Z"
     },
+    "zin:ring": {
+      "bestand": "zin-ring.mp3",
+      "titel": "Groep 5 — zin bij ring",
+      "hash": "cbe316b0abd04aa1aa79255e053cc3b3ec024140",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:33.816Z"
+    },
     "woord:slang": {
       "bestand": "woord-slang.mp3",
       "titel": "Groep 5 — slang",
       "hash": "da2ad7376e85b68c3b983dd04747b649371e0478",
       "tekens": 37,
       "opgenomen": "2026-09-20T16:41:44.399Z"
+    },
+    "zin:slang": {
+      "bestand": "zin-slang.mp3",
+      "titel": "Groep 5 — zin bij slang",
+      "hash": "b7888d67d540278aaa25b6528ed936dc90e014bd",
+      "tekens": 30,
+      "opgenomen": "2026-09-20T16:54:34.668Z"
     },
     "woord:koning": {
       "bestand": "woord-koning.mp3",
@@ -1102,6 +1333,13 @@
       "tekens": 37,
       "opgenomen": "2026-09-20T16:41:46.444Z"
     },
+    "zin:tong": {
+      "bestand": "zin-tong.mp3",
+      "titel": "Groep 5 — zin bij tong",
+      "hash": "ba91b3d76cedf11f10a371970b383dd9334f79b6",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:54:35.590Z"
+    },
     "woord:vinger": {
       "bestand": "woord-vinger.mp3",
       "titel": "Groep 5 — vinger",
@@ -1116,12 +1354,26 @@
       "tekens": 28,
       "opgenomen": "2026-09-20T16:41:48.379Z"
     },
+    "zin:lang": {
+      "bestand": "zin-lang.mp3",
+      "titel": "Groep 5 — zin bij lang",
+      "hash": "74ae296a890c4eccca4090c8d8af6c247954d45a",
+      "tekens": 22,
+      "opgenomen": "2026-09-20T16:54:36.427Z"
+    },
     "woord:bank": {
       "bestand": "woord-bank.mp3",
       "titel": "Groep 5 — bank",
       "hash": "d4c38490830ed343ab22fe58c8f47f07c352a7be",
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:49.325Z"
+    },
+    "zin:bank": {
+      "bestand": "zin-bank.mp3",
+      "titel": "Groep 5 — zin bij bank",
+      "hash": "585d51cd0c413769d1006f958eee734ee008ef85",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:37.315Z"
     },
     "woord:plank": {
       "bestand": "woord-plank.mp3",
@@ -1137,12 +1389,26 @@
       "tekens": 35,
       "opgenomen": "2026-09-20T16:41:51.202Z"
     },
+    "zin:inkt": {
+      "bestand": "zin-inkt.mp3",
+      "titel": "Groep 5 — zin bij inkt",
+      "hash": "84dd154729bc9fd30857a286f311492bc817753a",
+      "tekens": 29,
+      "opgenomen": "2026-09-20T16:54:38.192Z"
+    },
     "woord:drinken": {
       "bestand": "woord-drinken.mp3",
       "titel": "Groep 5 — drinken",
       "hash": "c9be4d054469f8ae46afcf7076a9109494f261d4",
       "tekens": 36,
       "opgenomen": "2026-09-20T16:41:52.189Z"
+    },
+    "zin:drinken": {
+      "bestand": "zin-drinken.mp3",
+      "titel": "Groep 5 — zin bij drinken",
+      "hash": "a415728c095484ae224312366965ad9fd929cbb5",
+      "tekens": 27,
+      "opgenomen": "2026-09-20T16:54:39.047Z"
     },
     "woord:dank": {
       "bestand": "woord-dank.mp3",
@@ -1158,6 +1424,13 @@
       "tekens": 33,
       "opgenomen": "2026-09-20T16:41:54.172Z"
     },
+    "zin:stinken": {
+      "bestand": "zin-stinken.mp3",
+      "titel": "Groep 5 — zin bij stinken",
+      "hash": "60c59eb331b9c7a411ba8acf7834c5e667e3db32",
+      "tekens": 24,
+      "opgenomen": "2026-09-20T16:54:39.877Z"
+    },
     "g5:pakket:ngnk": {
       "bestand": "g5-pakket-ngnk.mp3",
       "titel": "Groep 5 — tip ng of nk",
@@ -1172,12 +1445,26 @@
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:56.909Z"
     },
+    "zin:bakker": {
+      "bestand": "zin-bakker.mp3",
+      "titel": "Groep 5 — zin bij bakker",
+      "hash": "c2dbfeabeb0d8ed34821a5d2ee39626f09ab8c71",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:54:40.804Z"
+    },
     "woord:katten": {
       "bestand": "woord-katten.mp3",
       "titel": "Groep 5 — katten",
       "hash": "799a26ad3a5b8069b932650010fc84e7b2b746df",
       "tekens": 38,
       "opgenomen": "2026-09-20T16:41:57.858Z"
+    },
+    "zin:katten": {
+      "bestand": "zin-katten.mp3",
+      "titel": "Groep 5 — zin bij katten",
+      "hash": "cb943f88d258eaf4687bf62aac7341e6a9c6076e",
+      "tekens": 30,
+      "opgenomen": "2026-09-20T16:54:41.716Z"
     },
     "woord:pennen": {
       "bestand": "woord-pennen.mp3",
@@ -1186,12 +1473,26 @@
       "tekens": 34,
       "opgenomen": "2026-09-20T16:41:58.810Z"
     },
+    "zin:pennen": {
+      "bestand": "zin-pennen.mp3",
+      "titel": "Groep 5 — zin bij pennen",
+      "hash": "b420cb5dd828389f5757fb6bac40aae2cd0e11fd",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:54:42.583Z"
+    },
     "woord:vissen": {
       "bestand": "woord-vissen.mp3",
       "titel": "Groep 5 — vissen",
       "hash": "7b48d8c395f9c4ee186e2b0e5a4249c31cdf5806",
       "tekens": 36,
       "opgenomen": "2026-09-20T16:41:59.746Z"
+    },
+    "zin:vissen": {
+      "bestand": "zin-vissen.mp3",
+      "titel": "Groep 5 — zin bij vissen",
+      "hash": "3b683198549d6489bbca08f998195748e56be228",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:43.465Z"
     },
     "woord:bussen": {
       "bestand": "woord-bussen.mp3",
@@ -1200,12 +1501,26 @@
       "tekens": 38,
       "opgenomen": "2026-09-20T16:42:00.655Z"
     },
+    "zin:bussen": {
+      "bestand": "zin-bussen.mp3",
+      "titel": "Groep 5 — zin bij bussen",
+      "hash": "8187c709d9999858215ad62d8d1b72be947ee1bf",
+      "tekens": 30,
+      "opgenomen": "2026-09-20T16:54:44.338Z"
+    },
     "woord:bellen": {
       "bestand": "woord-bellen.mp3",
       "titel": "Groep 5 — bellen",
       "hash": "cb1a43b399742e3f6e80d55e9f22ed57b7004914",
       "tekens": 30,
       "opgenomen": "2026-09-20T16:42:01.627Z"
+    },
+    "zin:bellen": {
+      "bestand": "zin-bellen.mp3",
+      "titel": "Groep 5 — zin bij bellen",
+      "hash": "3641469616d2af4096d33d07395653483b488d5d",
+      "tekens": 22,
+      "opgenomen": "2026-09-20T16:54:45.173Z"
     },
     "woord:koppen": {
       "bestand": "woord-koppen.mp3",
@@ -1214,12 +1529,26 @@
       "tekens": 35,
       "opgenomen": "2026-09-20T16:42:02.542Z"
     },
+    "zin:koppen": {
+      "bestand": "zin-koppen.mp3",
+      "titel": "Groep 5 — zin bij koppen",
+      "hash": "f8d71e0b1575000470893ab46ac735179e1bc3fa",
+      "tekens": 27,
+      "opgenomen": "2026-09-20T16:54:46.046Z"
+    },
     "woord:bomen": {
       "bestand": "woord-bomen.mp3",
       "titel": "Groep 5 — bomen",
       "hash": "f777f30ffb73c4e1efcf3c4997979639f206a4ef",
       "tekens": 35,
       "opgenomen": "2026-09-20T16:42:03.528Z"
+    },
+    "zin:bomen": {
+      "bestand": "zin-bomen.mp3",
+      "titel": "Groep 5 — zin bij bomen",
+      "hash": "06c34e565f74110df6edc78b1a4f800a2a1a5495",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:46.922Z"
     },
     "woord:ramen": {
       "bestand": "woord-ramen.mp3",
@@ -1228,12 +1557,26 @@
       "tekens": 26,
       "opgenomen": "2026-09-20T16:42:04.465Z"
     },
+    "zin:ramen": {
+      "bestand": "zin-ramen.mp3",
+      "titel": "Groep 5 — zin bij ramen",
+      "hash": "4a577b2fd13b8db761cb8592903209a69af233e9",
+      "tekens": 19,
+      "opgenomen": "2026-09-20T16:54:47.781Z"
+    },
     "woord:apen": {
       "bestand": "woord-apen.mp3",
       "titel": "Groep 5 — apen",
       "hash": "8ee86e627b4647fe1ef233193225479f26c88d31",
       "tekens": 33,
       "opgenomen": "2026-09-20T16:42:05.399Z"
+    },
+    "zin:apen": {
+      "bestand": "zin-apen.mp3",
+      "titel": "Groep 5 — zin bij apen",
+      "hash": "446d0c64f61c7648a7a5a27e4565d563dd71db8d",
+      "tekens": 27,
+      "opgenomen": "2026-09-20T16:54:48.666Z"
     },
     "woord:poten": {
       "bestand": "woord-poten.mp3",
@@ -1242,12 +1585,26 @@
       "tekens": 33,
       "opgenomen": "2026-09-20T16:42:06.345Z"
     },
+    "zin:poten": {
+      "bestand": "zin-poten.mp3",
+      "titel": "Groep 5 — zin bij poten",
+      "hash": "9bf8274ebb5324c19d7171218a2a5fdaed166de1",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:54:49.531Z"
+    },
     "woord:slapen": {
       "bestand": "woord-slapen.mp3",
       "titel": "Groep 5 — slapen",
       "hash": "dd67d91d7795d936354fdfab8db80f5bab5ce2bc",
       "tekens": 31,
       "opgenomen": "2026-09-20T16:42:07.264Z"
+    },
+    "zin:slapen": {
+      "bestand": "zin-slapen.mp3",
+      "titel": "Groep 5 — zin bij slapen",
+      "hash": "617c783d3bdf8a92d11d307d5a104e6d78a403b3",
+      "tekens": 23,
+      "opgenomen": "2026-09-20T16:54:50.378Z"
     },
     "g5:pakket:dubbel": {
       "bestand": "g5-pakket-dubbel.mp3",
@@ -1263,12 +1620,26 @@
       "tekens": 39,
       "opgenomen": "2026-09-20T16:42:10.018Z"
     },
+    "zin:school": {
+      "bestand": "zin-school.mp3",
+      "titel": "Groep 5 — zin bij school",
+      "hash": "6e44ab285477188e12a08400cd1a17825e7a3ea4",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:54:51.286Z"
+    },
     "woord:schaap": {
       "bestand": "woord-schaap.mp3",
       "titel": "Groep 5 — schaap",
       "hash": "ea765c966734730078e9659b786974f37a707230",
       "tekens": 41,
       "opgenomen": "2026-09-20T16:42:11.065Z"
+    },
+    "zin:schaap": {
+      "bestand": "zin-schaap.mp3",
+      "titel": "Groep 5 — zin bij schaap",
+      "hash": "eae004d98b7c2a749c596b177757823c900256dd",
+      "tekens": 33,
+      "opgenomen": "2026-09-20T16:54:52.178Z"
     },
     "woord:schoen": {
       "bestand": "woord-schoen.mp3",
@@ -1277,12 +1648,26 @@
       "tekens": 33,
       "opgenomen": "2026-09-20T16:42:11.964Z"
     },
+    "zin:schoen": {
+      "bestand": "zin-schoen.mp3",
+      "titel": "Groep 5 — zin bij schoen",
+      "hash": "3fbf83a4ac93cf2417686d4d6c768aae05843721",
+      "tekens": 25,
+      "opgenomen": "2026-09-20T16:54:53.090Z"
+    },
     "woord:schip": {
       "bestand": "woord-schip.mp3",
       "titel": "Groep 5 — schip",
       "hash": "5bfe74ad439dcd12165e07dcfc47c89abbc9c320",
       "tekens": 35,
       "opgenomen": "2026-09-20T16:42:12.986Z"
+    },
+    "zin:schip": {
+      "bestand": "zin-schip.mp3",
+      "titel": "Groep 5 — zin bij schip",
+      "hash": "25c9d3ca837cecf7aaeebf516c5f4ea78763a662",
+      "tekens": 28,
+      "opgenomen": "2026-09-20T16:54:53.976Z"
     },
     "woord:schaar": {
       "bestand": "woord-schaar.mp3",
@@ -1291,12 +1676,26 @@
       "tekens": 38,
       "opgenomen": "2026-09-20T16:42:13.929Z"
     },
+    "zin:schaar": {
+      "bestand": "zin-schaar.mp3",
+      "titel": "Groep 5 — zin bij schaar",
+      "hash": "dd67eae09c0919d3c26271a6c55476c4f570550b",
+      "tekens": 30,
+      "opgenomen": "2026-09-20T16:54:54.863Z"
+    },
     "woord:schat": {
       "bestand": "woord-schat.mp3",
       "titel": "Groep 5 — schat",
       "hash": "a555dad25874d71a469e99bdcb58cd7f823e6f72",
       "tekens": 33,
       "opgenomen": "2026-09-20T16:42:14.858Z"
+    },
+    "zin:schat": {
+      "bestand": "zin-schat.mp3",
+      "titel": "Groep 5 — zin bij schat",
+      "hash": "b3037b34e9a8173d9d18caaf5dd8a18ef8b11614",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:54:55.785Z"
     },
     "woord:schrift": {
       "bestand": "woord-schrift.mp3",
@@ -1305,6 +1704,13 @@
       "tekens": 43,
       "opgenomen": "2026-09-20T16:42:15.833Z"
     },
+    "zin:schrift": {
+      "bestand": "zin-schrift.mp3",
+      "titel": "Groep 5 — zin bij schrift",
+      "hash": "09ed4cf4822503ac5924f066ced07f3475d99c7a",
+      "tekens": 34,
+      "opgenomen": "2026-09-20T16:54:56.675Z"
+    },
     "woord:schrijven": {
       "bestand": "woord-schrijven.mp3",
       "titel": "Groep 5 — schrijven",
@@ -1312,12 +1718,26 @@
       "tekens": 38,
       "opgenomen": "2026-09-20T16:42:16.829Z"
     },
+    "zin:schrijven": {
+      "bestand": "zin-schrijven.mp3",
+      "titel": "Groep 5 — zin bij schrijven",
+      "hash": "0c094822c8936a8b10b07661bcc72724e44bfc00",
+      "tekens": 27,
+      "opgenomen": "2026-09-20T16:54:57.578Z"
+    },
     "woord:schrik": {
       "bestand": "woord-schrik.mp3",
       "titel": "Groep 5 — schrik",
       "hash": "16e90e2488a973963198f824a6c3e7076e567786",
       "tekens": 45,
       "opgenomen": "2026-09-20T16:42:17.784Z"
+    },
+    "zin:schrik": {
+      "bestand": "zin-schrik.mp3",
+      "titel": "Groep 5 — zin bij schrik",
+      "hash": "ae117cf8e873017d35492a977f8602f5f6ce2461",
+      "tekens": 37,
+      "opgenomen": "2026-09-20T16:54:58.456Z"
     },
     "woord:schroef": {
       "bestand": "woord-schroef.mp3",
@@ -1333,6 +1753,13 @@
       "tekens": 39,
       "opgenomen": "2026-09-20T16:42:19.844Z"
     },
+    "zin:schram": {
+      "bestand": "zin-schram.mp3",
+      "titel": "Groep 5 — zin bij schram",
+      "hash": "d3f4f63cbdf0b56bf772505e58e6df48a478a6ea",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:54:59.440Z"
+    },
     "g5:pakket:schr": {
       "bestand": "g5-pakket-schr.mp3",
       "titel": "Groep 5 — tip sch of schr",
@@ -1347,12 +1774,26 @@
       "tekens": 32,
       "opgenomen": "2026-09-20T16:42:21.984Z"
     },
+    "zin:leeuw": {
+      "bestand": "zin-leeuw.mp3",
+      "titel": "Groep 5 — zin bij leeuw",
+      "hash": "430e5bd97e51328c995cd3eda86c6b77c6b6ba4d",
+      "tekens": 25,
+      "opgenomen": "2026-09-20T16:55:00.288Z"
+    },
     "woord:sneeuw": {
       "bestand": "woord-sneeuw.mp3",
       "titel": "Groep 5 — sneeuw",
       "hash": "d57cfe9f94edd7d054ddfa7d7b40cb24fc8e46b8",
       "tekens": 34,
       "opgenomen": "2026-09-20T16:42:23.000Z"
+    },
+    "zin:sneeuw": {
+      "bestand": "zin-sneeuw.mp3",
+      "titel": "Groep 5 — zin bij sneeuw",
+      "hash": "399abdfe962205392a21f17b79f3bd273208e0b2",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:55:01.249Z"
     },
     "woord:meeuw": {
       "bestand": "woord-meeuw.mp3",
@@ -1361,6 +1802,13 @@
       "tekens": 33,
       "opgenomen": "2026-09-20T16:42:24.025Z"
     },
+    "zin:meeuw": {
+      "bestand": "zin-meeuw.mp3",
+      "titel": "Groep 5 — zin bij meeuw",
+      "hash": "9c8dab9e9b6038ad55a158526fa8a089ae6ceb35",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:55:02.124Z"
+    },
     "woord:schreeuw": {
       "bestand": "woord-schreeuw.mp3",
       "titel": "Groep 5 — schreeuw",
@@ -1368,12 +1816,26 @@
       "tekens": 39,
       "opgenomen": "2026-09-20T16:42:25.048Z"
     },
+    "zin:schreeuw": {
+      "bestand": "zin-schreeuw.mp3",
+      "titel": "Groep 5 — zin bij schreeuw",
+      "hash": "1aba9363aec4f3fb03fa5f2bfa93955237c3e301",
+      "tekens": 29,
+      "opgenomen": "2026-09-20T16:55:02.987Z"
+    },
     "woord:nieuw": {
       "bestand": "woord-nieuw.mp3",
       "titel": "Groep 5 — nieuw",
       "hash": "fb0d605d98e8a4cfa324ef73f60ae2484011fd9d",
       "tekens": 38,
       "opgenomen": "2026-09-20T16:42:25.985Z"
+    },
+    "zin:nieuw": {
+      "bestand": "zin-nieuw.mp3",
+      "titel": "Groep 5 — zin bij nieuw",
+      "hash": "4792003c5eca501403d82751410beafbbe0e7314",
+      "tekens": 31,
+      "opgenomen": "2026-09-20T16:55:03.879Z"
     },
     "woord:kieuw": {
       "bestand": "woord-kieuw.mp3",
@@ -1389,6 +1851,13 @@
       "tekens": 30,
       "opgenomen": "2026-09-20T16:42:27.861Z"
     },
+    "zin:duw": {
+      "bestand": "zin-duw.mp3",
+      "titel": "Groep 5 — zin bij duw",
+      "hash": "579ca77000bf9b4d62451f11a07af2b601df4ccf",
+      "tekens": 25,
+      "opgenomen": "2026-09-20T16:55:04.802Z"
+    },
     "woord:ruw": {
       "bestand": "woord-ruw.mp3",
       "titel": "Groep 5 — ruw",
@@ -1396,12 +1865,26 @@
       "tekens": 28,
       "opgenomen": "2026-09-20T16:42:28.775Z"
     },
+    "zin:ruw": {
+      "bestand": "zin-ruw.mp3",
+      "titel": "Groep 5 — zin bij ruw",
+      "hash": "bdd3afbcb9be8d9447ababf2d918a3c053cf8589",
+      "tekens": 23,
+      "opgenomen": "2026-09-20T16:55:05.640Z"
+    },
     "woord:schuw": {
       "bestand": "woord-schuw.mp3",
       "titel": "Groep 5 — schuw",
       "hash": "ffc5c17112cfe1d537c9d958d628dfaca2889c10",
       "tekens": 31,
       "opgenomen": "2026-09-20T16:42:29.770Z"
+    },
+    "zin:schuw": {
+      "bestand": "zin-schuw.mp3",
+      "titel": "Groep 5 — zin bij schuw",
+      "hash": "2555b340e178343a3291b261b97f83436b9acaa8",
+      "tekens": 24,
+      "opgenomen": "2026-09-20T16:55:06.491Z"
     },
     "g5:pakket:eeuw": {
       "bestand": "g5-pakket-eeuw.mp3",
@@ -1417,12 +1900,26 @@
       "tekens": 30,
       "opgenomen": "2026-09-20T16:42:32.036Z"
     },
+    "zin:haai": {
+      "bestand": "zin-haai.mp3",
+      "titel": "Groep 5 — zin bij haai",
+      "hash": "23b70c887cf6331b1129862f8b2979b9cd50a3ce",
+      "tekens": 24,
+      "opgenomen": "2026-09-20T16:55:07.355Z"
+    },
     "woord:kraai": {
       "bestand": "woord-kraai.mp3",
       "titel": "Groep 5 — kraai",
       "hash": "e51bcbf06af0c8d2d738ae93bf4eaac2acb078b0",
       "tekens": 39,
       "opgenomen": "2026-09-20T16:42:33.084Z"
+    },
+    "zin:kraai": {
+      "bestand": "zin-kraai.mp3",
+      "titel": "Groep 5 — zin bij kraai",
+      "hash": "ad939639a09900d1eee2a76cedb3521ae4688964",
+      "tekens": 32,
+      "opgenomen": "2026-09-20T16:55:08.246Z"
     },
     "woord:saai": {
       "bestand": "woord-saai.mp3",
@@ -1431,12 +1928,26 @@
       "tekens": 29,
       "opgenomen": "2026-09-20T16:42:34.013Z"
     },
+    "zin:saai": {
+      "bestand": "zin-saai.mp3",
+      "titel": "Groep 5 — zin bij saai",
+      "hash": "6381aeab8d196ae6ccdebc50a28a7a9629088c93",
+      "tekens": 23,
+      "opgenomen": "2026-09-20T16:55:09.115Z"
+    },
     "woord:zwaai": {
       "bestand": "woord-zwaai.mp3",
       "titel": "Groep 5 — zwaai",
       "hash": "6aa5b3fa3cc997efbb39d170f2ea2d5b22dc8446",
       "tekens": 26,
       "opgenomen": "2026-09-20T16:42:34.905Z"
+    },
+    "zin:zwaai": {
+      "bestand": "zin-zwaai.mp3",
+      "titel": "Groep 5 — zin bij zwaai",
+      "hash": "073ff2e8ca2f4259813fe7f9e7ec2032ded8ad95",
+      "tekens": 19,
+      "opgenomen": "2026-09-20T16:55:09.950Z"
     },
     "woord:mooi": {
       "bestand": "woord-mooi.mp3",
@@ -1452,6 +1963,13 @@
       "tekens": 32,
       "opgenomen": "2026-09-20T16:42:36.753Z"
     },
+    "zin:kooi": {
+      "bestand": "zin-kooi.mp3",
+      "titel": "Groep 5 — zin bij kooi",
+      "hash": "abfa76f5f7adb5ad0850f531ef1eba74f0caab7e",
+      "tekens": 26,
+      "opgenomen": "2026-09-20T16:55:11.210Z"
+    },
     "woord:nooit": {
       "bestand": "woord-nooit.mp3",
       "titel": "Groep 5 — nooit",
@@ -1466,12 +1984,26 @@
       "tekens": 30,
       "opgenomen": "2026-09-20T16:42:38.639Z"
     },
+    "zin:gooi": {
+      "bestand": "zin-gooi.mp3",
+      "titel": "Groep 5 — zin bij gooi",
+      "hash": "c8bebbdd2ee1c94c012e46a0849be07e73a1861f",
+      "tekens": 24,
+      "opgenomen": "2026-09-20T16:55:12.068Z"
+    },
     "woord:groei": {
       "bestand": "woord-groei.mp3",
       "titel": "Groep 5 — groei",
       "hash": "cc7dc1d4ea4bd0690515227dcd09c40cb6b198bb",
       "tekens": 36,
       "opgenomen": "2026-09-20T16:42:39.569Z"
+    },
+    "zin:groei": {
+      "bestand": "zin-groei.mp3",
+      "titel": "Groep 5 — zin bij groei",
+      "hash": "4bf58fa2dcd51432dc557a31ab7e58cfa503ead7",
+      "tekens": 29,
+      "opgenomen": "2026-09-20T16:55:12.947Z"
     },
     "woord:bloei": {
       "bestand": "woord-bloei.mp3",
@@ -1480,6 +2012,13 @@
       "tekens": 30,
       "opgenomen": "2026-09-20T16:42:40.458Z"
     },
+    "zin:bloei": {
+      "bestand": "zin-bloei.mp3",
+      "titel": "Groep 5 — zin bij bloei",
+      "hash": "d96788f84a3d95a90f55967206f1f8f64a54839d",
+      "tekens": 23,
+      "opgenomen": "2026-09-20T16:55:13.832Z"
+    },
     "woord:boei": {
       "bestand": "woord-boei.mp3",
       "titel": "Groep 5 — boei",
@@ -1487,12 +2026,26 @@
       "tekens": 40,
       "opgenomen": "2026-09-20T16:42:41.475Z"
     },
+    "zin:boei": {
+      "bestand": "zin-boei.mp3",
+      "titel": "Groep 5 — zin bij boei",
+      "hash": "fb6ddd88b7541e55bbda8e221ba4cebc36bcba21",
+      "tekens": 34,
+      "opgenomen": "2026-09-20T16:55:14.709Z"
+    },
     "woord:foei": {
       "bestand": "woord-foei.mp3",
       "titel": "Groep 5 — foei",
       "hash": "4293312650ca5c350227bff97701cb0c4ea28f2b",
       "tekens": 25,
       "opgenomen": "2026-09-20T16:42:42.341Z"
+    },
+    "zin:foei": {
+      "bestand": "zin-foei.mp3",
+      "titel": "Groep 5 — zin bij foei",
+      "hash": "f51456c70f3226c1bad5df8e8b4fb02b370b60f9",
+      "tekens": 19,
+      "opgenomen": "2026-09-20T16:55:15.520Z"
     },
     "g5:pakket:aaiooi": {
       "bestand": "g5-pakket-aaiooi.mp3",
@@ -1525,9 +2078,9 @@
     "g5:spel:luister": {
       "bestand": "g5-spel-luister.mp3",
       "titel": "Groep 5 — uitleg Luisterwoord",
-      "hash": "c6e6441c7f0ce6553dd46739f18a0812668a89dd",
-      "tekens": 73,
-      "opgenomen": "2026-09-20T16:42:48.293Z"
+      "hash": "63fbc2cc163918d1b16374acdddb5bdc350731f7",
+      "tekens": 80,
+      "opgenomen": "2026-09-20T16:55:16.738Z"
     },
     "ui:voorlezen-aan": {
       "bestand": "ui-voorlezen-aan.mp3",
@@ -1535,6 +2088,13 @@
       "hash": "285eee2668550c25fae764e96657fed9a7183093",
       "tekens": 28,
       "opgenomen": "2026-09-20T16:46:38.064Z"
+    },
+    "vraag:wolf:0": {
+      "bestand": "vraag-wolf-1.mp3",
+      "titel": "De wolf is terug in Nederland — vraag 1",
+      "hash": "6d624af825ccc585e3877c80fd37d7cec225a786",
+      "tekens": 311,
+      "opgenomen": "2026-09-20T17:02:41.121Z"
     }
   }
 }

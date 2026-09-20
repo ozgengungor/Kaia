@@ -9,6 +9,7 @@
  * Gebruik:
  *   ELEVENLABS_API_KEY=sk_... node genereer-audio.js        # of zet de sleutel in .env
  *   node genereer-audio.js --alles                          # alles opnieuw opnemen
+ *   node genereer-audio.js --droog                          # alleen tonen wat er nog moet, en hoeveel tekens dat kost
  *   node genereer-audio.js lees:wolf hint:wolf:0 woord:trein   # alleen deze
  *
  * Per opname staat in audio/manifest.json een vingerafdruk van de tekst, de
@@ -102,17 +103,48 @@ function opnames() {
       tekst: delen.map(spreekbaar).join('\n\n')
     });
   }
-  // De hints bij de vragen, per oefening genummerd vanaf 1.
+  // Per vraag: de vraag zelf, de hint, de uitleg na het nakijken en (bij een
+  // open vraag) het voorbeeldantwoord. Bestanden zijn genummerd vanaf 1.
+  // De tekst van de vraag volgt vraagAlsSpraak() in app.js: alleen bij
+  // begrijpend lezen worden de meerkeuze-antwoorden voorgelezen.
+  const zinnen = laadArray('zinnen.js', 'VASTE_ZINNEN');
+  const metPunt = (t) => (/[.!?:"]$/.test(t.trim()) ? t.trim() : `${t.trim()}.`);
   for (const oef of alleOefeningen) {
+    const isLezen = leesOefeningen.includes(oef);
     (oef.vragen || []).forEach((vraag, i) => {
-      if (!vraag.hint) return;
-      lijst.push({
-        sleutel: `hint:${oef.id}:${i}`,
-        bestand: `hint-${oef.id}-${i + 1}.mp3`,
-        titel: `${oef.titel} — hint ${i + 1}`,
-        tekst: spreekbaar(vraag.hint)
-      });
+      const nr = i + 1;
+      let gesproken = vraag.vraag;
+      if (vraag.type === 'invul') gesproken = `${metPunt(vraag.vraag)} ${String(vraag.zin || '').replace('___', '...')}`;
+      else if (vraag.type === 'mc' && isLezen) gesproken = [vraag.vraag, ...vraag.opties].map(metPunt).join(' ');
+      lijst.push({ sleutel: `vraag:${oef.id}:${i}`, bestand: `vraag-${oef.id}-${nr}.mp3`, titel: `${oef.titel} — vraag ${nr}`, tekst: spreekbaar(gesproken) });
+      if (vraag.hint) lijst.push({ sleutel: `hint:${oef.id}:${i}`, bestand: `hint-${oef.id}-${nr}.mp3`, titel: `${oef.titel} — hint ${nr}`, tekst: spreekbaar(vraag.hint) });
+      if (vraag.uitleg) lijst.push({ sleutel: `uitleg:${oef.id}:${i}`, bestand: `uitleg-${oef.id}-${nr}.mp3`, titel: `${oef.titel} — uitleg ${nr}`, tekst: spreekbaar(vraag.uitleg) });
+      if (vraag.voorbeeldantwoord) lijst.push({ sleutel: `voorbeeld:${oef.id}:${i}`, bestand: `voorbeeld-${oef.id}-${nr}.mp3`, titel: `${oef.titel} — voorbeeldantwoord ${nr}`, tekst: spreekbaar(`${zinnen.voorbeeldIntro} ${vraag.voorbeeldantwoord}`) });
     });
+  }
+  // De aanklikbare moeilijke woorden in de leesteksten.
+  for (const oef of leesOefeningen) {
+    (oef.woorden || []).forEach((w, i) => {
+      lijst.push({ sleutel: `woordkaart:${oef.id}:${i}`, bestand: `woordkaart-${oef.id}-${i + 1}.mp3`, titel: `${oef.titel} — woord ${w.woord}`, tekst: spreekbaar(`${w.woord}. ${w.uitleg}`) });
+    });
+  }
+
+  // De vaste zinnen van Kaia uit zinnen.js: de kop na het nakijken en het eindscherm.
+  const vast = (sleutel, tekst) => lijst.push({
+    sleutel, bestand: `${sleutel.replace(/:/g, '-')}.mp3`, titel: `Kaia — ${tekst}`, tekst
+  });
+  vast('ui:voorlezen-aan', zinnen.voorlezenAan);
+  zinnen.kop.goed.forEach((t, i) => vast(`kop:goed:${i}`, t));
+  zinnen.kop.fout.forEach((t, i) => vast(`kop:fout:${i}`, t));
+  vast('kop:bijna-open', zinnen.kop.bijnaOpen);
+  vast('kop:bijna', zinnen.kop.bijna);
+  // Een reeks begint bij 3 goed op rij en kan nooit langer zijn dan de langste oefening.
+  const langste = Math.max(...alleOefeningen.map((o) => o.vragen.length));
+  zinnen.kop.reeks.forEach((t, i) => {
+    for (let n = 3; n <= langste; n++) vast(`kop:reeks:${i}:${n}`, t.replace('{n}', n));
+  });
+  for (const stof of Object.keys(zinnen.einde)) {
+    zinnen.einde[stof].forEach((t, sterren) => vast(`eind:${stof}:${sterren}`, t));
   }
   // Groep 5: per woord een dictee-opname ("Trein. De trein rijdt naar Utrecht."),
   // plus de uitleg van elk spel en de tip van elk woordpakket.
@@ -129,6 +161,24 @@ function opnames() {
         titel: `Groep 5 — ${woord}`,
         tekst: `${woord[0].toUpperCase()}${woord.slice(1)}. ${item.zin}`
       });
+      // De zin los, voor het zinnendictee.
+      if (item.lang) {
+        // Zelfde tekst als rondAf() in spellen.js laat zien bij een fout d/t-woord.
+        lijst.push({
+          sleutel: `lang:${woord}`,
+          bestand: `lang-${woord}.mp3`,
+          titel: `Groep 5 — langer maken: ${woord}`,
+          tekst: `Het is ${woord}. Maak het langer: ${item.lang}. Dan hoor je de ${item.w.match(/\[(.+)\]/)[1]}.`
+        });
+      }
+      if (item.zinDictee !== false) {
+        lijst.push({
+          sleutel: `zin:${woord}`,
+          bestand: `zin-${woord}.mp3`,
+          titel: `Groep 5 — zin bij ${woord}`,
+          tekst: item.zin
+        });
+      }
     }
     lijst.push({
       sleutel: `g5:pakket:${pakket.id}`,
@@ -136,6 +186,14 @@ function opnames() {
       titel: `Groep 5 — tip ${pakket.titel}`,
       tekst: spreekbaar(pakket.tip)
     });
+  }
+  for (const soort of Object.keys(groep5.einde)) {
+    groep5.einde[soort].forEach((tekst, sterren) => lijst.push({
+      sleutel: `g5:einde:${soort}:${sterren}`,
+      bestand: `g5-einde-${soort}-${sterren}.mp3`,
+      titel: `Groep 5 — eindscherm ${soort} ${sterren} sterren`,
+      tekst
+    }));
   }
   for (const spel of groep5.spellen) {
     lijst.push({
@@ -145,13 +203,6 @@ function opnames() {
       tekst: spreekbaar(spel.uitleg)
     });
   }
-  // Losse zinnen uit de app zelf. De tekst moet gelijk zijn aan die in app.js.
-  lijst.push({
-    sleutel: 'ui:voorlezen-aan',
-    bestand: 'ui-voorlezen-aan.mp3',
-    titel: 'Voorleesknop aangezet',
-    tekst: 'Ik lees voortaan met je mee.'
-  });
   return lijst;
 }
 
@@ -194,9 +245,17 @@ async function neemOp(item) {
 /*  Hoofdprogramma                                                     */
 /* ------------------------------------------------------------------ */
 
+function schrijfManifest(lijst) {
+  const uit = { stem: VOICE_ID, model: MODEL_ID, bijgewerkt: new Date().toISOString(), opnames: lijst };
+  fs.writeFileSync(MANIFEST, JSON.stringify(uit, null, 2) + '\n');
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const alles = args.includes('--alles');
+  const droog = args.includes('--droog');
+  const eerder = new Map();   // vingerafdruk → bestand, om gelijke teksten maar één keer op te nemen
+  let nodig = 0;
   const gevraagd = new Set(args.filter((a) => !a.startsWith('--')));
 
   fs.mkdirSync(AUDIO_MAP, { recursive: true });
@@ -215,7 +274,25 @@ async function main() {
 
     if (!gekozen || (actueel && !alles)) {
       if (oud && fs.existsSync(bestandsPad)) nieuw[item.sleutel] = oud;
-      console.log(`${actueel ? '=' : '-'} ${item.sleutel} (${actueel ? 'ongewijzigd' : 'overgeslagen'})`);
+      if (actueel) eerder.set(hash, bestandsPad);
+      if (!droog) console.log(`${actueel ? '=' : '-'} ${item.sleutel} (${actueel ? 'ongewijzigd' : 'overgeslagen'})`);
+      continue;
+    }
+
+    // Precies dezelfde tekst al opgenomen (bv. dezelfde zin op twee eindschermen)?
+    // Dan kopiëren we dat bestand; dat kost geen tegoed.
+    const kopie = eerder.get(hash);
+    if (droog) {
+      if (!kopie) { nodig += item.tekst.length; eerder.set(hash, bestandsPad); }
+      console.log(`? ${item.sleutel}\t${item.bestand}\t${kopie ? 0 : item.tekst.length}`);
+      opgenomen++;
+      continue;
+    }
+    if (kopie) {
+      fs.copyFileSync(kopie, bestandsPad);
+      nieuw[item.sleutel] = { bestand: item.bestand, titel: item.titel, hash, tekens: 0, opgenomen: new Date().toISOString() };
+      console.log(`+ ${item.sleutel}: zelfde tekst als ${path.basename(kopie)}, gekopieerd`);
+      schrijfManifest({ ...bestaand, ...nieuw });
       continue;
     }
 
@@ -232,19 +309,25 @@ async function main() {
     opgenomen++;
     tekens += item.tekst.length;
     console.log(`${(audio.length / 1024).toFixed(0)} kB`);
+    // Meteen bewaren: wordt een lange run afgebroken, dan weet de volgende run
+    // wat er al is opgenomen (en betaald). Nog niet bereikte opnames blijven staan.
+    eerder.set(hash, bestandsPad);
+    schrijfManifest({ ...bestaand, ...nieuw });
   }
 
-  const uit = {
-    stem: VOICE_ID,
-    model: MODEL_ID,
-    bijgewerkt: new Date().toISOString(),
-    opnames: nieuw
-  };
-  fs.writeFileSync(MANIFEST, JSON.stringify(uit, null, 2) + '\n');
+  if (droog) {
+    console.log(`\nNog op te nemen: ${opgenomen} opname(s), ${nodig} tekens. Er is niets opgenomen of gewijzigd.`);
+    return;
+  }
+  schrijfManifest(nieuw);
   console.log(`\nKlaar: ${opgenomen} opname(s) gemaakt, ${tekens} tekens gebruikt. Manifest: audio/manifest.json`);
 }
 
 main().catch((e) => {
+  if (/quota_exceeded/.test(e.message)) {
+    console.error('\n\nHet tegoed bij ElevenLabs is op. Wat al is opgenomen, is bewaard.');
+    console.error('Kijk met "node genereer-audio.js --droog" wat er nog moet; draai daarna gewoon opnieuw.');
+  }
   console.error(`\nMislukt: ${e.message}`);
   process.exit(1);
 });

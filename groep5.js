@@ -17,9 +17,15 @@
  *              dan is het een enkel/dubbel-pakket: de keuzes zijn dan de
  *              letter tussen de haken één of twee keer ('k' en 'kk').
  *   tip        uitleg van het konijn; wordt getoond (en voorgelezen) bij een fout
- *   woorden    [{ w: 'hon[d]', emoji, zin, lang? }]
- *              zin   dicteezin; genereer-audio.js neemt "Hond. <zin>" op
- *              lang  het langer gemaakte woord, voor d/t ('honden')
+ *   woorden    [{ w: 'hon[d]', emoji, zin, lang?, zinDictee? }]
+ *              zin        dicteezin; genereer-audio.js neemt "Hond. <zin>" op,
+ *                         en de zin los voor het zinnendictee
+ *              lang       het langer gemaakte woord, voor d/t ('honden')
+ *              zinDictee  false = zin niet gebruiken in het zinnendictee (er
+ *                         staat een naam of een te lastig woord in)
+ *
+ * `dictees` zijn de twee echte dictees: woorden of zinnen door elkaar uit alle
+ * pakketten, zonder tussendoor nakijken. Pas aan het eind zie je wat goed ging.
  */
 
 const GROEP5 = {
@@ -30,6 +36,23 @@ const GROEP5 = {
     'Daar ben je! Ik heb zin in wortels. Help je mee?',
     'Kies maar een spel. Voor elk goed woord krijg ik een wortel!'
   ],
+
+  // Wat het konijn op het eindscherm zegt, per aantal sterren (0 tot en met 3).
+  // Zonder getallen, zodat het opgenomen kan worden; de score staat eronder.
+  einde: {
+    spel: [
+      'Dit waren lastige woorden. Niet erg, daar oefenen we voor. Probeer het nog een keer, dan gaat het vast beter!',
+      'Deze woorden zijn best lastig! Zullen we ze nog een keer doen?',
+      'Goed gedaan! Kijk nog even naar de woorden met een kruisje.',
+      'Wauw, wat ging dat goed! Mijn buik zit vol wortels. Dank je wel!'
+    ],
+    dictee: [
+      'Dit dictee was pittig. Niet erg! Oefen eerst nog wat met de spelletjes en probeer het dan opnieuw.',
+      'Kijk goed naar de fouten, dan gaat het volgende dictee beter.',
+      'Goed gedaan! Kijk hieronder wat er nog misging.',
+      'Wat een dictee! Daar mag je trots op zijn!'
+    ]
+  },
 
   spellen: [
     {
@@ -60,9 +83,30 @@ const GROEP5 = {
       id: 'luister',
       titel: 'Luisterwoord',
       emoji: '🎧',
-      soort: 'Dictee',
-      uitleg: 'Dit is een dictee. Ik zeg het woord en een zin erbij. Jij typt het woord.',
+      soort: 'Luister en typ',
+      uitleg: 'Ik zeg het woord en een zin erbij. Jij typt het woord, en ik kijk het meteen na.',
       opdracht: 'Luister goed en typ het woord.'
+    }
+  ],
+
+  dictees: [
+    {
+      id: 'woorden',
+      titel: 'Woorddictee',
+      emoji: '📝',
+      soort: '10 woorden',
+      aantal: 10,
+      uitleg: 'Net als op school: ik zeg tien woorden uit alle pakketten door elkaar. Jij schrijft ze op. Nakijken doen we pas aan het eind!',
+      opdracht: 'Luister goed en typ het woord.'
+    },
+    {
+      id: 'zinnen',
+      titel: 'Zinnendictee',
+      emoji: '✏️',
+      soort: '5 zinnen',
+      aantal: 5,
+      uitleg: 'Ik zeg vijf hele zinnen. Schrijf ze precies op. Denk aan de hoofdletter aan het begin en de punt aan het eind!',
+      opdracht: 'Luister goed en typ de hele zin.'
     }
   ],
 
@@ -75,10 +119,10 @@ const GROEP5 = {
       opties: ['ei', 'ij'],
       tip: 'De korte ei en de lange ij klinken precies hetzelfde. Dit zijn weetwoorden: kijk goed en onthoud hoe het woord eruitziet.',
       woorden: [
-        { w: 'tr[ei]n', emoji: '🚂', zin: 'De trein rijdt naar Utrecht.' },
+        { w: 'tr[ei]n', zinDictee: false, emoji: '🚂', zin: 'De trein rijdt naar Utrecht.' },
         { w: 'g[ei]t', emoji: '🐐', zin: 'De geit eet gras in de wei.' },
         { w: 'kl[ei]n', emoji: '🐭', zin: 'Een muis is een klein dier.' },
-        { w: 'r[ei]s', emoji: '✈️', zin: 'Wij gaan op reis naar Spanje.' },
+        { w: 'r[ei]s', zinDictee: false, emoji: '✈️', zin: 'Wij gaan op reis naar Spanje.' },
         { w: 'pl[ei]n', emoji: '🛝', zin: 'Op het plein spelen de kinderen.' },
         { w: 'z[ei]l', emoji: '⛵', zin: 'De boot heeft een wit zeil.' },
         { w: '[ij]s', emoji: '🧊', zin: 'Op de sloot ligt dik ijs.' },
@@ -99,8 +143,8 @@ const GROEP5 = {
       woorden: [
         { w: '[au]to', emoji: '🚗', zin: 'De auto staat voor het huis.' },
         { w: 'bl[au]w', emoji: '🔵', zin: 'De lucht is vandaag mooi blauw.' },
-        { w: 'p[au]w', emoji: '🦚', zin: 'De pauw heeft prachtige veren.' },
-        { w: 's[au]s', emoji: '🍝', zin: 'Ik wil graag saus op mijn pasta.' },
+        { w: 'p[au]w', zinDictee: false, emoji: '🦚', zin: 'De pauw heeft prachtige veren.' },
+        { w: 's[au]s', zinDictee: false, emoji: '🍝', zin: 'Ik wil graag saus op mijn pasta.' },
         { w: 'g[au]w', emoji: '🏃', zin: 'Kom gauw naar binnen, het regent!' },
         { w: 'h[ou]t', emoji: '🪵', zin: 'De tafel is gemaakt van hout.' },
         { w: 'g[ou]d', emoji: '🥇', zin: 'De ring is van echt goud.' },
@@ -123,7 +167,7 @@ const GROEP5 = {
         { w: 'paar[d]', emoji: '🐴', lang: 'paarden', zin: 'Het paard staat in de wei.' },
         { w: 'broo[d]', emoji: '🍞', lang: 'broden', zin: 'Ik eet brood met kaas.' },
         { w: 'han[d]', emoji: '✋', lang: 'handen', zin: 'Geef mij maar een hand.' },
-        { w: 'stran[d]', emoji: '🏖️', lang: 'stranden', zin: 'Wij bouwen een kasteel op het strand.' },
+        { w: 'stran[d]', zinDictee: false, emoji: '🏖️', lang: 'stranden', zin: 'Wij bouwen een kasteel op het strand.' },
         { w: 'tan[d]', emoji: '🦷', lang: 'tanden', zin: 'Mijn tand zit los.' },
         { w: 'be[d]', emoji: '🛏️', lang: 'bedden', zin: 'Ik lig lekker in mijn bed.' },
         { w: 'boo[t]', emoji: '⛵', lang: 'boten', zin: 'De boot vaart over het meer.' },
@@ -143,15 +187,15 @@ const GROEP5 = {
       woorden: [
         { w: 'ri[ng]', emoji: '💍', zin: 'Mama draagt een gouden ring.' },
         { w: 'sla[ng]', emoji: '🐍', zin: 'De slang kruipt door het gras.' },
-        { w: 'koni[ng]', emoji: '👑', zin: 'De koning woont in een paleis.' },
+        { w: 'koni[ng]', zinDictee: false, emoji: '👑', zin: 'De koning woont in een paleis.' },
         { w: 'to[ng]', emoji: '👅', zin: 'Ik brand mijn tong aan de thee.' },
-        { w: 'vi[ng]er', emoji: '☝️', zin: 'Ik heb een pleister om mijn vinger.' },
+        { w: 'vi[ng]er', zinDictee: false, emoji: '☝️', zin: 'Ik heb een pleister om mijn vinger.' },
         { w: 'la[ng]', emoji: '📏', zin: 'Dat touw is heel lang.' },
         { w: 'ba[nk]', emoji: '🛋️', zin: 'Wij zitten samen op de bank.' },
-        { w: 'pla[nk]', emoji: '🪚', zin: 'De timmerman zaagt een plank.' },
+        { w: 'pla[nk]', zinDictee: false, emoji: '🪚', zin: 'De timmerman zaagt een plank.' },
         { w: 'i[nk]t', emoji: '🖋️', zin: 'Er zit blauwe inkt in de pen.' },
         { w: 'dri[nk]en', emoji: '🥤', zin: 'Ik wil graag water drinken.' },
-        { w: 'da[nk]', emoji: '🙏', zin: 'Dank je wel voor het cadeau.' },
+        { w: 'da[nk]', zinDictee: false, emoji: '🙏', zin: 'Dank je wel voor het cadeau.' },
         { w: 'sti[nk]en', emoji: '🦨', zin: 'Die oude sokken stinken!' }
       ]
     },
@@ -193,7 +237,7 @@ const GROEP5 = {
         { w: '[schr]ift', emoji: '📓', zin: 'Ik schrijf de som in mijn schrift.' },
         { w: '[schr]ijven', emoji: '✍️', zin: 'Wij leren netjes schrijven.' },
         { w: '[schr]ik', emoji: '😱', zin: 'Van schrik liet ik mijn beker vallen.' },
-        { w: '[schr]oef', emoji: '🔩', zin: 'Er zit een schroef los in de stoel.' },
+        { w: '[schr]oef', zinDictee: false, emoji: '🔩', zin: 'Er zit een schroef los in de stoel.' },
         { w: '[schr]am', emoji: '🩹', zin: 'Ik heb een schram op mijn knie.' }
       ]
     },
@@ -210,7 +254,7 @@ const GROEP5 = {
         { w: 'm[eeuw]', emoji: '🕊️', zin: 'De meeuw pikt een frietje.' },
         { w: 'schr[eeuw]', emoji: '😫', zin: 'Ik hoorde een harde schreeuw.' },
         { w: 'n[ieuw]', emoji: '✨', zin: 'Ik heb een nieuw boek gekregen.' },
-        { w: 'k[ieuw]', emoji: '🐟', zin: 'Een vis ademt door een kieuw.' },
+        { w: 'k[ieuw]', zinDictee: false, emoji: '🐟', zin: 'Een vis ademt door een kieuw.' },
         { w: 'd[uw]', emoji: '👉', zin: 'Geef de schommel een duw.' },
         { w: 'r[uw]', emoji: '🪨', zin: 'De steen voelt ruw aan.' },
         { w: 'sch[uw]', emoji: '🙈', zin: 'Het hertje is erg schuw.' }
@@ -228,9 +272,9 @@ const GROEP5 = {
         { w: 'kr[aai]', emoji: '🐦', zin: 'Op het dak zit een zwarte kraai.' },
         { w: 's[aai]', emoji: '🥱', zin: 'Ik vind deze film saai.' },
         { w: 'zw[aai]', emoji: '👋', zin: 'Geef opa een zwaai.' },
-        { w: 'm[ooi]', emoji: '🌈', zin: 'Wat een mooi schilderij!' },
+        { w: 'm[ooi]', zinDictee: false, emoji: '🌈', zin: 'Wat een mooi schilderij!' },
         { w: 'k[ooi]', emoji: '🦜', zin: 'De vogel zit in zijn kooi.' },
-        { w: 'n[ooi]t', emoji: '🙅', zin: 'Ik ben nog nooit in Parijs geweest.' },
+        { w: 'n[ooi]t', zinDictee: false, emoji: '🙅', zin: 'Ik ben nog nooit in Parijs geweest.' },
         { w: 'g[ooi]', emoji: '🤾', zin: 'Ik gooi de bal naar jou.' },
         { w: 'gr[oei]', emoji: '🌱', zin: 'Ik groei elk jaar een stukje.' },
         { w: 'bl[oei]', emoji: '🌸', zin: 'De boom staat in bloei.' },
