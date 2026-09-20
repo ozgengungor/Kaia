@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oefenen met Kaia — begrijpend lezen, spelling en taalverzorging groep 8</title>
-<meta name="description" content="Begrijpend lezen, spelling en taalverzorging oefenen voor groep 8, samen met Kaia de capybara.">
+<title>Oefenen met Kaia en Pluis — groep 5 en groep 8</title>
+<meta name="description" content="Spellingspelletjes voor groep 5 met Pluis het konijn, en begrijpend lezen, spelling en taalverzorging voor groep 8 met Kaia de capybara.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
 
 <header class="balk">
   <button class="balk-logo" id="knop-home" title="Terug naar het begin">
-    <span class="balk-logo-icoon" id="balk-icoon">📖</span>
-    <span>Oefenen met <b>Kaia</b></span>
+    <span class="balk-logo-icoon" id="balk-icoon">🏡</span>
+    <span id="balk-naam">Oefenen met <b>Kaia</b></span>
   </button>
   <div class="balk-knoppen">
     <button class="icoonknop" id="knop-tekstgrootte" aria-label="Letters groter of kleiner maken" title="Lettergrootte">A<sup>+</sup></button>
@@ -28,8 +28,28 @@
 
 <main id="hoofd">
 
-  <!-- ================= STARTSCHERM ================= -->
-  <section class="scherm actief" id="scherm-start">
+  <!-- ================= GROEP KIEZEN ================= -->
+  <section class="scherm actief" id="scherm-groep">
+    <h1 class="titel titel-midden">Wie gaat er oefenen?</h1>
+    <p class="ondertitel titel-midden">Kies je groep.</p>
+
+    <div class="groep-keuze">
+      <button class="groep-kaart groep-kaart-5" type="button" data-groep="5">
+        <div class="konijn konijn-keuze" id="konijn-keuze"></div>
+        <span class="groep-naam">Groep 5</span>
+        <span class="groep-uitleg" id="groep-5-uitleg">Spellingspelletjes met het konijn</span>
+      </button>
+      <button class="groep-kaart groep-kaart-8" type="button" data-groep="8">
+        <div class="capy capy-keuze" id="capy-keuze"></div>
+        <span class="groep-naam">Groep 8</span>
+        <span class="groep-uitleg">Lezen, spelling en taal met Kaia de capybara</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= STARTSCHERM GROEP 8 ================= -->
+  <section class="scherm" id="scherm-start">
+    <button class="terugknop" data-naar-groepen>← Andere groep</button>
     <div class="welkom">
       <div class="capy capy-groot" id="capy-start"></div>
       <div class="bubbel bubbel-links">
@@ -172,12 +192,93 @@
     </div>
   </section>
 
+  <!-- ================= GROEP 5: SPEL KIEZEN ================= -->
+  <section class="scherm" id="scherm-g5-start">
+    <button class="terugknop" data-naar-groepen>← Andere groep</button>
+    <div class="welkom">
+      <div class="konijn konijn-groot" id="konijn-start"></div>
+      <div class="bubbel bubbel-links"><p id="g5-welkom"></p></div>
+    </div>
+
+    <h1 class="titel">Kies een spel</h1>
+    <p class="ondertitel">Bij elk spel kies je daarna met welke woorden je wilt oefenen.</p>
+
+    <div class="kaarten" id="g5-spellen"></div>
+
+    <div class="voortgang-blok">
+      <p id="g5-totaal"></p>
+      <button class="tekstknop" id="g5-reset">Wortels en sterren wissen</button>
+    </div>
+  </section>
+
+  <!-- ================= GROEP 5: WOORDPAKKET KIEZEN ================= -->
+  <section class="scherm" id="scherm-g5-pakket">
+    <button class="terugknop" data-g5-start>← Ander spel kiezen</button>
+
+    <div class="lees-kop">
+      <span class="label" id="g5-spel-soort"></span>
+      <h1 class="titel" id="g5-spel-titel"></h1>
+    </div>
+
+    <div class="coach-strook">
+      <div class="konijn konijn-klein" id="konijn-pakket"></div>
+      <div class="bubbel"><p id="g5-spel-uitleg"></p></div>
+    </div>
+
+    <h2 class="titel-klein">Met welke woorden wil je spelen?</h2>
+    <div class="kaarten" id="g5-pakketten"></div>
+  </section>
+
+  <!-- ================= GROEP 5: HET SPEL ================= -->
+  <section class="scherm" id="scherm-g5-spel">
+    <div class="vragen-kop">
+      <button class="terugknop" data-g5-pakket>← Stoppen</button>
+      <div class="wortels" id="g5-wortels" aria-label="Hoe ver je bent"></div>
+    </div>
+
+    <div class="coach-strook">
+      <div class="konijn konijn-klein" id="konijn-spel"></div>
+      <div class="bubbel"><p id="g5-praatje" aria-live="polite"></p></div>
+    </div>
+
+    <div class="spel-kaart" id="g5-veld"></div>
+
+    <div class="onderbalk">
+      <button class="grote-knop" id="g5-knop-klaar" hidden disabled>Klaar!</button>
+      <button class="grote-knop" id="g5-knop-verder" hidden>Verder →</button>
+    </div>
+  </section>
+
+  <!-- ================= GROEP 5: KLAAR ================= -->
+  <section class="scherm" id="scherm-g5-klaar">
+    <div class="welkom">
+      <div class="konijn konijn-groot" id="konijn-klaar"></div>
+      <div class="bubbel bubbel-links"><p id="g5-klaar-tekst"></p></div>
+    </div>
+
+    <div class="score-blok">
+      <div class="sterren" id="g5-sterren"></div>
+      <p class="score-getal" id="g5-score"></p>
+    </div>
+
+    <h2 class="titel-klein">Deze woorden heb je geoefend</h2>
+    <ul class="overzicht" id="g5-overzicht"></ul>
+
+    <div class="onderbalk onderbalk-dubbel">
+      <button class="grote-knop knop-grijs" id="g5-opnieuw">🔁 Nog een keer</button>
+      <button class="grote-knop" id="g5-ander">Iets anders kiezen →</button>
+    </div>
+  </section>
+
 </main>
 
 <script src="exercises.js"></script>
 <script src="spelling.js"></script>
 <script src="taal.js"></script>
+<script src="groep5.js"></script>
 <script src="capybara.js"></script>
+<script src="konijn.js"></script>
 <script src="app.js"></script>
+<script src="spellen.js"></script>
 </body>
 </html>

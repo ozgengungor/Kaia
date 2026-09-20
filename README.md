@@ -1,8 +1,14 @@
-# Oefenen met Kaia 🦫
+# Oefenen met Kaia 🦫 en Pluis 🐰
 
-Een kleine webapp om **begrijpend lezen**, **spelling** en **taalverzorging**
-te oefenen voor groep 8 van de Nederlandse basisschool. Kaia de capybara is de coach: ze introduceert de
-tekst of de regel, geeft hints, legt fouten uit en juicht mee.
+Een kleine webapp voor twee groepen van de Nederlandse basisschool. Het
+startscherm vraagt eerst **welke groep** er gaat oefenen:
+
+- **Groep 8** oefent **begrijpend lezen**, **spelling** en **taalverzorging**
+  met Kaia de capybara. Ze introduceert de tekst of de regel, geeft hints, legt
+  fouten uit en juicht mee.
+- **Groep 5** speelt **spellingspelletjes** met Pluis het konijn. Pluis
+  beweegt (oren, neus, knipperen), huppelt bij een goed antwoord en krijgt voor
+  elk goed woord een wortel.
 
 ## Draaien
 
@@ -18,7 +24,46 @@ python3 -m http.server 8000    # http://localhost:8000
 `server.js` is een statische server van 40 regels op alleen Node-standaard­modules,
 zodat de app ook zo naar Railway (of iets anders met `npm start`) kan.
 
-## Hoe het werkt voor het kind
+## Groep 5: de spelletjes met Pluis
+
+Het kind kiest eerst een **spel**, daarna een **woordpakket**, en speelt dan een
+ronde van acht woorden. Alle vier de spellen werken met alle pakketten.
+
+| Spel | Wat het kind doet |
+| --- | --- |
+| 🥕 Wortelkeuze | Pluis zegt het woord; kies de wortel met het stukje dat in het gat hoort (`tr__n`: ei of ij). |
+| 🧱 Woordbouwer | Pluis zegt het woord; bouw het met blokjes. Er ligt één blokje te veel (de `ij` naast de `ei`). Twee pogingen. |
+| ⚡ Flitswoord | Het woord is heel even te zien en moet daarna uit het hoofd getypt worden. Eén keer extra kijken mag. |
+| 🎧 Luisterwoord | Dictee: Pluis zegt het woord met een zin erbij, het kind typt het woord. |
+
+| Woordpakket | Soort | Woorden |
+| --- | --- | --- |
+| ei of ij | weetwoorden | 12 |
+| au of ou | weetwoorden | 12 |
+| d of t aan het eind | langer maken | 12 |
+| ng of nk | luisterwoorden | 12 |
+| Eén of twee medeklinkers | klankgroepen | 12 |
+| sch of schr | luisterwoorden | 11 |
+| eeuw, ieuw of uw | regelwoorden | 9 |
+| aai, ooi of oei | regelwoorden | 12 |
+
+Een woord is 1 punt, een half punt als het pas in de tweede poging (of na extra
+kijken) goed gaat, en anders 0. Bij een fout legt Pluis de regel van het pakket
+uit; bij d/t maakt Pluis het woord langer (hond → honden). De sterren gaan per
+spel + pakket en de wortels tellen door. De voortgang van groep 5 staat los van
+die van groep 8, zodat de een nooit de sterren van de ander wist.
+
+Elk woord heeft een eigen dictee-opname ("Trein. De trein rijdt naar Utrecht.").
+Die wordt in de spellen altijd afgespeeld, ook als de voorleesknop uit staat:
+het gesproken woord hoort bij het spel. De voorleesknop bepaalt alleen of Pluis
+ook de uitleg en de tips voorleest.
+
+Een woord schrijf je in `groep5.js` als `'tr[ei]n'`: het stuk tussen de haken is
+het lastige stukje. Let er bij een nieuw woord op dat het gat maar op één manier
+een woord oplevert (`h[aai]` en `h[ooi]` samen in één pakket is dubbelzinnig).
+De naam van het konijn staat bovenaan dat bestand (`konijn: 'Pluis'`).
+
+## Groep 8: hoe het werkt voor het kind
 
 Bovenaan het startscherm kiest het kind eerst **📖 Lezen**, **✍️ Spelling** of
 **📝 Taal** (taalverzorging). Die keuze wordt onthouden. Daarna zijn de vormen
@@ -86,8 +131,9 @@ meerkeuze- of sorteervragen.
 
 ## Voorleesaudio (ElevenLabs)
 
-In `audio/` staat per leestekst, per regelkaart en per hint een mp3, gemaakt met
-ElevenLabs (stem "Sarah", model `eleven_multilingual_v2`, Nederlands). De app
+In `audio/` staat per leestekst, per regelkaart, per hint en (voor groep 5) per
+dicteewoord, speluitleg en pakkettip een mp3, gemaakt met
+ElevenLabs (stem `YUdpWWny7k5yb4QCeweX`, model `eleven_multilingual_v2`, Nederlands). De app
 haalt `audio/manifest.json` op en speelt de opname af zodra de tekst of de
 regelkaart opent of het kind op de hintknop drukt; ontbreekt een opname, dan valt ze terug op de browserstem.
 De mp3's staan gewoon in git, zodat een deploy ze meeneemt.
@@ -98,7 +144,8 @@ Opnieuw opnemen na het wijzigen of toevoegen van een tekst:
 echo 'ELEVENLABS_API_KEY=sk_...' > .env    # staat in .gitignore
 npm run audio                              # alleen wat veranderd is
 node genereer-audio.js --alles             # alles opnieuw
-node genereer-audio.js lees:wolf           # één opname (lees:<id>, regel:<id>, hint:<id>:<vraagnr>)
+node genereer-audio.js lees:wolf           # één opname (lees:<id>, regel:<id>, hint:<id>:<vraagnr>,
+                                           #   woord:<woord>, g5:spel:<id>, g5:pakket:<id>)
 ```
 
 Het script vergelijkt een vingerafdruk van tekst + stem + model met het
@@ -110,15 +157,18 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 
 | Bestand | Wat het doet |
 | --- | --- |
-| `index.html` | De vijf schermen: kiezen, lezen, regelkaart, vragen, resultaat. |
+| `index.html` | Alle schermen: groep kiezen, de vijf van groep 8 en de vier van groep 5. |
 | `styles.css` | Alle opmaak. |
 | `exercises.js` | **Alle leesteksten**, hardcoded in één array. |
 | `spelling.js` | **Alle spellingregels**, in dezelfde stijl. |
 | `taal.js` | **Alle taalverzorgingsregels**, zelfde structuur als spelling. |
+| `groep5.js` | **Groep 5**: de vier spellen en alle woordpakketten. |
 | `capybara.js` | Kaia als SVG, met zes stemmingen. |
-| `app.js` | De logica: schermen, nakijken, score, voortgang. |
+| `konijn.js` | Pluis als SVG, met zeven stemmingen; het bewegen zit in `styles.css`. |
+| `app.js` | Groep kiezen en alle logica van groep 8: schermen, nakijken, score, voortgang. |
+| `spellen.js` | De logica van de spelletjes van groep 5. |
 | `server.js` | Statische server voor lokaal draaien en deployen. |
-| `genereer-audio.js` | Neemt de teksten, regelkaarten en hints op met ElevenLabs, naar `audio/`. |
+| `genereer-audio.js` | Neemt de teksten, regelkaarten, hints en dicteewoorden op met ElevenLabs, naar `audio/`. |
 | `audio/` | De opnames (mp3) en `manifest.json`. |
 
 ## Later: oefeningen bewerken

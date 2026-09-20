@@ -8,6 +8,10 @@
  *
  * De oefenvormen delen alles behalve het scherm vóór de vragen: bij lezen is
  * dat de tekst, bij spelling en taalverzorging de regelkaart van Kaia.
+ *
+ * Dit bestand regelt ook het keuzescherm voor de groep. Groep 8 is alles
+ * hieronder; groep 5 (de spelletjes met het konijn) staat in spellen.js en
+ * gebruikt de hulpjes die onderaan in window.KaiaApp worden klaargezet.
  */
 
 (() => {
@@ -151,19 +155,28 @@
   const kanAfspelen = 'Audio' in window;
   let opnames = {};
   if (kanAfspelen) {
-    fetch('audio/manifest.json')
+    fetch('audio/manifest.json', { cache: 'no-store' })
       .then((r) => (r.ok ? r.json() : {}))
       .then((m) => { opnames = (m && m.opnames) || {}; })
       .catch(() => { /* geen opnames; browserstem doet het werk */ });
   }
   const speler = kanAfspelen ? new Audio() : null;
 
+  // Voorlezen: alleen als de voorleesknop aan staat.
   function spreek(tekst, sleutel) {
     if (!instellingen.voorlezen || !tekst) return;
+    speelOpname(sleutel, tekst);
+  }
+
+  // Altijd afspelen, ook als voorlezen uit staat. Voor de spelletjes van
+  // groep 5, waar het gesproken woord bij het spel zelf hoort.
+  function speelOpname(sleutel, tekst) {
     stopSpreken();
     const opname = sleutel && speler && opnames[sleutel];
     if (opname) {
-      speler.src = `audio/${opname.bestand}`;
+      // De vingerafdruk in de URL zorgt dat de browser na opnieuw opnemen
+      // (andere stem, andere tekst) niet de oude mp3 uit zijn cache haalt.
+      speler.src = `audio/${opname.bestand}?v=${String(opname.hash || '').slice(0, 10)}`;
       speler.play().catch(() => spreekMetBrowser(tekst));
       return;
     }
@@ -222,11 +235,36 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /*  Startscherm                                                        */
+  /*  Groep kiezen                                                       */
+  /* ------------------------------------------------------------------ */
+
+  // De bovenbalk en de kleuren volgen de gekozen groep (null = keuzescherm).
+  function zetGroep(groep) {
+    document.body.classList.toggle('groep-5', groep === 5);
+    const konijn = escapeHtml(GROEP5.konijn);
+    $('#balk-naam').innerHTML =
+      groep === 5 ? `Oefenen met <b>${konijn}</b>`
+        : groep === 8 ? 'Oefenen met <b>Kaia</b>'
+          : `Oefenen met <b>Kaia</b> en <b>${konijn}</b>`;
+    if (groep !== 8) $('#balk-icoon').textContent = groep === 5 ? '🐰' : '🏡';
+  }
+
+  function toonGroepen() {
+    stopSpreken();
+    zetGroep(null);
+    Konijn.render($('#konijn-keuze'), 'zwaai', GROEP5.konijn);
+    Capybara.render($('#capy-keuze'), 'zwaai');
+    $('#groep-5-uitleg').textContent = `Spellingspelletjes met ${GROEP5.konijn} het konijn`;
+    toonScherm('scherm-groep');
+  }
+
+  /* ------------------------------------------------------------------ */
+  /*  Startscherm groep 8                                                */
   /* ------------------------------------------------------------------ */
 
   function toonStart(praatje) {
     stopSpreken();
+    zetGroep(8);
     const m = MODI[modus];
     Capybara.render($('#capy-start'), 'zwaai');
     $('#welkom-tekst').textContent = praatje || kies(m.welkom);
@@ -832,7 +870,14 @@
   /*  Knoppen aansluiten                                                 */
   /* ------------------------------------------------------------------ */
 
-  $('#knop-home').addEventListener('click', () => toonStart(kies(PRAATJES.terug)));
+  $('#knop-home').addEventListener('click', toonGroepen);
+  document.querySelectorAll('.groep-kaart').forEach((kaart) => {
+    kaart.addEventListener('click', () => {
+      if (kaart.dataset.groep === '5') { zetGroep(5); window.Groep5.toonStart(); }
+      else toonStart();
+    });
+  });
+  document.querySelectorAll('[data-naar-groepen]').forEach((k) => k.addEventListener('click', toonGroepen));
   document.querySelectorAll('[data-terug]').forEach((k) =>
     k.addEventListener('click', () => toonStart(kies(PRAATJES.terug))));
 
@@ -893,7 +938,7 @@
       geluidKnop.textContent = instellingen.voorlezen ? '🔊' : '🔇';
       bewaar(INSTELLING_SLEUTEL, instellingen);
       if (!instellingen.voorlezen) stopSpreken();
-      else spreek('Ik lees voortaan met je mee.');
+      else spreek('Ik lees voortaan met je mee.', 'ui:voorlezen-aan');
     });
     geluidKnop.setAttribute('aria-pressed', String(instellingen.voorlezen));
     geluidKnop.textContent = instellingen.voorlezen ? '🔊' : '🔇';
@@ -903,7 +948,10 @@
   /*  Start                                                              */
   /* ------------------------------------------------------------------ */
 
+  // Wat spellen.js (groep 5) van deze app nodig heeft.
+  window.KaiaApp = { $, kies, laad, bewaar, escapeHtml, toonScherm, spreek, speelOpname, stopSpreken };
+
   pasLettersToe();
   Capybara.render($('#capy-feedback'), 'blij');
-  toonStart();
+  toonGroepen();
 })();

@@ -1,7 +1,7 @@
 {
   "name": "lezen-met-kaia",
   "version": "1.0.0",
-  "description": "Begrijpend lezen en spelling oefenen voor groep 8, met Kaia de capybara als coach",
+  "description": "Oefenen voor groep 5 (spellingspelletjes met Pluis het konijn) en groep 8 (lezen, spelling, taalverzorging met Kaia de capybara)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

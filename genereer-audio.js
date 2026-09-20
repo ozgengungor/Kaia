@@ -1,21 +1,22 @@
 #!/usr/bin/env node
 /*
  * Maakt met ElevenLabs een voorgelezen versie van elke leestekst, elke
- * regelkaart (spelling en taalverzorging) en elke hint, en bewaart die als mp3
- * in audio/. De app speelt die opnames af in plaats van de browserstem (zie
- * spreek() in app.js).
+ * regelkaart (spelling en taalverzorging), elke hint en, voor groep 5, elk
+ * dicteewoord met zijn zin, de speluitleg en de tips. Alles komt als mp3 in
+ * audio/. De app speelt die opnames af in plaats van de browserstem (zie
+ * spreek() en speelOpname() in app.js).
  *
  * Gebruik:
  *   ELEVENLABS_API_KEY=sk_... node genereer-audio.js        # of zet de sleutel in .env
  *   node genereer-audio.js --alles                          # alles opnieuw opnemen
- *   node genereer-audio.js lees:wolf hint:wolf:0           # alleen deze
+ *   node genereer-audio.js lees:wolf hint:wolf:0 woord:trein   # alleen deze
  *
  * Per opname staat in audio/manifest.json een vingerafdruk van de tekst, de
  * stem en het model. Alleen wat veranderd is wordt opnieuw opgenomen, zodat
  * herhaald draaien geen tegoed kost.
  *
  * Instellen via omgevingsvariabelen (allemaal optioneel behalve de sleutel):
- *   ELEVENLABS_VOICE_ID   standaard "Sarah" (EXAVITQu4vr4xnSDxMaL)
+ *   ELEVENLABS_VOICE_ID   standaard YUdpWWny7k5yb4QCeweX (de stem die voor deze app gekozen is)
  *   ELEVENLABS_MODEL_ID   standaard eleven_multilingual_v2
  */
 
@@ -44,7 +45,7 @@ function laadDotEnv() {
 laadDotEnv();
 
 const API_KEY = process.env.ELEVENLABS_API_KEY;
-const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || 'EXAVITQu4vr4xnSDxMaL';
+const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || 'YUdpWWny7k5yb4QCeweX';
 const MODEL_ID = process.env.ELEVENLABS_MODEL_ID || 'eleven_multilingual_v2';
 const FORMAAT = 'mp3_44100_64';
 const STEM_INSTELLINGEN = { stability: 0.5, similarity_boost: 0.75, style: 0.2, use_speaker_boost: true };
@@ -113,6 +114,44 @@ function opnames() {
       });
     });
   }
+  // Groep 5: per woord een dictee-opname ("Trein. De trein rijdt naar Utrecht."),
+  // plus de uitleg van elk spel en de tip van elk woordpakket.
+  const groep5 = laadArray('groep5.js', 'GROEP5');
+  const gezien = new Set();
+  for (const pakket of groep5.pakketten) {
+    for (const item of pakket.woorden) {
+      const woord = item.w.replace(/[[\]]/g, '');
+      if (gezien.has(woord)) continue;
+      gezien.add(woord);
+      lijst.push({
+        sleutel: `woord:${woord}`,
+        bestand: `woord-${woord}.mp3`,
+        titel: `Groep 5 — ${woord}`,
+        tekst: `${woord[0].toUpperCase()}${woord.slice(1)}. ${item.zin}`
+      });
+    }
+    lijst.push({
+      sleutel: `g5:pakket:${pakket.id}`,
+      bestand: `g5-pakket-${pakket.id}.mp3`,
+      titel: `Groep 5 — tip ${pakket.titel}`,
+      tekst: spreekbaar(pakket.tip)
+    });
+  }
+  for (const spel of groep5.spellen) {
+    lijst.push({
+      sleutel: `g5:spel:${spel.id}`,
+      bestand: `g5-spel-${spel.id}.mp3`,
+      titel: `Groep 5 — uitleg ${spel.titel}`,
+      tekst: spreekbaar(spel.uitleg)
+    });
+  }
+  // Losse zinnen uit de app zelf. De tekst moet gelijk zijn aan die in app.js.
+  lijst.push({
+    sleutel: 'ui:voorlezen-aan',
+    bestand: 'ui-voorlezen-aan.mp3',
+    titel: 'Voorleesknop aangezet',
+    tekst: 'Ik lees voortaan met je mee.'
+  });
   return lijst;
 }
 
