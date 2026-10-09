@@ -39,6 +39,12 @@ const VASTE_ZINNEN = {
       'Deze regel was pittig. Lees hem gerust nog een keer, dan gaat het vaak veel beter.',
       'Goed gedaan! Kijk hieronder nog even bij de vragen die misgingen, dan zit je er volgende keer bovenop.',
       'Wauw! Deze regel zit echt in je hoofd. Ik ben trots op je!'
+    ],
+    dictee: [
+      'Dit dictee was pittig, maar opgeven doen we niet. Kijk goed naar de fouten en probeer het daarna nog een keer.',
+      'Er zaten lastige woorden tussen. Bekijk hieronder hoe je ze schrijft, dan gaat het volgende dictee beter.',
+      'Goed gedaan! Kijk hieronder nog even naar wat er misging, dan zit je er volgende keer bovenop.',
+      'Wauw, wat een dictee! Daar mag je echt trots op zijn.'
     ]
   }
 };

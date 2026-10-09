@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oefenen met Kaia en Pluis — groep 5 en groep 8</title>
-<meta name="description" content="Spellingspelletjes voor groep 5 met Pluis het konijn, en begrijpend lezen, spelling en taalverzorging voor groep 8 met Kaia de capybara.">
+<meta name="description" content="Spellingspelletjes voor groep 5 met Pluis het konijn, en begrijpend lezen, spelling, taalverzorging en dictee voor groep 8 met Kaia de capybara.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -37,12 +37,12 @@
       <button class="groep-kaart groep-kaart-5" type="button" data-groep="5">
         <div class="konijn konijn-keuze" id="konijn-keuze"></div>
         <span class="groep-naam">Groep 5</span>
-        <span class="groep-uitleg" id="groep-5-uitleg">Spellingspelletjes met het konijn</span>
+        <span class="groep-uitleg" id="groep-5-uitleg">Spellingspelletjes en dictee met het konijn</span>
       </button>
       <button class="groep-kaart groep-kaart-8" type="button" data-groep="8">
         <div class="capy capy-keuze" id="capy-keuze"></div>
         <span class="groep-naam">Groep 8</span>
-        <span class="groep-uitleg">Lezen, spelling en taal met Kaia de capybara</span>
+        <span class="groep-uitleg">Lezen, spelling, taal en dictee met Kaia de capybara</span>
       </button>
     </div>
   </section>
@@ -72,6 +72,11 @@
         <span class="modus-emoji">📝</span>
         <span class="modus-naam">Taal</span>
         <span class="modus-uitleg">Taalverzorging</span>
+      </button>
+      <button class="modus-knop" type="button" role="tab" aria-selected="false" data-modus="dictee">
+        <span class="modus-emoji">🎧</span>
+        <span class="modus-naam">Dictee</span>
+        <span class="modus-uitleg">Luisteren en schrijven</span>
       </button>
     </div>
 
@@ -171,6 +176,30 @@
     </div>
   </section>
 
+  <!-- ================= DICTEE (groep 8) ================= -->
+  <section class="scherm" id="scherm-dictee">
+    <div class="vragen-kop">
+      <button class="terugknop" data-terug>← Stoppen</button>
+      <div class="stippen" id="dictee-stippen" aria-label="Hoe ver je bent"></div>
+    </div>
+
+    <div class="coach-strook">
+      <div class="capy capy-klein" id="capy-dictee"></div>
+      <div class="bubbel"><p id="dictee-praatje" aria-live="polite"></p></div>
+    </div>
+
+    <div class="vraag-kaart dictee-kaart">
+      <p class="dictee-teller" id="dictee-teller"></p>
+      <button type="button" class="luisterknop" id="dictee-luister">🔊 Luister nog een keer</button>
+      <p><input type="text" class="spel-invoer" id="dictee-invoer"
+                autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false"></p>
+    </div>
+
+    <div class="onderbalk">
+      <button class="grote-knop" id="dictee-volgende" disabled>Volgende →</button>
+    </div>
+  </section>
+
   <!-- ================= EINDSCHERM ================= -->
   <section class="scherm" id="scherm-klaar">
     <div class="welkom">
@@ -183,7 +212,8 @@
       <p class="score-getal" id="score-getal"></p>
     </div>
 
-    <h2 class="titel-klein">Zo ging het per vraag</h2>
+    <p class="dictee-advies" id="klaar-advies" hidden></p>
+    <h2 class="titel-klein" id="overzicht-kop">Zo ging het per vraag</h2>
     <ul class="overzicht" id="overzicht"></ul>
 
     <div class="onderbalk onderbalk-dubbel">
@@ -280,6 +310,7 @@
 <script src="exercises.js"></script>
 <script src="spelling.js"></script>
 <script src="taal.js"></script>
+<script src="dictee.js"></script>
 <script src="groep5.js"></script>
 <script src="zinnen.js"></script>
 <script src="capybara.js"></script>

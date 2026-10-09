@@ -637,7 +637,8 @@
     luister();
   }
 
-  // Een zin nakijken: eerst de woorden, en dan nog de hoofdletter en de punt.
+  // Een zin nakijken: eerst de woorden, en dan nog de punt. Een vergeten
+  // hoofdletter kost geen punten, maar het konijn zegt het er wel bij.
   function kijkZinNa(zin, gegeven) {
     const woorden = (t) => t.toLowerCase().replace(/[.,!?;:]/g, ' ').split(/\s+/).filter(Boolean);
     const goed = woorden(zin);
@@ -647,7 +648,7 @@
     const woordenGoed = evenLang && fout.length === 0;
     const hoofdletter = /^[A-ZÀ-Ý]/.test(gegeven);
     const punt = /[.!?]$/.test(gegeven);
-    return { fout, woordenGoed, hoofdletter, punt, punten: woordenGoed ? (hoofdletter && punt ? 1 : 0.5) : 0 };
+    return { fout, woordenGoed, hoofdletter, punt, punten: woordenGoed ? (punt ? 1 : 0.5) : 0 };
   }
 
   function dicteeKlaar() {

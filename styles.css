@@ -590,6 +590,8 @@ body.groep-5 .balk { background: rgba(254,243,245,.92); }
 }
 .fout-woord { color: var(--rood); text-decoration: underline wavy; text-underline-offset: 4px; }
 .overzicht-zin { font-size: 1.1rem; letter-spacing: 0; }
+.dictee-kaart { text-align: center; }
+.stip.gedaan { background: var(--inkt-zacht); border-color: var(--inkt-zacht); opacity: .45; }
 
 @media (prefers-reduced-motion: reduce) {
   .wortel, .wortel-knop, .bouw-vakjes, .flits-vak { animation: none !important; }
@@ -600,6 +602,9 @@ body.groep-5 .balk { background: rgba(254,243,245,.92); }
 @media (max-width: 560px) {
   body { font-size: 17px; }
   .modus-uitleg { display: none; }
+  .modus-keuze { gap: 6px; }
+  .modus-knop { padding: 10px 4px; }
+  .modus-naam { font-size: 1rem; }
   .regelkaart { padding: 16px; }
   .sorteer-rij { flex-direction: column; align-items: stretch; }
   .sorteer-knoppen { margin-left: 0; }

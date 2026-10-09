@@ -125,12 +125,16 @@ const GROEP5 = {
         { w: 'r[ei]s', zinDictee: false, emoji: '✈️', zin: 'Wij gaan op reis naar Spanje.' },
         { w: 'pl[ei]n', emoji: '🛝', zin: 'Op het plein spelen de kinderen.' },
         { w: 'z[ei]l', emoji: '⛵', zin: 'De boot heeft een wit zeil.' },
-        { w: '[ij]s', emoji: '🧊', zin: 'Op de sloot ligt dik ijs.' },
+        { w: 'd[ij]k', emoji: '🌊', zin: 'Achter de dijk ligt de zee.' },
         { w: 't[ij]d', emoji: '⏰', zin: 'Het is tijd om naar bed te gaan.' },
-        { w: 'pr[ij]s', emoji: '🏆', zin: 'Zij wint de eerste prijs.' },
-        { w: 'v[ij]f', emoji: '🖐️', zin: 'Een hand heeft vijf vingers.' },
+        { w: 'pr[ij]s', emoji: '🏆', zin: 'Zij wint een mooie prijs.' },
+        { w: 'v[ij]f', zinDictee: false, emoji: '🖐️', zin: 'Een hand heeft vijf vingers.' },
         { w: 'b[ij]', emoji: '🐝', zin: 'De bij zoekt een bloem.' },
-        { w: 'p[ij]l', emoji: '🏹', zin: 'De pijl wijst naar links.' }
+        { w: 'l[ij]n', emoji: '📏', zin: 'Trek een rechte lijn.' },
+        { w: '[ei]', emoji: '🥚', zin: 'De kip legt een ei.' },
+        { w: 'kl[ei]', emoji: '🏺', zin: 'Wij maken een pot van klei.' },
+        { w: 'gord[ij]n', emoji: '🪟', zin: 'Doe het gordijn maar dicht.' },
+        { w: 'k[ij]ken', emoji: '👀', zin: 'Wij kijken naar een film.' }
       ]
     },
     {
@@ -152,7 +156,11 @@ const GROEP5 = {
         { w: 'z[ou]t', emoji: '🧂', zin: 'Er zit te veel zout in de soep.' },
         { w: 't[ou]w', emoji: '🪢', zin: 'Wij springen met een lang touw.' },
         { w: 'k[ou]s', emoji: '🧦', zin: 'Er zit een gat in mijn kous.' },
-        { w: 'vr[ou]w', emoji: '👩', zin: 'De vrouw fietst naar haar werk.' }
+        { w: 'vr[ou]w', emoji: '👩', zin: 'De vrouw fietst naar haar werk.' },
+        { w: 'kl[au]w', emoji: '🐾', zin: 'De kat heeft een scherpe klauw.' },
+        { w: 'p[au]ze', emoji: '🔔', zin: 'In de pauze spelen wij buiten.' },
+        { w: 'm[ou]w', emoji: '👕', zin: 'Er zit een vlek op mijn mouw.' },
+        { w: 'b[ou]wen', emoji: '🏗️', zin: 'Wij bouwen een hut in het bos.' }
       ]
     },
     {
@@ -174,7 +182,11 @@ const GROEP5 = {
         { w: 'voe[t]', emoji: '🦶', lang: 'voeten', zin: 'Ik stoot mijn voet tegen de stoel.' },
         { w: 'kran[t]', emoji: '📰', lang: 'kranten', zin: 'Opa leest elke dag de krant.' },
         { w: 'taar[t]', emoji: '🎂', lang: 'taarten', zin: 'Op mijn feest eten wij taart.' },
-        { w: 'ten[t]', emoji: '⛺', lang: 'tenten', zin: 'Wij slapen in een tent.' }
+        { w: 'ten[t]', emoji: '⛺', lang: 'tenten', zin: 'Wij slapen in een tent.' },
+        { w: 'vrien[d]', emoji: '🧑‍🤝‍🧑', lang: 'vrienden', zin: 'Mijn beste vriend woont naast mij.' },
+        { w: 'lan[d]', emoji: '🌾', lang: 'landen', zin: 'De boer werkt op het land.' },
+        { w: 'hoe[d]', emoji: '🎩', lang: 'hoeden', zin: 'De tovenaar draagt een hoge hoed.' },
+        { w: 'kaar[t]', emoji: '💌', lang: 'kaarten', zin: 'Ik stuur oma een kaart.' }
       ]
     },
     {
@@ -196,7 +208,11 @@ const GROEP5 = {
         { w: 'i[nk]t', emoji: '🖋️', zin: 'Er zit blauwe inkt in de pen.' },
         { w: 'dri[nk]en', emoji: '🥤', zin: 'Ik wil graag water drinken.' },
         { w: 'da[nk]', zinDictee: false, emoji: '🙏', zin: 'Dank je wel voor het cadeau.' },
-        { w: 'sti[nk]en', emoji: '🦨', zin: 'Die oude sokken stinken!' }
+        { w: 'sti[nk]en', emoji: '🦨', zin: 'Die oude sokken stinken!' },
+        { w: 'wa[ng]', emoji: '😊', zin: 'Ik geef oma een kus op haar wang.' },
+        { w: 'ha[ng]en', emoji: '🧥', zin: 'De jassen hangen aan de kapstok.' },
+        { w: 'do[nk]er', emoji: '🌙', zin: 'In de nacht is het donker.' },
+        { w: 'pi[nk]', emoji: '🤙', zin: 'Mijn pink is mijn kleinste vinger.' }
       ]
     },
     {
@@ -204,7 +220,7 @@ const GROEP5 = {
       titel: 'Eén of twee medeklinkers',
       emoji: '🥖',
       soort: 'Klankgroepen',
-      tip: 'Verdeel het woord in klankgroepen. Eindigt de eerste klankgroep op een korte klank, zoals in bak-ker? Dan komen er twee medeklinkers. Is het een lange klank, zoals in bo-men? Dan maar één.',
+      tip: 'Verdeel het woord in klankgroepen. Hoor je in de eerste klankgroep een korte klank, zoals in bak-ker? Dan komen er twee medeklinkers. Is het een lange klank, zoals in bo-men? Dan maar één.',
       woorden: [
         { w: 'ba[kk]er', emoji: '👨‍🍳', zin: 'De bakker bakt vers brood.' },
         { w: 'ka[tt]en', emoji: '🐈', zin: 'Onze katten slapen op de bank.' },
@@ -216,8 +232,12 @@ const GROEP5 = {
         { w: 'bo[m]en', emoji: '🌳', zin: 'In het bos staan hoge bomen.' },
         { w: 'ra[m]en', emoji: '🪟', zin: 'Papa wast de ramen.' },
         { w: 'a[p]en', emoji: '🐒', zin: 'De apen klimmen in de boom.' },
-        { w: 'po[t]en', emoji: '🐾', zin: 'Een hond heeft vier poten.' },
-        { w: 'sla[p]en', emoji: '😴', zin: 'De baby moet nu slapen.' }
+        { w: 'po[t]en', emoji: '🐾', zin: 'De hond heeft natte poten.' },
+        { w: 'sla[p]en', emoji: '😴', zin: 'De baby moet nu slapen.' },
+        { w: 'pa[nn]en', emoji: '🍳', zin: 'De pannen staan op het vuur.' },
+        { w: 'ju[ff]en', emoji: '👩‍🏫', zin: 'De juffen drinken samen thee.' },
+        { w: 'le[p]el', emoji: '🥄', zin: 'Ik eet mijn soep met een lepel.' },
+        { w: 'vo[g]el', emoji: '🐦', zin: 'De vogel bouwt een nest.' }
       ]
     },
     {
@@ -228,7 +248,7 @@ const GROEP5 = {
       opties: ['sch', 'schr'],
       tip: 'Zeg het woord langzaam. Hoor je na de sch nog een r? Dan schrijf je schr, zoals in schrijven.',
       woorden: [
-        { w: '[sch]ool', emoji: '🏫', zin: 'Om half negen begint de school.' },
+        { w: '[sch]ool', emoji: '🏫', zin: 'Morgen begint de school weer.' },
         { w: '[sch]aap', emoji: '🐑', zin: 'Het schaap heeft een dikke vacht.' },
         { w: '[sch]oen', emoji: '👟', zin: 'Mijn schoen zit te strak.' },
         { w: '[sch]ip', emoji: '🚢', zin: 'Het schip vaart over de zee.' },
@@ -238,7 +258,11 @@ const GROEP5 = {
         { w: '[schr]ijven', emoji: '✍️', zin: 'Wij leren netjes schrijven.' },
         { w: '[schr]ik', emoji: '😱', zin: 'Van schrik liet ik mijn beker vallen.' },
         { w: '[schr]oef', zinDictee: false, emoji: '🔩', zin: 'Er zit een schroef los in de stoel.' },
-        { w: '[schr]am', emoji: '🩹', zin: 'Ik heb een schram op mijn knie.' }
+        { w: '[schr]am', emoji: '🩹', zin: 'Ik heb een schram op mijn knie.' },
+        { w: '[sch]ouder', emoji: '💪', zin: 'Mijn schouder doet pijn.' },
+        { w: '[sch]uur', emoji: '🛖', zin: 'De fiets staat in de schuur.' },
+        { w: '[schr]ijver', emoji: '📚', zin: 'De schrijver maakt een nieuw boek.' },
+        { w: '[schr]obben', emoji: '🧽', zin: 'Wij schrobben de vloer.' }
       ]
     },
     {
@@ -254,10 +278,13 @@ const GROEP5 = {
         { w: 'm[eeuw]', emoji: '🕊️', zin: 'De meeuw pikt een frietje.' },
         { w: 'schr[eeuw]', emoji: '😫', zin: 'Ik hoorde een harde schreeuw.' },
         { w: 'n[ieuw]', emoji: '✨', zin: 'Ik heb een nieuw boek gekregen.' },
-        { w: 'k[ieuw]', zinDictee: false, emoji: '🐟', zin: 'Een vis ademt door een kieuw.' },
+        { w: 'k[ieuw]en', zinDictee: false, emoji: '🐟', zin: 'Een vis ademt met zijn kieuwen.' },
         { w: 'd[uw]', emoji: '👉', zin: 'Geef de schommel een duw.' },
         { w: 'r[uw]', emoji: '🪨', zin: 'De steen voelt ruw aan.' },
-        { w: 'sch[uw]', emoji: '🙈', zin: 'Het hertje is erg schuw.' }
+        { w: 'sch[uw]', emoji: '🙈', zin: 'Het hertje is erg schuw.' },
+        { w: 'g[eeuw]', emoji: '🥱', zin: 'Ik ben zo moe dat ik steeds geeuw.' },
+        { w: 'n[ieuw]s', emoji: '📺', zin: 'Opa kijkt elke avond naar het nieuws.' },
+        { w: 'sl[uw]', emoji: '🦊', zin: 'De vos is een sluw dier.' }
       ]
     },
     {
@@ -279,7 +306,77 @@ const GROEP5 = {
         { w: 'gr[oei]', emoji: '🌱', zin: 'Ik groei elk jaar een stukje.' },
         { w: 'bl[oei]', emoji: '🌸', zin: 'De boom staat in bloei.' },
         { w: 'b[oei]', emoji: '🛟', zin: 'In het water drijft een rode boei.' },
-        { w: 'f[oei]', emoji: '😠', zin: 'Foei, dat mag niet!' }
+        { w: 'f[oei]', emoji: '😠', zin: 'Foei, dat mag niet!' },
+        { w: 'dr[aai]', emoji: '🔄', zin: 'Geef het wiel een flinke draai.' },
+        { w: 'z[aai]en', emoji: '🌻', zin: 'In de lente zaaien wij bloemen.' },
+        { w: 'str[ooi]', emoji: '🧂', zin: 'Ik strooi zout op mijn ei.' },
+        { w: 'r[oei]en', emoji: '🚣', zin: 'Wij roeien naar de overkant.' }
+      ]
+    },
+    {
+      id: 'chtgt',
+      titel: 'ch of g voor de t',
+      emoji: '🌙',
+      soort: 'Regelwoorden',
+      opties: ['ch', 'g'],
+      tip: 'De g en de ch klinken hetzelfde. Is het iets wat je doet? Kijk dan naar het hele werkwoord: zeggen schrijf je met een g, dus ook hij zegt. En vliegen, dus hij vliegt. Anders schrijf je na een korte klank bijna altijd cht, zoals in nacht en lucht.',
+      woorden: [
+        { w: 'na[ch]t', emoji: '🌙', zin: 'In de nacht slapen de meeste dieren.' },
+        { w: 'lu[ch]t', emoji: '☁️', zin: 'Er hangen wolken in de lucht.' },
+        { w: 'bo[ch]t', emoji: '↩️', zin: 'De fietser gaat door de bocht.' },
+        { w: 'za[ch]t', emoji: '🧸', zin: 'Mijn knuffel is lekker zacht.' },
+        { w: 'gezi[ch]t', emoji: '😀', zin: 'Ik was mijn gezicht.' },
+        { w: 'vru[ch]t', emoji: '🍎', zin: 'Een appel is een vrucht.' },
+        { w: 'e[ch]t', emoji: '💎', zin: 'Dit is een echt zwaard.' },
+        { w: 'to[ch]t', emoji: '🥾', zin: 'Wij maken een lange tocht.' },
+        { w: 'ze[g]t', emoji: '💬', zin: 'De juf zegt dat het pauze is.' },
+        { w: 'vlie[g]t', emoji: '🐦', zin: 'De vogel vliegt naar zijn nest.' },
+        { w: 'draa[g]t', emoji: '🎒', zin: 'Papa draagt de zware tas.' },
+        { w: 'vraa[g]t', emoji: '🙋', zin: 'Het meisje vraagt de weg.' }
+      ]
+    },
+    {
+      id: 'iglijk',
+      titel: 'ig of lijk',
+      emoji: '😄',
+      soort: 'Regelwoorden',
+      opties: ['ig', 'ug', 'lijk', 'luk'],
+      tip: 'Je hoort ug, maar je schrijft ig, zoals in aardig. Je hoort luk, maar je schrijft lijk, zoals in vrolijk. Zo gaat het bij al deze woorden!',
+      woorden: [
+        { w: 'aard[ig]', emoji: '😊', zin: 'De buurvrouw is erg aardig.' },
+        { w: 'gezell[ig]', emoji: '🥳', zin: 'Het is gezellig bij oma thuis.' },
+        { w: 'grapp[ig]', emoji: '🤡', zin: 'De clown is heel grappig.' },
+        { w: 'zonn[ig]', emoji: '☀️', zin: 'Vandaag is het warm en zonnig.' },
+        { w: 'nod[ig]', emoji: '🖊️', zin: 'Ik heb een nieuwe pen nodig.' },
+        { w: 'rust[ig]', emoji: '🤫', zin: 'Wij werken rustig door.' },
+        { w: 'vro[lijk]', emoji: '😄', zin: 'Het meisje zingt een vrolijk lied.' },
+        { w: 'moei[lijk]', emoji: '🤯', zin: 'Deze som is erg moeilijk.' },
+        { w: 'eer[lijk]', emoji: '⚖️', zin: 'Wij verdelen de koekjes eerlijk.' },
+        { w: 'heer[lijk]', emoji: '😋', zin: 'De soep smaakt heerlijk.' },
+        { w: 'duide[lijk]', emoji: '🔍', zin: 'De juf legt het duidelijk uit.' },
+        { w: 'gevaar[lijk]', emoji: '⚠️', zin: 'Spelen bij het spoor is gevaarlijk.' }
+      ]
+    },
+    {
+      id: 'verklein',
+      titel: 'Klein maken: je, tje of pje',
+      emoji: '🐣',
+      soort: 'Regelwoorden',
+      opties: ['je', 'tje', 'pje'],
+      tip: 'Meestal maak je een woord klein met je, zoals huisje. Na een lange klank met een l, n of r komt er tje, zoals stoeltje. En na een m komt er pje, zoals boompje.',
+      woorden: [
+        { w: 'huis[je]', emoji: '🏠', zin: 'In het bos staat een klein huisje.' },
+        { w: 'boek[je]', emoji: '📖', zin: 'Ik lees een dun boekje.' },
+        { w: 'vis[je]', emoji: '🐟', zin: 'In de kom zwemt een visje.' },
+        { w: 'hond[je]', emoji: '🐶', zin: 'Het hondje rent door de tuin.' },
+        { w: 'stoel[tje]', emoji: '🪑', zin: 'De baby zit in een stoeltje.' },
+        { w: 'deur[tje]', emoji: '🚪', zin: 'Het deurtje van de kooi staat open.' },
+        { w: 'schoen[tje]', emoji: '👟', zin: 'Er ligt een schoentje op de trap.' },
+        { w: 'steen[tje]', emoji: '🪨', zin: 'Ik vind een mooi steentje.' },
+        { w: 'boom[pje]', emoji: '🌱', zin: 'Wij planten een boompje in de tuin.' },
+        { w: 'raam[pje]', emoji: '🪟', zin: 'Doe het raampje even open.' },
+        { w: 'arm[pje]', emoji: '👶', zin: 'De baby zwaait met haar armpje.' },
+        { w: 'film[pje]', emoji: '🎬', zin: 'Wij kijken een grappig filmpje.' }
       ]
     }
   ]

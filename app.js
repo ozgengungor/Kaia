@@ -3,11 +3,12 @@
  *
  * Bewust zonder framework of build-stap: dit bestand wordt direct door de
  * browser geladen. De oefeningen komen uit exercises.js (begrijpend lezen),
- * spelling.js en taal.js (taalverzorging); deze code kent geen enkele oefening
- * bij naam, zodat er later een editor bovenop kan.
+ * spelling.js, taal.js (taalverzorging) en dictee.js; deze code kent geen
+ * enkele oefening bij naam, zodat er later een editor bovenop kan.
  *
  * De oefenvormen delen alles behalve het scherm vóór de vragen: bij lezen is
- * dat de tekst, bij spelling en taalverzorging de regelkaart van Kaia.
+ * dat de tekst, bij spelling en taalverzorging de regelkaart van Kaia. Het
+ * dictee heeft geen vragen maar een eigen scherm; zie "Dictee" verderop.
  *
  * Dit bestand regelt ook het keuzescherm voor de groep. Groep 8 is alles
  * hieronder; groep 5 (de spelletjes met het konijn) staat in spellen.js en
@@ -32,6 +33,15 @@
   }
 
   function kies(lijst) { return lijst[Math.floor(Math.random() * lijst.length)]; }
+
+  function schud(lijst) {
+    const kopie = lijst.slice();
+    for (let i = kopie.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [kopie[i], kopie[j]] = [kopie[j], kopie[i]];
+    }
+    return kopie;
+  }
 
   // localStorage kan geblokkeerd zijn (privémodus); dan werkt de app gewoon door.
   function laad(sleutel, standaard) {
@@ -73,7 +83,23 @@
   // Alles wat per oefenvorm verschilt staat hier bij elkaar. De rest van de
   // app (vragen, nakijken, score) werkt voor alle vormen hetzelfde.
   // `stof` zegt wat het kind vóór de vragen te zien krijgt: de tekst of een
-  // regelkaart van Kaia.
+  // regelkaart van Kaia. Bij 'dictee' zijn er geen vragen: daar leest Kaia voor.
+
+  // De dictees van groep 8: de gemengde dictees, en één dictee per pakket.
+  const DICTEES = [
+    ...DICTEE8.dictees,
+    ...DICTEE8.pakketten.map((p) => ({
+      id: `dictee-${p.id}`,
+      titel: p.titel,
+      soort: p.soort,
+      emoji: p.emoji,
+      niveau: p.niveau,
+      vorm: 'woorden',
+      aantal: Math.min(DICTEE8.woordenPerPakket, p.woorden.length),
+      pakket: p
+    }))
+  ];
+
   const MODI = {
     lezen: {
       icoon: '📖',
@@ -118,6 +144,20 @@
         'Taalverzorging! Hoofdletters, komma\'s en zinsdelen: na vandaag zie je ze overal.',
         'Kies een regel. Ik leg hem uit en daarna oefenen we samen.',
         'Groter als of groter dan? Kies maar een regel, dan weet je het zo.'
+      ]
+    },
+    dictee: {
+      icoon: '🎧',
+      stof: 'dictee',
+      titel: 'Kies een dictee',
+      ondertitel: 'Ik lees voor en jij schrijft op. Nakijken doen we pas aan het eind, net als op school.',
+      andere: 'Ander dictee kiezen →',
+      woord: 'dictee',
+      lijst: () => DICTEES,
+      welkom: [
+        'Dictee! Oren open en vingers klaar: ik lees voor, jij schrijft op.',
+        'Kies een dictee. Je mag elk woord zo vaak horen als je wilt.',
+        'Zin in een dictee? Begin met één soort woorden, of pak meteen het grote dictee.'
       ]
     }
   };
@@ -262,7 +302,7 @@
     zetGroep(null);
     Konijn.render($('#konijn-keuze'), 'zwaai', GROEP5.konijn);
     Capybara.render($('#capy-keuze'), 'zwaai');
-    $('#groep-5-uitleg').textContent = `Spellingspelletjes met ${GROEP5.konijn} het konijn`;
+    $('#groep-5-uitleg').textContent = `Spellingspelletjes en dictee met ${GROEP5.konijn} het konijn`;
     toonScherm('scherm-groep');
   }
 
@@ -304,7 +344,7 @@
         <span class="kaart-meta">
           <span class="label">${escapeHtml(oef.soort)}</span>
           <span class="bolletjes" title="Moeilijkheid">${'●'.repeat(oef.niveau)}${'○'.repeat(3 - oef.niveau)}</span>
-          <span class="kaart-meta-vragen">${oef.vragen.length} vragen</span>
+          <span class="kaart-meta-vragen">${oef.vragen ? `${oef.vragen.length} vragen` : `${oef.aantal} ${oef.vorm}`}</span>
         </span>
         <span class="kaart-score ${opgeslagen ? '' : 'leeg'}">${
           opgeslagen
@@ -339,6 +379,7 @@
     vraagNr = 0;
     antwoorden = [];
     reeks = 0;
+    if (MODI[modus].stof === 'dictee') { startDictee(); return; }
 
     // Wat er in de lade bij de vragen zit: de tekst, of de regel van Kaia.
     const metRegel = MODI[modus].stof === 'regel';
@@ -727,8 +768,10 @@
 
   // Hoofdletters, spaties en een punt aan het eind laten we door de vingers
   // glippen: het gaat om het woord zelf.
+  // Een tablet maakt van een apostrof vaak een krullend tekentje (auto’s); dat
+  // is hetzelfde antwoord.
   function normaliseer(woord) {
-    return String(woord).toLowerCase().trim().replace(/\s+/g, ' ').replace(/[.,!?;:]+$/, '');
+    return String(woord).toLowerCase().trim().replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').replace(/[.,!?;:]+$/, '');
   }
   function zonderTekentjes(woord) {
     return normaliseer(woord).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -836,9 +879,9 @@
   /*  Eindscherm                                                         */
   /* ------------------------------------------------------------------ */
 
-  function toonKlaar() {
-    const totaal = oefening.vragen.length;
-    const punten = antwoorden.reduce((n, a) => n + (a ? a.punten : 0), 0);
+  // Het deel van het eindscherm dat voor elke oefenvorm gelijk is: de score
+  // bewaren, Kaia, de sterren en het puntentotaal. Geeft het aantal sterren terug.
+  function tekenScore(punten, totaal) {
     const percentage = Math.round((punten / totaal) * 100);
     const sterren = sterrenVoor(percentage);
 
@@ -858,7 +901,15 @@
         : '<span class="ster-uit">☆</span>').join('');
     $('#score-getal').textContent =
       `${punten % 1 === 0 ? punten : punten.toFixed(1)} van de ${totaal} punten (${percentage}%)`;
+    return sterren;
+  }
 
+  function toonKlaar() {
+    const punten = antwoorden.reduce((n, a) => n + (a ? a.punten : 0), 0);
+    const sterren = tekenScore(punten, oefening.vragen.length);
+
+    $('#klaar-advies').hidden = true;
+    $('#overzicht-kop').textContent = 'Zo ging het per vraag';
     const lijst = $('#overzicht');
     lijst.innerHTML = '';
     oefening.vragen.forEach((v, i) => {
@@ -883,6 +934,175 @@
   // opgenomen kan worden. Het percentage staat eronder bij de sterren.
   function eindPraatje(sterren) {
     return VASTE_ZINNEN.einde[MODI[modus].stof][sterren];
+  }
+
+  /* ------------------------------------------------------------------ */
+  /*  Dictee                                                             */
+  /* ------------------------------------------------------------------ */
+
+  // Een dictee gaat zoals op school: Kaia leest voor, het kind schrijft op, en
+  // er wordt pas aan het eind nagekeken. Tussendoor zegt Kaia dus niets over
+  // goed of fout. Het woord (of de zin) wordt altijd uitgesproken, ook als de
+  // voorleesknop uit staat: zonder stem is er geen dictee.
+
+  let dictee = null;        // { items, nr, antwoorden } tijdens een dictee
+
+  // Kies `aantal` woorden, zo eerlijk mogelijk verdeeld over de pakketten.
+  function spreid(kandidaten, aantal) {
+    const perPakket = new Map();
+    schud(kandidaten).forEach((w) => {
+      if (!perPakket.has(w.pakket.id)) perPakket.set(w.pakket.id, []);
+      perPakket.get(w.pakket.id).push(w);
+    });
+    const stapels = schud([...perPakket.values()]);
+    const uit = [];
+    while (uit.length < aantal && stapels.some((s) => s.length)) {
+      stapels.forEach((s) => { if (s.length && uit.length < aantal) uit.push(s.pop()); });
+    }
+    return schud(uit);
+  }
+
+  function startDictee() {
+    stopSpreken();
+    const alle = [];
+    (oefening.pakket ? [oefening.pakket] : DICTEE8.pakketten).forEach((p) =>
+      p.woorden.forEach((item) => alle.push({ ...item, pakket: p })));
+    const kandidaten = oefening.vorm === 'zinnen' ? alle.filter((w) => w.zinDictee !== false) : alle;
+    dictee = { items: spreid(kandidaten, oefening.aantal), nr: 0, antwoorden: [] };
+    Capybara.render($('#capy-dictee'), 'lezen');
+    toonScherm('scherm-dictee');
+    dicteeVraag(true);
+  }
+
+  function dicteeVraag(eerste) {
+    const { items, nr } = dictee;
+    const zinnen = oefening.vorm === 'zinnen';
+
+    $('#dictee-stippen').innerHTML = items.map((_, i) =>
+      `<span class="stip ${i < nr ? 'gedaan' : i === nr ? 'nu' : ''}"></span>`).join('');
+    $('#dictee-praatje').textContent = (eerste ? DICTEE8.uitleg : DICTEE8.opdracht)[oefening.vorm];
+    $('#dictee-teller').textContent = `${zinnen ? 'Zin' : 'Woord'} ${nr + 1} van ${items.length}`;
+
+    const invoer = $('#dictee-invoer');
+    invoer.value = '';
+    invoer.classList.toggle('dictee-zin-invoer', zinnen);
+    invoer.style.width = `${Math.max(10, items[nr].w.length + 4)}ch`;
+    invoer.setAttribute('aria-label', zinnen ? 'Typ de zin' : 'Typ het woord');
+
+    const knop = $('#dictee-volgende');
+    knop.textContent = nr === items.length - 1 ? 'Klaar, nakijken! →' : 'Volgende →';
+    knop.disabled = true;
+
+    invoer.focus({ preventScroll: true });
+    dicteeLuister(eerste);
+  }
+
+  // Bij het eerste woord leest Kaia ook de uitleg voor, als voorlezen aan staat.
+  function dicteeLuister(metUitleg) {
+    const w = dictee.items[dictee.nr];
+    const vorm = oefening.vorm;
+    const sleutel = vorm === 'zinnen' ? `d8:zin:${w.w}` : `d8:woord:${w.w}`;
+    const tekst = vorm === 'zinnen' ? w.zin : `${w.w}. ${w.zin}`;
+    if (metUitleg && instellingen.voorlezen) {
+      speelOpname([`d8:uitleg:${vorm}`, sleutel], `${DICTEE8.uitleg[vorm]} ${tekst}`);
+    } else {
+      speelOpname(sleutel, tekst);
+    }
+  }
+
+  function dicteeVolgende() {
+    const gegeven = $('#dictee-invoer').value.trim();
+    if (!dictee || !gegeven) return;
+    dictee.antwoorden[dictee.nr] = gegeven;
+    dictee.nr += 1;
+    if (dictee.nr >= dictee.items.length) dicteeKlaar();
+    else dicteeVraag(false);
+  }
+
+  // Een woord nakijken gaat net als bij een invulvraag: alleen een trema of
+  // een accent vergeten telt als half goed.
+  function kijkWoordNa(goed, gegeven) {
+    if (normaliseer(goed) === normaliseer(gegeven)) return 1;
+    if (zonderTekentjes(goed) === zonderTekentjes(gegeven)) return 0.5;
+    return 0;
+  }
+
+  // Een zin nakijken: eerst de woorden, dan het leesteken aan het eind. Komma's
+  // tellen niet mee, die hoor je niet. Alles goed is één punt; een half punt
+  // als alleen het leesteken mist, of als er precies één woord fout is.
+  function kijkZinNa(zin, gegeven) {
+    const woorden = (t) => t.replace(/[’‘`´]/g, "'").replace(/[.,!?;:"“”]/g, ' ').split(/\s+/).filter(Boolean);
+    const goed = woorden(zin);
+    const jij = woorden(gegeven);
+    const klein = (w) => w.toLowerCase();
+    const evenLang = goed.length === jij.length;
+    const jijKlein = jij.map(klein);
+    const fout = goed.map((_, i) => i).filter((i) =>
+      (evenLang ? klein(jij[i]) !== klein(goed[i]) : !jijKlein.includes(klein(goed[i]))));
+    const woordenGoed = evenLang && fout.length === 0;
+    // Een hoofdletter te weinig of te veel: het woord klopt, maar niet precies zo.
+    const hoofdletters = evenLang
+      ? goed.every((w, i) => klein(w) !== klein(jij[i]) || w === jij[i])
+      : /^[A-ZÀ-Ý]/.test(gegeven);
+    // Een vraag eindigt op een vraagteken; een punt of uitroepteken hoor je niet.
+    const leesteken = zin.trim().endsWith('?') ? /\?$/.test(gegeven) : /[.!]$/.test(gegeven);
+    // Hoofdletters kosten geen punten: het dictee gaat om de spelling. Kaia
+    // zegt er na afloop wel iets over.
+    let punten = 0;
+    if (woordenGoed) punten = leesteken ? 1 : 0.5;
+    else if (evenLang && fout.length === 1 && leesteken) punten = 0.5;
+    return { fout, woordenGoed, hoofdletters, leesteken, punten };
+  }
+
+  function dicteeKlaar() {
+    stopSpreken();
+    const zinnen = oefening.vorm === 'zinnen';
+    const uitslag = dictee.items.map((w, i) => {
+      const gegeven = dictee.antwoorden[i] || '';
+      if (zinnen) return { w, gegeven, ...kijkZinNa(w.zin, gegeven) };
+      return { w, gegeven, punten: kijkWoordNa(w.w, gegeven) };
+    });
+    const sterren = tekenScore(uitslag.reduce((n, u) => n + u.punten, 0), uitslag.length);
+
+    // Advies: welke regel nog eens oefenen, of denk aan hoofdletters en leestekens.
+    const advies = [];
+    const regels = [...new Set(uitslag.filter((u) => (zinnen ? !u.woordenGoed : u.punten < 1)).map((u) => {
+      const regel = SPELLINGOEFENINGEN.find((oef) => oef.id === u.w.pakket.regel);
+      return regel ? regel.titel : null;
+    }).filter(Boolean))];
+    if (regels.length) advies.push(`Oefen nog eens bij Spelling: ${regels.join(' · ')}.`);
+    if (zinnen && uitslag.some((u) => !u.hoofdletters)) advies.push('Let op de hoofdletters: aan het begin van de zin, en nergens anders als het geen naam is.');
+    if (zinnen && uitslag.some((u) => !u.leesteken)) advies.push('Denk aan de punt of het vraagteken aan het eind van de zin.');
+    $('#klaar-advies').textContent = advies.join(' ');
+    $('#klaar-advies').hidden = advies.length === 0;
+
+    $('#overzicht-kop').textContent = 'Zo ging je dictee';
+    $('#overzicht').innerHTML = uitslag.map((u) => {
+      const extra = [];
+      let juist;
+      if (zinnen) {
+        juist = u.w.zin.split(' ').map((woord, i) =>
+          (u.fout.includes(i) ? `<span class="fout-woord">${escapeHtml(woord)}</span>` : escapeHtml(woord))).join(' ');
+        if (u.punten < 1) extra.push(`Jij schreef: ${escapeHtml(u.gegeven)}`);
+        if (!u.hoofdletters) extra.push('Let op de hoofdletters.');
+        if (!u.leesteken) extra.push('Het leesteken aan het eind klopt niet.');
+      } else {
+        juist = escapeHtml(u.w.w);
+        if (u.punten < 1) extra.push(`Jij schreef: ${escapeHtml(u.gegeven)}`);
+        if (u.punten < 1) extra.push(escapeHtml(u.w.pakket.tip));
+      }
+      return `
+        <li class="${u.punten >= 1 ? 'goed' : u.punten > 0 ? '' : 'fout'}">
+          <span class="overzicht-icoon">${u.punten >= 1 ? '✅' : u.punten > 0 ? '🤏' : '❌'}</span>
+          <span>
+            <p class="overzicht-vraag ${zinnen ? '' : 'overzicht-woord'}">${juist}</p>
+            ${extra.map((regel) => `<p class="overzicht-uitleg">${regel}</p>`).join('')}
+          </span>
+        </li>`;
+    }).join('');
+
+    toonScherm('scherm-klaar');
+    spreek($('#klaar-tekst').textContent, `eind:dictee:${sterren}`);
   }
 
   /* ------------------------------------------------------------------ */
@@ -915,6 +1135,15 @@
   $('#knop-nakijken').addEventListener('click', nakijken);
   $('#knop-volgende').addEventListener('click', volgende);
   $('#knop-opnieuw').addEventListener('click', () => startOefening(oefening));
+
+  $('#dictee-luister').addEventListener('click', () => { dicteeLuister(false); $('#dictee-invoer').focus(); });
+  $('#dictee-volgende').addEventListener('click', dicteeVolgende);
+  $('#dictee-invoer').addEventListener('input', (e) => { $('#dictee-volgende').disabled = !e.target.value.trim(); });
+  $('#dictee-invoer').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    e.preventDefault();
+    if (!e.repeat) dicteeVolgende();
+  });
   $('#knop-andere').addEventListener('click', () => toonStart(kies(PRAATJES.terug)));
 
   $('#knop-hint').addEventListener('click', () => {

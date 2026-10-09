@@ -3,9 +3,9 @@
 Een kleine webapp voor twee groepen van de Nederlandse basisschool. Het
 startscherm vraagt eerst **welke groep** er gaat oefenen:
 
-- **Groep 8** oefent **begrijpend lezen**, **spelling** en **taalverzorging**
-  met Kaia de capybara. Ze introduceert de tekst of de regel, geeft hints, legt
-  fouten uit en juicht mee.
+- **Groep 8** oefent **begrijpend lezen**, **spelling**, **taalverzorging** en
+  **dictee** met Kaia de capybara. Ze introduceert de tekst of de regel, geeft
+  hints, legt fouten uit, leest het dictee voor en juicht mee.
 - **Groep 5** speelt **spellingspelletjes** met Pluis het konijn. Pluis
   beweegt (oren, neus, knipperen), huppelt bij een goed antwoord en krijgt voor
   elk goed woord een wortel.
@@ -38,14 +38,21 @@ ronde van acht woorden. Alle vier de spellen werken met alle pakketten.
 
 | Woordpakket | Soort | Woorden |
 | --- | --- | --- |
-| ei of ij | weetwoorden | 12 |
-| au of ou | weetwoorden | 12 |
-| d of t aan het eind | langer maken | 12 |
-| ng of nk | luisterwoorden | 12 |
-| Eén of twee medeklinkers | klankgroepen | 12 |
-| sch of schr | luisterwoorden | 11 |
-| eeuw, ieuw of uw | regelwoorden | 9 |
-| aai, ooi of oei | regelwoorden | 12 |
+| ei of ij | weetwoorden | 16 |
+| au of ou | weetwoorden | 16 |
+| d of t aan het eind | langer maken | 16 |
+| ng of nk | luisterwoorden | 16 |
+| Eén of twee medeklinkers | klankgroepen | 16 |
+| sch of schr | luisterwoorden | 15 |
+| eeuw, ieuw of uw | regelwoorden | 12 |
+| aai, ooi of oei | regelwoorden | 16 |
+| ch of g voor de t | regelwoorden | 12 |
+| ig of lijk | regelwoorden | 12 |
+| Klein maken: je, tje of pje | regelwoorden | 12 |
+
+Een ronde is acht woorden uit het pakket, elke keer andere. Bij "ig of lijk"
+staan ook de foute schrijfwijzen `ug` en `luk` tussen de keuzes, want daar zit
+de moeilijkheid.
 
 Onder de spellen staan twee **dictees**, zoals op school: de woorden komen
 door elkaar uit alle pakketten en er wordt pas aan het eind nagekeken.
@@ -53,7 +60,7 @@ door elkaar uit alle pakketten en er wordt pas aan het eind nagekeken.
 | Dictee | Hoe het gaat |
 | --- | --- |
 | 📝 Woorddictee | Tien woorden, eerlijk verdeeld over de pakketten. Na afloop staat erbij uit welk pakket een fout woord kwam, met het advies dat pakket nog eens te oefenen. |
-| ✏️ Zinnendictee | Vijf hele zinnen. Alle woorden goed én een hoofdletter én een punt is 1 punt; woorden goed maar hoofdletter of punt vergeten is een half punt. Foute woorden worden onderstreept. |
+| ✏️ Zinnendictee | Vijf hele zinnen. Alle woorden goed én een punt is 1 punt; woorden goed maar de punt vergeten is een half punt. Een vergeten hoofdletter kost geen punten, maar Pluis zegt het er wel bij. Foute woorden worden onderstreept. |
 
 Voor het zinnendictee worden de dicteezinnen van de woorden hergebruikt. Een
 zin met een naam of een te lastig woord erin krijgt `zinDictee: false` en doet
@@ -77,9 +84,10 @@ De naam van het konijn staat bovenaan dat bestand (`konijn: 'Pluis'`).
 
 ## Groep 8: hoe het werkt voor het kind
 
-Bovenaan het startscherm kiest het kind eerst **📖 Lezen**, **✍️ Spelling** of
-**📝 Taal** (taalverzorging). Die keuze wordt onthouden. Daarna zijn de vormen
-bijna hetzelfde; spelling en taal werken precies gelijk:
+Bovenaan het startscherm kiest het kind eerst **📖 Lezen**, **✍️ Spelling**,
+**📝 Taal** (taalverzorging) of **🎧 Dictee**. Die keuze wordt onthouden. De
+eerste drie vormen zijn bijna hetzelfde; spelling en taal werken precies gelijk.
+Het dictee gaat anders en staat [hieronder](#groep-8-dictee).
 
 | | Lezen | Spelling / Taal |
 | --- | --- | --- |
@@ -115,16 +123,20 @@ Geoefende vaardigheden: hoofdgedachte, verwijswoorden, woordbetekenis uit de
 context, signaalwoorden, feit of mening, tekstdoel, argumenten herkennen,
 tussen de regels lezen, conclusies trekken en volgorde in een tekst.
 
-**Spelling** — zes regels met in totaal 36 vragen:
+**Spelling** — tien regels met in totaal 80 vragen:
 
 | Regel | Soort | Vragen |
 | --- | --- | --- |
-| Verdubbelen of verenkelen | klanken | 6 |
-| Werkwoorden in de tegenwoordige tijd | werkwoorden | 6 |
-| 't Kofschip: -te of -de | werkwoorden | 6 |
-| Voltooid deelwoord: -d of -t | werkwoorden | 6 |
-| Woorden die je anders schrijft dan je hoort | woorden | 6 |
-| Samenstellingen, trema en koppelteken | woorden | 6 |
+| Verdubbelen of verenkelen | klanken | 8 |
+| Werkwoorden in de tegenwoordige tijd | werkwoorden | 8 |
+| 't Kofschip: -te of -de | werkwoorden | 8 |
+| Voltooid deelwoord: -d of -t | werkwoorden | 8 |
+| Woorden die je anders schrijft dan je hoort | woorden | 8 |
+| Samenstellingen, trema en koppelteken | woorden | 8 |
+| Verleden tijd met tt of dd | werkwoorden | 8 |
+| Meervoud: -s of -'s | woorden | 8 |
+| Verkleinwoorden: -je, -tje, -pje of -etje | woorden | 8 |
+| Leenwoorden uit het Frans en het Engels | woorden | 8 |
 
 **Taalverzorging** — zes regels met in totaal 36 vragen:
 
@@ -141,10 +153,47 @@ Omdat de app een invulantwoord nakijkt zonder op hoofdletters en leestekens
 aan het eind te letten, zijn de vragen over hoofdletters en leestekens
 meerkeuze- of sorteervragen.
 
+## Groep 8: dictee
+
+Kaia leest voor, het kind schrijft op, en er wordt pas aan het eind nagekeken.
+Het woord of de zin wordt altijd uitgesproken, ook als de voorleesknop uit
+staat; "Luister nog een keer" mag zo vaak als nodig.
+
+| Dictee | Hoe het gaat |
+| --- | --- |
+| 📝 Groot woorddictee | Vijftien woorden, eerlijk verdeeld over alle pakketten. Kaia zegt het woord en een zin waar het in zit ("Wordt. Mijn zusje wordt later dierenarts."); het kind typt alleen het woord. |
+| ✏️ Zinnendictee | Acht hele zinnen. |
+| Eén dictee per pakket | Tien woorden van één soort, om gericht te oefenen. |
+
+De elf pakketten, elk met twaalf woorden (dus elke keer een ander dictee):
+verdubbelen en verenkelen, tegenwoordige tijd, verleden tijd, voltooid
+deelwoord, -tie/-isch/-lijk/-ig, samenstellingen met trema en koppelteken,
+verleden tijd met tt of dd, meervoud op -s of -'s, verkleinwoorden, leenwoorden
+en instinkers (onmiddellijk, sowieso).
+
+Nakijken:
+
+- **Woord**: goed is 1 punt; alleen een trema of accent vergeten (`cafes`) is
+  een half punt. Hoofdletters tellen niet, en een krullende apostrof van de
+  tablet (`auto’s`) is gewoon goed.
+- **Zin**: alle woorden goed én het leesteken aan het eind is 1 punt. Een half
+  punt als alleen het leesteken niet klopt, of als er precies één woord fout
+  is. Komma's tellen niet mee. Een vraag moet op een vraagteken eindigen.
+  Hoofdletters kosten geen punten; Kaia zegt er na afloop wel iets over.
+
+Na afloop staat bij elk fout woord de regel in het kort, en Kaia noemt de
+spellingregels die het kind nog eens kan oefenen: een pakket verwijst met
+`regel` naar de bijbehorende regel in `spelling.js`.
+
+Een pakket toevoegen = een object aan `pakketten` in `dictee.js` plakken. Let
+bij een zin op dat je hem maar op één manier kunt opschrijven: geen getallen
+(acht of 8?), geen namen van mensen en geen `één` met accenten. Zo'n zin kan
+met `zinDictee: false` buiten het zinnendictee blijven.
+
 ## Voorleesaudio (ElevenLabs)
 
-In `audio/` staat per leestekst, per regelkaart, per hint en (voor groep 5) per
-dicteewoord, speluitleg en pakkettip een mp3, gemaakt met
+In `audio/` staat per leestekst, per regelkaart, per hint, per dicteewoord (van
+groep 5 en groep 8) en per speluitleg en pakkettip een mp3, gemaakt met
 ElevenLabs (stem `YUdpWWny7k5yb4QCeweX`, model `eleven_multilingual_v2`, Nederlands). De app
 haalt `audio/manifest.json` op en speelt de opname af zodra de tekst of de
 regelkaart opent of het kind op de hintknop drukt; ontbreekt een opname, dan valt ze terug op de browserstem.
@@ -157,7 +206,8 @@ echo 'ELEVENLABS_API_KEY=sk_...' > .env    # staat in .gitignore
 npm run audio                              # alleen wat veranderd is
 node genereer-audio.js --alles             # alles opnieuw
 node genereer-audio.js lees:wolf           # één opname (lees:<id>, regel:<id>, hint:<id>:<vraagnr>,
-                                           #   woord:<woord>, zin:<woord>, g5:spel:<id>, g5:pakket:<id>)
+                                           #   woord:<woord>, zin:<woord>, g5:spel:<id>, g5:pakket:<id>,
+                                           #   d8:woord:<woord>, d8:zin:<woord>)
 ```
 
 Alles wat de app uitspreekt heeft een eigen opname: teksten, regelkaarten,
@@ -185,16 +235,17 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 
 | Bestand | Wat het doet |
 | --- | --- |
-| `index.html` | Alle schermen: groep kiezen, de vijf van groep 8 en de vier van groep 5. |
+| `index.html` | Alle schermen: groep kiezen, de zes van groep 8 en de vier van groep 5. |
 | `styles.css` | Alle opmaak. |
 | `exercises.js` | **Alle leesteksten**, hardcoded in één array. |
 | `spelling.js` | **Alle spellingregels**, in dezelfde stijl. |
 | `taal.js` | **Alle taalverzorgingsregels**, zelfde structuur als spelling. |
+| `dictee.js` | **Het dictee van groep 8**: de dictees en alle woordpakketten met hun zinnen. |
 | `groep5.js` | **Groep 5**: de vier spellen, de dictees en alle woordpakketten. |
 | `zinnen.js` | De vaste, opneembare zinnen van Kaia: reacties na een vraag en de eindschermen. |
 | `capybara.js` | Kaia als SVG, met zes stemmingen. |
 | `konijn.js` | Pluis als SVG, met zeven stemmingen; het bewegen zit in `styles.css`. |
-| `app.js` | Groep kiezen en alle logica van groep 8: schermen, nakijken, score, voortgang. |
+| `app.js` | Groep kiezen en alle logica van groep 8: schermen, nakijken, dictee, score, voortgang. |
 | `spellen.js` | De logica van de spelletjes van groep 5. |
 | `server.js` | Statische server voor lokaal draaien en deployen. |
 | `genereer-audio.js` | Neemt de teksten, regelkaarten, hints en dicteewoorden op met ElevenLabs, naar `audio/`. |
@@ -203,8 +254,8 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 ## Later: oefeningen bewerken
 
 `app.js` kent geen enkele oefening bij naam; het leest alleen de arrays
-`OEFENINGEN` (exercises.js), `SPELLINGOEFENINGEN` (spelling.js) en
-`TAALOEFENINGEN` (taal.js). Een editor
+`OEFENINGEN` (exercises.js), `SPELLINGOEFENINGEN` (spelling.js),
+`TAALOEFENINGEN` (taal.js) en het object `DICTEE8` (dictee.js). Een editor
 hoeft dus alleen die datastructuren te produceren (en later bijvoorbeeld op te
 halen bij de server in plaats van uit het script). Wat per oefenvorm verschilt,
 staat in `app.js` bij elkaar in de constante `MODI`.
@@ -221,7 +272,8 @@ Vraagtypes die de app nu ondersteunt:
 ```
 
 `invul` kijkt de app zélf na (hoofdletters, spaties en een punt aan het eind
-maken niet uit; alleen een trema of accent vergeten telt als half goed).
+maken niet uit, en een krullende apostrof is gewoon een apostrof; alleen een
+trema of accent vergeten telt als half goed).
 `sorteer` geeft een heel punt als alles klopt en een half punt bij meer dan de
 helft goed.
 

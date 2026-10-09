@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /*
  * Maakt met ElevenLabs een voorgelezen versie van elke leestekst, elke
- * regelkaart (spelling en taalverzorging), elke hint en, voor groep 5, elk
- * dicteewoord met zijn zin, de speluitleg en de tips. Alles komt als mp3 in
+ * regelkaart (spelling en taalverzorging), elke hint, elk dicteewoord van
+ * groep 8 en, voor groep 5, elk dicteewoord met zijn zin, de speluitleg en de
+ * tips. Alles komt als mp3 in
  * audio/. De app speelt die opnames af in plaats van de browserstem (zie
  * spreek() en speelOpname() in app.js).
  *
@@ -10,7 +11,7 @@
  *   ELEVENLABS_API_KEY=sk_... node genereer-audio.js        # of zet de sleutel in .env
  *   node genereer-audio.js --alles                          # alles opnieuw opnemen
  *   node genereer-audio.js --droog                          # alleen tonen wat er nog moet, en hoeveel tekens dat kost
- *   node genereer-audio.js lees:wolf hint:wolf:0 woord:trein   # alleen deze
+ *   node genereer-audio.js lees:wolf hint:wolf:0 woord:trein d8:woord:wordt   # alleen deze
  *
  * Per opname staat in audio/manifest.json een vingerafdruk van de tekst, de
  * stem en het model. Alleen wat veranderd is wordt opnieuw opgenomen, zodat
@@ -146,6 +147,39 @@ function opnames() {
   for (const stof of Object.keys(zinnen.einde)) {
     zinnen.einde[stof].forEach((t, sterren) => vast(`eind:${stof}:${sterren}`, t));
   }
+  // Het dictee van groep 8: per woord "Wordt. Mijn zusje wordt later
+  // dierenarts.", de zin los voor het zinnendictee, en de uitleg van Kaia.
+  // In een bestandsnaam kan geen apostrof of trema: auto's wordt auto-s.
+  const dictee8 = laadArray('dictee.js', 'DICTEE8');
+  const alsBestand = (woord) => woord.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  for (const vorm of Object.keys(dictee8.uitleg)) {
+    lijst.push({
+      sleutel: `d8:uitleg:${vorm}`,
+      bestand: `d8-uitleg-${vorm}.mp3`,
+      titel: `Dictee groep 8 — uitleg ${vorm}`,
+      tekst: dictee8.uitleg[vorm]
+    });
+  }
+  for (const pakket of dictee8.pakketten) {
+    for (const item of pakket.woorden) {
+      lijst.push({
+        sleutel: `d8:woord:${item.w}`,
+        bestand: `d8-woord-${alsBestand(item.w)}.mp3`,
+        titel: `Dictee groep 8 — ${item.w}`,
+        tekst: `${item.w[0].toUpperCase()}${item.w.slice(1)}. ${item.zin}`
+      });
+      if (item.zinDictee !== false) {
+        lijst.push({
+          sleutel: `d8:zin:${item.w}`,
+          bestand: `d8-zin-${alsBestand(item.w)}.mp3`,
+          titel: `Dictee groep 8 — zin bij ${item.w}`,
+          tekst: item.zin
+        });
+      }
+    }
+  }
+
   // Groep 5: per woord een dictee-opname ("Trein. De trein rijdt naar Utrecht."),
   // plus de uitleg van elk spel en de tip van elk woordpakket.
   const groep5 = laadArray('groep5.js', 'GROEP5');
