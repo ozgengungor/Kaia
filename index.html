@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oefenen met Kaia en Pluis — groep 5 en groep 8</title>
-<meta name="description" content="Spellingspelletjes voor groep 5 met Pluis het konijn, en begrijpend lezen, spelling, taalverzorging en dictee voor groep 8 met Kaia de capybara.">
+<title>Oefenen met Kaia, Pluis en Wolkje — groep 5, groep 8 en knutselen</title>
+<meta name="description" content="Spellingspelletjes voor groep 5 met Pluis het konijn, begrijpend lezen, spelling, taalverzorging en dictee voor groep 8 met Kaia de capybara, en leren haken met Wolkje het schaap.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
   <!-- ================= GROEP KIEZEN ================= -->
   <section class="scherm actief" id="scherm-groep">
     <h1 class="titel titel-midden">Wie gaat er oefenen?</h1>
-    <p class="ondertitel titel-midden">Kies je groep.</p>
+    <p class="ondertitel titel-midden">Kies je groep, of ga knutselen.</p>
 
     <div class="groep-keuze">
       <button class="groep-kaart groep-kaart-5" type="button" data-groep="5">
@@ -43,6 +43,11 @@
         <div class="capy capy-keuze" id="capy-keuze"></div>
         <span class="groep-naam">Groep 8</span>
         <span class="groep-uitleg">Lezen, spelling, taal en dictee met Kaia de capybara</span>
+      </button>
+      <button class="groep-kaart groep-kaart-knutsel" type="button" data-groep="knutsel">
+        <div class="schaap schaap-keuze" id="schaap-keuze"></div>
+        <span class="groep-naam">Knutselen</span>
+        <span class="groep-uitleg" id="groep-knutsel-uitleg">Leren haken met het schaap</span>
       </button>
     </div>
   </section>
@@ -305,6 +310,75 @@
     </div>
   </section>
 
+  <!-- ================= KNUTSELEN: LES KIEZEN ================= -->
+  <section class="scherm" id="scherm-k-start">
+    <button class="terugknop" data-naar-groepen>← Terug naar het begin</button>
+    <div class="welkom">
+      <div class="schaap schaap-groot" id="schaap-start"></div>
+      <div class="bubbel bubbel-links"><p id="k-welkom"></p></div>
+    </div>
+
+    <div id="k-plannen"></div>
+
+    <div class="voortgang-blok">
+      <p>Je mag elke les zo vaak doen als je wilt.</p>
+      <button class="tekstknop" id="k-reset">Vinkjes en tellers wissen</button>
+    </div>
+  </section>
+
+  <!-- ================= KNUTSELEN: EEN LES ================= -->
+  <section class="scherm" id="scherm-k-les">
+    <div class="vragen-kop">
+      <button class="terugknop" data-k-start>← Alle lessen</button>
+      <div class="stippen" id="k-stippen" aria-label="Hoe ver je bent"></div>
+    </div>
+
+    <div class="lees-kop">
+      <span class="label" id="k-les-soort"></span>
+      <h1 class="titel" id="k-les-titel"></h1>
+    </div>
+
+    <div class="coach-strook">
+      <div class="schaap schaap-klein" id="schaap-les"></div>
+      <div class="bubbel"><p id="k-praatje" aria-live="polite"></p></div>
+    </div>
+
+    <div class="k-nodig" id="k-nodig" hidden></div>
+
+    <article class="vraag-kaart k-kaart" id="k-kaart" aria-live="polite"></article>
+
+    <div class="k-teller" id="k-teller" hidden>
+      <h2 class="regel-kop">🧮 Teller</h2>
+      <div class="teller-rij">
+        <div class="teller">
+          <span class="teller-naam">Toer</span>
+          <button type="button" class="teller-knop" data-teller="toer" data-stap="-1" aria-label="Toer min één">−</button>
+          <span class="teller-getal" id="teller-toer" aria-live="polite">0</span>
+          <button type="button" class="teller-knop" data-teller="toer" data-stap="1" aria-label="Toer plus één">+</button>
+        </div>
+        <div class="teller">
+          <span class="teller-naam">Steken</span>
+          <button type="button" class="teller-knop" data-teller="steek" data-stap="-1" aria-label="Steek min één">−</button>
+          <span class="teller-getal" id="teller-steek" aria-live="polite">0</span>
+          <button type="button" class="teller-knop" data-teller="steek" data-stap="1" aria-label="Steek plus één">+</button>
+        </div>
+      </div>
+      <p class="teller-uitleg">Bij een nieuwe toer gaan de steken vanzelf terug naar 0. <button type="button" class="tekstknop" id="teller-wis">Teller op nul</button></p>
+    </div>
+
+    <details class="k-schema" id="k-schema" hidden></details>
+
+    <details class="k-hulp" id="k-hulp" hidden>
+      <summary>🆘 Lukt het niet?</summary>
+      <ul id="k-hulp-lijst"></ul>
+    </details>
+
+    <div class="onderbalk onderbalk-dubbel">
+      <button class="grote-knop knop-grijs" id="k-terug">← Vorige</button>
+      <button class="grote-knop" id="k-verder">Volgende stap →</button>
+    </div>
+  </section>
+
 </main>
 
 <script src="exercises.js"></script>
@@ -312,10 +386,13 @@
 <script src="taal.js"></script>
 <script src="dictee.js"></script>
 <script src="groep5.js"></script>
+<script src="knutselen.js"></script>
 <script src="zinnen.js"></script>
 <script src="capybara.js"></script>
 <script src="konijn.js"></script>
+<script src="schaap.js"></script>
 <script src="app.js"></script>
 <script src="spellen.js"></script>
+<script src="werkplaats.js"></script>
 </body>
 </html>

@@ -174,7 +174,7 @@ main { max-width: 820px; margin: 0 auto; padding: 20px 16px 120px; }
 
 /* ---------- Kiezen: welke groep ---------- */
 .titel-midden { text-align: center; }
-.groep-keuze { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px; }
+.groep-keuze { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
 .groep-kaart {
   display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;
   background: var(--papier); border: 4px solid var(--rand); border-radius: 26px;
@@ -184,7 +184,8 @@ main { max-width: 820px; margin: 0 auto; padding: 20px 16px 120px; }
 .groep-kaart:hover, .groep-kaart:focus-visible { transform: translateY(-4px); outline: none; }
 .groep-kaart-5:hover, .groep-kaart-5:focus-visible { border-color: #e8798f; background: #fff3f6; }
 .groep-kaart-8:hover, .groep-kaart-8:focus-visible { border-color: var(--groen); background: var(--groen-licht); }
-.konijn-keuze, .capy-keuze { width: min(180px, 70%); }
+.groep-kaart-knutsel:hover, .groep-kaart-knutsel:focus-visible { border-color: #9a74c9; background: #f5effb; }
+.konijn-keuze, .capy-keuze, .schaap-keuze { width: min(180px, 80%); }
 .groep-naam { font-family: 'Baloo 2', sans-serif; font-size: 1.9rem; font-weight: 700; line-height: 1.1; margin-top: 8px; }
 .groep-uitleg { color: var(--inkt-zacht); font-size: .98rem; }
 
@@ -200,6 +201,95 @@ body.groep-5 {
     var(--creme);
 }
 body.groep-5 .balk { background: rgba(254,243,245,.92); }
+
+/* Knutselen krijgt een lila jasje. */
+body.groep-knutsel {
+  --creme: #f7f3fb;
+  --creme-diep: #ece3f6;
+  --rand: #ddd0ec;
+  background:
+    radial-gradient(circle at 12% 8%, #fdf9ff 0%, transparent 40%),
+    radial-gradient(circle at 88% 4%, #eef7f1 0%, transparent 35%),
+    var(--creme);
+}
+body.groep-knutsel .balk { background: rgba(247,243,251,.92); }
+
+/* ---------- Het schaap (knutselen) ---------- */
+.schaap { flex: none; }
+.schaap-groot { width: 132px; }
+.schaap-klein { width: 78px; }
+.schaap-svg { width: 100%; height: auto; display: block; overflow: visible; animation: schaap-dein 3.6s ease-in-out infinite; transform-origin: 50% 95%; }
+@keyframes schaap-dein { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-3px) rotate(1deg); } }
+.schaap[data-stemming="juich"] .schaap-svg { animation: konijn-hup .7s cubic-bezier(.3,.6,.4,1) infinite; }
+.schaap-ogen { transform-box: fill-box; transform-origin: 50% 50%; animation: knipper 5.2s linear infinite; }
+.schaap-poot { animation: zwaaien .9s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .schaap-svg, .schaap-ogen, .schaap-poot { animation: none !important; }
+}
+
+/* ---------- Knutselen: lessen ---------- */
+.k-plan { margin-top: 8px; }
+.k-plan-voortgang { display: flex; align-items: center; gap: 12px; margin: -8px 0 18px; color: var(--inkt-zacht); font-size: .95rem; }
+.k-balk { flex: 1; max-width: 260px; height: 12px; border-radius: 99px; background: var(--creme-diep); border: 2px solid var(--rand); overflow: hidden; }
+.k-balk span { display: block; height: 100%; background: var(--groen); border-radius: 99px; }
+.kaart.k-kaart-volgende { border-color: #9a74c9; }
+
+.k-nodig {
+  background: var(--papier); border: 3px dashed var(--rand); border-radius: var(--radius);
+  padding: 4px 20px 12px; margin-bottom: 16px;
+}
+.k-nodig .regel-kop { margin-top: 12px; }
+.k-nodig ul { margin: 0; padding-left: 1.3em; }
+
+.k-stap-nr { margin: 0 0 6px; color: var(--inkt-zacht); font-size: .9rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.k-stap-tekst { font-size: 1.3em; line-height: 1.5; margin: 0 0 12px; }
+.k-stap-tekst b { background: linear-gradient(transparent 62%, #ffe08a 62%); }
+.k-tekens { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 12px; }
+.k-teken {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--creme); border-radius: 12px; padding: 6px 12px 6px 6px; color: #5b3d8a;
+}
+.k-teken span { color: var(--inkt); }
+.k-teken-svg { flex: none; }
+
+.k-opties { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.k-optie {
+  text-align: left; font: inherit; color: var(--inkt); cursor: pointer;
+  background: var(--papier); border: 3px solid var(--rand); border-radius: 14px; padding: 12px 16px;
+}
+.k-optie:hover:not(:disabled) { border-color: #9a74c9; }
+.k-optie.is-goed { border-color: var(--groen); background: var(--groen-licht); }
+.k-optie.is-fout { border-color: var(--rood); background: var(--rood-licht); }
+.k-optie:disabled { cursor: default; }
+.k-vraag-uitleg { margin: 14px 0 0; }
+
+.k-teller {
+  margin-top: 16px; background: var(--papier); border: 3px solid var(--rand);
+  border-radius: var(--radius); padding: 4px 20px 14px; box-shadow: var(--schaduw);
+}
+.teller-rij { display: flex; flex-wrap: wrap; gap: 14px 28px; }
+.teller { display: flex; align-items: center; gap: 10px; }
+.teller-naam { font-weight: 700; min-width: 4.2em; }
+.teller-knop {
+  width: 52px; height: 52px; border-radius: 50%; border: 3px solid var(--rand); background: var(--creme);
+  font-size: 1.6rem; font-weight: 700; line-height: 1; color: var(--inkt); cursor: pointer;
+}
+.teller-knop:hover { border-color: #9a74c9; }
+.teller-knop:active { transform: translateY(2px); }
+.teller-getal { font-family: 'Baloo 2', sans-serif; font-size: 2rem; min-width: 2.2em; text-align: center; }
+.teller-uitleg { margin: 10px 0 0; color: var(--inkt-zacht); font-size: .9rem; }
+
+.k-schema, .k-hulp {
+  margin-top: 16px; background: var(--papier); border: 3px solid var(--rand);
+  border-radius: var(--radius); padding: 12px 20px;
+}
+.k-schema summary, .k-hulp summary { cursor: pointer; font-weight: 700; }
+.k-schema-plaatje { margin: 14px 0 6px; overflow-x: auto; text-align: center; }
+.k-schema-svg { width: 100%; max-width: 380px; height: auto; }
+.k-schema-rond { max-width: 300px; }
+.k-hulp ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.k-hulp li p { margin: 0; }
+.k-probleem { font-weight: 700; }
 
 /* ---------- Kiezen: lezen, spelling of taal ---------- */
 .modus-keuze { display: flex; gap: 12px; margin: 22px 0 4px; }
@@ -599,6 +689,11 @@ body.groep-5 .balk { background: rgba(254,243,245,.92); }
 
 :focus-visible { outline: 3px solid var(--oranje); outline-offset: 2px; }
 
+@media (max-width: 760px) and (min-width: 561px) {
+  .groep-kaart { padding: 18px 10px 20px; }
+  .groep-naam { font-size: 1.5rem; }
+}
+
 @media (max-width: 560px) {
   body { font-size: 17px; }
   .modus-uitleg { display: none; }
@@ -611,9 +706,11 @@ body.groep-5 .balk { background: rgba(254,243,245,.92); }
   .sorteer-knop { flex: 1; }
   .titel { font-size: 1.55rem; }
   .vraag { font-size: 1.18rem; }
-  .capy-groot, .konijn-groot { width: 96px; }
+  .capy-groot, .konijn-groot, .schaap-groot { width: 96px; }
   .groep-keuze { grid-template-columns: 1fr; }
-  .konijn-keuze, .capy-keuze { width: 130px; }
+  .konijn-keuze, .capy-keuze, .schaap-keuze { width: 130px; }
+  .k-stap-tekst { font-size: 1.15em; }
+  .teller-knop { width: 48px; height: 48px; }
   .spel-woord, .flits-vak { font-size: 2.3rem; }
   .spel-plaatje { font-size: 3.4rem; }
   .wortels { font-size: 1.1rem; gap: 1px; }

@@ -1,7 +1,7 @@
-# Oefenen met Kaia 🦫 en Pluis 🐰
+# Oefenen met Kaia 🦫, Pluis 🐰 en Wolkje 🐑
 
-Een kleine webapp voor twee groepen van de Nederlandse basisschool. Het
-startscherm vraagt eerst **welke groep** er gaat oefenen:
+Een kleine webapp voor twee groepen van de Nederlandse basisschool, en om te
+leren knutselen. Het startscherm vraagt eerst **wie** er gaat oefenen:
 
 - **Groep 8** oefent **begrijpend lezen**, **spelling**, **taalverzorging** en
   **dictee** met Kaia de capybara. Ze introduceert de tekst of de regel, geeft
@@ -9,6 +9,8 @@ startscherm vraagt eerst **welke groep** er gaat oefenen:
 - **Groep 5** speelt **spellingspelletjes** met Pluis het konijn. Pluis
   beweegt (oren, neus, knipperen), huppelt bij een goed antwoord en krijgt voor
   elk goed woord een wortel.
+- **Knutselen** is voor iedereen: stap voor stap **leren haken** met Wolkje
+  het schaap.
 
 ## Draaien
 
@@ -190,6 +192,47 @@ bij een zin op dat je hem maar op één manier kunt opschrijven: geen getallen
 (acht of 8?), geen namen van mensen en geen `één` met accenten. Zo'n zin kan
 met `zinDictee: false` buiten het zinnendictee blijven.
 
+## Knutselen: leren haken met Wolkje
+
+Het eerste plan is **Leren haken**: dertien lessen op volgorde, van de spullen
+die je nodig hebt tot een ronde onderzetter.
+
+| # | Les | Soort |
+| --- | --- | --- |
+| 1 | Wat heb je nodig? | Basis |
+| 2 | Naald en draad vasthouden | Basis |
+| 3 | De beginlus | Basis |
+| 4 | Lossen | Steek |
+| 5 | Project: een armbandje | Project |
+| 6 | Halve vasten | Steek |
+| 7 | Vasten | Steek |
+| 8 | Keren: een lapje van vasten | Steek |
+| 9 | Afhechten en draadjes wegwerken | Basis |
+| 10 | Stokjes | Steek |
+| 11 | Een haakpatroon lezen | Basis |
+| 12 | In de rondte: de magische ring | Steek |
+| 13 | Project: een ronde onderzetter | Project |
+
+Zo gaat een les:
+
+- **Stap voor stap**, één stap tegelijk in grote letters, zodat je kunt
+  meedoen met je handen vol wol. Bij een stap staat soms een tip of het
+  **haakteken** van de steek (ovaaltje, bolletje, kruisje, T).
+- Bij sommige lessen staat een **haakschema**, dat de app zelf tekent: heen en
+  weer (het lapje) of in de rondte (de onderzetter).
+- Bij het lapje en de onderzetter staat een **teller** voor toeren en steken.
+  Die onthoudt de stand per les; bij een nieuwe toer gaan de steken terug naar 0.
+- **Lukt het niet?** staat onder elke les, met de bekende beginnersproblemen.
+- Na de stappen komen een paar vragen (**Weet je het nog?**), en daarna zeg
+  je zelf of de les gelukt is. Er zijn geen sterren: je haakwerk is het bewijs.
+  Op het startscherm staat een vinkje bij elke gelukte les en een pijltje bij
+  de volgende.
+
+De haaktermen zijn de Nederlandse: losse, halve vaste, vaste, half stokje,
+stokje. De les over patronen legt uit dat Engelse patronen andere namen
+gebruiken. Een nieuw plan (breien, naaien) is een object in `plannen` in
+`knutselen.js`; de structuur staat bovenaan dat bestand.
+
 ## Voorleesaudio (ElevenLabs)
 
 In `audio/` staat per leestekst, per regelkaart, per hint, per dicteewoord (van
@@ -212,7 +255,8 @@ node genereer-audio.js lees:wolf           # één opname (lees:<id>, regel:<id>
 
 Alles wat de app uitspreekt heeft een eigen opname: teksten, regelkaarten,
 vragen, hints, uitleg, voorbeeldantwoorden, woordkaarten, de korte reacties van
-Kaia ("Helemaal goed!"), de eindschermen en alles van groep 5. De browserstem
+Kaia ("Helemaal goed!"), de eindschermen en alles van groep 5. Knutselen heeft geen opnames: daar
+leest de browserstem voor. De browserstem
 is alleen nog een vangnet voor als een opname ontbreekt. Vaste zinnen van Kaia
 staan daarom in `zinnen.js` en die van Pluis in `groep5.js`: zonder getallen,
 zodat ze op te nemen zijn. De score staat los onder de tekst.
@@ -235,18 +279,21 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 
 | Bestand | Wat het doet |
 | --- | --- |
-| `index.html` | Alle schermen: groep kiezen, de zes van groep 8 en de vier van groep 5. |
+| `index.html` | Alle schermen: groep kiezen, de zes van groep 8, de vier van groep 5 en de twee van Knutselen. |
 | `styles.css` | Alle opmaak. |
 | `exercises.js` | **Alle leesteksten**, hardcoded in één array. |
 | `spelling.js` | **Alle spellingregels**, in dezelfde stijl. |
 | `taal.js` | **Alle taalverzorgingsregels**, zelfde structuur als spelling. |
 | `dictee.js` | **Het dictee van groep 8**: de dictees en alle woordpakketten met hun zinnen. |
 | `groep5.js` | **Groep 5**: de vier spellen, de dictees en alle woordpakketten. |
+| `knutselen.js` | **Knutselen**: de plannen en alle lessen, met hun stappen, schema's, hulp en vragen. |
 | `zinnen.js` | De vaste, opneembare zinnen van Kaia: reacties na een vraag en de eindschermen. |
 | `capybara.js` | Kaia als SVG, met zes stemmingen. |
 | `konijn.js` | Pluis als SVG, met zeven stemmingen; het bewegen zit in `styles.css`. |
+| `schaap.js` | Wolkje als SVG, met vijf stemmingen. |
 | `app.js` | Groep kiezen en alle logica van groep 8: schermen, nakijken, dictee, score, voortgang. |
 | `spellen.js` | De logica van de spelletjes van groep 5. |
+| `werkplaats.js` | De logica van Knutselen: lessen, haakschema's, de teller en de voortgang. |
 | `server.js` | Statische server voor lokaal draaien en deployen. |
 | `genereer-audio.js` | Neemt de teksten, regelkaarten, hints en dicteewoorden op met ElevenLabs, naar `audio/`. |
 | `audio/` | De opnames (mp3) en `manifest.json`. |

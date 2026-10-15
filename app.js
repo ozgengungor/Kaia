@@ -12,7 +12,8 @@
  *
  * Dit bestand regelt ook het keuzescherm voor de groep. Groep 8 is alles
  * hieronder; groep 5 (de spelletjes met het konijn) staat in spellen.js en
- * gebruikt de hulpjes die onderaan in window.KaiaApp worden klaargezet.
+ * Knutselen (haken met het schaap) in werkplaats.js. Die twee gebruiken de
+ * hulpjes die onderaan in window.KaiaApp worden klaargezet.
  */
 
 (() => {
@@ -286,15 +287,18 @@
   /*  Groep kiezen                                                       */
   /* ------------------------------------------------------------------ */
 
-  // De bovenbalk en de kleuren volgen de gekozen groep (null = keuzescherm).
+  // De bovenbalk en de kleuren volgen de gekozen groep: 5, 8, 'knutsel' of
+  // null (het keuzescherm).
   function zetGroep(groep) {
     document.body.classList.toggle('groep-5', groep === 5);
+    document.body.classList.toggle('groep-knutsel', groep === 'knutsel');
     const konijn = escapeHtml(GROEP5.konijn);
     $('#balk-naam').innerHTML =
       groep === 5 ? `Oefenen met <b>${konijn}</b>`
         : groep === 8 ? 'Oefenen met <b>Kaia</b>'
-          : `Oefenen met <b>Kaia</b> en <b>${konijn}</b>`;
-    if (groep !== 8) $('#balk-icoon').textContent = groep === 5 ? '🐰' : '🏡';
+          : groep === 'knutsel' ? `Knutselen met <b>${escapeHtml(KNUTSELEN.coach)}</b>`
+            : `Oefenen met <b>Kaia</b> en <b>${konijn}</b>`;
+    if (groep !== 8) $('#balk-icoon').textContent = groep === 5 ? '🐰' : groep === 'knutsel' ? '🧶' : '🏡';
   }
 
   function toonGroepen() {
@@ -302,6 +306,8 @@
     zetGroep(null);
     Konijn.render($('#konijn-keuze'), 'zwaai', GROEP5.konijn);
     Capybara.render($('#capy-keuze'), 'zwaai');
+    Schaap.render($('#schaap-keuze'), 'blij', KNUTSELEN.coach);
+    $('#groep-knutsel-uitleg').textContent = `Leren haken met ${KNUTSELEN.coach} het schaap`;
     $('#groep-5-uitleg').textContent = `Spellingspelletjes en dictee met ${GROEP5.konijn} het konijn`;
     toonScherm('scherm-groep');
   }
@@ -1113,6 +1119,7 @@
   document.querySelectorAll('.groep-kaart').forEach((kaart) => {
     kaart.addEventListener('click', () => {
       if (kaart.dataset.groep === '5') { zetGroep(5); window.Groep5.toonStart(); }
+      else if (kaart.dataset.groep === 'knutsel') { zetGroep('knutsel'); window.Knutselen.toonStart(); }
       else toonStart();
     });
   });
