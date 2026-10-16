@@ -213,6 +213,18 @@ die je nodig hebt tot een ronde onderzetter.
 | 12 | In de rondte: de magische ring | Steek |
 | 13 | Project: een ronde onderzetter | Project |
 
+Daarna volgt **Leuke haakprojecten**: zes projecten die steeds iets moeilijker
+worden, met onderweg één nieuwe steek (minderen).
+
+| # | Project | Wat je oefent |
+| --- | --- | --- |
+| 1 | Een sjaaltje voor je knuffel | vasten, kleur wisselen, franjes |
+| 2 | Een gehaakt bloemetje | magische ring, een toer sluiten, stokjes |
+| 3 | Een boekenlegger met een kwastje | stokjes heen en weer, een kwastje maken |
+| 4 | Nieuwe steek: minderen | 2 vasten samen haken |
+| 5 | Een slinger met vlaggetjes | minderen aan twee kanten |
+| 6 | Een knuffelbal met een gezichtje | meerderen, minderen, vullen, borduren |
+
 Zo gaat een les:
 
 - **Stap voor stap**, één stap tegelijk in grote letters, zodat je kunt

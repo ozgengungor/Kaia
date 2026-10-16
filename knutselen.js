@@ -629,6 +629,315 @@ const KNUTSELEN = {
           klaar: 'Je eerste echte haakwerk! Zet er meteen een beker warme chocolademelk op.'
         }
       ]
+    },
+
+    {
+      id: 'haakprojecten',
+      titel: 'Leuke haakprojecten',
+      emoji: '🎨',
+      uitleg: 'Kun je alles uit Leren haken? Dan ben je klaar voor deze projecten. Ze worden steeds een beetje moeilijker, en onderweg leer je nog een nieuwe steek.',
+      lessen: [
+        {
+          id: 'knuffelsjaal',
+          titel: 'Een sjaaltje voor je knuffel',
+          soort: 'Project',
+          emoji: '🧣',
+          duur: '45 minuten',
+          intro: 'Brr, je knuffel heeft het koud! Laten we een sjaaltje haken. Je hebt alleen vasten nodig, en je kunt er mooie strepen in maken.',
+          nodig: ['Je haaknaald', 'Garen, in één kleur of in twee kleuren voor strepen', 'Een schaar en een stopnaald', 'Een knuffel om te passen'],
+          stappen: [
+            { tekst: 'Haak *7 lossen*.' },
+            { tekst: 'Haak een vaste in de tweede losse vanaf je naald, en in elke losse daarna. Je hebt *6 vasten*.' },
+            { tekst: 'Haak 1 keerlosse, draai je werk om en haak in elke vaste een vaste. Weer *6*. Dat ken je nog van je lapje!' },
+            {
+              tekst: 'Haak zo door tot het sjaaltje *één keer om de nek van je knuffel* past, met aan elke kant nog een stukje over. Houd het af en toe even om.',
+              tip: 'Wil je strepen? Wissel dan om de 4 toeren van kleur. Hoe dat moet, staat in de volgende stap.'
+            },
+            { tekst: '*Een nieuwe kleur:* haak de laatste vaste van een toer tot er nog twee lussen om je naald zitten. Maak de laatste omslag met de *nieuwe kleur* en haal die door de twee lussen. Knip de oude draad af met een staartje van 15 centimeter.' },
+            { tekst: 'Is het sjaaltje lang genoeg? Hecht af en werk alle draadjes weg.' },
+            { tekst: '*Franjes:* knip 12 draadjes van ongeveer 10 centimeter. Vouw een draadje dubbel. Steek je haaknaald door een steek aan het korte eind, pak het lusje en haal het erdoor. Haal dan de twee uiteinden door het lusje en trek aan.' },
+            { tekst: 'Doe dat in elke steek aan de korte kanten: *6 franjes* aan elke kant. Knip ze daarna netjes even lang.' }
+          ],
+          teller: true,
+          hulp: [
+            {
+              probleem: 'Mijn sjaaltje wordt breder of smaller.',
+              oplossing: 'Net als bij je lapje: tel na elke toer of je 6 vasten hebt. Haak niet in de keerlosse, en vergeet de laatste steek niet.'
+            },
+            {
+              probleem: 'Bij een nieuwe kleur zit er een gaatje.',
+              oplossing: 'Trek de twee staartjes zachtjes aan voordat je verder haakt. Als je ze straks wegwerkt, gaat het gaatje dicht.'
+            }
+          ],
+          vragen: [
+            {
+              vraag: 'Je begint met 7 lossen. Hoeveel vasten heb je in elke toer?',
+              opties: ['5', '6', '7'],
+              goed: 1,
+              uitleg: 'Je begint in de tweede losse vanaf je naald, dus de eerste losse tel je niet mee. Dan heb je er 6.'
+            },
+            {
+              vraag: 'Wanneer pak je de nieuwe kleur?',
+              opties: ['Bij de laatste omslag van de laatste vaste', 'Midden in een toer', 'Na de keerlosse'],
+              goed: 0,
+              uitleg: 'Met de laatste omslag van de toer haal je de nieuwe kleur er al doorheen. Zo begint de volgende toer meteen in de nieuwe kleur.'
+            }
+          ],
+          klaar: 'Je knuffel heeft het nooit meer koud. Wat staat dat sjaaltje goed!'
+        },
+
+        {
+          id: 'bloemetje',
+          titel: 'Een gehaakt bloemetje',
+          soort: 'Project',
+          emoji: '🌸',
+          duur: '20 minuten',
+          intro: 'Een bloemetje is zo klaar, en je kunt het overal op zetten: op een haarspeld, een tas of je jas. Je gebruikt de magische ring en stokjes.',
+          nodig: ['Je haaknaald', 'Garen in een vrolijke kleur', 'Een stopnaald', 'Als je wilt: een haarspeldje of een speld om het op te naaien'],
+          stappen: [
+            { tekst: '*Toer 1:* maak een magische ring en haak er *5 vasten* in. Trek de ring dicht.' },
+            { tekst: 'Sluit de toer met een *halve vaste* in de eerste vaste. Nu heb je een gesloten rondje, in plaats van een slakkenhuis.' },
+            {
+              tekst: '*Toer 2*, het eerste blaadje: haak in de volgende steek achter elkaar *1 halve vaste, 2 lossen, 2 stokjes, 2 lossen en 1 halve vaste*. Alles in dezelfde steek!',
+              tip: 'Bij een stokje maak je eerst een omslag, weet je nog? Omslag, erin, omslag, erdoor. Dan twee keer: omslag, door twee.'
+            },
+            { tekst: 'Haak zo in elke steek een blaadje. Dan heb je *5 blaadjes*, rondom.' },
+            { tekst: 'Knip de draad af, hecht af en werk de draadjes weg aan de achterkant.' },
+            { tekst: 'Naai je bloemetje met de stopnaald op een haarspeldje, een tas of je jas. Of maak er een heleboel in allerlei kleuren en rijg ze aan een kettinkje van lossen.' }
+          ],
+          hulp: [
+            {
+              probleem: 'Mijn blaadjes zijn heel klein en krom.',
+              oplossing: 'Haak de stokjes wat losser, en trek de lossen niet aan. Een blaadje mag best een beetje bol staan.'
+            },
+            {
+              probleem: 'Ik heb maar plek voor 4 blaadjes.',
+              oplossing: 'Dan ben je een steek vergeten of zit er een blaadje over twee steken. Tel in toer 1 na of je echt 5 vasten hebt.'
+            }
+          ],
+          vragen: [
+            {
+              vraag: 'Hoe maak je van een slakkenhuis een gesloten rondje?',
+              opties: ['Met een halve vaste in de eerste steek', 'Met een keerlosse', 'Door de draad af te knippen'],
+              goed: 0,
+              uitleg: 'Met een halve vaste in de eerste steek maak je de toer dicht. Zo begint de volgende toer netjes op dezelfde plek.'
+            },
+            {
+              vraag: 'Hoeveel blaadjes krijgt je bloemetje?',
+              opties: ['4', '5', '6'],
+              goed: 1,
+              uitleg: 'In de ring zitten 5 vasten, en in elke vaste komt één blaadje. Dus 5.'
+            }
+          ],
+          klaar: 'Wat een mooi bloemetje! Waar ga je het op zetten?'
+        },
+
+        {
+          id: 'boekenlegger',
+          titel: 'Een boekenlegger met een kwastje',
+          soort: 'Project',
+          emoji: '🔖',
+          duur: '40 minuten',
+          intro: 'Nooit meer ezelsoren in je boek! Deze boekenlegger haak je met stokjes, en onderaan komt een vrolijk kwastje.',
+          nodig: ['Je haaknaald', 'Garen', 'Een schaar en een stopnaald', 'Een boek, om te kijken hoe lang hij moet worden'],
+          stappen: [
+            { tekst: 'Haak *8 lossen*.' },
+            { tekst: 'Haak een stokje in de *vierde losse* vanaf je naald, en in elke losse daarna. Samen met de 3 overgeslagen lossen heb je *6 stokjes*.' },
+            { tekst: '*Keren:* haak 3 lossen en draai je werk om. Die 3 lossen tellen als het eerste stokje van de nieuwe toer.' },
+            {
+              tekst: 'Sla de eerste steek over, want daar staan je 3 lossen al boven. Haak een stokje in elke volgende steek. Het laatste stokje haak je in de *bovenste* van de 3 lossen aan het eind. Weer *6*.',
+              tip: 'Dat laatste stokje vergeten is de bekendste stokjesfout. Tel na elke toer: zes stokjes!'
+            },
+            { tekst: 'Herhaal stap 3 en 4 tot je boekenlegger ongeveer *zo lang is als je boek*. Dat zijn zo\'n 14 toeren.' },
+            { tekst: 'Hecht af en werk de draadjes weg.' },
+            { tekst: '*Het kwastje:* wikkel de draad *15 keer* om drie vingers. Haal het bosje voorzichtig van je vingers en knoop er bovenin een draadje stevig omheen.' },
+            { tekst: 'Knoop een tweede draadje een stukje lager om het bosje, zodat er een bolletje ontstaat. Knip de lusjes onderaan open en knip de draadjes even lang.' },
+            { tekst: 'Knoop het kwastje met het bovenste draadje vast aan een korte kant van je boekenlegger.' }
+          ],
+          teller: true,
+          hulp: [
+            {
+              probleem: 'Mijn boekenlegger wordt steeds smaller.',
+              oplossing: 'Je vergeet het laatste stokje, in de bovenste van de 3 keerlossen. Die is lastig te zien, maar hij hoort er echt bij.'
+            },
+            {
+              probleem: 'Mijn boekenlegger wordt steeds breder.',
+              oplossing: 'Je haakt een stokje in de eerste steek van de toer. Die sla je over, want de 3 keerlossen tellen al als eerste stokje.'
+            }
+          ],
+          vragen: [
+            {
+              vraag: 'Waar haak je het laatste stokje van een toer?',
+              opties: ['In de bovenste van de 3 keerlossen', 'In de eerste steek van de toer', 'Nergens: die sla je over'],
+              goed: 0,
+              uitleg: 'De 3 keerlossen tellen als een stokje, dus in de bovenste daarvan komt het laatste stokje van de volgende toer.'
+            }
+          ],
+          klaar: 'Een echte boekenlegger! Ga er maar meteen een mooi boek mee lezen.'
+        },
+
+        {
+          id: 'minderen',
+          titel: 'Nieuwe steek: minderen',
+          soort: 'Steek',
+          emoji: '🔻',
+          duur: '15 minuten',
+          intro: 'Meerderen kun je al: twee vasten in één steek. Minderen is precies andersom: van twee steken maak je er één. Daarmee haak je driehoekjes en ballen.',
+          stappen: [
+            { tekst: 'Haak *11 lossen* en een toer van *10 vasten*, zoals je al kunt. Haak 1 keerlosse en draai je werk om.' },
+            { tekst: 'Steek je naald in de eerste steek, maak een omslag en haal de draad erdoor. Je hebt nu *2 lussen* om je naald.' },
+            { tekst: 'Niet afmaken! Steek je naald meteen in de *volgende* steek, maak een omslag en haal de draad erdoor. Nu heb je *3 lussen*.' },
+            { tekst: 'Maak een omslag en haal de draad door *alle 3* de lussen. Klaar: van twee steken heb je er één gemaakt.' },
+            {
+              tekst: 'Haak de rest van de toer gewone vasten. Tel na: je hebt nu *9* steken.',
+              tip: 'In een patroon staat minderen meestal als *2 v samen*: twee vasten samen haken.'
+            }
+          ],
+          hulp: [
+            {
+              probleem: 'Ik heb 4 lussen om mijn naald.',
+              oplossing: 'Dan heb je ergens twee omslagen gemaakt. In elke steek maak je maar één omslag om de draad erdoor te halen.'
+            },
+            {
+              probleem: 'Er zit een gaatje waar ik heb geminderd.',
+              oplossing: 'Trek de lussen iets strakker aan voordat je ze samen afhaakt. Een klein gaatje is niet erg: dat zie je straks bijna niet.'
+            }
+          ],
+          vragen: [
+            {
+              vraag: 'Je hebt 10 steken en je mindert één keer. Hoeveel steken heb je dan?',
+              opties: ['8', '9', '11'],
+              goed: 1,
+              uitleg: 'Van twee steken maak je er één, dus er gaat er één af: 9.'
+            },
+            {
+              vraag: 'Hoeveel lussen heb je om je naald vlak voordat je ze samen afhaakt?',
+              opties: ['2', '3', '4'],
+              goed: 1,
+              uitleg: 'Eén lus die er al zat, en uit elke steek één erbij. Samen 3.'
+            }
+          ],
+          klaar: 'Minderen kun je nu ook. Daarmee kun je echte vormen gaan haken!'
+        },
+
+        {
+          id: 'slinger',
+          titel: 'Een slinger met vlaggetjes',
+          soort: 'Project',
+          emoji: '🎉',
+          duur: '1 uur',
+          intro: 'Feest! Met een slinger vol gehaakte vlaggetjes versier je je kamer. Elk vlaggetje is een driehoekje, en dat maak je met minderen.',
+          nodig: ['Je haaknaald', 'Garen in een paar verschillende kleuren', 'Een schaar en een stopnaald'],
+          stappen: [
+            { tekst: 'Haak *11 lossen* en daarop een toer van *10 vasten*. Dat is toer 1. (10)' },
+            { tekst: 'Aan het begin van elke toer haak je *1 keerlosse* en draai je je werk om. Dat staat er hierna niet steeds meer bij.' },
+            { tekst: '*Toer 2:* 1 v in elke steek. (10)' },
+            {
+              tekst: '*Toer 3:* 2 v samen, 1 v in elk van de volgende 6 steken, 2 v samen. (8)',
+              tip: 'Zie je het? Je mindert aan het begin én aan het eind. Daarom wordt je vlaggetje aan twee kanten smaller, en blijft hij recht.'
+            },
+            { tekst: '*Toer 4:* 1 v in elke steek. (8)' },
+            { tekst: '*Toer 5:* 2 v samen, 1 v in elk van de volgende 4 steken, 2 v samen. (6)' },
+            { tekst: '*Toer 6:* 1 v in elke steek. (6) *Toer 7:* 2 v samen, 1 v in elk van de volgende 2 steken, 2 v samen. (4)' },
+            { tekst: '*Toer 8:* 1 v in elke steek. (4) *Toer 9:* 2 keer 2 v samen. (2)' },
+            { tekst: '*Toer 10:* 2 v samen. (1) Hecht af en werk de draadjes weg. Je eerste vlaggetje is klaar!' },
+            { tekst: 'Haak nog meer vlaggetjes, in allemaal verschillende kleuren. *5 of 6* is al een mooie slinger.' },
+            { tekst: 'Haak een lang kettinkje van lossen, ongeveer *1 meter*. Rijg het met de stopnaald door de bovenste rand van elk vlaggetje, en schuif ze netjes uit elkaar. Klaar om op te hangen!' }
+          ],
+          teller: true,
+          hulp: [
+            {
+              probleem: 'Mijn vlaggetje wordt scheef.',
+              oplossing: 'Dan minder je maar aan één kant. Haak in een mindertoer aan het begin én aan het eind 2 v samen.'
+            },
+            {
+              probleem: 'Ik weet niet meer in welke toer ik zit.',
+              oplossing: 'Tel de steken in je laatste toer en kijk welk getal tussen haakjes erbij past. Of gebruik de teller hieronder.'
+            }
+          ],
+          vragen: [
+            {
+              vraag: 'In toer 3 begin je met 10 steken en minder je twee keer. Hoeveel steken heb je daarna?',
+              opties: ['6', '8', '9'],
+              goed: 1,
+              uitleg: 'Elke keer minderen gaat er één af. Twee keer minderen: 10 min 2 is 8.'
+            }
+          ],
+          klaar: 'Wat een feestelijke slinger! Waar ga je hem ophangen?'
+        },
+
+        {
+          id: 'knuffelbal',
+          titel: 'Een knuffelbal met een gezichtje',
+          soort: 'Project',
+          emoji: '😊',
+          duur: '1 uur',
+          intro: 'Nu maak je je eerste echte knuffeltje: een zachte bal met een gezichtje. Dit heet amigurumi, dat is Japans voor gehaakte knuffeltjes. Je gebruikt meerderen én minderen.',
+          nodig: [
+            'Je haaknaald. Heb je er ook een van 4 millimeter? Die is nog beter: dan worden de steken strakker en zie je de vulling niet.',
+            'Garen in je lievelingskleur',
+            'Een handje vulling, uit de hobbywinkel',
+            'Een stukje zwart garen voor het gezichtje',
+            'Een steekmarkeerder, een schaar en een stopnaald'
+          ],
+          stappen: [
+            { tekst: 'Je haakt de hele bal in de rondte, als een slakkenhuis: zonder keerlossen en zonder halve vasten aan het eind van een toer. Hang je steekmarkeerder steeds in de eerste steek van de toer.' },
+            { tekst: '*Toer 1:* magische ring met 6 vasten. (6)' },
+            { tekst: '*Toer 2:* 2 v in elke steek. (12)' },
+            { tekst: '*Toer 3:* [1 v, 2 v in de volgende steek] 6 keer. (18)' },
+            { tekst: '*Toer 4:* [1 v in elk van de volgende 2 steken, 2 v in de volgende steek] 6 keer. (24)' },
+            { tekst: '*Toer 5 tot en met 8:* 1 v in elke steek. (24) Dat zijn 4 toeren zonder meerderen. Je werk buigt nu vanzelf om tot een kommetje.' },
+            { tekst: '*Toer 9:* [1 v in elk van de volgende 2 steken, 2 v samen] 6 keer. (18)' },
+            {
+              tekst: 'Borduur nu het *gezichtje*, nu je er nog makkelijk bij kunt: twee oogjes en een lachje, met zwart garen en de stopnaald.',
+              tip: 'Steek voor een oogje een paar keer op dezelfde plek door, dan wordt het lekker dik.'
+            },
+            { tekst: 'Stop de bal vol met *vulling*. Lekker stevig, maar niet zo vol dat het tussen de steken uit piept.' },
+            { tekst: '*Toer 10:* [1 v, 2 v samen] 6 keer. (12) Stop er nog wat vulling bij als dat nodig is.' },
+            { tekst: '*Toer 11:* 6 keer 2 v samen. (6)' },
+            { tekst: 'Knip de draad af met een lang staartje en hecht af. Rijg het staartje in je stopnaald en steek het door de voorste lusjes van de laatste 6 steken. Trek aan: het gaatje gaat dicht.' },
+            {
+              tekst: 'Steek de naald nog een keer dwars door de bal en knip het draadje vlak tegen de bal af. Het verdwijnt vanzelf naar binnen.',
+              tip: 'Met andere kleuren wordt het iets heel anders: oranje is een pompoentje, geel een smiley, blauw met groen een planeet.'
+            }
+          ],
+          schema: {
+            soort: 'rond',
+            toeren: 4,
+            uitleg: 'Het begin van je bal is precies hetzelfde als je onderzetter: elke toer 6 steken erbij, tot je er 24 hebt. Daarna haak je recht omhoog en minder je weer.'
+          },
+          teller: true,
+          hulp: [
+            {
+              probleem: 'De vulling piept door de gaatjes.',
+              oplossing: 'Gebruik de volgende keer een dunnere naald, of stop er iets minder vulling in.'
+            },
+            {
+              probleem: 'Mijn bal wordt een beetje een eitje.',
+              oplossing: 'Dat is ook schattig! Wil je hem ronder? Haak dan de volgende keer één toer minder zonder meerderen.'
+            },
+            {
+              probleem: 'Ik zie niet waar mijn toer begint.',
+              oplossing: 'Daar is de steekmarkeerder voor. Haal hem aan het begin van elke toer uit de oude steek en hang hem in de eerste steek van de nieuwe toer.'
+            }
+          ],
+          vragen: [
+            {
+              vraag: 'Waarom borduur je het gezichtje vóórdat je de bal dichtmaakt?',
+              opties: ['Dan kun je er nog bij met je naald', 'Omdat het garen dan sneller droogt', 'Dat maakt niet uit'],
+              goed: 0,
+              uitleg: 'Zolang de bal nog open is, kun je je naald aan de binnenkant terughalen. Als hij dicht is, wordt dat heel lastig.'
+            },
+            {
+              vraag: 'Wat gebeurt er met je werk als je een paar toeren haakt zonder te meerderen?',
+              opties: ['Het blijft plat', 'Het buigt om tot een kommetje', 'Het gaat golven'],
+              goed: 1,
+              uitleg: 'Zonder meerderen wordt je werk niet breder, alleen hoger. Daarom buigt het om, en zo krijg je een bal.'
+            }
+          ],
+          klaar: 'Je eerste amigurumi! Geef je knuffelbal een naam.'
+        }
+      ]
     }
   ]
 };
