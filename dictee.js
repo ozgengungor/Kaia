@@ -296,6 +296,76 @@ const DICTEE8 = {
       ]
     },
     {
+      id: 'ei-ij',
+      titel: 'Ei of ij, au of ou',
+      soort: 'Klanken',
+      emoji: '🥚',
+      niveau: 1,
+      regel: 'sp-ei-ij',
+      tip: 'Ei en ij klinken hetzelfde, net als au en ou. -lijk is altijd ij, -heid altijd ei, en aan het eind van een lang woord staat meestal -ij. De rest zijn weetwoorden: de blauwe pauw eet rauwe vis.',
+      woorden: [
+        { w: 'klein', zin: 'Mijn zusje is nog klein.' },
+        { w: 'prijs', zin: 'Wat is de prijs van die fiets?' },
+        { w: 'tijd', zin: 'Het is tijd om naar bed te gaan.' },
+        { w: 'bakkerij', zin: 'Bij de bakkerij ruikt het naar vers brood.' },
+        { w: 'gezondheid', zin: 'Groente is goed voor je gezondheid.' },
+        { w: 'eerlijk', zin: 'Zeg maar eerlijk wat je ervan vindt.' },
+        { w: 'geit', zin: 'De geit eet het gras in de wei.' },
+        { w: 'eiland', zin: 'Wij gaan met de boot naar het eiland.' },
+        { w: 'blauw', zin: 'De lucht is vandaag helemaal blauw.' },
+        { w: 'vrouw', zin: 'Die vrouw woont naast ons.' },
+        { w: 'koud', zin: 'Het water in het zwembad is koud.' },
+        { w: 'saus', zin: 'Ik wil graag saus op mijn patat.' },
+        { w: 'pauw', zin: 'De pauw laat zijn mooie veren zien.' }
+      ]
+    },
+    {
+      id: 'deelwoord-bijvoeglijk',
+      titel: 'Het verbrande ei',
+      soort: 'Werkwoorden',
+      emoji: '🍳',
+      niveau: 3,
+      regel: 'sp-deelwoord-bijvoeglijk',
+      tip: "Maak eerst het voltooid deelwoord met 't kofschip (verhuisd, geplakt). Staat het vóór een naamwoord, dan komt er een e achter: de verhuisde buren, de geplakte band. Eindigt het op -en, dan blijft het zo: het gebakken ei.",
+      woorden: [
+        { w: 'verbrande', zin: 'De verbrande pizza ging in de prullenbak.' },
+        { w: 'geplakte', zin: 'De geplakte band is weer heel.' },
+        { w: 'verhuisde', zin: 'De verhuisde buren sturen ons een kaart.' },
+        { w: 'versierde', zin: 'De versierde tafel ziet er feestelijk uit.' },
+        { w: 'geverfde', zin: 'Raak de pas geverfde muur niet aan.' },
+        { w: 'gefietste', zin: 'Wij tellen de gefietste kilometers.' },
+        { w: 'gebakken', zin: 'Ik eet een gebakken ei.' },
+        { w: 'gestolen', zin: 'De gestolen fiets is teruggevonden.' },
+        { w: 'gescoorde', zin: 'De gescoorde goal werd toch afgekeurd.' },
+        { w: 'gebruikte', zin: 'De gebruikte bekers gaan in de afwas.' },
+        { w: 'gekookte', zin: 'Ik pel een gekookte aardappel.' },
+        { w: 'opgeruimde', zin: 'Mijn opgeruimde kamer lijkt veel groter.' }
+      ]
+    },
+    {
+      id: 'engelse-werkwoorden',
+      titel: 'Engelse werkwoorden',
+      soort: 'Werkwoorden',
+      emoji: '🛹',
+      niveau: 3,
+      regel: 'sp-engelse-werkwoorden',
+      tip: "De stam schrijf je zoals in het Engels (skate, mail). Voor 't kofschip kijk je naar de laatste klank die je hoort: skatete en geskatet, maar mailde en gemaild. Begint het met een klinker, dan een trema: geüpdatet.",
+      woorden: [
+        { w: 'gemaild', zin: 'Ik heb de foto naar opa gemaild.' },
+        { w: 'mailde', zin: 'De juf mailde alle ouders.' },
+        { w: 'skatet', zin: 'Mijn broer skatet elke dag.' },
+        { w: 'skatete', zin: 'Gisteren skatete ik naar school.' },
+        { w: 'geskatet', zin: 'Wij hebben de hele middag geskatet.' },
+        { w: 'crashte', zin: 'Mijn computer crashte tijdens het spel.' },
+        { w: 'gecrasht', zin: 'Het spel is weer gecrasht.' },
+        { w: 'gegamed', zin: 'Wij hebben veel te lang gegamed.' },
+        { w: 'gamet', zin: 'Mijn neef gamet het hele weekend.' },
+        { w: 'gegoogeld', zin: 'Ik heb het antwoord gegoogeld.' },
+        { w: 'geüpdatet', zin: 'De tablet is vannacht geüpdatet.' },
+        { w: 'racete', zin: 'Hij racete op zijn fiets de dijk af.' }
+      ]
+    },
+    {
       id: 'instinkers',
       titel: 'Instinkers',
       soort: 'Weetwoorden',

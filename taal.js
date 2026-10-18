@@ -564,6 +564,291 @@ const TAALOEFENINGEN = [
         uitleg: 'Hun tent = de tent van hen: goed. "Hun zijn" is fout, want een onderwerp is zij. En "ik heb hun gezien" moet hen zijn (lijdend voorwerp), of gewoon ze.'
       }
     ]
+  },
+
+  {
+    id: 'tv-trappen',
+    titel: 'Trappen van vergelijking: groot, groter, grootst',
+    soort: 'Grammatica',
+    emoji: '🥇',
+    niveau: 1,
+    intro: 'Snel, sneller, snelst: zo vergelijk je dingen met elkaar. Maar pas op voor goed, beter, best!',
+    regel: {
+      stappen: [
+        'Met een bijvoeglijk naamwoord kun je dingen *vergelijken*. Er zijn drie trappen: *groot*, *groter*, *grootst*.',
+        'De vergrotende trap krijgt *-er*: snel → sneller. Eindigt het woord op een r? Dan *-der*: duur → duurder, zwaar → zwaarder.',
+        'De overtreffende trap krijgt *-st*: snel → snelst. Lange woorden krijgen vaak *meest* ervoor: het meest fantastisch.',
+        'Denk aan verdubbelen en verenkelen: dik → *dikker*, groot → *groter*.',
+        'Een paar woorden doen het helemaal anders: *goed, beter, best*, *veel, meer, meest* en *weinig, minder, minst*.'
+      ],
+      voorbeelden: [
+        { woord: 'snel, sneller, snelst', uitleg: 'gewoon -er en -st' },
+        { woord: 'duur, duurder, duurst', uitleg: 'eindigt op een r, dus -der' },
+        { woord: 'dun, dunner, dunst', uitleg: 'korte u: de n wordt dubbel' },
+        { woord: 'goed, beter, best', uitleg: 'een uitzondering: onthouden' }
+      ],
+      letop: 'Vergelijk je met de vergrotende trap, dan gebruik je *dan*: groter *dan* jij. En zeg nooit *meer beter*: beter is al een vergelijking.'
+    },
+    vragen: [
+      {
+        type: 'invul',
+        vaardigheid: 'Vergrotende trap',
+        vraag: 'Vul het goede woord in.',
+        zin: 'Een olifant is veel ___ dan een paard.',
+        cue: 'zwaar',
+        goed: 'zwaarder',
+        hint: 'Zwaar eindigt op een r. Wat komt er dan achter: -er of -der?',
+        uitleg: 'Eindigt het woord op een r, dan krijgt de vergrotende trap -der: zwaar → zwaarder.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Overtreffende trap',
+        vraag: 'Vul het goede woord in.',
+        zin: 'Dit is de ___ taart die ik ooit heb gegeten.',
+        cue: 'lekker',
+        goed: 'lekkerste',
+        hint: 'Het is de allerbeste van allemaal: de overtreffende trap, met -st. Vóór taart komt er nog een e achter.',
+        uitleg: 'De overtreffende trap van lekker is lekkerst. Vóór een naamwoord komt er een e achter: de lekkerste taart.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Uitzonderingen',
+        vraag: 'Welke zin is goed?',
+        opties: [
+          'Mijn tekening is gooder dan die van jou.',
+          'Mijn tekening is meer beter dan die van jou.',
+          'Mijn tekening is beter dan die van jou.'
+        ],
+        goed: 2,
+        hint: 'Goed is een uitzondering. Hoe gaat het rijtje: goed, ..., best?',
+        uitleg: 'Het rijtje is goed, beter, best. Beter is al een vergelijking, dus "meer beter" is dubbelop.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Vergrotende trap',
+        vraag: 'Vul het goede woord in.',
+        zin: 'Bij de brug is de rivier ___ dan hier.',
+        cue: 'smal',
+        goed: 'smaller',
+        hint: 'Hak het woord in klankgroepen. Hoor je een korte a?',
+        uitleg: 'Je hakt het in smal-ler. In de eerste klankgroep hoor je een korte a, dus de l wordt dubbel: smaller.'
+      },
+      {
+        type: 'sorteer',
+        vaardigheid: 'Trappen herkennen',
+        vraag: 'Welke trap is het?',
+        categorieen: ['Gewoon', 'Vergrotend', 'Overtreffend'],
+        items: ['mooi', 'groter', 'best', 'meer', 'snelst', 'oud'],
+        goed: [0, 1, 2, 1, 2, 0],
+        hint: 'Vergrotend vergelijkt twee dingen (groter dan). Overtreffend is de allerhoogste (de grootste).',
+        uitleg: 'Mooi en oud zijn de gewone vorm. Groter en meer vergelijken twee dingen. Best en snelst zijn de overtreffende trap: de allerhoogste.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Uitzonderingen',
+        vraag: 'Wat is de overtreffende trap van "weinig"?',
+        opties: ['weinigst', 'minder', 'minst'],
+        goed: 2,
+        hint: 'Weinig is een uitzondering, net als goed en veel. Hoe gaat het rijtje?',
+        uitleg: 'Het rijtje is weinig, minder, minst. Minder is de vergrotende trap, minst de overtreffende.'
+      }
+    ]
+  },
+
+  {
+    id: 'tv-signaalwoorden',
+    titel: 'Signaalwoorden: maar, want en dus',
+    soort: 'Woordkeuze',
+    emoji: '🚦',
+    niveau: 2,
+    intro: 'Signaalwoorden zijn wegwijzers in een tekst. Ze vertellen je hoe twee stukken bij elkaar horen.',
+    regel: {
+      stappen: [
+        'Een *signaalwoord* vertelt hoe twee stukken tekst met elkaar te maken hebben.',
+        '*Tegenstelling*: maar, toch, echter. Het tweede stuk gaat tegen het eerste in.',
+        '*Reden of oorzaak*: want, omdat, doordat. Het tweede stuk vertelt *waarom*.',
+        '*Gevolg*: dus, daardoor, daarom. Het tweede stuk vertelt *wat er daarna gebeurt*.',
+        'En verder: *opsomming* (en, ook, bovendien), *tijd* (eerst, daarna, ten slotte) en *voorbeeld* (bijvoorbeeld, zoals).'
+      ],
+      voorbeelden: [
+        { woord: 'Het regende, maar we gingen toch.', uitleg: 'tegenstelling' },
+        { woord: 'Ik blijf binnen, want ik ben ziek.', uitleg: 'reden: waarom blijf ik binnen?' },
+        { woord: 'Ik was ziek, dus ik bleef thuis.', uitleg: 'gevolg: wat gebeurde er daardoor?' },
+        { woord: 'Eerst ontbijt ik, daarna fiets ik naar school.', uitleg: 'tijd en volgorde' }
+      ],
+      letop: '*Want* en *dus* lijken op elkaar, maar ze werken andersom. Ik blijf thuis, *want* ik ben ziek: eerst het gevolg, dan de reden. Ik ben ziek, *dus* ik blijf thuis: eerst de reden, dan het gevolg.'
+    },
+    vragen: [
+      {
+        type: 'invul',
+        vaardigheid: 'Tegenstelling',
+        vraag: 'Vul het signaalwoord in dat past.',
+        zin: 'Ik wilde buiten spelen, ___ het regende veel te hard.',
+        cue: 'maar / dus / want',
+        goed: 'maar',
+        hint: 'Gaat het tweede stuk tegen het eerste in, of vertelt het waarom?',
+        uitleg: 'Je wilde iets, maar het kon niet: het tweede stuk gaat tegen het eerste in. Dat is een tegenstelling, dus maar.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Verband herkennen',
+        vraag: 'Wat voor verband geeft "dus" in deze zin? "De bus had vertraging, dus ik kwam te laat."',
+        opties: ['Tegenstelling', 'Gevolg', 'Voorbeeld', 'Opsomming'],
+        goed: 1,
+        hint: 'Wat gebeurde er doordat de bus vertraging had?',
+        uitleg: 'Te laat komen gebeurde door de vertraging: het is het gevolg. Dus is een signaalwoord van gevolg.'
+      },
+      {
+        type: 'sorteer',
+        vaardigheid: 'Verband herkennen',
+        vraag: 'Wat voor verband geeft dit signaalwoord?',
+        categorieen: ['Tegenstelling', 'Reden', 'Gevolg'],
+        items: ['maar', 'want', 'daarom', 'toch', 'omdat', 'dus'],
+        goed: [0, 1, 2, 0, 1, 2],
+        hint: 'Probeer elk woord in een zin: "Ik ben moe, ... ik ga slapen." Welke passen daar?',
+        uitleg: 'Maar en toch geven een tegenstelling. Want en omdat geven een reden: ze vertellen waarom. Daarom en dus geven een gevolg.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Tegenstelling',
+        vraag: 'Welk signaalwoord past? "Ik vind spruitjes vies. ___ eet ik ze elke kerst braaf op."',
+        opties: ['Want', 'Toch', 'Bijvoorbeeld'],
+        goed: 1,
+        hint: 'Past het tweede stuk bij het eerste, of gaat het er juist tegenin?',
+        uitleg: 'Je vindt ze vies, en je eet ze toch op. Het tweede stuk gaat tegen het eerste in: een tegenstelling. Daarom past toch.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Tijd en volgorde',
+        vraag: 'Welk woord is een signaalwoord van tijd of volgorde?',
+        opties: ['bovendien', 'daarna', 'echter', 'want'],
+        goed: 1,
+        hint: 'Welk woord vertelt wat er later gebeurt?',
+        uitleg: 'Daarna vertelt wat er later komt: tijd en volgorde. Bovendien is een opsomming, echter een tegenstelling en want een reden.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Reden',
+        vraag: 'Vul het signaalwoord in dat past.',
+        zin: 'Ik neem mijn regenjas mee, ___ het gaat vanmiddag regenen.',
+        cue: 'want / maar / toch',
+        goed: 'want',
+        hint: 'Vertelt het tweede stuk waarom je je jas meeneemt?',
+        uitleg: 'Het tweede stuk vertelt waarom je je regenjas meeneemt: dat is een reden. Daarom past want.'
+      }
+    ]
+  },
+
+  {
+    id: 'tv-spreekwoorden',
+    titel: 'Spreekwoorden en uitdrukkingen',
+    soort: 'Woordenschat',
+    emoji: '🦉',
+    niveau: 2,
+    intro: 'Als iemand met de deur in huis valt, ligt er dan een deur op de grond? Nee hoor. Ik leg je uit hoe dat zit.',
+    regel: {
+      stappen: [
+        'Een *uitdrukking* is een vaste groep woorden die iets anders betekent dan er letterlijk staat: *iemand in de maling nemen* = iemand voor de gek houden.',
+        'Een *spreekwoord* is een hele zin met een wijze les erin: *Oefening baart kunst.*',
+        'Kijk niet naar de losse woorden, maar naar de *situatie*. Wanneer zou iemand dit zeggen, en wat bedoelt hij dan?'
+      ],
+      voorbeelden: [
+        { woord: 'met de deur in huis vallen', uitleg: 'meteen zeggen waar het om gaat' },
+        { woord: 'de kat uit de boom kijken', uitleg: 'eerst afwachten hoe het loopt' },
+        { woord: 'ergens geen kaas van gegeten hebben', uitleg: 'er niets van weten' },
+        { woord: 'Oefening baart kunst.', uitleg: 'als je veel oefent, word je er goed in' }
+      ],
+      letop: 'Een uitdrukking verander je niet. Het is *de kat uit de boom kijken*, en niet de hond uit de boom.'
+    },
+    vragen: [
+      {
+        type: 'mc',
+        vaardigheid: 'Betekenis',
+        vraag: 'Wat betekent "iets onder de knie hebben"?',
+        opties: [
+          'Iets goed kunnen',
+          'Pijn aan je knie hebben',
+          'Iets verstopt hebben',
+          'Ergens bang voor zijn'
+        ],
+        goed: 0,
+        hint: 'Je zegt het bijvoorbeeld over iemand die lang op fietsen heeft geoefend.',
+        uitleg: 'Als je iets onder de knie hebt, kun je het goed. Bijvoorbeeld: na een week oefenen had ze het jongleren onder de knie.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Betekenis in de situatie',
+        vraag: 'Sam twijfelt of hij mee wil doen met het toneelstuk. Hij zegt: "Ik kijk eerst de kat uit de boom." Wat bedoelt hij?',
+        opties: [
+          'Hij gaat zijn kat redden.',
+          'Hij wacht eerst af hoe het gaat.',
+          'Hij wil de rol van de kat spelen.',
+          'Hij is bang voor katten.'
+        ],
+        goed: 1,
+        hint: 'Sam twijfelt nog. Wat doe je als je twijfelt?',
+        uitleg: 'De kat uit de boom kijken betekent: eerst afwachten hoe het loopt, voordat je zelf iets doet. Sam wil eerst zien hoe het toneelstuk gaat.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Spreekwoord kiezen',
+        vraag: 'Mila oefent elke dag piano. Na een jaar speelt ze prachtig. Welk spreekwoord past daarbij?',
+        opties: [
+          'Oefening baart kunst.',
+          'Haastige spoed is zelden goed.',
+          'Wie het laatst lacht, lacht het best.',
+          'Oost west, thuis best.'
+        ],
+        goed: 0,
+        hint: 'Waardoor speelt Mila zo mooi?',
+        uitleg: 'Oefening baart kunst: als je veel oefent, word je er goed in. Precies wat Mila deed.'
+      },
+      {
+        type: 'sorteer',
+        vaardigheid: 'Uitdrukking of spreekwoord',
+        vraag: 'Is het een uitdrukking of een spreekwoord?',
+        categorieen: ['Uitdrukking', 'Spreekwoord'],
+        items: [
+          'de spijker op zijn kop slaan',
+          'Oost west, thuis best.',
+          'iemand in de maling nemen',
+          'Haastige spoed is zelden goed.',
+          'met de deur in huis vallen',
+          'Beter een vogel in de hand dan tien in de lucht.'
+        ],
+        goed: [0, 1, 0, 1, 0, 1],
+        hint: 'Een spreekwoord is een hele zin met een wijze les. Een uitdrukking gebruik je als stukje in je eigen zin.',
+        uitleg: 'De spijker op zijn kop slaan, iemand in de maling nemen en met de deur in huis vallen zijn uitdrukkingen: die zet je in je eigen zin. De andere drie zijn hele zinnen met een les: spreekwoorden.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Betekenis',
+        vraag: 'Wat betekent "ergens geen kaas van gegeten hebben"?',
+        opties: [
+          'Geen honger hebben',
+          'Er niets van weten',
+          'Iets niet lekker vinden',
+          'Iets niet willen delen'
+        ],
+        goed: 1,
+        hint: 'Je zegt het bijvoorbeeld als iemand je iets vraagt over auto\'s, en je weet daar niets van.',
+        uitleg: 'Als je ergens geen kaas van gegeten hebt, weet je er niets van. Met eten heeft het niets te maken.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Uitdrukking kiezen',
+        vraag: 'De klas praat al een kwartier over het schoolreisje. Dan zegt Noor in één zin precies waar het probleem zit. Welke uitdrukking past?',
+        opties: [
+          'Ze slaat de spijker op zijn kop.',
+          'Ze valt door de mand.',
+          'Ze zit op hete kolen.',
+          'Ze loopt tegen de lamp.'
+        ],
+        goed: 0,
+        hint: 'Noor zegt iets wat precies klopt. Welke uitdrukking betekent dat?',
+        uitleg: 'De spijker op zijn kop slaan = precies het goede zeggen. Door de mand vallen en tegen de lamp lopen betekenen dat je betrapt wordt, en op hete kolen zitten betekent dat je ongeduldig zit te wachten.'
+      }
+    ]
   }
 ];
 

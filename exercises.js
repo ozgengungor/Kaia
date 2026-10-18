@@ -448,6 +448,225 @@ const OEFENINGEN = [
         uitleg: 'Sanne vond de sleutel en kreeg zo het verhaal te horen. Als zij hem terugstopt, kan een volgende kleindochter hetzelfde meemaken.'
       }
     ]
+  },
+
+  {
+    id: 'bijendans',
+    titel: 'Hoe bijen elkaar de weg wijzen',
+    soort: 'Informatief',
+    emoji: '🐝',
+    niveau: 2,
+    intro: 'Bijen kunnen niet praten, maar ze kunnen wel dansen. En die dans zegt meer dan je denkt.',
+    alineas: [
+      'Een honingbij vindt een veld vol bloeiende klaver. Ze vliegt terug naar de korf, en een paar minuten later komen er tientallen andere bijen op het veld af. Hoe weten die waar ze heen moeten? Bijen kunnen niet praten en ze hebben geen kaart. Toch kunnen ze elkaar heel precies de weg wijzen.',
+      'De Oostenrijkse onderzoeker Karl von Frisch ontdekte het geheim. Hij zette bakjes met suikerwater neer en gaf de bijen die ervan dronken een stipje verf. Daarna keek hij door een glazen wand in de korf. Wat hij zag, was een dans. In 1973 kreeg hij voor dat onderzoek de Nobelprijs.',
+      'Ligt het voedsel dicht bij de korf, dan doet de bij een rondedans. Ze draait snelle rondjes, steeds de ene en dan de andere kant op. De andere bijen weten dan: zoek hier in de buurt. Ze ruiken aan de danseres en weten zo ook naar welke bloem ze moeten zoeken.',
+      'Ligt het voedsel verder weg, dan wordt het ingewikkelder. De bij doet dan de kwispeldans. Ze loopt een stukje rechtdoor en schudt daarbij hard met haar achterlijf. Daarna loopt ze in een boogje terug en begint ze opnieuw. De richting van dat rechte stuk vertelt waar het voedsel ligt, vergeleken met de zon. Loopt de bij recht omhoog, dan betekent dat: vlieg recht naar de zon toe. En hoe langer ze kwispelt, hoe verder weg het voedsel is.',
+      'Eigenlijk is het knap wat zo\'n klein beestje kan. Een bij heeft hersenen die niet groter zijn dan een sesamzaadje, en toch rekent ze in het donker van de korf met de stand van de zon. Bovendien houdt ze er rekening mee dat de zon in de loop van de dag verschuift. Daar kunnen wij met onze grote hersenen nog een puntje aan zuigen.'
+    ],
+    woorden: [
+      { woord: 'korf', uitleg: 'Het huis van een bijenvolk. Vroeger was dat een soort mand, nu meestal een houten kast.' },
+      { woord: 'Nobelprijs', uitleg: 'Een heel belangrijke prijs voor mensen die iets bijzonders hebben ontdekt of gedaan.' },
+      { woord: 'achterlijf', uitleg: 'Het achterste deel van het lijf van een insect, met de streepjes.' },
+      { woord: 'puntje aan zuigen', uitleg: 'Als je ergens een puntje aan kunt zuigen, kun je er nog veel van leren: de ander doet het beter dan jij.' }
+    ],
+    vragen: [
+      {
+        type: 'mc',
+        vaardigheid: 'Hoofdgedachte',
+        vraag: 'Waar gaat deze tekst vooral over?',
+        opties: [
+          'Hoe Karl von Frisch de Nobelprijs won.',
+          'Hoe bijen met een dans aan elkaar laten zien waar het voedsel is.',
+          'Waarom bijen belangrijk zijn voor bloemen.',
+          'Hoe je zelf bijen kunt houden.'
+        ],
+        goed: 1,
+        hint: 'Kijk naar alle alinea\'s samen. Welk onderwerp komt overal terug?',
+        uitleg: 'Alinea 1 stelt de vraag, alinea 2 vertelt wie het ontdekte, alinea 3 en 4 leggen de twee dansen uit en alinea 5 zegt hoe knap dat is. Het gaat dus steeds over de dans die de weg wijst. Von Frisch komt maar in één alinea voor.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Details begrijpen',
+        vraag: 'Wat vertelt de rondedans aan de andere bijen?',
+        opties: [
+          'Het voedsel ligt dicht bij de korf.',
+          'Vlieg recht naar de zon toe.',
+          'Er is gevaar in de buurt.',
+          'Het voedsel ligt heel ver weg.'
+        ],
+        goed: 0,
+        hint: 'Lees alinea 3 nog eens. Wat weten de andere bijen na de rondedans?',
+        uitleg: 'In alinea 3 staat: ligt het voedsel dichtbij, dan doet de bij een rondedans, en de anderen weten dan "zoek hier in de buurt". Recht naar de zon hoort bij de kwispeldans.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Conclusie trekken',
+        vraag: 'Twee bijen doen de kwispeldans. De ene bij kwispelt veel langer dan de andere. Wat weet je dan?',
+        opties: [
+          'Het voedsel van de eerste bij ligt verder weg.',
+          'Het voedsel van de eerste bij ligt dichterbij.',
+          'De eerste bij is moeier.',
+          'De eerste bij heeft meer bloemen gevonden.'
+        ],
+        goed: 0,
+        hint: 'In alinea 4 staat een regel over hoe lang een bij kwispelt. Pas die regel toe.',
+        uitleg: 'De laatste zin van alinea 4: hoe langer ze kwispelt, hoe verder weg het voedsel is. De bij die langer kwispelt, heeft dus voedsel gevonden dat verder weg ligt.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Feit of mening',
+        vraag: 'Welke zin uit de tekst is een mening?',
+        opties: [
+          '"In 1973 kreeg hij voor dat onderzoek de Nobelprijs."',
+          '"Eigenlijk is het knap wat zo\'n klein beestje kan."',
+          '"Ze draait snelle rondjes, steeds de ene en dan de andere kant op."',
+          '"Hij zette bakjes met suikerwater neer."'
+        ],
+        goed: 1,
+        hint: 'Een feit kun je nakijken. Een mening is wat iemand ervan vindt.',
+        uitleg: 'Of iets "knap" is, vindt de schrijver. Een ander kan daar anders over denken, dus het is een mening. De andere zinnen kun je nakijken: dat zijn feiten.'
+      },
+      {
+        type: 'volgorde',
+        vaardigheid: 'Volgorde in de tekst',
+        vraag: 'Zet het onderzoek van Karl von Frisch in de juiste volgorde. Klik ze aan van eerst naar laatst.',
+        items: [
+          'Hij keek door een glazen wand in de korf.',
+          'Hij zette bakjes met suikerwater neer.',
+          'Hij kreeg de Nobelprijs.',
+          'Hij gaf de bijen een stipje verf.'
+        ],
+        goedeVolgorde: [1, 3, 0, 2],
+        hint: 'Alles staat in alinea 2, in de volgorde waarin het gebeurde.',
+        uitleg: 'Eerst het suikerwater, dan de bijen die ervan dronken een stipje verf, dan kijken in de korf. De Nobelprijs kwam pas veel later, in 1973.'
+      },
+      {
+        type: 'open',
+        vaardigheid: 'Tussen de regels lezen',
+        vraag: 'Waarom gaf Von Frisch de bijen een stipje verf, denk je?',
+        voorbeeldantwoord: 'Zodat hij in de korf kon zien welke bijen bij zijn suikerwater waren geweest. Dan kon hij kijken wat juist die bijen deden.',
+        hint: 'Het staat er niet letterlijk. Bedenk wat hij daarna in de korf wilde zien, tussen duizenden andere bijen.',
+        uitleg: 'In een korf zitten duizenden bijen die op elkaar lijken. Met een stipje verf kon Von Frisch de bijen herkennen die wisten waar het suikerwater stond, en zien dat juist zij gingen dansen.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Woordbetekenis',
+        vraag: 'In de laatste zin staat: "Daar kunnen wij met onze grote hersenen nog een puntje aan zuigen." Wat bedoelt de schrijver?',
+        opties: [
+          'Dat wij nog veel van de bij kunnen leren.',
+          'Dat wij moe worden van bijen.',
+          'Dat bijen lekkere honing maken.',
+          'Dat wij bijen niet begrijpen.'
+        ],
+        goed: 0,
+        hint: 'Het is een uitdrukking. Wat zegt de alinea ervoor over hoe slim de bij is?',
+        uitleg: 'Als je ergens een puntje aan kunt zuigen, doet een ander het beter dan jij en kun je ervan leren. De schrijver vindt dat de bij met haar kleine hersenen iets heel knaps doet.'
+      }
+    ]
+  },
+
+  {
+    id: 'sponsorloop',
+    titel: 'De sponsorloop',
+    soort: 'Verhalend',
+    emoji: '🏃',
+    niveau: 1,
+    intro: 'Jesse wil zoveel mogelijk rondes lopen. Maar dan gebeurt er iets onderweg. Wat zou jij doen?',
+    alineas: [
+      'Al weken verheugde Jesse zich op de sponsorloop. Elke ronde om het park leverde geld op voor het nieuwe klimrek, en opa had beloofd dat hij voor elke ronde twee euro zou geven. Jesse had uitgerekend dat hij twaalf rondes kon halen. Misschien zelfs dertien, als hij niet te snel begon.',
+      'Op de ochtend van de loop stond hij als een van de eersten bij de start. Zijn startnummer zat met vier veiligheidsspelden op zijn shirt. Toen het fluitje klonk, schoot hij weg. De eerste rondes gingen als vanzelf. Hij haalde de ene loper na de andere in en zwaaide naar opa, die met een thermosfles koffie bij de bocht stond.',
+      'In de zevende ronde zag hij iemand langs het pad zitten. Het was Fenna uit groep 3. Ze hield haar knie vast en er liep een straaltje bloed langs haar been. Om haar heen renden de kinderen gewoon door. Jesse aarzelde. Als hij stopte, kostte dat tijd. Tijd betekende rondes, en rondes betekenden geld.',
+      'Toen zag hij hoe Fenna probeerde om niet te huilen. Hij liep terug, hielp haar overeind en bracht haar langzaam naar de EHBO-tent aan de andere kant van het park. Het duurde lang, want ze kon maar half op haar been staan. Toen ze eindelijk een pleister had, klonk in de verte het fluitje: de loop was afgelopen.',
+      'Jesse had negen rondes gehaald. Teleurgesteld liep hij naar opa. "Het zijn er geen twaalf geworden," zei hij zacht. Opa draaide zijn thermosfles dicht en keek hem aan. "Ik heb gezien wat je deed," zei hij. "Volgens mij was die laatste ronde de belangrijkste van allemaal. Die betaal ik dubbel." Hij haalde zijn portemonnee tevoorschijn. "Nee, weet je wat? Ik betaal ze allemaal dubbel."'
+    ],
+    woorden: [
+      { woord: 'verheugde', uitleg: 'Als je je ergens op verheugt, kijk je er blij naar uit.' },
+      { woord: 'aarzelde', uitleg: 'Twijfelen en even wachten, omdat je niet zeker weet wat je moet doen.' },
+      { woord: 'EHBO-tent', uitleg: 'EHBO betekent Eerste Hulp Bij Ongelukken. In de tent helpen ze je als je gewond bent.' },
+      { woord: 'Teleurgesteld', uitleg: 'Verdrietig omdat iets minder goed ging dan je had gehoopt.' }
+    ],
+    vragen: [
+      {
+        type: 'mc',
+        vaardigheid: 'Details begrijpen',
+        vraag: 'Waarom wilde Jesse zoveel mogelijk rondes lopen?',
+        opties: [
+          'Omdat hij de snelste van de school wilde zijn.',
+          'Omdat elke ronde geld opleverde voor het nieuwe klimrek.',
+          'Omdat opa boos zou worden als hij stopte.',
+          'Omdat hij een beker kon winnen.'
+        ],
+        goed: 1,
+        hint: 'Kijk in de eerste alinea. Wat leverde elke ronde op?',
+        uitleg: 'In alinea 1 staat dat elke ronde geld opleverde voor het nieuwe klimrek, en dat opa twee euro per ronde zou geven.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Personage begrijpen',
+        vraag: 'In alinea 3 aarzelt Jesse. Waarom?',
+        opties: [
+          'Hij kende Fenna niet.',
+          'Hij was bang voor bloed.',
+          'Stoppen zou hem rondes kosten, en dus geld.',
+          'Hij was te moe om nog te helpen.'
+        ],
+        goed: 2,
+        hint: 'Lees de laatste zinnen van alinea 3. Waar denkt Jesse aan?',
+        uitleg: 'Jesse denkt: als ik stop, kost dat tijd, en tijd betekent rondes en geld. Hij wil Fenna wel helpen, maar ook zijn rondes halen. Daarom twijfelt hij.'
+      },
+      {
+        type: 'volgorde',
+        vaardigheid: 'Volgorde in de tekst',
+        vraag: 'Zet deze gebeurtenissen in de juiste volgorde. Klik ze aan van eerst naar laatst.',
+        items: [
+          'Jesse brengt Fenna naar de EHBO-tent.',
+          'Het fluitje klinkt en de loop begint.',
+          'Opa belooft twee euro per ronde.',
+          'Jesse ziet Fenna langs het pad zitten.',
+          'Het fluitje klinkt: de loop is afgelopen.'
+        ],
+        goedeVolgorde: [2, 1, 3, 0, 4],
+        hint: 'Er klinkt twee keer een fluitje. Welk fluitje hoort bij het begin?',
+        uitleg: 'Eerst de belofte van opa (al weken van tevoren), dan het startfluitje, dan ziet Jesse Fenna in de zevende ronde, dan brengt hij haar naar de tent, en dan klinkt het fluitje voor het einde.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Verwijswoord',
+        vraag: 'Opa zegt: "Volgens mij was die laatste ronde de belangrijkste van allemaal. Die betaal ik dubbel." Waar verwijst "die" in de laatste zin naar?',
+        opties: [
+          'Naar de thermosfles',
+          'Naar de laatste ronde',
+          'Naar de pleister',
+          'Naar de portemonnee'
+        ],
+        goed: 1,
+        hint: 'Kijk naar de zin vlak ervoor. Wat wil opa dubbel betalen?',
+        uitleg: '"Die" verwijst terug naar "die laatste ronde" uit de zin ervoor. Opa bedoelt het rondje waarin Jesse Fenna naar de EHBO-tent bracht.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Tussen de regels lezen',
+        vraag: 'Wat bedoelt opa met "die laatste ronde was de belangrijkste van allemaal"?',
+        opties: [
+          'Dat Jesse in die ronde het snelst liep.',
+          'Dat Fenna helpen belangrijker was dan veel rondes lopen.',
+          'Dat Jesse beter had moeten doorlopen.',
+          'Dat de laatste ronde de langste was.'
+        ],
+        goed: 1,
+        hint: 'Wat deed Jesse in zijn laatste ronde? En wat zegt opa vlak daarvoor: "Ik heb gezien wat je deed"?',
+        uitleg: 'In zijn laatste ronde liep Jesse niet hard, maar bracht hij Fenna naar de EHBO-tent. Opa heeft dat gezien en vindt dat helpen belangrijker dan het aantal rondes.'
+      },
+      {
+        type: 'open',
+        vaardigheid: 'Boodschap',
+        vraag: 'Wat is de boodschap van dit verhaal? Leg het uit in je eigen woorden.',
+        voorbeeldantwoord: 'Iemand helpen is belangrijker dan zoveel mogelijk halen of winnen. Jesse haalde minder rondes, maar hij deed iets wat echt telde.',
+        hint: 'Denk aan de keuze die Jesse moest maken, en aan wat opa ervan vindt.',
+        uitleg: 'Jesse moest kiezen tussen rondes lopen en Fenna helpen. Hij koos voor helpen, en opa laat zien dat dat de goede keuze was. De boodschap: voor iemand zorgen is meer waard dan een score.'
+      }
+    ]
   }
 ];
 

@@ -1108,6 +1108,333 @@ const SPELLINGOEFENINGEN = [
         uitleg: 'Team is Engels. De ie-klank schrijf je daar als ea, net als in jeans en speaker.'
       }
     ]
+  },
+
+  {
+    id: 'sp-ei-ij',
+    titel: 'Ei of ij, au of ou',
+    soort: 'Klanken',
+    emoji: '🥚',
+    niveau: 1,
+    intro: 'Je hoort geen verschil tussen ei en ij, en ook niet tussen au en ou. Met een paar trucjes weet je toch vaak welke je moet hebben.',
+    regel: {
+      stappen: [
+        'De *ei* en de *ij* klinken precies hetzelfde. Er is geen regel die altijd werkt, dus het zijn meestal *weetwoorden*.',
+        'Trucje 1: *-lijk* schrijf je altijd met ij (eerlijk, vrolijk) en *-heid* altijd met ei (gezondheid, waarheid).',
+        'Trucje 2: aan het eind van een langer woord staat bijna altijd *-ij*: bakkerij, schilderij, voorbij.',
+        'Trucje 3: woorden uit één *familie* schrijf je hetzelfde. Weet je trein, dan weet je ook treinen en treinkaartje.',
+        'Bij *au* en *ou* is het net zo. Onthoud de woorden met *auw* met één zin: de *blauwe pauw* eet *rauwe* vis.'
+      ],
+      voorbeelden: [
+        { woord: 'eerlijkheid', uitleg: '-lijk met ij, -heid met ei: allebei in één woord' },
+        { woord: 'bakkerij', uitleg: 'eind van een langer woord, dus ij' },
+        { woord: 'treinen', uitleg: 'familie van trein, dus ei' },
+        { woord: 'koud', uitleg: 'familie van kou, dus ou' }
+      ],
+      letop: 'Twijfel je? Schrijf het woord op een kladje twee keer op, één keer met *ei* en één keer met *ij*. Vaak zie je meteen welke er goed uitziet.'
+    },
+    vragen: [
+      {
+        type: 'mc',
+        vaardigheid: 'Eind van een woord',
+        vraag: 'Welk woord is goed geschreven?',
+        opties: ['bakkerei', 'bakkerij', 'bakkereij'],
+        goed: 1,
+        hint: 'Waar staat de klank: in het midden, of aan het eind van een lang woord?',
+        uitleg: 'Aan het eind van een langer woord staat bijna altijd -ij: bakkerij, net als schilderij en voorbij.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: '-heid en -lijk',
+        vraag: 'Vul het goede woord in.',
+        zin: 'Sporten is goed voor je ___.',
+        cue: 'gezond + heid',
+        goed: 'gezondheid',
+        hint: 'Het stukje -heid schrijf je altijd op dezelfde manier. Met ei of met ij?',
+        uitleg: 'Het achtervoegsel -heid schrijf je altijd met ei: gezondheid, net als waarheid en vrijheid.'
+      },
+      {
+        type: 'sorteer',
+        vaardigheid: 'Ei of ij',
+        vraag: 'Schrijf je deze woorden met ei of met ij?',
+        categorieen: ['ei', 'ij'],
+        items: ['kl..n (niet groot)', 'pr..s (wat iets kost)', 'g..t (een dier)', 't..d (op de klok)', '..land (in de zee)', 'w..zer (op de klok)'],
+        goed: [0, 1, 0, 1, 0, 1],
+        hint: 'Dit zijn weetwoorden. Schrijf ze voor jezelf eens met ei en met ij op en kijk welke goed lijkt.',
+        uitleg: 'Met ei: klein, geit en eiland. Met ij: prijs, tijd en wijzer. Een regel is er niet; deze woorden moet je onthouden.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: '-heid en -lijk',
+        vraag: 'Welk woord is goed geschreven?',
+        opties: ['eerlijkhijd', 'eerleikheid', 'eerlijkheid'],
+        goed: 2,
+        hint: 'In dit woord zitten twee vaste stukjes: -lijk en -heid.',
+        uitleg: '-lijk schrijf je altijd met ij en -heid altijd met ei. Dus: eer-lijk-heid.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Familie',
+        vraag: 'Vul het goede woord in.',
+        zin: 'Op het station staan drie ___ klaar.',
+        cue: 'meer dan één trein',
+        goed: 'treinen',
+        hint: 'Hoe schrijf je trein? Woorden uit dezelfde familie schrijf je hetzelfde.',
+        uitleg: 'Trein schrijf je met ei, dus treinen ook. Zo helpt één woord dat je kent je bij de hele familie.'
+      },
+      {
+        type: 'sorteer',
+        vaardigheid: 'Au of ou',
+        vraag: 'Schrijf je deze woorden met au of met ou?',
+        categorieen: ['au', 'ou'],
+        items: ['bl..w (een kleur)', 'vr..w (een volwassene)', 'h..t (van een boom)', 's..s (bij de patat)', 'g..d (wat glimt)', 'r..w (niet gekookt)'],
+        goed: [0, 1, 1, 0, 1, 0],
+        hint: 'Denk aan de zin: de blauwe pauw eet rauwe vis.',
+        uitleg: 'Blauw en rauw zitten in het ezelsbruggetje, en saus is een weetwoord met au. Vrouw, hout en goud schrijf je met ou.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Familie',
+        vraag: 'Welke zin is goed geschreven?',
+        opties: [
+          'Het water van de zee is nog ijskaud.',
+          'Het water van de zee is nog ijskoud.',
+          'Het water van de zee is nog eiskoud.'
+        ],
+        goed: 1,
+        hint: 'Er zitten twee lastige stukjes in: ijs en koud. Denk aan de kou in de winter.',
+        uitleg: 'Ijs schrijf je met ij en koud hoort bij de familie van kou, met ou. Dus: ijskoud.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Au of ou',
+        vraag: 'Vul het goede woord in.',
+        zin: 'In de dierentuin zette de ___ zijn veren als een waaier op.',
+        cue: 'een vogel met een prachtige staart',
+        goed: 'pauw',
+        hint: 'Denk aan de zin: de blauwe ... eet rauwe vis.',
+        uitleg: 'Pauw zit in het ezelsbruggetje: de blauwe pauw eet rauwe vis. Alle drie met auw.'
+      }
+    ]
+  },
+
+  {
+    id: 'sp-deelwoord-bijvoeglijk',
+    titel: 'Het verbrande ei: deelwoord vóór een naamwoord',
+    soort: 'Werkwoorden',
+    emoji: '🍳',
+    niveau: 3,
+    intro: 'De verbrande pizza of de verbrandde pizza? Als je de deelwoordregel kent, is dit nog maar een klein stapje.',
+    regel: {
+      stappen: [
+        'Een voltooid deelwoord kun je ook *vóór een zelfstandig naamwoord* zetten: het *gebakken* ei, de *verhuisde* buren.',
+        'Maak eerst het voltooid deelwoord, zoals je al geleerd hebt: verhuizen → *verhuisd*, fietsen → *gefietst*.',
+        'Zet je het vóór een naamwoord, dan komt er meestal een *e* achter: de verhuisd*e* buren, de gefietst*e* kilometers. De d of t blijft gewoon staan.',
+        'Eindigt het deelwoord op *-en*? Dan komt er niets bij: het gebakken ei, de gesloten deur.'
+      ],
+      voorbeelden: [
+        { woord: 'de verbrande pizza', uitleg: 'verbranden → verbrand → verbrande. De d zat al in de stam.' },
+        { woord: 'de geplakte band', uitleg: 'plakken → geplakt → geplakte' },
+        { woord: 'de geverfde muur', uitleg: 'verven → geverfd → geverfde' },
+        { woord: 'de gestolen fiets', uitleg: 'stelen → gestolen, eindigt op -en: er komt niets bij' }
+      ],
+      letop: 'Staat er *een* voor een het-woord? Dan komt er geen e achter: *een verbrand broodje*, maar *het verbrande broodje*.'
+    },
+    vragen: [
+      {
+        type: 'invul',
+        vaardigheid: 'Deelwoord + e',
+        vraag: 'Vul het goede woord in.',
+        zin: 'Papa gooide de ___ pizza in de prullenbak.',
+        cue: 'werkwoord: verbranden',
+        goed: 'verbrande',
+        hint: 'Maak eerst het voltooid deelwoord: het is verbrand. Wat komt erachter als het vóór pizza staat?',
+        uitleg: 'Het voltooid deelwoord is verbrand: de stam eindigt al op een d. Vóór een naamwoord komt er een e achter: de verbrande pizza. Eén d, want er komt geen tweede bij.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Deelwoord + e',
+        vraag: 'Vul het goede woord in.',
+        zin: 'De ___ band is weer helemaal heel.',
+        cue: 'werkwoord: plakken',
+        goed: 'geplakte',
+        hint: 'Het voltooid deelwoord: ik heb de band ge-... . Zit de k in \'t kofschip?',
+        uitleg: 'plakken → geplakt, want de k zit in \'t kofschip. Vóór band komt er een e achter: de geplakte band.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Deelwoord + e',
+        vraag: 'Welke zin is goed geschreven?',
+        opties: [
+          'De verhuiste buren zwaaien nog één keer.',
+          'De verhuisde buren zwaaien nog één keer.',
+          'De verhuisden buren zwaaien nog één keer.'
+        ],
+        goed: 1,
+        hint: 'Het voltooid deelwoord van verhuizen is verhuisd. Plak er een e achter.',
+        uitleg: 'Bij verhuizen kijk je naar de z, en die zit niet in \'t kofschip: verhuisd. Daar komt een e achter: de verhuisde buren. Je hoort de d ook.'
+      },
+      {
+        type: 'sorteer',
+        vaardigheid: '-de of -te',
+        vraag: 'Je zet het deelwoord vóór een naamwoord, zoals "de gescoorde goal". Eindigt het op -de of op -te?',
+        categorieen: ['... -de', '... -te'],
+        items: ['scoren', 'stoppen', 'bellen', 'fietsen', 'verven', 'pakken'],
+        goed: [0, 1, 0, 1, 0, 1],
+        hint: 'Maak eerst het voltooid deelwoord met \'t kofschip. Eindigt dat op een d, dan wordt het -de. Op een t, dan -te.',
+        uitleg: 'gescoord, gebeld en geverfd eindigen op een d, dus: gescoorde, gebelde, geverfde. Bij verven kijk je naar de v, die zit niet in \'t kofschip. gestopt, gefietst en gepakt eindigen op een t: gestopte, gefietste, gepakte.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Deelwoord op -en',
+        vraag: 'Welk woord past? "Het ___ ei smaakt heerlijk."',
+        opties: ['gebakte', 'gebakken', 'gebakkende'],
+        goed: 1,
+        hint: 'Wat is het voltooid deelwoord van bakken? Ik heb een ei ge... .',
+        uitleg: 'Het voltooid deelwoord van bakken is gebakken. Dat eindigt op -en, en dan komt er niets meer bij: het gebakken ei.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Een + het-woord',
+        vraag: 'Vul het goede woord in.',
+        zin: 'Wij kochten bij de kringloop een ___ bed.',
+        cue: 'werkwoord: gebruiken',
+        goed: 'gebruikt',
+        hint: 'Bed is een het-woord en er staat een voor. Komt er dan een e achter?',
+        uitleg: 'Het voltooid deelwoord is gebruikt. Bij een het-woord met een ervoor komt er geen e achter: een gebruikt bed. Zonder een zeg je wel: het gebruikte bed.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Deelwoord + e',
+        vraag: 'Welk woord past? "De ___ brief lag op de mat."',
+        opties: ['verstuurte', 'verstuurde', 'verstuurdde'],
+        goed: 1,
+        hint: 'Voltooid deelwoord: de brief is verstuur... . Zit de r in \'t kofschip?',
+        uitleg: 'De r zit niet in \'t kofschip, dus het deelwoord is verstuurd. Daar komt één e achter: de verstuurde brief.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Deelwoord + e',
+        vraag: 'Vul het goede woord in.',
+        zin: 'Op de ___ tafel stond een grote taart.',
+        cue: 'werkwoord: versieren',
+        goed: 'versierde',
+        hint: 'Het voltooid deelwoord van versieren: de tafel is versier... . En dan vóór tafel?',
+        uitleg: 'versieren → versierd, want de r zit niet in \'t kofschip. Vóór tafel komt er een e achter: de versierde tafel.'
+      }
+    ]
+  },
+
+  {
+    id: 'sp-engelse-werkwoorden',
+    titel: 'Engelse werkwoorden: gemaild en geskatet',
+    soort: 'Werkwoorden',
+    emoji: '🛹',
+    niveau: 3,
+    intro: 'Mailen, gamen, skaten: we lenen heel wat werkwoorden uit het Engels. Hoe vervoeg je die in het Nederlands?',
+    regel: {
+      stappen: [
+        'Een Engels werkwoord vervoeg je gewoon als een Nederlands werkwoord. Alleen de *stam* schrijf je zoals in het Engels: mail, *skate*, game.',
+        'Tegenwoordige tijd: stam + t, zoals je gewend bent: hij mail*t*, hij skate*t*, hij game*t*.',
+        'Voor de verleden tijd en het voltooid deelwoord gebruik je \'t kofschip. Maar je kijkt naar de *laatste klank die je hoort*, niet naar de letter.',
+        'Bij skate hoor je aan het eind een t, dus: *skatete* en *geskatet*. Bij mail hoor je een l, dus: *mailde* en *gemaild*. Bij game hoor je een m: *gamede* en *gegamed*.',
+        'Bij crash hoor je een sj-klank. Die telt mee als kofschip-klank: *crashte* en *gecrasht*.'
+      ],
+      voorbeelden: [
+        { woord: 'mailen → mailde → gemaild', uitleg: 'je hoort een l: -de en -d' },
+        { woord: 'skaten → skatete → geskatet', uitleg: 'je hoort een t: -te en -t' },
+        { woord: 'crashen → crashte → gecrasht', uitleg: 'je hoort sj: -te en -t' },
+        { woord: 'updaten → updatete → geüpdatet', uitleg: 'je hoort een t, en een trema op de u' }
+      ],
+      letop: 'Begint het werkwoord met een klinker, zoals *updaten*? Dan zet je een trema op de u na ge-: *geüpdatet*. Zo lees je het niet per ongeluk als "geu".'
+    },
+    vragen: [
+      {
+        type: 'invul',
+        vaardigheid: 'Voltooid deelwoord',
+        vraag: 'Vul het voltooid deelwoord in.',
+        zin: 'Ik heb mijn werkstuk naar de juf ___.',
+        cue: 'werkwoord: mailen',
+        goed: 'gemaild',
+        hint: 'De stam is mail. Welke klank hoor je aan het eind: een kofschip-klank?',
+        uitleg: 'Bij mail hoor je aan het eind een l, en die zit niet in \'t kofschip. Dus ge + mail + d = gemaild.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Verleden tijd',
+        vraag: 'Welke zin is goed geschreven?',
+        opties: [
+          'Gisteren skatede ik naar school.',
+          'Gisteren skatete ik naar school.',
+          'Gisteren skatte ik naar school.'
+        ],
+        goed: 1,
+        hint: 'De stam is skate. Welke klank hoor je aan het eind van skate?',
+        uitleg: 'De stam is skate, zoals in het Engels. Aan het eind hoor je een t, en die zit in \'t kofschip. Dus skate + te = skatete.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Verleden tijd',
+        vraag: 'Vul het werkwoord in de verleden tijd in.',
+        zin: 'Mijn computer ___ net tijdens het spelletje.',
+        cue: 'werkwoord: crashen',
+        goed: 'crashte',
+        hint: 'Aan het eind van crash hoor je een sj-klank. Telt die mee als kofschip-klank?',
+        uitleg: 'De sj-klank aan het eind van crash telt mee als kofschip-klank. Dus crash + te = crashte.'
+      },
+      {
+        type: 'sorteer',
+        vaardigheid: 'Verleden tijd',
+        vraag: 'Krijgt de verleden tijd -de of -te?',
+        categorieen: ['-de', '-te'],
+        items: ['mailen', 'racen', 'gamen', 'skaten', 'chillen', 'crashen'],
+        goed: [0, 1, 0, 1, 0, 1],
+        hint: 'Zeg de stam hardop en luister naar de laatste klank. Bij race hoor je een s.',
+        uitleg: 'Bij mail, game en chill hoor je een l of een m: mailde, gamede, chillde. Bij race hoor je een s, bij skate een t en bij crash een sj: racete, skatete, crashte.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Tegenwoordige tijd',
+        vraag: 'Vul het werkwoord in de tegenwoordige tijd in.',
+        zin: 'Mijn broer ___ elke dag in het park.',
+        cue: 'werkwoord: skaten',
+        goed: 'skatet',
+        hint: 'Hij of zij: stam + t. De stam schrijf je zoals in het Engels.',
+        uitleg: 'De stam is skate. Hij of zij krijgt stam + t: skatet. De e van skate blijft staan.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Trema',
+        vraag: 'Hoe schrijf je het voltooid deelwoord van updaten?',
+        opties: ['geupdate', 'geüpdated', 'geüpdatet'],
+        goed: 2,
+        hint: 'Wat hoor je aan het eind van update? En wat zet je op de u, zodat je geen "geu" leest?',
+        uitleg: 'Bij update hoor je aan het eind een t, dus komt er een t achter. En op de u komt een trema, zodat je ge-up leest: geüpdatet.'
+      },
+      {
+        type: 'invul',
+        vaardigheid: 'Voltooid deelwoord',
+        vraag: 'Vul het voltooid deelwoord in.',
+        zin: 'Wij hebben de hele middag met onze neven ___.',
+        cue: 'werkwoord: gamen',
+        goed: 'gegamed',
+        hint: 'De stam is game. Aan het eind hoor je een m. Wordt het -d of -t?',
+        uitleg: 'Bij game hoor je een m, en die zit niet in \'t kofschip. Dus ge + game + d = gegamed.'
+      },
+      {
+        type: 'mc',
+        vaardigheid: 'Voltooid deelwoord',
+        vraag: 'Welke zin is goed geschreven?',
+        opties: [
+          'Ik heb het antwoord gegoogeld.',
+          'Ik heb het antwoord gegoogelt.',
+          'Ik heb het antwoord gegoogled.'
+        ],
+        goed: 0,
+        hint: 'Het werkwoord is googelen, met de stam googel. Welke klank hoor je aan het eind?',
+        uitleg: 'Googelen is al een echt Nederlands werkwoord geworden, met de stam googel. Aan het eind hoor je een l, dus gegoogeld.'
+      }
+    ]
   }
 ];
 

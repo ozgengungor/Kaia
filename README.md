@@ -112,7 +112,7 @@ minder hoor je niet.
 
 ## Wat er nu in zit
 
-**Lezen** — vier teksten met in totaal 26 vragen:
+**Lezen** — zes teksten met in totaal 39 vragen:
 
 | Tekst | Soort | Vragen |
 | --- | --- | --- |
@@ -120,12 +120,15 @@ minder hoor je niet.
 | Waarom gapen aanstekelijk is | informatief | 6 |
 | Moet de smartphone de klas uit? | meningtekst | 7 |
 | De sleutel van de vuurtoren | verhalend | 6 |
+| Hoe bijen elkaar de weg wijzen | informatief | 7 |
+| De sponsorloop | verhalend | 6 |
 
 Geoefende vaardigheden: hoofdgedachte, verwijswoorden, woordbetekenis uit de
 context, signaalwoorden, feit of mening, tekstdoel, argumenten herkennen,
-tussen de regels lezen, conclusies trekken en volgorde in een tekst.
+tussen de regels lezen, conclusies trekken, volgorde in een tekst, personages
+begrijpen en de boodschap van een verhaal.
 
-**Spelling** — tien regels met in totaal 80 vragen:
+**Spelling** — dertien regels met in totaal 104 vragen:
 
 | Regel | Soort | Vragen |
 | --- | --- | --- |
@@ -139,8 +142,11 @@ tussen de regels lezen, conclusies trekken en volgorde in een tekst.
 | Meervoud: -s of -'s | woorden | 8 |
 | Verkleinwoorden: -je, -tje, -pje of -etje | woorden | 8 |
 | Leenwoorden uit het Frans en het Engels | woorden | 8 |
+| Ei of ij, au of ou | klanken | 8 |
+| Het verbrande ei: deelwoord vóór een naamwoord | werkwoorden | 8 |
+| Engelse werkwoorden: gemaild en geskatet | werkwoorden | 8 |
 
-**Taalverzorging** — zes regels met in totaal 36 vragen:
+**Taalverzorging** — negen regels met in totaal 54 vragen:
 
 | Regel | Soort | Vragen |
 | --- | --- | --- |
@@ -150,6 +156,9 @@ tussen de regels lezen, conclusies trekken en volgorde in een tekst.
 | Woordsoorten: wat voor woord is het? | grammatica | 6 |
 | Zinsdelen: persoonsvorm, onderwerp en meer | grammatica | 6 |
 | Lastige woordparen: als of dan, hun of zij | woordkeuze | 6 |
+| Trappen van vergelijking: groot, groter, grootst | grammatica | 6 |
+| Signaalwoorden: maar, want en dus | woordkeuze | 6 |
+| Spreekwoorden en uitdrukkingen | woordenschat | 6 |
 
 Omdat de app een invulantwoord nakijkt zonder op hoofdletters en leestekens
 aan het eind te letten, zijn de vragen over hoofdletters en leestekens
@@ -167,11 +176,13 @@ staat; "Luister nog een keer" mag zo vaak als nodig.
 | ✏️ Zinnendictee | Acht hele zinnen. |
 | Eén dictee per pakket | Tien woorden van één soort, om gericht te oefenen. |
 
-De elf pakketten, elk met twaalf woorden (dus elke keer een ander dictee):
-verdubbelen en verenkelen, tegenwoordige tijd, verleden tijd, voltooid
-deelwoord, -tie/-isch/-lijk/-ig, samenstellingen met trema en koppelteken,
-verleden tijd met tt of dd, meervoud op -s of -'s, verkleinwoorden, leenwoorden
-en instinkers (onmiddellijk, sowieso).
+De veertien pakketten, elk met twaalf of dertien woorden (dus elke keer een
+ander dictee): verdubbelen en verenkelen, tegenwoordige tijd, verleden tijd,
+voltooid deelwoord, -tie/-isch/-lijk/-ig, samenstellingen met trema en
+koppelteken, verleden tijd met tt of dd, meervoud op -s of -'s,
+verkleinwoorden, leenwoorden, ei/ij en au/ou, het deelwoord vóór een naamwoord
+(de verbrande pizza), Engelse werkwoorden (geskatet, gemaild) en instinkers
+(onmiddellijk, sowieso).
 
 Nakijken:
 

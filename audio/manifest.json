@@ -1,7 +1,7 @@
 {
   "stem": "YUdpWWny7k5yb4QCeweX",
   "model": "eleven_multilingual_v2",
-  "bijgewerkt": "2026-10-09T09:42:01.573Z",
+  "bijgewerkt": "2026-10-18T22:02:16.554Z",
   "opnames": {
     "lees:wolf": {
       "bestand": "lees-wolf.mp3",
@@ -30,6 +30,20 @@
       "hash": "6f2a844eb4a92698b0a9d5678058285df4ba0d84",
       "tekens": 1740,
       "opgenomen": "2026-09-20T16:37:21.844Z"
+    },
+    "lees:bijendans": {
+      "bestand": "lees-bijendans.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen",
+      "hash": "b945713042353ad193d50c63a005e7019513fedf",
+      "tekens": 1639,
+      "opgenomen": "2026-10-18T21:56:11.214Z"
+    },
+    "lees:sponsorloop": {
+      "bestand": "lees-sponsorloop.mp3",
+      "titel": "De sponsorloop",
+      "hash": "6ce40d9513a05b975295dbfd913a47df89902d54",
+      "tekens": 1629,
+      "opgenomen": "2026-10-18T21:56:27.878Z"
     },
     "regel:sp-klankgroepen": {
       "bestand": "regel-sp-klankgroepen.mp3",
@@ -101,6 +115,27 @@
       "tekens": 771,
       "opgenomen": "2026-10-09T09:27:02.980Z"
     },
+    "regel:sp-ei-ij": {
+      "bestand": "regel-sp-ei-ij.mp3",
+      "titel": "Ei of ij, au of ou",
+      "hash": "b62f53a1ff22b2a4c43ff49930ddf1c5f9ecde98",
+      "tekens": 894,
+      "opgenomen": "2026-10-18T21:56:37.868Z"
+    },
+    "regel:sp-deelwoord-bijvoeglijk": {
+      "bestand": "regel-sp-deelwoord-bijvoeglijk.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord",
+      "hash": "81e4590e5cc1e82e343ddeb8294ca65fa30c26e4",
+      "tekens": 919,
+      "opgenomen": "2026-10-18T21:56:48.194Z"
+    },
+    "regel:sp-engelse-werkwoorden": {
+      "bestand": "regel-sp-engelse-werkwoorden.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet",
+      "hash": "e8589260f2b0505900ec0d226468db8c7a9b825e",
+      "tekens": 1093,
+      "opgenomen": "2026-10-18T21:56:59.834Z"
+    },
     "regel:tv-hoofdletters": {
       "bestand": "regel-tv-hoofdletters.mp3",
       "titel": "Hoofdletters: wanneer wel en wanneer niet",
@@ -142,6 +177,27 @@
       "hash": "db7e1254fbca464537bfc8fa1cee3278cb246f1a",
       "tekens": 1037,
       "opgenomen": "2026-09-20T16:39:15.428Z"
+    },
+    "regel:tv-trappen": {
+      "bestand": "regel-tv-trappen.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst",
+      "hash": "eb5725b594ecf43ae47c0e9d957e151412afb538",
+      "tekens": 936,
+      "opgenomen": "2026-10-18T21:57:09.895Z"
+    },
+    "regel:tv-signaalwoorden": {
+      "bestand": "regel-tv-signaalwoorden.mp3",
+      "titel": "Signaalwoorden: maar, want en dus",
+      "hash": "79555f1e68192621b573ec94777813081ac1cfe8",
+      "tekens": 925,
+      "opgenomen": "2026-10-18T21:57:19.931Z"
+    },
+    "regel:tv-spreekwoorden": {
+      "bestand": "regel-tv-spreekwoorden.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen",
+      "hash": "0d545dfeeaa456b8103a9aa9b30649d23c3255d8",
+      "tekens": 738,
+      "opgenomen": "2026-10-18T21:57:27.567Z"
     },
     "vraag:wolf:0": {
       "bestand": "vraag-wolf-1.mp3",
@@ -716,6 +772,293 @@
       "hash": "693e88f52d107d3e134f62d4708fddaa4be7f75f",
       "tekens": 129,
       "opgenomen": "2026-10-09T09:28:36.591Z"
+    },
+    "vraag:bijendans:0": {
+      "bestand": "vraag-bijendans-1.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — vraag 1",
+      "hash": "fe3c3fa1733e2056576131dd500870f3318f5b77",
+      "tekens": 212,
+      "opgenomen": "2026-10-18T21:57:29.866Z"
+    },
+    "hint:bijendans:0": {
+      "bestand": "hint-bijendans-1.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — hint 1",
+      "hash": "b7de0f2eca4a08ffa0c8b49d3b39b09fcf61daee",
+      "tekens": 64,
+      "opgenomen": "2026-10-18T21:57:30.957Z"
+    },
+    "uitleg:bijendans:0": {
+      "bestand": "uitleg-bijendans-1.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — uitleg 1",
+      "hash": "f5763d2255cd8f71743ca4c4e29a56452a29051c",
+      "tekens": 225,
+      "opgenomen": "2026-10-18T21:57:33.453Z"
+    },
+    "vraag:bijendans:1": {
+      "bestand": "vraag-bijendans-2.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — vraag 2",
+      "hash": "af79c0fbeb2c0fe27ef3c85cbd0264bf7cb874bc",
+      "tekens": 167,
+      "opgenomen": "2026-10-18T21:57:35.139Z"
+    },
+    "hint:bijendans:1": {
+      "bestand": "hint-bijendans-2.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — hint 2",
+      "hash": "46d99a422248b7e611698b005094ef17e28b9fe1",
+      "tekens": 66,
+      "opgenomen": "2026-10-18T21:57:36.319Z"
+    },
+    "uitleg:bijendans:1": {
+      "bestand": "uitleg-bijendans-2.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — uitleg 2",
+      "hash": "4d6464fbd5b0df4e86f3235615cb84ce93aaf3e9",
+      "tekens": 169,
+      "opgenomen": "2026-10-18T21:57:37.918Z"
+    },
+    "vraag:bijendans:2": {
+      "bestand": "vraag-bijendans-3.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — vraag 3",
+      "hash": "0d60d4ba890ae0a7ec4c192432a5c74fec8efa86",
+      "tekens": 257,
+      "opgenomen": "2026-10-18T21:57:40.615Z"
+    },
+    "hint:bijendans:2": {
+      "bestand": "hint-bijendans-3.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — hint 3",
+      "hash": "40ed8f1f4c79c91f0431d68f18ca2707fa3737b8",
+      "tekens": 78,
+      "opgenomen": "2026-10-18T21:57:41.755Z"
+    },
+    "uitleg:bijendans:2": {
+      "bestand": "uitleg-bijendans-3.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — uitleg 3",
+      "hash": "a80e672ed9dec80d8187a2764f870201986d84ae",
+      "tekens": 159,
+      "opgenomen": "2026-10-18T21:57:43.293Z"
+    },
+    "vraag:bijendans:3": {
+      "bestand": "vraag-bijendans-4.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — vraag 4",
+      "hash": "79816820ac54413b28f3bee2f16aecdc68cd0df4",
+      "tekens": 252,
+      "opgenomen": "2026-10-18T21:57:45.832Z"
+    },
+    "hint:bijendans:3": {
+      "bestand": "hint-bijendans-4.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — hint 4",
+      "hash": "b7f0a81bdfff0202249b4aaa977a554c5b5dc4d3",
+      "tekens": 63,
+      "opgenomen": "2026-10-18T21:57:46.842Z"
+    },
+    "uitleg:bijendans:3": {
+      "bestand": "uitleg-bijendans-4.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — uitleg 4",
+      "hash": "70f93452be5d4f74520695c82b84aea356c66b36",
+      "tekens": 151,
+      "opgenomen": "2026-10-18T21:57:48.526Z"
+    },
+    "vraag:bijendans:4": {
+      "bestand": "vraag-bijendans-5.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — vraag 5",
+      "hash": "c59633dffcaa3198fb090b3a4b486c23722bf941",
+      "tekens": 95,
+      "opgenomen": "2026-10-18T21:57:49.745Z"
+    },
+    "hint:bijendans:4": {
+      "bestand": "hint-bijendans-5.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — hint 5",
+      "hash": "7e7864c04a6e846d99b14c17d82eb9c3decad75d",
+      "tekens": 60,
+      "opgenomen": "2026-10-18T21:57:50.763Z"
+    },
+    "uitleg:bijendans:4": {
+      "bestand": "uitleg-bijendans-5.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — uitleg 5",
+      "hash": "d08fcfe520eab359175f7dc1636b39b4ca09c029",
+      "tekens": 137,
+      "opgenomen": "2026-10-18T21:57:52.363Z"
+    },
+    "vraag:bijendans:5": {
+      "bestand": "vraag-bijendans-6.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — vraag 6",
+      "hash": "a3419f66dc3f77fc2e077e2cace75549cdfb9bf4",
+      "tekens": 56,
+      "opgenomen": "2026-10-18T21:57:53.382Z"
+    },
+    "hint:bijendans:5": {
+      "bestand": "hint-bijendans-6.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — hint 6",
+      "hash": "e0d756081da89167afef5338222a6a0305d150d5",
+      "tekens": 105,
+      "opgenomen": "2026-10-18T21:57:54.665Z"
+    },
+    "uitleg:bijendans:5": {
+      "bestand": "uitleg-bijendans-6.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — uitleg 6",
+      "hash": "a3888bfb5b50dd93571267bd5004d68fc05887ee",
+      "tekens": 186,
+      "opgenomen": "2026-10-18T21:57:56.294Z"
+    },
+    "voorbeeld:bijendans:5": {
+      "bestand": "voorbeeld-bijendans-6.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — voorbeeldantwoord 6",
+      "hash": "d58747f5c0a32c6ee1610f901ccc1f184124a119",
+      "tekens": 166,
+      "opgenomen": "2026-10-18T21:57:57.888Z"
+    },
+    "vraag:bijendans:6": {
+      "bestand": "vraag-bijendans-7.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — vraag 7",
+      "hash": "a2705819c3007ad0e8d54df8a64ce5e1c0e919b4",
+      "tekens": 253,
+      "opgenomen": "2026-10-18T21:58:00.240Z"
+    },
+    "hint:bijendans:6": {
+      "bestand": "hint-bijendans-7.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — hint 7",
+      "hash": "3c10eae01d50116eddf90b81980916d53c5db48d",
+      "tekens": 74,
+      "opgenomen": "2026-10-18T21:58:01.394Z"
+    },
+    "uitleg:bijendans:6": {
+      "bestand": "uitleg-bijendans-7.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — uitleg 7",
+      "hash": "b37811eed4280b460e4957985d4139bd4f450d62",
+      "tekens": 174,
+      "opgenomen": "2026-10-18T21:58:03.060Z"
+    },
+    "vraag:sponsorloop:0": {
+      "bestand": "vraag-sponsorloop-1.mp3",
+      "titel": "De sponsorloop — vraag 1",
+      "hash": "a0d6a702f81dc92e9478986c70b71b629741f137",
+      "tekens": 226,
+      "opgenomen": "2026-10-18T21:58:04.918Z"
+    },
+    "hint:sponsorloop:0": {
+      "bestand": "hint-sponsorloop-1.mp3",
+      "titel": "De sponsorloop — hint 1",
+      "hash": "4bd937d48de8db0ffd9cb87a552fb36a7f7f1bf7",
+      "tekens": 52,
+      "opgenomen": "2026-10-18T21:58:05.922Z"
+    },
+    "uitleg:sponsorloop:0": {
+      "bestand": "uitleg-sponsorloop-1.mp3",
+      "titel": "De sponsorloop — uitleg 1",
+      "hash": "fbeae2672265c8d5ba1de47b62e063223474197b",
+      "tekens": 114,
+      "opgenomen": "2026-10-18T21:58:07.253Z"
+    },
+    "vraag:sponsorloop:1": {
+      "bestand": "vraag-sponsorloop-2.mp3",
+      "titel": "De sponsorloop — vraag 2",
+      "hash": "425bce767ee28b0b51925fe4b0cf45b418b67940",
+      "tekens": 158,
+      "opgenomen": "2026-10-18T21:58:08.862Z"
+    },
+    "hint:sponsorloop:1": {
+      "bestand": "hint-sponsorloop-2.mp3",
+      "titel": "De sponsorloop — hint 2",
+      "hash": "2b1355a5da8a34ccbf9e58b737b5e2a15bc745fb",
+      "tekens": 58,
+      "opgenomen": "2026-10-18T21:58:09.915Z"
+    },
+    "uitleg:sponsorloop:1": {
+      "bestand": "uitleg-sponsorloop-2.mp3",
+      "titel": "De sponsorloop — uitleg 2",
+      "hash": "a16c0b30d3ea34a6707658cd8d3f3f9ab2af4190",
+      "tekens": 148,
+      "opgenomen": "2026-10-18T21:58:11.525Z"
+    },
+    "vraag:sponsorloop:2": {
+      "bestand": "vraag-sponsorloop-3.mp3",
+      "titel": "De sponsorloop — vraag 3",
+      "hash": "4dbded3698db0a1900c5acf924b8c59d54da8754",
+      "tekens": 0,
+      "opgenomen": "2026-10-18T21:58:11.532Z"
+    },
+    "hint:sponsorloop:2": {
+      "bestand": "hint-sponsorloop-3.mp3",
+      "titel": "De sponsorloop — hint 3",
+      "hash": "2a1e6f554ac2967280a6f2852a5f274bb0e08763",
+      "tekens": 66,
+      "opgenomen": "2026-10-18T21:58:12.636Z"
+    },
+    "uitleg:sponsorloop:2": {
+      "bestand": "uitleg-sponsorloop-3.mp3",
+      "titel": "De sponsorloop — uitleg 3",
+      "hash": "a481fb7936183201e8c5ea4de7ac59fb3d78f515",
+      "tekens": 188,
+      "opgenomen": "2026-10-18T21:58:14.378Z"
+    },
+    "vraag:sponsorloop:3": {
+      "bestand": "vraag-sponsorloop-4.mp3",
+      "titel": "De sponsorloop — vraag 4",
+      "hash": "09209653c866f1df79da6fc11ce1d2bf86d442f9",
+      "tekens": 225,
+      "opgenomen": "2026-10-18T21:58:16.688Z"
+    },
+    "hint:sponsorloop:3": {
+      "bestand": "hint-sponsorloop-4.mp3",
+      "titel": "De sponsorloop — hint 4",
+      "hash": "80997cdcb6babaf49d734b3489ff3528c96c2ff5",
+      "tekens": 57,
+      "opgenomen": "2026-10-18T21:58:17.749Z"
+    },
+    "uitleg:sponsorloop:3": {
+      "bestand": "uitleg-sponsorloop-4.mp3",
+      "titel": "De sponsorloop — uitleg 4",
+      "hash": "7c82fbcd8347c828d21125a3f59b025ac3daedaf",
+      "tekens": 132,
+      "opgenomen": "2026-10-18T21:58:19.065Z"
+    },
+    "vraag:sponsorloop:4": {
+      "bestand": "vraag-sponsorloop-5.mp3",
+      "titel": "De sponsorloop — vraag 5",
+      "hash": "d3f2be110b7605c0fe2555b9c0d001d84920180e",
+      "tekens": 246,
+      "opgenomen": "2026-10-18T21:58:21.534Z"
+    },
+    "hint:sponsorloop:4": {
+      "bestand": "hint-sponsorloop-5.mp3",
+      "titel": "De sponsorloop — hint 5",
+      "hash": "be2a7b5cb7b21cde8ca8081c8c8e16ec2b7a7d68",
+      "tekens": 97,
+      "opgenomen": "2026-10-18T21:58:22.693Z"
+    },
+    "uitleg:sponsorloop:4": {
+      "bestand": "uitleg-sponsorloop-5.mp3",
+      "titel": "De sponsorloop — uitleg 5",
+      "hash": "c7fd8fad83355d3137499d74e3375f703acd2f75",
+      "tekens": 161,
+      "opgenomen": "2026-10-18T21:58:24.149Z"
+    },
+    "vraag:sponsorloop:5": {
+      "bestand": "vraag-sponsorloop-6.mp3",
+      "titel": "De sponsorloop — vraag 6",
+      "hash": "d14be1c48966aa922b75552e5a9c7ec22cec143c",
+      "tekens": 69,
+      "opgenomen": "2026-10-18T21:58:25.210Z"
+    },
+    "hint:sponsorloop:5": {
+      "bestand": "hint-sponsorloop-6.mp3",
+      "titel": "De sponsorloop — hint 6",
+      "hash": "d3f12590bf54d513a767aaf7ac56185aaecf2eee",
+      "tekens": 68,
+      "opgenomen": "2026-10-18T21:58:26.273Z"
+    },
+    "uitleg:sponsorloop:5": {
+      "bestand": "uitleg-sponsorloop-6.mp3",
+      "titel": "De sponsorloop — uitleg 6",
+      "hash": "2531821b7ca76e94b8f773e214fde8907066eff9",
+      "tekens": 184,
+      "opgenomen": "2026-10-18T21:58:27.963Z"
+    },
+    "voorbeeld:sponsorloop:5": {
+      "bestand": "voorbeeld-sponsorloop-6.mp3",
+      "titel": "De sponsorloop — voorbeeldantwoord 6",
+      "hash": "a77f4a4e49f9395b2ab3616be193519c0c8ad5a2",
+      "tekens": 172,
+      "opgenomen": "2026-10-18T21:58:29.628Z"
     },
     "vraag:sp-klankgroepen:0": {
       "bestand": "vraag-sp-klankgroepen-1.mp3",
@@ -2397,6 +2740,510 @@
       "tekens": 80,
       "opgenomen": "2026-10-09T09:32:36.158Z"
     },
+    "vraag:sp-ei-ij:0": {
+      "bestand": "vraag-sp-ei-ij-1.mp3",
+      "titel": "Ei of ij, au of ou — vraag 1",
+      "hash": "ef0fa5c08a736f6954bf277f51b2e04f4c0601d1",
+      "tekens": 0,
+      "opgenomen": "2026-10-18T21:58:29.634Z"
+    },
+    "hint:sp-ei-ij:0": {
+      "bestand": "hint-sp-ei-ij-1.mp3",
+      "titel": "Ei of ij, au of ou — hint 1",
+      "hash": "51925b05107c2747697fd53a5bad982e7787a0bf",
+      "tekens": 71,
+      "opgenomen": "2026-10-18T21:58:30.711Z"
+    },
+    "uitleg:sp-ei-ij:0": {
+      "bestand": "uitleg-sp-ei-ij-1.mp3",
+      "titel": "Ei of ij, au of ou — uitleg 1",
+      "hash": "dc51ea185ad83ba2dfdbc7268c761d7ed3527462",
+      "tekens": 98,
+      "opgenomen": "2026-10-18T21:58:32.000Z"
+    },
+    "vraag:sp-ei-ij:1": {
+      "bestand": "vraag-sp-ei-ij-2.mp3",
+      "titel": "Ei of ij, au of ou — vraag 2",
+      "hash": "b219a55377b425696701a589ec9f26e7b9288cfb",
+      "tekens": 52,
+      "opgenomen": "2026-10-18T21:58:33.032Z"
+    },
+    "hint:sp-ei-ij:1": {
+      "bestand": "hint-sp-ei-ij-2.mp3",
+      "titel": "Ei of ij, au of ou — hint 2",
+      "hash": "bdd9ed597d84a20d64e9a932da8f5cca133ff509",
+      "tekens": 72,
+      "opgenomen": "2026-10-18T21:58:34.152Z"
+    },
+    "uitleg:sp-ei-ij:1": {
+      "bestand": "uitleg-sp-ei-ij-2.mp3",
+      "titel": "Ei of ij, au of ou — uitleg 2",
+      "hash": "5360edb74c831d07c8e11dda9dd5974f3d9549a9",
+      "tekens": 91,
+      "opgenomen": "2026-10-18T21:58:35.468Z"
+    },
+    "vraag:sp-ei-ij:2": {
+      "bestand": "vraag-sp-ei-ij-3.mp3",
+      "titel": "Ei of ij, au of ou — vraag 3",
+      "hash": "a221b8a0d1bf410b6dae36db1c62332814aa5145",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T21:58:36.491Z"
+    },
+    "hint:sp-ei-ij:2": {
+      "bestand": "hint-sp-ei-ij-3.mp3",
+      "titel": "Ei of ij, au of ou — hint 3",
+      "hash": "b099a96c7e7163c7cab55c3368ac9c9fd0df439c",
+      "tekens": 95,
+      "opgenomen": "2026-10-18T21:58:37.723Z"
+    },
+    "uitleg:sp-ei-ij:2": {
+      "bestand": "uitleg-sp-ei-ij-3.mp3",
+      "titel": "Ei of ij, au of ou — uitleg 3",
+      "hash": "3f86de360ddb99b7e498ce29e04a7ef99cc341b7",
+      "tekens": 115,
+      "opgenomen": "2026-10-18T21:58:39.273Z"
+    },
+    "vraag:sp-ei-ij:3": {
+      "bestand": "vraag-sp-ei-ij-4.mp3",
+      "titel": "Ei of ij, au of ou — vraag 4",
+      "hash": "ef0fa5c08a736f6954bf277f51b2e04f4c0601d1",
+      "tekens": 0,
+      "opgenomen": "2026-10-18T21:58:39.279Z"
+    },
+    "hint:sp-ei-ij:3": {
+      "bestand": "hint-sp-ei-ij-4.mp3",
+      "titel": "Ei of ij, au of ou — hint 4",
+      "hash": "4cac572d722700839846b35bbc80617cc8dc2d07",
+      "tekens": 55,
+      "opgenomen": "2026-10-18T21:58:40.294Z"
+    },
+    "uitleg:sp-ei-ij:3": {
+      "bestand": "uitleg-sp-ei-ij-4.mp3",
+      "titel": "Ei of ij, au of ou — uitleg 4",
+      "hash": "d4796cf26574aace7ac9bcc00d907bc474158f8f",
+      "tekens": 74,
+      "opgenomen": "2026-10-18T21:58:41.544Z"
+    },
+    "vraag:sp-ei-ij:4": {
+      "bestand": "vraag-sp-ei-ij-5.mp3",
+      "titel": "Ei of ij, au of ou — vraag 5",
+      "hash": "c79515359d8ba65206b9466143e8cd1efabc842d",
+      "tekens": 60,
+      "opgenomen": "2026-10-18T21:58:42.615Z"
+    },
+    "hint:sp-ei-ij:4": {
+      "bestand": "hint-sp-ei-ij-5.mp3",
+      "titel": "Ei of ij, au of ou — hint 5",
+      "hash": "653f743d69f64dff002f60cdf1d8eed00f136d8c",
+      "tekens": 72,
+      "opgenomen": "2026-10-18T21:58:43.718Z"
+    },
+    "uitleg:sp-ei-ij:4": {
+      "bestand": "uitleg-sp-ei-ij-5.mp3",
+      "titel": "Ei of ij, au of ou — uitleg 5",
+      "hash": "084b2b9839f401971020ade82d57b38e9342e557",
+      "tekens": 96,
+      "opgenomen": "2026-10-18T21:58:45.000Z"
+    },
+    "vraag:sp-ei-ij:5": {
+      "bestand": "vraag-sp-ei-ij-6.mp3",
+      "titel": "Ei of ij, au of ou — vraag 6",
+      "hash": "f744dd9e6231217eee31b545aa1a6085f628e199",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T21:58:45.954Z"
+    },
+    "hint:sp-ei-ij:5": {
+      "bestand": "hint-sp-ei-ij-6.mp3",
+      "titel": "Ei of ij, au of ou — hint 6",
+      "hash": "29801c27ad4b3ffd317ca2cbc5c113b9718146ba",
+      "tekens": 46,
+      "opgenomen": "2026-10-18T21:58:47.102Z"
+    },
+    "uitleg:sp-ei-ij:5": {
+      "bestand": "uitleg-sp-ei-ij-6.mp3",
+      "titel": "Ei of ij, au of ou — uitleg 6",
+      "hash": "a43e5c2f4cb108092a4a93b4de99338a3200678d",
+      "tekens": 115,
+      "opgenomen": "2026-10-18T21:58:48.450Z"
+    },
+    "vraag:sp-ei-ij:6": {
+      "bestand": "vraag-sp-ei-ij-7.mp3",
+      "titel": "Ei of ij, au of ou — vraag 7",
+      "hash": "5f8b1078a42befd4d3bc9a7348ed76aec499144a",
+      "tekens": 0,
+      "opgenomen": "2026-10-18T21:58:48.457Z"
+    },
+    "hint:sp-ei-ij:6": {
+      "bestand": "hint-sp-ei-ij-7.mp3",
+      "titel": "Ei of ij, au of ou — hint 7",
+      "hash": "63b3b507380862caa948ae0bca220376648daaf0",
+      "tekens": 77,
+      "opgenomen": "2026-10-18T21:58:49.719Z"
+    },
+    "uitleg:sp-ei-ij:6": {
+      "bestand": "uitleg-sp-ei-ij-7.mp3",
+      "titel": "Ei of ij, au of ou — uitleg 7",
+      "hash": "4c067fe5acdc32d4df7a189762978d4bafa21835",
+      "tekens": 81,
+      "opgenomen": "2026-10-18T21:58:50.943Z"
+    },
+    "vraag:sp-ei-ij:7": {
+      "bestand": "vraag-sp-ei-ij-8.mp3",
+      "titel": "Ei of ij, au of ou — vraag 8",
+      "hash": "9e6cff889e3a561f17ac25d64a4bbd0cbf47d4d1",
+      "tekens": 83,
+      "opgenomen": "2026-10-18T21:58:52.139Z"
+    },
+    "hint:sp-ei-ij:7": {
+      "bestand": "hint-sp-ei-ij-8.mp3",
+      "titel": "Ei of ij, au of ou — hint 8",
+      "hash": "651f4378ede46040c5704b9202212e4b74aba1f7",
+      "tekens": 45,
+      "opgenomen": "2026-10-18T21:58:53.163Z"
+    },
+    "uitleg:sp-ei-ij:7": {
+      "bestand": "uitleg-sp-ei-ij-8.mp3",
+      "titel": "Ei of ij, au of ou — uitleg 8",
+      "hash": "254f6bab7f7464bff87428fcdf7d186de6a975c2",
+      "tekens": 80,
+      "opgenomen": "2026-10-18T21:58:54.346Z"
+    },
+    "vraag:sp-deelwoord-bijvoeglijk:0": {
+      "bestand": "vraag-sp-deelwoord-bijvoeglijk-1.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — vraag 1",
+      "hash": "7713f5a7886739cfe0b3e13fbf9dbf15f37d3195",
+      "tekens": 66,
+      "opgenomen": "2026-10-18T21:58:55.577Z"
+    },
+    "hint:sp-deelwoord-bijvoeglijk:0": {
+      "bestand": "hint-sp-deelwoord-bijvoeglijk-1.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — hint 1",
+      "hash": "74d3b9b239268bef841eee9d131fc194a412107d",
+      "tekens": 95,
+      "opgenomen": "2026-10-18T21:58:56.789Z"
+    },
+    "uitleg:sp-deelwoord-bijvoeglijk:0": {
+      "bestand": "uitleg-sp-deelwoord-bijvoeglijk-1.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — uitleg 1",
+      "hash": "f8e49321a125c61e2236c0070b0981ebc3391d01",
+      "tekens": 162,
+      "opgenomen": "2026-10-18T21:58:58.458Z"
+    },
+    "vraag:sp-deelwoord-bijvoeglijk:1": {
+      "bestand": "vraag-sp-deelwoord-bijvoeglijk-2.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — vraag 2",
+      "hash": "8e467fd3a3211f3c8e679351ab03086400af2deb",
+      "tekens": 58,
+      "opgenomen": "2026-10-18T21:58:59.519Z"
+    },
+    "hint:sp-deelwoord-bijvoeglijk:1": {
+      "bestand": "hint-sp-deelwoord-bijvoeglijk-2.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — hint 2",
+      "hash": "1b78b41df2cefed68f4d38d46873bf3cb662a86d",
+      "tekens": 72,
+      "opgenomen": "2026-10-18T21:59:00.772Z"
+    },
+    "uitleg:sp-deelwoord-bijvoeglijk:1": {
+      "bestand": "uitleg-sp-deelwoord-bijvoeglijk-2.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — uitleg 2",
+      "hash": "410b08b1ba94a237ec9056239f02e57786fcbb0a",
+      "tekens": 102,
+      "opgenomen": "2026-10-18T21:59:02.073Z"
+    },
+    "vraag:sp-deelwoord-bijvoeglijk:2": {
+      "bestand": "vraag-sp-deelwoord-bijvoeglijk-3.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — vraag 3",
+      "hash": "5f8b1078a42befd4d3bc9a7348ed76aec499144a",
+      "tekens": 0,
+      "opgenomen": "2026-10-18T21:59:02.075Z"
+    },
+    "hint:sp-deelwoord-bijvoeglijk:2": {
+      "bestand": "hint-sp-deelwoord-bijvoeglijk-3.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — hint 3",
+      "hash": "52ff12d0c84247014b48cc88e2058dbec42f0caf",
+      "tekens": 71,
+      "opgenomen": "2026-10-18T21:59:03.196Z"
+    },
+    "uitleg:sp-deelwoord-bijvoeglijk:2": {
+      "bestand": "uitleg-sp-deelwoord-bijvoeglijk-3.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — uitleg 3",
+      "hash": "71812350808dfb26b78412f26bb29bca3d306cef",
+      "tekens": 137,
+      "opgenomen": "2026-10-18T21:59:04.657Z"
+    },
+    "vraag:sp-deelwoord-bijvoeglijk:3": {
+      "bestand": "vraag-sp-deelwoord-bijvoeglijk-4.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — vraag 4",
+      "hash": "fc231d1c59398444042a8a0294ee0ebc76df1d09",
+      "tekens": 97,
+      "opgenomen": "2026-10-18T21:59:05.972Z"
+    },
+    "hint:sp-deelwoord-bijvoeglijk:3": {
+      "bestand": "hint-sp-deelwoord-bijvoeglijk-4.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — hint 4",
+      "hash": "1a0bbb2733b53711171d055de077b30ddf9ca61f",
+      "tekens": 110,
+      "opgenomen": "2026-10-18T21:59:07.544Z"
+    },
+    "uitleg:sp-deelwoord-bijvoeglijk:3": {
+      "bestand": "uitleg-sp-deelwoord-bijvoeglijk-4.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — uitleg 4",
+      "hash": "fa315f0f76c65ead1f3c630cdb2821623f6c9c7c",
+      "tekens": 217,
+      "opgenomen": "2026-10-18T21:59:10.414Z"
+    },
+    "vraag:sp-deelwoord-bijvoeglijk:4": {
+      "bestand": "vraag-sp-deelwoord-bijvoeglijk-5.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — vraag 5",
+      "hash": "4e09c31cc21c1d8958e3506d22eee6ec19844b8a",
+      "tekens": 46,
+      "opgenomen": "2026-10-18T21:59:11.430Z"
+    },
+    "hint:sp-deelwoord-bijvoeglijk:4": {
+      "bestand": "hint-sp-deelwoord-bijvoeglijk-5.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — hint 5",
+      "hash": "b6678537ca1037ebac545382d33c7a15ed9c1dbc",
+      "tekens": 63,
+      "opgenomen": "2026-10-18T21:59:12.475Z"
+    },
+    "uitleg:sp-deelwoord-bijvoeglijk:4": {
+      "bestand": "uitleg-sp-deelwoord-bijvoeglijk-5.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — uitleg 5",
+      "hash": "9156211fc29d6d2f279848c1da6d82c4cf483bdc",
+      "tekens": 114,
+      "opgenomen": "2026-10-18T21:59:13.972Z"
+    },
+    "vraag:sp-deelwoord-bijvoeglijk:5": {
+      "bestand": "vraag-sp-deelwoord-bijvoeglijk-6.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — vraag 6",
+      "hash": "49d2990067bcfc6b1f8c0f2724e2afe4c81cf676",
+      "tekens": 65,
+      "opgenomen": "2026-10-18T21:59:15.199Z"
+    },
+    "hint:sp-deelwoord-bijvoeglijk:5": {
+      "bestand": "hint-sp-deelwoord-bijvoeglijk-6.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — hint 6",
+      "hash": "9c5e84df47dddcdc761d5e8b14cb46b345a09b03",
+      "tekens": 68,
+      "opgenomen": "2026-10-18T21:59:16.282Z"
+    },
+    "uitleg:sp-deelwoord-bijvoeglijk:5": {
+      "bestand": "uitleg-sp-deelwoord-bijvoeglijk-6.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — uitleg 6",
+      "hash": "b1fc181eb228edb39e0f5d2fc557044a397415e8",
+      "tekens": 151,
+      "opgenomen": "2026-10-18T21:59:17.935Z"
+    },
+    "vraag:sp-deelwoord-bijvoeglijk:6": {
+      "bestand": "vraag-sp-deelwoord-bijvoeglijk-7.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — vraag 7",
+      "hash": "509b132141cb9574ff5f68ecb8ff805930fe613f",
+      "tekens": 46,
+      "opgenomen": "2026-10-18T21:59:19.081Z"
+    },
+    "hint:sp-deelwoord-bijvoeglijk:6": {
+      "bestand": "hint-sp-deelwoord-bijvoeglijk-7.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — hint 7",
+      "hash": "119ae0c1c3aecf5596e7dcb91a4a9337f1cef91c",
+      "tekens": 70,
+      "opgenomen": "2026-10-18T21:59:20.322Z"
+    },
+    "uitleg:sp-deelwoord-bijvoeglijk:6": {
+      "bestand": "uitleg-sp-deelwoord-bijvoeglijk-7.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — uitleg 7",
+      "hash": "14af1df8d8d0b4c96f3fd22b31d24a4f5e843092",
+      "tekens": 106,
+      "opgenomen": "2026-10-18T21:59:21.701Z"
+    },
+    "vraag:sp-deelwoord-bijvoeglijk:7": {
+      "bestand": "vraag-sp-deelwoord-bijvoeglijk-8.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — vraag 8",
+      "hash": "bf5a9bb9532eb08dc9e4054b37561821d9eccc3a",
+      "tekens": 62,
+      "opgenomen": "2026-10-18T21:59:22.805Z"
+    },
+    "hint:sp-deelwoord-bijvoeglijk:7": {
+      "bestand": "hint-sp-deelwoord-bijvoeglijk-8.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — hint 8",
+      "hash": "028c2dcd5477d90bdc25bc326670a711d39c164b",
+      "tekens": 81,
+      "opgenomen": "2026-10-18T21:59:23.974Z"
+    },
+    "uitleg:sp-deelwoord-bijvoeglijk:7": {
+      "bestand": "uitleg-sp-deelwoord-bijvoeglijk-8.mp3",
+      "titel": "Het verbrande ei: deelwoord vóór een naamwoord — uitleg 8",
+      "hash": "73b356fcf0c4c6043d28490797937f60bb5eb689",
+      "tekens": 113,
+      "opgenomen": "2026-10-18T21:59:25.246Z"
+    },
+    "vraag:sp-engelse-werkwoorden:0": {
+      "bestand": "vraag-sp-engelse-werkwoorden-1.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — vraag 1",
+      "hash": "1f327a53c48ecb8f445c3b8fbdf3509705dc6e45",
+      "tekens": 68,
+      "opgenomen": "2026-10-18T21:59:26.419Z"
+    },
+    "hint:sp-engelse-werkwoorden:0": {
+      "bestand": "hint-sp-engelse-werkwoorden-1.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — hint 1",
+      "hash": "ea2ce371d2ad21fb7312a36647128fd70aa2ef47",
+      "tekens": 70,
+      "opgenomen": "2026-10-18T21:59:27.599Z"
+    },
+    "uitleg:sp-engelse-werkwoorden:0": {
+      "bestand": "uitleg-sp-engelse-werkwoorden-1.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — uitleg 1",
+      "hash": "9f1fd08290127ef49a80737a07b3d54245c85c19",
+      "tekens": 97,
+      "opgenomen": "2026-10-18T21:59:29.043Z"
+    },
+    "vraag:sp-engelse-werkwoorden:1": {
+      "bestand": "vraag-sp-engelse-werkwoorden-2.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — vraag 2",
+      "hash": "5f8b1078a42befd4d3bc9a7348ed76aec499144a",
+      "tekens": 0,
+      "opgenomen": "2026-10-18T21:59:29.049Z"
+    },
+    "hint:sp-engelse-werkwoorden:1": {
+      "bestand": "hint-sp-engelse-werkwoorden-2.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — hint 2",
+      "hash": "984fae20371a1e5b6995d0b0bf406da776b07d8c",
+      "tekens": 61,
+      "opgenomen": "2026-10-18T21:59:30.112Z"
+    },
+    "uitleg:sp-engelse-werkwoorden:1": {
+      "bestand": "uitleg-sp-engelse-werkwoorden-2.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — uitleg 2",
+      "hash": "7a180959b15626f42d57eac6326145d527a1eba5",
+      "tekens": 119,
+      "opgenomen": "2026-10-18T21:59:31.754Z"
+    },
+    "vraag:sp-engelse-werkwoorden:2": {
+      "bestand": "vraag-sp-engelse-werkwoorden-3.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — vraag 3",
+      "hash": "277144717251a87f94cdf469f2c155cabd7a20d9",
+      "tekens": 86,
+      "opgenomen": "2026-10-18T21:59:32.924Z"
+    },
+    "hint:sp-engelse-werkwoorden:2": {
+      "bestand": "hint-sp-engelse-werkwoorden-3.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — hint 3",
+      "hash": "3a25a0c68a6e18e4c2c46605b46357beb4080884",
+      "tekens": 77,
+      "opgenomen": "2026-10-18T21:59:34.082Z"
+    },
+    "uitleg:sp-engelse-werkwoorden:2": {
+      "bestand": "uitleg-sp-engelse-werkwoorden-3.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — uitleg 3",
+      "hash": "4a3dcc1f3f564c86461589d3a44abc94a95be118",
+      "tekens": 89,
+      "opgenomen": "2026-10-18T21:59:35.373Z"
+    },
+    "vraag:sp-engelse-werkwoorden:3": {
+      "bestand": "vraag-sp-engelse-werkwoorden-4.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — vraag 4",
+      "hash": "250d6ce12a584d3e391f547fa97c8e1b49b7ce3e",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T21:59:36.384Z"
+    },
+    "hint:sp-engelse-werkwoorden:3": {
+      "bestand": "hint-sp-engelse-werkwoorden-4.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — hint 4",
+      "hash": "7bde8eced97403bb530d8b1a7f717c8a61a0141a",
+      "tekens": 76,
+      "opgenomen": "2026-10-18T21:59:37.544Z"
+    },
+    "uitleg:sp-engelse-werkwoorden:3": {
+      "bestand": "uitleg-sp-engelse-werkwoorden-4.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — uitleg 4",
+      "hash": "4f1d805285a224bc3644d3c8504af008e100a6d9",
+      "tekens": 159,
+      "opgenomen": "2026-10-18T21:59:39.585Z"
+    },
+    "vraag:sp-engelse-werkwoorden:4": {
+      "bestand": "vraag-sp-engelse-werkwoorden-5.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — vraag 5",
+      "hash": "4ea381d11ff570333c262c5ac4b607710f63f25a",
+      "tekens": 83,
+      "opgenomen": "2026-10-18T21:59:40.790Z"
+    },
+    "hint:sp-engelse-werkwoorden:4": {
+      "bestand": "hint-sp-engelse-werkwoorden-5.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — hint 5",
+      "hash": "0ded94dfab5795f13fec36a4c20b328fa0f14d33",
+      "tekens": 61,
+      "opgenomen": "2026-10-18T21:59:41.914Z"
+    },
+    "uitleg:sp-engelse-werkwoorden:4": {
+      "bestand": "uitleg-sp-engelse-werkwoorden-5.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — uitleg 5",
+      "hash": "7b9097f0837c3ddfc49f0b526a8adcb2d8f33d98",
+      "tekens": 82,
+      "opgenomen": "2026-10-18T21:59:43.214Z"
+    },
+    "vraag:sp-engelse-werkwoorden:5": {
+      "bestand": "vraag-sp-engelse-werkwoorden-6.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — vraag 6",
+      "hash": "a36b98cae91279202eeaaf1f3d7a01d5176b6234",
+      "tekens": 50,
+      "opgenomen": "2026-10-18T21:59:44.246Z"
+    },
+    "hint:sp-engelse-werkwoorden:5": {
+      "bestand": "hint-sp-engelse-werkwoorden-6.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — hint 6",
+      "hash": "811d4aeca4a0d16dcc31b50b69074dc0b0e8af7f",
+      "tekens": 86,
+      "opgenomen": "2026-10-18T21:59:45.474Z"
+    },
+    "uitleg:sp-engelse-werkwoorden:5": {
+      "bestand": "uitleg-sp-engelse-werkwoorden-6.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — uitleg 6",
+      "hash": "38203176cc9933dce3eb6c1926714f5f74aade57",
+      "tekens": 124,
+      "opgenomen": "2026-10-18T21:59:46.865Z"
+    },
+    "vraag:sp-engelse-werkwoorden:6": {
+      "bestand": "vraag-sp-engelse-werkwoorden-7.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — vraag 7",
+      "hash": "1c3b812414763494b7e4bd5758bc4e1d5397cb5b",
+      "tekens": 76,
+      "opgenomen": "2026-10-18T21:59:48.025Z"
+    },
+    "hint:sp-engelse-werkwoorden:6": {
+      "bestand": "hint-sp-engelse-werkwoorden-7.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — hint 7",
+      "hash": "3f89d60de7a82654b5bd3b4159a5f69be1cd056c",
+      "tekens": 64,
+      "opgenomen": "2026-10-18T21:59:49.212Z"
+    },
+    "uitleg:sp-engelse-werkwoorden:6": {
+      "bestand": "uitleg-sp-engelse-werkwoorden-7.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — uitleg 7",
+      "hash": "af495b5ee086759efebcfc4b26c764cd0b493b14",
+      "tekens": 84,
+      "opgenomen": "2026-10-18T21:59:50.560Z"
+    },
+    "vraag:sp-engelse-werkwoorden:7": {
+      "bestand": "vraag-sp-engelse-werkwoorden-8.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — vraag 8",
+      "hash": "5f8b1078a42befd4d3bc9a7348ed76aec499144a",
+      "tekens": 0,
+      "opgenomen": "2026-10-18T21:59:50.566Z"
+    },
+    "hint:sp-engelse-werkwoorden:7": {
+      "bestand": "hint-sp-engelse-werkwoorden-8.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — hint 8",
+      "hash": "1e71679fbc3bd9b4812bd318939a2aa85cf20485",
+      "tekens": 80,
+      "opgenomen": "2026-10-18T21:59:51.716Z"
+    },
+    "uitleg:sp-engelse-werkwoorden:7": {
+      "bestand": "uitleg-sp-engelse-werkwoorden-8.mp3",
+      "titel": "Engelse werkwoorden: gemaild en geskatet — uitleg 8",
+      "hash": "7b3fe7ba8f0d48cf1385d1798a85bfb32b5e702d",
+      "tekens": 117,
+      "opgenomen": "2026-10-18T21:59:53.159Z"
+    },
     "vraag:tv-hoofdletters:0": {
       "bestand": "vraag-tv-hoofdletters-1.mp3",
       "titel": "Hoofdletters: wanneer wel en wanneer niet — vraag 1",
@@ -3153,6 +4000,384 @@
       "tekens": 151,
       "opgenomen": "2026-10-09T09:34:00.256Z"
     },
+    "vraag:tv-trappen:0": {
+      "bestand": "vraag-tv-trappen-1.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — vraag 1",
+      "hash": "03a8fc551aad42e79086c0f027e8946af08fd0d8",
+      "tekens": 62,
+      "opgenomen": "2026-10-18T21:59:54.316Z"
+    },
+    "hint:tv-trappen:0": {
+      "bestand": "hint-tv-trappen-1.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — hint 1",
+      "hash": "fd89874916a166596a43486d1d67ff20f92de688",
+      "tekens": 60,
+      "opgenomen": "2026-10-18T21:59:55.442Z"
+    },
+    "uitleg:tv-trappen:0": {
+      "bestand": "uitleg-tv-trappen-1.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — uitleg 1",
+      "hash": "62cc7e1227edd50387ded6f5c47f01eb6e1c866c",
+      "tekens": 86,
+      "opgenomen": "2026-10-18T21:59:56.677Z"
+    },
+    "vraag:tv-trappen:1": {
+      "bestand": "vraag-tv-trappen-2.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — vraag 2",
+      "hash": "c4f5553a038f01ef0203e2896e6da28714162ded",
+      "tekens": 68,
+      "opgenomen": "2026-10-18T21:59:57.746Z"
+    },
+    "hint:tv-trappen:1": {
+      "bestand": "hint-tv-trappen-2.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — hint 2",
+      "hash": "821e8a05a1d0c60bb32c02105743df8a81d386fa",
+      "tekens": 103,
+      "opgenomen": "2026-10-18T21:59:59.052Z"
+    },
+    "uitleg:tv-trappen:1": {
+      "bestand": "uitleg-tv-trappen-2.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — uitleg 2",
+      "hash": "08bd6d2b6fb44b451a8116cd02e199ff61bbcebe",
+      "tekens": 106,
+      "opgenomen": "2026-10-18T22:00:00.562Z"
+    },
+    "vraag:tv-trappen:2": {
+      "bestand": "vraag-tv-trappen-3.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — vraag 3",
+      "hash": "2bff1e8e40d54371eb7cf251a7b108820e438f36",
+      "tekens": 0,
+      "opgenomen": "2026-10-18T22:00:00.568Z"
+    },
+    "hint:tv-trappen:2": {
+      "bestand": "hint-tv-trappen-3.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — hint 3",
+      "hash": "7ba30b49b834443b13d021f0aa2dba49010dd11f",
+      "tekens": 63,
+      "opgenomen": "2026-10-18T22:00:01.713Z"
+    },
+    "uitleg:tv-trappen:2": {
+      "bestand": "uitleg-tv-trappen-3.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — uitleg 3",
+      "hash": "c37575e30329bb0836a2aedb33d7c8dc00ad1bb9",
+      "tekens": 92,
+      "opgenomen": "2026-10-18T22:00:02.939Z"
+    },
+    "vraag:tv-trappen:3": {
+      "bestand": "vraag-tv-trappen-4.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — vraag 4",
+      "hash": "1681a7f0abc1dc0ecd7678978206f2c7378e7b40",
+      "tekens": 62,
+      "opgenomen": "2026-10-18T22:00:04.167Z"
+    },
+    "hint:tv-trappen:3": {
+      "bestand": "hint-tv-trappen-4.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — hint 4",
+      "hash": "908393633fba10c3829757759f704bc71b4ec4ba",
+      "tekens": 51,
+      "opgenomen": "2026-10-18T22:00:05.218Z"
+    },
+    "uitleg:tv-trappen:3": {
+      "bestand": "uitleg-tv-trappen-4.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — uitleg 4",
+      "hash": "ccd57fd5e89860c916d122e7c63fc26d5ebdd623",
+      "tekens": 101,
+      "opgenomen": "2026-10-18T22:00:06.440Z"
+    },
+    "vraag:tv-trappen:4": {
+      "bestand": "vraag-tv-trappen-5.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — vraag 5",
+      "hash": "2bbddeaf3caa46ef3df5423f9d265bd04d76910c",
+      "tekens": 18,
+      "opgenomen": "2026-10-18T22:00:07.316Z"
+    },
+    "hint:tv-trappen:4": {
+      "bestand": "hint-tv-trappen-5.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — hint 5",
+      "hash": "a13a2f8fe941b2e668f00dcda9b58ef2af68f908",
+      "tekens": 94,
+      "opgenomen": "2026-10-18T22:00:08.642Z"
+    },
+    "uitleg:tv-trappen:4": {
+      "bestand": "uitleg-tv-trappen-5.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — uitleg 5",
+      "hash": "bf092ed1ae4c050571d3fb5c0041e5a3d5ca3e8c",
+      "tekens": 132,
+      "opgenomen": "2026-10-18T22:00:10.098Z"
+    },
+    "vraag:tv-trappen:5": {
+      "bestand": "vraag-tv-trappen-6.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — vraag 6",
+      "hash": "e7b438fc19d3f91908a7a89f9c68551619624a01",
+      "tekens": 42,
+      "opgenomen": "2026-10-18T22:00:11.059Z"
+    },
+    "hint:tv-trappen:5": {
+      "bestand": "hint-tv-trappen-6.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — hint 6",
+      "hash": "4affb554923b4bf7f2fe5341f13fea777beb2563",
+      "tekens": 70,
+      "opgenomen": "2026-10-18T22:00:12.143Z"
+    },
+    "uitleg:tv-trappen:5": {
+      "bestand": "uitleg-tv-trappen-6.mp3",
+      "titel": "Trappen van vergelijking: groot, groter, grootst — uitleg 6",
+      "hash": "3e1b9198abf73d5c516f407d8f3ae59928e58433",
+      "tekens": 91,
+      "opgenomen": "2026-10-18T22:00:13.464Z"
+    },
+    "vraag:tv-signaalwoorden:0": {
+      "bestand": "vraag-tv-signaalwoorden-1.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — vraag 1",
+      "hash": "118ab6e5b6cca2458c9f8421ed42213ff4a8ef09",
+      "tekens": 87,
+      "opgenomen": "2026-10-18T22:00:14.668Z"
+    },
+    "hint:tv-signaalwoorden:0": {
+      "bestand": "hint-tv-signaalwoorden-1.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — hint 1",
+      "hash": "40173738f4731181c04524f253779ca4a869c296",
+      "tekens": 64,
+      "opgenomen": "2026-10-18T22:00:15.754Z"
+    },
+    "uitleg:tv-signaalwoorden:0": {
+      "bestand": "uitleg-tv-signaalwoorden-1.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — uitleg 1",
+      "hash": "fb96781c6082c5a737cd62e9860388204b329407",
+      "tekens": 111,
+      "opgenomen": "2026-10-18T22:00:17.093Z"
+    },
+    "vraag:tv-signaalwoorden:1": {
+      "bestand": "vraag-tv-signaalwoorden-2.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — vraag 2",
+      "hash": "7cdefbc3805c6cdb929622f7fc56a01a4c3c74eb",
+      "tekens": 87,
+      "opgenomen": "2026-10-18T22:00:18.326Z"
+    },
+    "hint:tv-signaalwoorden:1": {
+      "bestand": "hint-tv-signaalwoorden-2.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — hint 2",
+      "hash": "9680f8f6edd16c44756c1e0a304f6ee0122cbd3e",
+      "tekens": 46,
+      "opgenomen": "2026-10-18T22:00:19.403Z"
+    },
+    "uitleg:tv-signaalwoorden:1": {
+      "bestand": "uitleg-tv-signaalwoorden-2.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — uitleg 2",
+      "hash": "29d8c90cd2e01a524c258126a1d2d39bfd283916",
+      "tekens": 97,
+      "opgenomen": "2026-10-18T22:00:20.657Z"
+    },
+    "vraag:tv-signaalwoorden:2": {
+      "bestand": "vraag-tv-signaalwoorden-3.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — vraag 3",
+      "hash": "8c7e5945a24950b61951ae427043dcf45803a77e",
+      "tekens": 40,
+      "opgenomen": "2026-10-18T22:00:21.556Z"
+    },
+    "hint:tv-signaalwoorden:2": {
+      "bestand": "hint-tv-signaalwoorden-3.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — hint 3",
+      "hash": "37bf8451d7ee848c26cea5ef78ea0dcb4d684212",
+      "tekens": 80,
+      "opgenomen": "2026-10-18T22:00:22.774Z"
+    },
+    "uitleg:tv-signaalwoorden:2": {
+      "bestand": "uitleg-tv-signaalwoorden-3.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — uitleg 3",
+      "hash": "48c2c000c130c87e333a2a9be77b31f9021f0b2f",
+      "tekens": 121,
+      "opgenomen": "2026-10-18T22:00:24.212Z"
+    },
+    "vraag:tv-signaalwoorden:3": {
+      "bestand": "vraag-tv-signaalwoorden-4.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — vraag 4",
+      "hash": "a8fe1ca42367fa0667fe95557264f543e455d4a2",
+      "tekens": 84,
+      "opgenomen": "2026-10-18T22:00:25.445Z"
+    },
+    "hint:tv-signaalwoorden:3": {
+      "bestand": "hint-tv-signaalwoorden-4.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — hint 4",
+      "hash": "daeb68e7c9f24ac1aa4ed01fa83bd888873cc8e7",
+      "tekens": 66,
+      "opgenomen": "2026-10-18T22:00:26.493Z"
+    },
+    "uitleg:tv-signaalwoorden:3": {
+      "bestand": "uitleg-tv-signaalwoorden-4.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — uitleg 4",
+      "hash": "f2dd5fa0f7b254b85b9fc2775c3a7a5f1703d628",
+      "tekens": 118,
+      "opgenomen": "2026-10-18T22:00:28.037Z"
+    },
+    "vraag:tv-signaalwoorden:4": {
+      "bestand": "vraag-tv-signaalwoorden-5.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — vraag 5",
+      "hash": "581f4c4baa197aacb2297614b59915603c08ac6e",
+      "tekens": 52,
+      "opgenomen": "2026-10-18T22:00:29.015Z"
+    },
+    "hint:tv-signaalwoorden:4": {
+      "bestand": "hint-tv-signaalwoorden-5.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — hint 5",
+      "hash": "de0d389d1909c31c1c005bc4ea3c0329ca7def89",
+      "tekens": 40,
+      "opgenomen": "2026-10-18T22:00:29.959Z"
+    },
+    "uitleg:tv-signaalwoorden:4": {
+      "bestand": "uitleg-tv-signaalwoorden-5.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — uitleg 5",
+      "hash": "59f90a070792e124b55f60acda76ac2d859bc163",
+      "tekens": 123,
+      "opgenomen": "2026-10-18T22:00:31.432Z"
+    },
+    "vraag:tv-signaalwoorden:5": {
+      "bestand": "vraag-tv-signaalwoorden-6.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — vraag 6",
+      "hash": "e861d3cd4efa08084441defb835d90049fe6d16c",
+      "tekens": 92,
+      "opgenomen": "2026-10-18T22:00:32.713Z"
+    },
+    "hint:tv-signaalwoorden:5": {
+      "bestand": "hint-tv-signaalwoorden-6.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — hint 6",
+      "hash": "507632795cf5ac9c9a635aadabac24e9a2b5a173",
+      "tekens": 50,
+      "opgenomen": "2026-10-18T22:00:33.684Z"
+    },
+    "uitleg:tv-signaalwoorden:5": {
+      "bestand": "uitleg-tv-signaalwoorden-6.mp3",
+      "titel": "Signaalwoorden: maar, want en dus — uitleg 6",
+      "hash": "c4cdb2b3f67980bf17225eba00a8e2b171132770",
+      "tekens": 91,
+      "opgenomen": "2026-10-18T22:00:34.910Z"
+    },
+    "vraag:tv-spreekwoorden:0": {
+      "bestand": "vraag-tv-spreekwoorden-1.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — vraag 1",
+      "hash": "6c8f06e23364df5b111beb85e055db0556e91b12",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T22:00:35.890Z"
+    },
+    "hint:tv-spreekwoorden:0": {
+      "bestand": "hint-tv-spreekwoorden-1.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — hint 1",
+      "hash": "a7aeab226255a60853be8e9e8127f9edbce3aab5",
+      "tekens": 72,
+      "opgenomen": "2026-10-18T22:00:37.017Z"
+    },
+    "uitleg:tv-spreekwoorden:0": {
+      "bestand": "uitleg-tv-spreekwoorden-1.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — uitleg 1",
+      "hash": "57b481de1b43b3ce5a09fbf175adfb71fd0eda60",
+      "tekens": 118,
+      "opgenomen": "2026-10-18T22:00:38.308Z"
+    },
+    "vraag:tv-spreekwoorden:1": {
+      "bestand": "vraag-tv-spreekwoorden-2.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — vraag 2",
+      "hash": "5a5987a80366adce463e96572746ebbfab4b27ff",
+      "tekens": 115,
+      "opgenomen": "2026-10-18T22:00:39.647Z"
+    },
+    "hint:tv-spreekwoorden:1": {
+      "bestand": "hint-tv-spreekwoorden-2.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — hint 2",
+      "hash": "4cc33e46d5cb3ef44386f8de1ff18949edf902aa",
+      "tekens": 45,
+      "opgenomen": "2026-10-18T22:00:40.578Z"
+    },
+    "uitleg:tv-spreekwoorden:1": {
+      "bestand": "uitleg-tv-spreekwoorden-2.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — uitleg 2",
+      "hash": "8aa1523d6f8990d9c47116ba9296e3e1454ace6c",
+      "tekens": 137,
+      "opgenomen": "2026-10-18T22:00:42.001Z"
+    },
+    "vraag:tv-spreekwoorden:2": {
+      "bestand": "vraag-tv-spreekwoorden-3.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — vraag 3",
+      "hash": "6397ac5369a6b349600441601acefdaa0123c72b",
+      "tekens": 90,
+      "opgenomen": "2026-10-18T22:00:43.230Z"
+    },
+    "hint:tv-spreekwoorden:2": {
+      "bestand": "hint-tv-spreekwoorden-3.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — hint 3",
+      "hash": "4b52009ad1a20f549510d637852e979d777abc15",
+      "tekens": 29,
+      "opgenomen": "2026-10-18T22:00:44.108Z"
+    },
+    "uitleg:tv-spreekwoorden:2": {
+      "bestand": "uitleg-tv-spreekwoorden-3.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — uitleg 3",
+      "hash": "1c7a744f10f4300956f74dd3e276bb2b4047515c",
+      "tekens": 84,
+      "opgenomen": "2026-10-18T22:00:45.355Z"
+    },
+    "vraag:tv-spreekwoorden:3": {
+      "bestand": "vraag-tv-spreekwoorden-4.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — vraag 4",
+      "hash": "ccea4b0f3610ff64537da1d531a34dbed8123c10",
+      "tekens": 42,
+      "opgenomen": "2026-10-18T22:00:46.272Z"
+    },
+    "hint:tv-spreekwoorden:3": {
+      "bestand": "hint-tv-spreekwoorden-4.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — hint 4",
+      "hash": "1ede90bf7583dbd31b4c0aca30fc65f2f251a7d2",
+      "tekens": 105,
+      "opgenomen": "2026-10-18T22:00:47.502Z"
+    },
+    "uitleg:tv-spreekwoorden:3": {
+      "bestand": "uitleg-tv-spreekwoorden-4.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — uitleg 4",
+      "hash": "38f0de3a96e1c76977da70ab30c20aa8e3dae198",
+      "tekens": 193,
+      "opgenomen": "2026-10-18T22:00:49.406Z"
+    },
+    "vraag:tv-spreekwoorden:4": {
+      "bestand": "vraag-tv-spreekwoorden-5.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — vraag 5",
+      "hash": "dd1fa9504e877ef6cdfeaee2187b457af7991101",
+      "tekens": 51,
+      "opgenomen": "2026-10-18T22:00:50.382Z"
+    },
+    "hint:tv-spreekwoorden:4": {
+      "bestand": "hint-tv-spreekwoorden-5.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — hint 5",
+      "hash": "92f65ee419fd6b1762eecefb72f0da7477d1fae3",
+      "tekens": 90,
+      "opgenomen": "2026-10-18T22:00:51.460Z"
+    },
+    "uitleg:tv-spreekwoorden:4": {
+      "bestand": "uitleg-tv-spreekwoorden-5.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — uitleg 5",
+      "hash": "5525f57c3ecaba4f928acb6138174536465b147f",
+      "tekens": 98,
+      "opgenomen": "2026-10-18T22:00:52.645Z"
+    },
+    "vraag:tv-spreekwoorden:5": {
+      "bestand": "vraag-tv-spreekwoorden-6.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — vraag 6",
+      "hash": "a62fc440ae00624de97fac10382378ce2d026e4e",
+      "tekens": 132,
+      "opgenomen": "2026-10-18T22:00:53.956Z"
+    },
+    "hint:tv-spreekwoorden:5": {
+      "bestand": "hint-tv-spreekwoorden-6.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — hint 6",
+      "hash": "21aeb80e2cc03e84ee0d6819bfc3de15a61562d8",
+      "tekens": 65,
+      "opgenomen": "2026-10-18T22:00:54.983Z"
+    },
+    "uitleg:tv-spreekwoorden:5": {
+      "bestand": "uitleg-tv-spreekwoorden-6.mp3",
+      "titel": "Spreekwoorden en uitdrukkingen — uitleg 6",
+      "hash": "17e2d7299a76f7f8ae28bde7828843a015ce1a9b",
+      "tekens": 198,
+      "opgenomen": "2026-10-18T22:00:56.739Z"
+    },
     "woordkaart:wolf:0": {
       "bestand": "woordkaart-wolf-1.mp3",
       "titel": "De wolf is terug in Nederland — woord roedels",
@@ -3257,6 +4482,62 @@
       "hash": "05d0077e26948dd6e226ae66f1fd951b2c2904d6",
       "tekens": 85,
       "opgenomen": "2026-10-09T09:34:17.171Z"
+    },
+    "woordkaart:bijendans:0": {
+      "bestand": "woordkaart-bijendans-1.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — woord korf",
+      "hash": "caefde8735921618a1d6ebf64889ea840c8ba182",
+      "tekens": 93,
+      "opgenomen": "2026-10-18T22:00:58.017Z"
+    },
+    "woordkaart:bijendans:1": {
+      "bestand": "woordkaart-bijendans-2.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — woord Nobelprijs",
+      "hash": "040b563562cceb6c8a19373548f92ac6e1f265da",
+      "tekens": 96,
+      "opgenomen": "2026-10-18T22:00:59.333Z"
+    },
+    "woordkaart:bijendans:2": {
+      "bestand": "woordkaart-bijendans-3.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — woord achterlijf",
+      "hash": "176b7ff3d79e2fbe4fad93b7590780702c995c36",
+      "tekens": 77,
+      "opgenomen": "2026-10-18T22:01:00.464Z"
+    },
+    "woordkaart:bijendans:3": {
+      "bestand": "woordkaart-bijendans-4.mp3",
+      "titel": "Hoe bijen elkaar de weg wijzen — woord puntje aan zuigen",
+      "hash": "0035a9d46f793169c49cc88c964d9f92af631314",
+      "tekens": 123,
+      "opgenomen": "2026-10-18T22:01:01.861Z"
+    },
+    "woordkaart:sponsorloop:0": {
+      "bestand": "woordkaart-sponsorloop-1.mp3",
+      "titel": "De sponsorloop — woord verheugde",
+      "hash": "11716a754892737d97793774d88b6993c66dbb1c",
+      "tekens": 66,
+      "opgenomen": "2026-10-18T22:01:03.026Z"
+    },
+    "woordkaart:sponsorloop:1": {
+      "bestand": "woordkaart-sponsorloop-2.mp3",
+      "titel": "De sponsorloop — woord aarzelde",
+      "hash": "aa7f644e7fed518ff86ab7f31f1dfea5a4c84e18",
+      "tekens": 79,
+      "opgenomen": "2026-10-18T22:01:04.179Z"
+    },
+    "woordkaart:sponsorloop:2": {
+      "bestand": "woordkaart-sponsorloop-3.mp3",
+      "titel": "De sponsorloop — woord EHBO-tent",
+      "hash": "b1511184af5fd9bcd90004c348232356dd370e15",
+      "tekens": 96,
+      "opgenomen": "2026-10-18T22:01:05.483Z"
+    },
+    "woordkaart:sponsorloop:3": {
+      "bestand": "woordkaart-sponsorloop-4.mp3",
+      "titel": "De sponsorloop — woord Teleurgesteld",
+      "hash": "dbf17099b848c2a97f900ae601103228f398b5cd",
+      "tekens": 73,
+      "opgenomen": "2026-10-18T22:01:06.582Z"
     },
     "ui:voorlezen-aan": {
       "bestand": "ui-voorlezen-aan.mp3",
@@ -5245,6 +6526,524 @@
       "hash": "c763229070ab1296d0668a31dbdd4528c4dd352c",
       "tekens": 26,
       "opgenomen": "2026-10-09T09:38:48.898Z"
+    },
+    "d8:woord:klein": {
+      "bestand": "d8-woord-klein.mp3",
+      "titel": "Dictee groep 8 — klein",
+      "hash": "ff468e0cc1f32ba65a5ccc69a8ef920b2e52c132",
+      "tekens": 31,
+      "opgenomen": "2026-10-18T22:01:07.551Z"
+    },
+    "d8:zin:klein": {
+      "bestand": "d8-zin-klein.mp3",
+      "titel": "Dictee groep 8 — zin bij klein",
+      "hash": "8df6070b77e3ffcd8c2b912cfcf42ee2f8276821",
+      "tekens": 24,
+      "opgenomen": "2026-10-18T22:01:08.405Z"
+    },
+    "d8:woord:prijs": {
+      "bestand": "d8-woord-prijs.mp3",
+      "titel": "Dictee groep 8 — prijs",
+      "hash": "d41aba954538a0b3cdaf39d6236b2e3b5363366c",
+      "tekens": 37,
+      "opgenomen": "2026-10-18T22:01:09.401Z"
+    },
+    "d8:zin:prijs": {
+      "bestand": "d8-zin-prijs.mp3",
+      "titel": "Dictee groep 8 — zin bij prijs",
+      "hash": "61feef313cf846c77d934e3fdc78c50bdf4da034",
+      "tekens": 30,
+      "opgenomen": "2026-10-18T22:01:10.397Z"
+    },
+    "d8:woord:tijd": {
+      "bestand": "d8-woord-tijd.mp3",
+      "titel": "Dictee groep 8 — tijd",
+      "hash": "6d6ac5c17352693ebecdd1e177bdfd560a912e17",
+      "tekens": 38,
+      "opgenomen": "2026-10-18T22:01:11.333Z"
+    },
+    "d8:zin:tijd": {
+      "bestand": "d8-zin-tijd.mp3",
+      "titel": "Dictee groep 8 — zin bij tijd",
+      "hash": "1fa4c6f8604bb4806a1754d1bf8541c75fe6190d",
+      "tekens": 32,
+      "opgenomen": "2026-10-18T22:01:12.233Z"
+    },
+    "d8:woord:bakkerij": {
+      "bestand": "d8-woord-bakkerij.mp3",
+      "titel": "Dictee groep 8 — bakkerij",
+      "hash": "157e4bcb263b98c8b5fd7dc351791abaaa90570a",
+      "tekens": 52,
+      "opgenomen": "2026-10-18T22:01:13.247Z"
+    },
+    "d8:zin:bakkerij": {
+      "bestand": "d8-zin-bakkerij.mp3",
+      "titel": "Dictee groep 8 — zin bij bakkerij",
+      "hash": "9107c638d1f40fa42dfbd59c300dcd38b08b8bc7",
+      "tekens": 42,
+      "opgenomen": "2026-10-18T22:01:14.203Z"
+    },
+    "d8:woord:gezondheid": {
+      "bestand": "d8-woord-gezondheid.mp3",
+      "titel": "Dictee groep 8 — gezondheid",
+      "hash": "33ff646bf4aaf3d1446035d9c65d914f7506fee2",
+      "tekens": 47,
+      "opgenomen": "2026-10-18T22:01:15.307Z"
+    },
+    "d8:zin:gezondheid": {
+      "bestand": "d8-zin-gezondheid.mp3",
+      "titel": "Dictee groep 8 — zin bij gezondheid",
+      "hash": "8c5ccffb6810a10096d3d15ee52e0ef6b6e3d8f6",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T22:01:16.213Z"
+    },
+    "d8:woord:eerlijk": {
+      "bestand": "d8-woord-eerlijk.mp3",
+      "titel": "Dictee groep 8 — eerlijk",
+      "hash": "5514cb13eda34dada15615f9a5a8323188152608",
+      "tekens": 45,
+      "opgenomen": "2026-10-18T22:01:17.181Z"
+    },
+    "d8:zin:eerlijk": {
+      "bestand": "d8-zin-eerlijk.mp3",
+      "titel": "Dictee groep 8 — zin bij eerlijk",
+      "hash": "78a7200af1cfedd6266757dfd77740a32292ef63",
+      "tekens": 36,
+      "opgenomen": "2026-10-18T22:01:18.085Z"
+    },
+    "d8:woord:geit": {
+      "bestand": "d8-woord-geit.mp3",
+      "titel": "Dictee groep 8 — geit",
+      "hash": "77f253654ec878aa735c686a3b70f471c0dc3aa2",
+      "tekens": 37,
+      "opgenomen": "2026-10-18T22:01:19.059Z"
+    },
+    "d8:zin:geit": {
+      "bestand": "d8-zin-geit.mp3",
+      "titel": "Dictee groep 8 — zin bij geit",
+      "hash": "dbdea00788cab52d432813608f7d45f6c5851e06",
+      "tekens": 31,
+      "opgenomen": "2026-10-18T22:01:19.930Z"
+    },
+    "d8:woord:eiland": {
+      "bestand": "d8-woord-eiland.mp3",
+      "titel": "Dictee groep 8 — eiland",
+      "hash": "399d05f766341c97c453310ea7e4e898a79fa567",
+      "tekens": 45,
+      "opgenomen": "2026-10-18T22:01:20.894Z"
+    },
+    "d8:zin:eiland": {
+      "bestand": "d8-zin-eiland.mp3",
+      "titel": "Dictee groep 8 — zin bij eiland",
+      "hash": "aaab490802d68c1b9a488bf87ea7b5a3ab408e68",
+      "tekens": 37,
+      "opgenomen": "2026-10-18T22:01:21.799Z"
+    },
+    "d8:woord:blauw": {
+      "bestand": "d8-woord-blauw.mp3",
+      "titel": "Dictee groep 8 — blauw",
+      "hash": "487dff59f9472e02ee85117f9391f4539b512412",
+      "tekens": 42,
+      "opgenomen": "2026-10-18T22:01:22.784Z"
+    },
+    "d8:zin:blauw": {
+      "bestand": "d8-zin-blauw.mp3",
+      "titel": "Dictee groep 8 — zin bij blauw",
+      "hash": "c9f88afc8e67c05375e2f38b49d616692bbd56d0",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T22:01:23.695Z"
+    },
+    "d8:woord:vrouw": {
+      "bestand": "d8-woord-vrouw.mp3",
+      "titel": "Dictee groep 8 — vrouw",
+      "hash": "4260c95cde203808dacfb5bd4a28aadffa12bfd0",
+      "tekens": 33,
+      "opgenomen": "2026-10-18T22:01:24.629Z"
+    },
+    "d8:zin:vrouw": {
+      "bestand": "d8-zin-vrouw.mp3",
+      "titel": "Dictee groep 8 — zin bij vrouw",
+      "hash": "0e6717e78ca633635472236b57272618faf1d788",
+      "tekens": 26,
+      "opgenomen": "2026-10-18T22:01:25.558Z"
+    },
+    "d8:woord:koud": {
+      "bestand": "d8-woord-koud.mp3",
+      "titel": "Dictee groep 8 — koud",
+      "hash": "f77b7919a2991d136eebbfccdfb26e095312f01f",
+      "tekens": 39,
+      "opgenomen": "2026-10-18T22:01:26.549Z"
+    },
+    "d8:zin:koud": {
+      "bestand": "d8-zin-koud.mp3",
+      "titel": "Dictee groep 8 — zin bij koud",
+      "hash": "6c1d6e214fa84b27fafa6221561df77f44dc0b97",
+      "tekens": 33,
+      "opgenomen": "2026-10-18T22:01:27.459Z"
+    },
+    "d8:woord:saus": {
+      "bestand": "d8-woord-saus.mp3",
+      "titel": "Dictee groep 8 — saus",
+      "hash": "7776a3589282a57474e92d6bdc9d326b0b6f28fc",
+      "tekens": 38,
+      "opgenomen": "2026-10-18T22:01:28.461Z"
+    },
+    "d8:zin:saus": {
+      "bestand": "d8-zin-saus.mp3",
+      "titel": "Dictee groep 8 — zin bij saus",
+      "hash": "8ae469c1b27ef0850eb1b2ea0f82956424e9f81d",
+      "tekens": 32,
+      "opgenomen": "2026-10-18T22:01:29.350Z"
+    },
+    "d8:woord:pauw": {
+      "bestand": "d8-woord-pauw.mp3",
+      "titel": "Dictee groep 8 — pauw",
+      "hash": "00fed86cd91ffa364e1d0c3882d83f4ed3d96de6",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T22:01:30.471Z"
+    },
+    "d8:zin:pauw": {
+      "bestand": "d8-zin-pauw.mp3",
+      "titel": "Dictee groep 8 — zin bij pauw",
+      "hash": "a16fc47d41b7d02ad0de4edc431eaabc6909a8a1",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T22:01:31.355Z"
+    },
+    "d8:woord:verbrande": {
+      "bestand": "d8-woord-verbrande.mp3",
+      "titel": "Dictee groep 8 — verbrande",
+      "hash": "b29c505fd1d0367c9035d2be1f45bf85230a6f78",
+      "tekens": 52,
+      "opgenomen": "2026-10-18T22:01:32.348Z"
+    },
+    "d8:zin:verbrande": {
+      "bestand": "d8-zin-verbrande.mp3",
+      "titel": "Dictee groep 8 — zin bij verbrande",
+      "hash": "498f7782c2f724dc6879cfab35c0c5da84196ea8",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T22:01:33.252Z"
+    },
+    "d8:woord:geplakte": {
+      "bestand": "d8-woord-geplakte.mp3",
+      "titel": "Dictee groep 8 — geplakte",
+      "hash": "004f1ead4625c7950561d6bd9d7a15804f356de3",
+      "tekens": 40,
+      "opgenomen": "2026-10-18T22:01:34.188Z"
+    },
+    "d8:zin:geplakte": {
+      "bestand": "d8-zin-geplakte.mp3",
+      "titel": "Dictee groep 8 — zin bij geplakte",
+      "hash": "1c5a61eac8662fd79c7ca5e5ca85d16665ebe49b",
+      "tekens": 30,
+      "opgenomen": "2026-10-18T22:01:35.069Z"
+    },
+    "d8:woord:verhuisde": {
+      "bestand": "d8-woord-verhuisde.mp3",
+      "titel": "Dictee groep 8 — verhuisde",
+      "hash": "b55f68043544d1f658238b6d0367d52f90a336f1",
+      "tekens": 51,
+      "opgenomen": "2026-10-18T22:01:36.071Z"
+    },
+    "d8:zin:verhuisde": {
+      "bestand": "d8-zin-verhuisde.mp3",
+      "titel": "Dictee groep 8 — zin bij verhuisde",
+      "hash": "041d7032323465c0ff642f1ad15ae3e335b8d67e",
+      "tekens": 40,
+      "opgenomen": "2026-10-18T22:01:36.996Z"
+    },
+    "d8:woord:versierde": {
+      "bestand": "d8-woord-versierde.mp3",
+      "titel": "Dictee groep 8 — versierde",
+      "hash": "6dcd56f215d2719e0a03df49bb96dfdd7d0def3a",
+      "tekens": 53,
+      "opgenomen": "2026-10-18T22:01:38.000Z"
+    },
+    "d8:zin:versierde": {
+      "bestand": "d8-zin-versierde.mp3",
+      "titel": "Dictee groep 8 — zin bij versierde",
+      "hash": "81395e775dd6a889aca28f9d2d36035e5fb5f9a0",
+      "tekens": 42,
+      "opgenomen": "2026-10-18T22:01:38.936Z"
+    },
+    "d8:woord:geverfde": {
+      "bestand": "d8-woord-geverfde.mp3",
+      "titel": "Dictee groep 8 — geverfde",
+      "hash": "039045169276346ac50ce8644a2817013e715085",
+      "tekens": 45,
+      "opgenomen": "2026-10-18T22:01:39.926Z"
+    },
+    "d8:zin:geverfde": {
+      "bestand": "d8-zin-geverfde.mp3",
+      "titel": "Dictee groep 8 — zin bij geverfde",
+      "hash": "080b97805e402cc56268e60246be826c187eaa7d",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T22:01:40.834Z"
+    },
+    "d8:woord:gefietste": {
+      "bestand": "d8-woord-gefietste.mp3",
+      "titel": "Dictee groep 8 — gefietste",
+      "hash": "f2a8eb897a3ecb773f2d1fc1f17633497a5f8471",
+      "tekens": 46,
+      "opgenomen": "2026-10-18T22:01:41.821Z"
+    },
+    "d8:zin:gefietste": {
+      "bestand": "d8-zin-gefietste.mp3",
+      "titel": "Dictee groep 8 — zin bij gefietste",
+      "hash": "3994f3aeb385a4dc493d05a922e4dde428086790",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T22:01:42.722Z"
+    },
+    "d8:woord:gebakken": {
+      "bestand": "d8-woord-gebakken.mp3",
+      "titel": "Dictee groep 8 — gebakken",
+      "hash": "e8454d501284ca06b105403f2ba65fc61bc3612f",
+      "tekens": 33,
+      "opgenomen": "2026-10-18T22:01:43.678Z"
+    },
+    "d8:zin:gebakken": {
+      "bestand": "d8-zin-gebakken.mp3",
+      "titel": "Dictee groep 8 — zin bij gebakken",
+      "hash": "e0b61749922d45c891f21c231603490dd92504fe",
+      "tekens": 23,
+      "opgenomen": "2026-10-18T22:01:44.537Z"
+    },
+    "d8:woord:gestolen": {
+      "bestand": "d8-woord-gestolen.mp3",
+      "titel": "Dictee groep 8 — gestolen",
+      "hash": "99ca8608630b600d954489b5fd002a0c6abd5c12",
+      "tekens": 45,
+      "opgenomen": "2026-10-18T22:01:45.591Z"
+    },
+    "d8:zin:gestolen": {
+      "bestand": "d8-zin-gestolen.mp3",
+      "titel": "Dictee groep 8 — zin bij gestolen",
+      "hash": "bce21aa73ce9b4d088ca0d1a6093591fac189ad2",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T22:01:46.501Z"
+    },
+    "d8:woord:gescoorde": {
+      "bestand": "d8-woord-gescoorde.mp3",
+      "titel": "Dictee groep 8 — gescoorde",
+      "hash": "8ebe91355938a96982b3659e0070762e6894470d",
+      "tekens": 49,
+      "opgenomen": "2026-10-18T22:01:47.557Z"
+    },
+    "d8:zin:gescoorde": {
+      "bestand": "d8-zin-gescoorde.mp3",
+      "titel": "Dictee groep 8 — zin bij gescoorde",
+      "hash": "042b2487665f042a2fa17c0ef0abfb37b5cffbdc",
+      "tekens": 38,
+      "opgenomen": "2026-10-18T22:01:48.476Z"
+    },
+    "d8:woord:gebruikte": {
+      "bestand": "d8-woord-gebruikte.mp3",
+      "titel": "Dictee groep 8 — gebruikte",
+      "hash": "0b02b3312716133b7d12af18087ff48561ba83df",
+      "tekens": 48,
+      "opgenomen": "2026-10-18T22:01:49.463Z"
+    },
+    "d8:zin:gebruikte": {
+      "bestand": "d8-zin-gebruikte.mp3",
+      "titel": "Dictee groep 8 — zin bij gebruikte",
+      "hash": "0de22f56eacc2035d34da3f8e1536f00b1224d56",
+      "tekens": 37,
+      "opgenomen": "2026-10-18T22:01:50.358Z"
+    },
+    "d8:woord:gekookte": {
+      "bestand": "d8-woord-gekookte.mp3",
+      "titel": "Dictee groep 8 — gekookte",
+      "hash": "11bb0efde59e3a2ae6d66914f40f64f64c600927",
+      "tekens": 40,
+      "opgenomen": "2026-10-18T22:01:51.342Z"
+    },
+    "d8:zin:gekookte": {
+      "bestand": "d8-zin-gekookte.mp3",
+      "titel": "Dictee groep 8 — zin bij gekookte",
+      "hash": "82ccfa9bc7d9f871545eefdb3a80795e5b149436",
+      "tekens": 30,
+      "opgenomen": "2026-10-18T22:01:52.215Z"
+    },
+    "d8:woord:opgeruimde": {
+      "bestand": "d8-woord-opgeruimde.mp3",
+      "titel": "Dictee groep 8 — opgeruimde",
+      "hash": "0d9fa2442de2bcea17c8f4f05310bf4f4941c453",
+      "tekens": 52,
+      "opgenomen": "2026-10-18T22:01:53.243Z"
+    },
+    "d8:zin:opgeruimde": {
+      "bestand": "d8-zin-opgeruimde.mp3",
+      "titel": "Dictee groep 8 — zin bij opgeruimde",
+      "hash": "32732f2df1c3b1c6cec96cc57ebe94a497af881c",
+      "tekens": 40,
+      "opgenomen": "2026-10-18T22:01:54.150Z"
+    },
+    "d8:woord:gemaild": {
+      "bestand": "d8-woord-gemaild.mp3",
+      "titel": "Dictee groep 8 — gemaild",
+      "hash": "3430516bd7ebfdf22952f891c0ccef94f6347e31",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T22:01:55.143Z"
+    },
+    "d8:zin:gemaild": {
+      "bestand": "d8-zin-gemaild.mp3",
+      "titel": "Dictee groep 8 — zin bij gemaild",
+      "hash": "73ca83d150a4d26ee35aebe39e8a7c3fe0bde15c",
+      "tekens": 32,
+      "opgenomen": "2026-10-18T22:01:56.038Z"
+    },
+    "d8:woord:mailde": {
+      "bestand": "d8-woord-mailde.mp3",
+      "titel": "Dictee groep 8 — mailde",
+      "hash": "47884ac58730d680d86fb81c8111743e315065a5",
+      "tekens": 34,
+      "opgenomen": "2026-10-18T22:01:57.012Z"
+    },
+    "d8:zin:mailde": {
+      "bestand": "d8-zin-mailde.mp3",
+      "titel": "Dictee groep 8 — zin bij mailde",
+      "hash": "48a801f24f22fa5b7704bc4c1a161a7398d20b50",
+      "tekens": 26,
+      "opgenomen": "2026-10-18T22:01:57.890Z"
+    },
+    "d8:woord:skatet": {
+      "bestand": "d8-woord-skatet.mp3",
+      "titel": "Dictee groep 8 — skatet",
+      "hash": "5d80898a8b1e764e10e3e7d821f14d777c900a09",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T22:01:58.811Z"
+    },
+    "d8:zin:skatet": {
+      "bestand": "d8-zin-skatet.mp3",
+      "titel": "Dictee groep 8 — zin bij skatet",
+      "hash": "b1f035f0d09b936adc19947cfba77089b724dd9e",
+      "tekens": 27,
+      "opgenomen": "2026-10-18T22:01:59.670Z"
+    },
+    "d8:woord:skatete": {
+      "bestand": "d8-woord-skatete.mp3",
+      "titel": "Dictee groep 8 — skatete",
+      "hash": "6d2d5ce58285648487a82bcd5aee2c540ab4bab3",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T22:02:00.625Z"
+    },
+    "d8:zin:skatete": {
+      "bestand": "d8-zin-skatete.mp3",
+      "titel": "Dictee groep 8 — zin bij skatete",
+      "hash": "105acf3f1fc85e0b2fa628801550da5916f79517",
+      "tekens": 32,
+      "opgenomen": "2026-10-18T22:02:01.499Z"
+    },
+    "d8:woord:geskatet": {
+      "bestand": "d8-woord-geskatet.mp3",
+      "titel": "Dictee groep 8 — geskatet",
+      "hash": "0be86dff1ef3fe2fd9814d36279652b20ccbe494",
+      "tekens": 45,
+      "opgenomen": "2026-10-18T22:02:02.494Z"
+    },
+    "d8:zin:geskatet": {
+      "bestand": "d8-zin-geskatet.mp3",
+      "titel": "Dictee groep 8 — zin bij geskatet",
+      "hash": "9cf88d74eeac99a213cfb851fef5a394bc0649cc",
+      "tekens": 35,
+      "opgenomen": "2026-10-18T22:02:03.451Z"
+    },
+    "d8:woord:crashte": {
+      "bestand": "d8-woord-crashte.mp3",
+      "titel": "Dictee groep 8 — crashte",
+      "hash": "df6e44be01eeb2dfc62907c300a758879a7261d8",
+      "tekens": 48,
+      "opgenomen": "2026-10-18T22:02:04.458Z"
+    },
+    "d8:zin:crashte": {
+      "bestand": "d8-zin-crashte.mp3",
+      "titel": "Dictee groep 8 — zin bij crashte",
+      "hash": "8a5a8ebc026743080806ccb779d0d334fa5d8be8",
+      "tekens": 39,
+      "opgenomen": "2026-10-18T22:02:05.353Z"
+    },
+    "d8:woord:gecrasht": {
+      "bestand": "d8-woord-gecrasht.mp3",
+      "titel": "Dictee groep 8 — gecrasht",
+      "hash": "51d05bddf2b69b070e350fb63fa9cadbabb2bce9",
+      "tekens": 36,
+      "opgenomen": "2026-10-18T22:02:06.335Z"
+    },
+    "d8:zin:gecrasht": {
+      "bestand": "d8-zin-gecrasht.mp3",
+      "titel": "Dictee groep 8 — zin bij gecrasht",
+      "hash": "9a144beb158e0891224552a71f540b8897f69aeb",
+      "tekens": 26,
+      "opgenomen": "2026-10-18T22:02:07.192Z"
+    },
+    "d8:woord:gegamed": {
+      "bestand": "d8-woord-gegamed.mp3",
+      "titel": "Dictee groep 8 — gegamed",
+      "hash": "21b8843740f66599686e6a330987dca0ee0cccd3",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T22:02:08.159Z"
+    },
+    "d8:zin:gegamed": {
+      "bestand": "d8-zin-gegamed.mp3",
+      "titel": "Dictee groep 8 — zin bij gegamed",
+      "hash": "e1de350e1b26a26cb0b383779c68ec127e5cd0e9",
+      "tekens": 32,
+      "opgenomen": "2026-10-18T22:02:09.073Z"
+    },
+    "d8:woord:gamet": {
+      "bestand": "d8-woord-gamet.mp3",
+      "titel": "Dictee groep 8 — gamet",
+      "hash": "a307f4f7d56e2863264a4d9d1824af5c7e991c62",
+      "tekens": 40,
+      "opgenomen": "2026-10-18T22:02:10.039Z"
+    },
+    "d8:zin:gamet": {
+      "bestand": "d8-zin-gamet.mp3",
+      "titel": "Dictee groep 8 — zin bij gamet",
+      "hash": "06a90aae9be3d14114303ed54ae30d48b39ac41e",
+      "tekens": 33,
+      "opgenomen": "2026-10-18T22:02:10.918Z"
+    },
+    "d8:woord:gegoogeld": {
+      "bestand": "d8-woord-gegoogeld.mp3",
+      "titel": "Dictee groep 8 — gegoogeld",
+      "hash": "1e4f13b495d5bd516cf64c2ec10c482990c2753a",
+      "tekens": 41,
+      "opgenomen": "2026-10-18T22:02:11.882Z"
+    },
+    "d8:zin:gegoogeld": {
+      "bestand": "d8-zin-gegoogeld.mp3",
+      "titel": "Dictee groep 8 — zin bij gegoogeld",
+      "hash": "5e82a3c8498af6ba339b97803c86883a93576b17",
+      "tekens": 30,
+      "opgenomen": "2026-10-18T22:02:12.784Z"
+    },
+    "d8:woord:geüpdatet": {
+      "bestand": "d8-woord-geupdatet.mp3",
+      "titel": "Dictee groep 8 — geüpdatet",
+      "hash": "37592c4b8dd9947e5008c46c5af769a9e78275bc",
+      "tekens": 43,
+      "opgenomen": "2026-10-18T22:02:13.785Z"
+    },
+    "d8:zin:geüpdatet": {
+      "bestand": "d8-zin-geupdatet.mp3",
+      "titel": "Dictee groep 8 — zin bij geüpdatet",
+      "hash": "55d65ffbd1006a51d05bddc7823e699abb0e6e6d",
+      "tekens": 32,
+      "opgenomen": "2026-10-18T22:02:14.681Z"
+    },
+    "d8:woord:racete": {
+      "bestand": "d8-woord-racete.mp3",
+      "titel": "Dictee groep 8 — racete",
+      "hash": "e58c3324c506aaadfa4d6c88f74116fbfd99ad55",
+      "tekens": 44,
+      "opgenomen": "2026-10-18T22:02:15.641Z"
+    },
+    "d8:zin:racete": {
+      "bestand": "d8-zin-racete.mp3",
+      "titel": "Dictee groep 8 — zin bij racete",
+      "hash": "62a4ad862e095836ed24482f5c2d4bc335477153",
+      "tekens": 36,
+      "opgenomen": "2026-10-18T22:02:16.539Z"
     },
     "d8:woord:onmiddellijk": {
       "bestand": "d8-woord-onmiddellijk.mp3",
