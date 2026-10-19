@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oefenen met Kaia, Pluis en Wolkje — groep 5, groep 8 en knutselen</title>
+<title>Oefenen met Kaia, Pluis, Wolkje en Mochi</title>
 <meta name="description" content="Spellingspelletjes voor groep 5 met Pluis het konijn, begrijpend lezen, spelling, taalverzorging en dictee voor groep 8 met Kaia de capybara, en leren haken met Wolkje het schaap.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
   <!-- ================= GROEP KIEZEN ================= -->
   <section class="scherm actief" id="scherm-groep">
     <h1 class="titel titel-midden">Wie gaat er oefenen?</h1>
-    <p class="ondertitel titel-midden">Kies je groep, of ga knutselen.</p>
+    <p class="ondertitel titel-midden">Kies je groep, ga knutselen, of oefen voor de toetsen.</p>
 
     <div class="groep-keuze">
       <button class="groep-kaart groep-kaart-5" type="button" data-groep="5">
@@ -48,6 +48,11 @@
         <div class="schaap schaap-keuze" id="schaap-keuze"></div>
         <span class="groep-naam">Knutselen</span>
         <span class="groep-uitleg" id="groep-knutsel-uitleg">Leren haken met het schaap</span>
+      </button>
+      <button class="groep-kaart groep-kaart-mochi" type="button" data-groep="mochi">
+        <div class="panda panda-keuze" id="panda-keuze"></div>
+        <span class="groep-naam">Toetstraining</span>
+        <span class="groep-uitleg" id="groep-mochi-uitleg">Elke dag een halfuur oefenen voor de toetsen van groep 8</span>
       </button>
     </div>
   </section>
@@ -379,6 +384,60 @@
     </div>
   </section>
 
+  <!-- ================= MOCHI: ALLE DAGEN ================= -->
+  <section class="scherm" id="scherm-m-start">
+    <button class="terugknop" data-naar-groepen>← Terug naar het begin</button>
+    <div class="welkom">
+      <div class="panda panda-groot" id="panda-start"></div>
+      <div class="bubbel bubbel-links"><p id="m-welkom"></p></div>
+    </div>
+
+    <h1 class="titel">Twee weken toetstraining</h1>
+    <p class="ondertitel" id="m-ondertitel"></p>
+    <div class="m-dagen" id="m-dagen"></div>
+
+    <h2 class="regel-kop">Zo gaat het tot nu toe</h2>
+    <div class="m-stand" id="m-stand"></div>
+
+    <div class="voortgang-blok">
+      <p>Je mag elke dag zo vaak doen als je wilt; het laatste resultaat telt.</p>
+      <button class="tekstknop" id="m-reset">Voortgang wissen</button>
+    </div>
+  </section>
+
+  <!-- ================= MOCHI: EEN DAG ================= -->
+  <section class="scherm" id="scherm-m-dag">
+    <button class="terugknop" data-m-start>← Alle dagen</button>
+    <div class="welkom">
+      <div class="panda panda-groot" id="panda-dag"></div>
+      <div class="bubbel bubbel-links"><p id="m-dag-praatje"></p></div>
+    </div>
+    <h1 class="titel" id="m-dag-titel"></h1>
+    <p class="ondertitel" id="m-dag-ondertitel"></p>
+    <ol class="m-onderdelen" id="m-onderdelen"></ol>
+    <div class="onderbalk">
+      <button class="grote-knop" id="m-dag-start">Begin →</button>
+    </div>
+  </section>
+
+  <!-- ================= MOCHI: OEFENEN ================= -->
+  <section class="scherm" id="scherm-m-oefen">
+    <div class="vragen-kop">
+      <button class="terugknop" id="m-naar-dag">← Naar de dag</button>
+      <div class="stippen" id="m-stippen" aria-label="Hoe ver je bent"></div>
+    </div>
+    <div class="coach-strook">
+      <div class="panda panda-klein" id="panda-oefen"></div>
+      <div class="bubbel"><p id="m-praatje" aria-live="polite"></p></div>
+    </div>
+    <p class="m-kop"><span class="label" id="m-onderdeel-label"></span> <span class="m-toets" id="m-onderdeel-toets"></span></p>
+    <div class="vraag-kaart" id="m-kaart"></div>
+    <div class="onderbalk">
+      <button class="grote-knop knop-grijs" id="m-knop-2" hidden>Terug naar de dag</button>
+      <button class="grote-knop" id="m-knop">Nakijken</button>
+    </div>
+  </section>
+
 </main>
 
 <script src="exercises.js"></script>
@@ -387,12 +446,18 @@
 <script src="dictee.js"></script>
 <script src="groep5.js"></script>
 <script src="knutselen.js"></script>
+<script src="mochi.js"></script>
+<script src="mochi-lezen.js"></script>
+<script src="mochi-spelling.js"></script>
+<script src="rekensommen.js"></script>
 <script src="zinnen.js"></script>
 <script src="capybara.js"></script>
 <script src="konijn.js"></script>
 <script src="schaap.js"></script>
+<script src="panda.js"></script>
 <script src="app.js"></script>
 <script src="spellen.js"></script>
 <script src="werkplaats.js"></script>
+<script src="toetstraining.js"></script>
 </body>
 </html>

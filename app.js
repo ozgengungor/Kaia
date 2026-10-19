@@ -11,9 +11,10 @@
  * dictee heeft geen vragen maar een eigen scherm; zie "Dictee" verderop.
  *
  * Dit bestand regelt ook het keuzescherm voor de groep. Groep 8 is alles
- * hieronder; groep 5 (de spelletjes met het konijn) staat in spellen.js en
- * Knutselen (haken met het schaap) in werkplaats.js. Die twee gebruiken de
- * hulpjes die onderaan in window.KaiaApp worden klaargezet.
+ * hieronder; groep 5 (de spelletjes met het konijn) staat in spellen.js,
+ * Knutselen (haken met het schaap) in werkplaats.js en de toetstraining met
+ * Mochi de panda in toetstraining.js. Die drie gebruiken de hulpjes die
+ * onderaan in window.KaiaApp worden klaargezet.
  */
 
 (() => {
@@ -287,18 +288,20 @@
   /*  Groep kiezen                                                       */
   /* ------------------------------------------------------------------ */
 
-  // De bovenbalk en de kleuren volgen de gekozen groep: 5, 8, 'knutsel' of
+  // De bovenbalk en de kleuren volgen de gekozen groep: 5, 8, 'knutsel', 'mochi' of
   // null (het keuzescherm).
   function zetGroep(groep) {
     document.body.classList.toggle('groep-5', groep === 5);
     document.body.classList.toggle('groep-knutsel', groep === 'knutsel');
+    document.body.classList.toggle('groep-mochi', groep === 'mochi');
     const konijn = escapeHtml(GROEP5.konijn);
     $('#balk-naam').innerHTML =
       groep === 5 ? `Oefenen met <b>${konijn}</b>`
         : groep === 8 ? 'Oefenen met <b>Kaia</b>'
           : groep === 'knutsel' ? `Knutselen met <b>${escapeHtml(KNUTSELEN.coach)}</b>`
+            : groep === 'mochi' ? `Toetstraining met <b>${escapeHtml(MOCHI.coach)}</b>`
             : `Oefenen met <b>Kaia</b> en <b>${konijn}</b>`;
-    if (groep !== 8) $('#balk-icoon').textContent = groep === 5 ? '🐰' : groep === 'knutsel' ? '🧶' : '🏡';
+    if (groep !== 8) $('#balk-icoon').textContent = groep === 5 ? '🐰' : groep === 'knutsel' ? '🧶' : groep === 'mochi' ? '🐼' : '🏡';
   }
 
   function toonGroepen() {
@@ -307,6 +310,8 @@
     Konijn.render($('#konijn-keuze'), 'zwaai', GROEP5.konijn);
     Capybara.render($('#capy-keuze'), 'zwaai');
     Schaap.render($('#schaap-keuze'), 'blij', KNUTSELEN.coach);
+    Panda.render($('#panda-keuze'), 'blij', MOCHI.coach);
+    $('#groep-mochi-uitleg').textContent = `Elke dag een halfuur oefenen voor de toetsen van groep 8, met ${MOCHI.coach} de panda`;
     $('#groep-knutsel-uitleg').textContent = `Leren haken met ${KNUTSELEN.coach} het schaap`;
     $('#groep-5-uitleg').textContent = `Spellingspelletjes en dictee met ${GROEP5.konijn} het konijn`;
     toonScherm('scherm-groep');
@@ -1120,6 +1125,7 @@
     kaart.addEventListener('click', () => {
       if (kaart.dataset.groep === '5') { zetGroep(5); window.Groep5.toonStart(); }
       else if (kaart.dataset.groep === 'knutsel') { zetGroep('knutsel'); window.Knutselen.toonStart(); }
+      else if (kaart.dataset.groep === 'mochi') { zetGroep('mochi'); window.Mochi.toonStart(); }
       else toonStart();
     });
   });

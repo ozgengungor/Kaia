@@ -174,7 +174,7 @@ main { max-width: 820px; margin: 0 auto; padding: 20px 16px 120px; }
 
 /* ---------- Kiezen: welke groep ---------- */
 .titel-midden { text-align: center; }
-.groep-keuze { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+.groep-keuze { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 10px; }
 .groep-kaart {
   display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;
   background: var(--papier); border: 4px solid var(--rand); border-radius: 26px;
@@ -185,7 +185,8 @@ main { max-width: 820px; margin: 0 auto; padding: 20px 16px 120px; }
 .groep-kaart-5:hover, .groep-kaart-5:focus-visible { border-color: #e8798f; background: #fff3f6; }
 .groep-kaart-8:hover, .groep-kaart-8:focus-visible { border-color: var(--groen); background: var(--groen-licht); }
 .groep-kaart-knutsel:hover, .groep-kaart-knutsel:focus-visible { border-color: #9a74c9; background: #f5effb; }
-.konijn-keuze, .capy-keuze, .schaap-keuze { width: min(180px, 80%); }
+.groep-kaart-mochi:hover, .groep-kaart-mochi:focus-visible { border-color: #3f9c8a; background: #eaf6f2; }
+.konijn-keuze, .capy-keuze, .schaap-keuze, .panda-keuze { width: min(180px, 80%); }
 .groep-naam { font-family: 'Baloo 2', sans-serif; font-size: 1.9rem; font-weight: 700; line-height: 1.1; margin-top: 8px; }
 .groep-uitleg { color: var(--inkt-zacht); font-size: .98rem; }
 
@@ -290,6 +291,109 @@ body.groep-knutsel .balk { background: rgba(247,243,251,.92); }
 .k-hulp ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .k-hulp li p { margin: 0; }
 .k-probleem { font-weight: 700; }
+
+/* Mochi krijgt een bamboegroen jasje. */
+body.groep-mochi {
+  --creme: #f2f7f2;
+  --creme-diep: #e1eee3;
+  --rand: #cfe0d2;
+  background:
+    radial-gradient(circle at 12% 8%, #fbfdf9 0%, transparent 40%),
+    radial-gradient(circle at 88% 4%, #e6f3ee 0%, transparent 35%),
+    var(--creme);
+}
+body.groep-mochi .balk { background: rgba(242,247,242,.92); }
+
+/* ---------- De panda (toetstraining) ---------- */
+.panda { flex: none; }
+.panda-groot { width: 132px; }
+.panda-klein { width: 78px; }
+.panda-svg { width: 100%; height: auto; display: block; overflow: visible; animation: schaap-dein 3.8s ease-in-out infinite; transform-origin: 50% 95%; }
+.panda[data-stemming="juich"] .panda-svg { animation: konijn-hup .7s cubic-bezier(.3,.6,.4,1) infinite; }
+.panda-ogen { transform-box: fill-box; transform-origin: 50% 50%; animation: knipper 5.6s linear infinite; }
+.panda-poot { animation: zwaaien .9s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .panda-svg, .panda-ogen, .panda-poot { animation: none !important; }
+}
+
+/* ---------- Toetstraining: dagen, onderdelen en oefenen ---------- */
+.m-dagen { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 22px; }
+.m-dag {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 88px; justify-content: center;
+  background: var(--papier); border: 3px solid var(--rand); border-radius: 14px; padding: 8px 4px;
+  font: inherit; color: var(--inkt); cursor: pointer; box-shadow: var(--schaduw);
+}
+.m-dag:hover { border-color: #3f9c8a; }
+.m-dag.is-bezig { background: var(--oranje-licht); }
+.m-dag.is-klaar { background: var(--groen-licht); border-color: var(--groen); }
+.m-dag.is-vandaag { border-color: var(--oranje); box-shadow: 0 0 0 3px var(--oranje-licht), var(--schaduw); }
+.m-dag-nr { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 1.1rem; line-height: 1.1; }
+.m-dag-datum { color: var(--inkt-zacht); font-size: .82rem; }
+.m-dag-status { font-size: .8rem; font-weight: 700; min-height: 1.2em; }
+
+.m-stand { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+.m-stand-blok {
+  display: grid; grid-template-columns: auto 1fr; column-gap: 8px; align-items: center;
+  background: var(--papier); border: 2px solid var(--rand); border-radius: 14px; padding: 10px 12px;
+}
+.m-stand-emoji { grid-row: span 2; font-size: 1.5rem; }
+.m-stand-naam { color: var(--inkt-zacht); font-size: .85rem; }
+
+.m-onderdelen { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.m-onderdeel {
+  width: 100%; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; text-align: left;
+  background: var(--papier); border: 3px solid var(--rand); border-radius: var(--radius); padding: 12px 14px;
+  font: inherit; color: var(--inkt); cursor: pointer; box-shadow: var(--schaduw);
+}
+.m-onderdeel:hover { border-color: #3f9c8a; }
+.m-onderdeel.is-volgende { border-color: var(--oranje); }
+.m-onderdeel.is-klaar { background: var(--groen-licht); border-color: #a8d8bf; }
+.m-onderdeel-emoji { font-size: 1.8rem; }
+.m-onderdeel-tekst { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.m-onderdeel-titel { font-weight: 700; font-size: 1.08rem; }
+.m-onderdeel-uitleg { color: var(--inkt-zacht); font-size: .95rem; }
+.m-onderdeel-toets { color: var(--inkt-zacht); font-size: .8rem; }
+.m-onderdeel-rechts { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.m-onderdeel-tijd { font-size: .85rem; color: var(--inkt-zacht); white-space: nowrap; }
+.m-onderdeel-score { font-size: .88rem; font-weight: 700; white-space: nowrap; }
+
+.m-kop { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 10px; }
+.m-toets { color: var(--inkt-zacht); font-size: .88rem; }
+.m-lade { margin-top: 0; }
+.m-kort { margin-bottom: 16px; }
+.m-kort-kop { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.m-kort-kop::before { display: none; }
+.m-gat { display: inline-block; min-width: 4ch; border-bottom: 3px solid var(--oranje); text-align: center; }
+.invul-zin + .opties { margin-top: 14px; }
+.m-getal-rij { display: flex; align-items: center; gap: 8px; font-size: 1.2em; margin: 0; }
+.m-getal { width: 10ch; text-align: right; }
+#scherm-m-oefen .feedback { margin-top: 16px; }
+
+.m-klok { font-family: 'Baloo 2', sans-serif; font-size: 2.8rem; font-weight: 700; text-align: center; margin: 0 0 10px; line-height: 1; }
+.m-klok.is-bijna { color: var(--rood); }
+.m-woordrij { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px 10px; transition: filter .3s; }
+.m-woord {
+  font: inherit; font-size: 1.2rem; color: var(--inkt); background: none; border: 2px solid transparent;
+  border-radius: 10px; padding: 6px 4px; text-align: left; white-space: nowrap;
+}
+.m-woord:disabled { cursor: default; }
+.m-woord:not(:disabled) { cursor: pointer; border-color: var(--rand); }
+.m-woord.is-gelezen { background: var(--groen-licht); border-color: var(--groen); }
+.is-wazig { filter: blur(7px); user-select: none; pointer-events: none; }
+#m-hardop-tekst { font-size: 1.12em; }
+@media (max-width: 760px) {
+  .m-dagen { grid-template-columns: repeat(4, 1fr); }
+  .m-woordrij { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+  .m-woord { padding: 5px 8px; }
+}
+
+.m-score { font-family: 'Baloo 2', sans-serif; font-size: 1.6rem; text-align: center; margin: 0 0 12px; }
+.m-score b { font-size: 2.6rem; color: var(--groen-diep); }
+.m-overzicht { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.m-overzicht li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border-radius: 12px; background: var(--creme); }
+.m-overzicht li.is-fout { background: var(--rood-licht); }
+.m-overzicht small { color: var(--inkt-zacht); }
+#scherm-m-oefen .onderbalk { gap: 10px; }
 
 /* ---------- Kiezen: lezen, spelling of taal ---------- */
 .modus-keuze { display: flex; gap: 12px; margin: 22px 0 4px; }
@@ -706,9 +810,14 @@ body.groep-knutsel .balk { background: rgba(247,243,251,.92); }
   .sorteer-knop { flex: 1; }
   .titel { font-size: 1.55rem; }
   .vraag { font-size: 1.18rem; }
-  .capy-groot, .konijn-groot, .schaap-groot { width: 96px; }
+  .capy-groot, .konijn-groot, .schaap-groot, .panda-groot { width: 96px; }
   .groep-keuze { grid-template-columns: 1fr; }
-  .konijn-keuze, .capy-keuze, .schaap-keuze { width: 130px; }
+  .konijn-keuze, .capy-keuze, .schaap-keuze, .panda-keuze { width: 130px; }
+  .m-dagen { grid-template-columns: repeat(2, 1fr); }
+  .m-onderdeel { grid-template-columns: auto 1fr; }
+  .m-onderdeel-rechts { grid-column: 2; flex-direction: row; justify-content: space-between; align-items: center; }
+  .m-klok { font-size: 2.2rem; }
+  #scherm-m-oefen .onderbalk { flex-direction: column-reverse; }
   .k-stap-tekst { font-size: 1.15em; }
   .teller-knop { width: 48px; height: 48px; }
   .spel-woord, .flits-vak { font-size: 2.3rem; }

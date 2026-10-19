@@ -1,4 +1,4 @@
-# Oefenen met Kaia 🦫, Pluis 🐰 en Wolkje 🐑
+# Oefenen met Kaia 🦫, Pluis 🐰, Wolkje 🐑 en Mochi 🐼
 
 Een kleine webapp voor twee groepen van de Nederlandse basisschool, en om te
 leren knutselen. Het startscherm vraagt eerst **wie** er gaat oefenen:
@@ -11,6 +11,8 @@ leren knutselen. Het startscherm vraagt eerst **wie** er gaat oefenen:
   elk goed woord een wortel.
 - **Knutselen** is voor iedereen: stap voor stap **leren haken** met Wolkje
   het schaap.
+- **Toetstraining** is een dagplan van twee weken met Mochi de panda: elke dag
+  een halfuur oefenen voor alle Boom-toetsen van groep 8.
 
 ## Draaien
 
@@ -256,6 +258,46 @@ stokje. De les over patronen legt uit dat Engelse patronen andere namen
 gebruiken. Een nieuw plan (breien, naaien) is een object in `plannen` in
 `knutselen.js`; de structuur staat bovenaan dat bestand.
 
+## Toetstraining: twee weken met Mochi
+
+Een dagplan van **dinsdag 20 oktober tot en met maandag 2 november 2026**
+(14 dagen, ook in het weekend) voor een kind dat begin groep 8 de Boom-toetsen
+maakt. Elke dag komen alle zeven toetsen aan bod, samen ongeveer 30 minuten.
+De tijd is verdeeld naar de vorige uitslag: de meeste tijd gaat naar de C's,
+minder naar de B's, en de A krijgt alleen een korte opwarmer.
+
+| # | Onderdeel | Boom-toets | Vorige uitslag | Tijd | Wat het kind doet |
+| --- | --- | --- | --- | --- | --- |
+| 1 | ⚡ Woordrij | Technisch lezen woorden | B | 2 min | Eén minuut zo veel mogelijk woorden hardop lezen (80 woorden, van kort naar lang). Daarna tikt het kind het laatste woord aan. |
+| 2 | 🗣️ Hardop lezen | Technisch lezen tekst | A | 2 min | De tekst van de dag hardop voorlezen met een stopwatch, en zeggen hoe het ging. |
+| 3 | 🔍 Vragen bij de tekst | Begrijpend lezen | B | 4 min | Drie vragen over diezelfde tekst. |
+| 4 | ✍️ Werkwoorden | Spelling werkwoorden | C | 6 min | Zes zinnen met het werkwoord in de goede vorm. |
+| 5 | 🧮 Rekenen | Rekenen-wiskunde | C | 8 min | Acht sommen, één uit elk domein. |
+| 6 | 📰 Korte teksten | Begrijpend lezen (2012) | C | 5 min | Twee korte teksten (advertentie, recept, bericht, ...) met elk twee vragen. |
+| 7 | 🔤 Woorden spellen | Spelling woorden | B | 3 min | Vijf woorden: kies de goede schrijfwijze. |
+
+Elke vraag wordt meteen nagekeken, met een uitleg die de aanpak laat zien.
+Bij de werkwoorden telt een hoofdletter niet. Op het startscherm staan de 14
+dagen ("Vandaag" is gemarkeerd) en een paar cijfers: hoeveel dagen af zijn,
+het beste aantal woorden per minuut en het percentage goed per onderdeel. De
+uitslagletters staan alleen hier en in `mochi.js`, niet in beeld.
+
+De werkwoorden volgen een opbouw: tegenwoordige tijd, verleden tijd met
+'t kofschip, de dubbele d of t, het voltooid deelwoord, de bekende valkuilen
+(gebeurt/gebeurd, verbrande/verbrandde), het deelwoord als bijvoeglijk
+naamwoord, Engelse werkwoorden, en de laatste dagen alles door elkaar.
+
+De rekensommen staan niet uitgeschreven: `rekensommen.js` maakt ze per dag
+met een vaste toevalsgenerator. Een dag heeft dus altijd dezelfde sommen, en
+het antwoord en de uitleg zijn uitgerekend in plaats van overgetypt. De acht
+domeinen zijn getallen, bewerkingen, kommagetallen, breuken, procenten,
+verhoudingen (schaal, recepten, snelheid), meten (lengte, inhoud, gewicht,
+tijd) en meetkunde en verbanden (oppervlakte, omtrek, inhoud, gemiddelde,
+een tabel lezen). Vanaf dag 6 en dag 11 worden de getallen groter. Een
+antwoord mag met een komma of een punt (`2,5`, `2.5`, `€ 12,50`).
+
+Mochi leest niets voor: bij lezen hoort het kind zelf te lezen.
+
 ## Voorleesaudio (ElevenLabs)
 
 In `audio/` staat per leestekst, per regelkaart, per hint, per dicteewoord (van
@@ -302,7 +344,7 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 
 | Bestand | Wat het doet |
 | --- | --- |
-| `index.html` | Alle schermen: groep kiezen, de zes van groep 8, de vier van groep 5 en de twee van Knutselen. |
+| `index.html` | Alle schermen: groep kiezen, de zes van groep 8, de vier van groep 5, de twee van Knutselen en de drie van de toetstraining. |
 | `styles.css` | Alle opmaak. |
 | `exercises.js` | **Alle leesteksten**, hardcoded in één array. |
 | `spelling.js` | **Alle spellingregels**, in dezelfde stijl. |
@@ -310,13 +352,19 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 | `dictee.js` | **Het dictee van groep 8**: de dictees en alle woordpakketten met hun zinnen. |
 | `groep5.js` | **Groep 5**: de vier spellen, de dictees en alle woordpakketten. |
 | `knutselen.js` | **Knutselen**: de plannen en alle lessen, met hun stappen, schema's, hulp en vragen. |
+| `mochi.js` | **Toetstraining**: het dagplan, de zeven onderdelen met hun tijd, en wat Mochi zegt. |
+| `mochi-lezen.js` | De teksten en vragen voor hardop lezen en begrijpend lezen, per dag. |
+| `mochi-spelling.js` | De werkwoordzinnen en spellingwoorden per dag, en de woorden voor de woordrij. |
+| `rekensommen.js` | Maakt de rekensommen van elke dag, met antwoord en uitleg. |
 | `zinnen.js` | De vaste, opneembare zinnen van Kaia: reacties na een vraag en de eindschermen. |
 | `capybara.js` | Kaia als SVG, met zes stemmingen. |
 | `konijn.js` | Pluis als SVG, met zeven stemmingen; het bewegen zit in `styles.css`. |
 | `schaap.js` | Wolkje als SVG, met vijf stemmingen. |
+| `panda.js` | Mochi als SVG, met vijf stemmingen. |
 | `app.js` | Groep kiezen en alle logica van groep 8: schermen, nakijken, dictee, score, voortgang. |
 | `spellen.js` | De logica van de spelletjes van groep 5. |
 | `werkplaats.js` | De logica van Knutselen: lessen, haakschema's, de teller en de voortgang. |
+| `toetstraining.js` | De logica van de toetstraining: dagen, woordrij, stopwatch, vragen en voortgang. |
 | `server.js` | Statische server voor lokaal draaien en deployen. |
 | `genereer-audio.js` | Neemt de teksten, regelkaarten, hints en dicteewoorden op met ElevenLabs, naar `audio/`. |
 | `audio/` | De opnames (mp3) en `manifest.json`. |
