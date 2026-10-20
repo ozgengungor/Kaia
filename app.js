@@ -272,6 +272,7 @@
   let reeks = 0;            // aantal goede antwoorden op rij
   let keuze = null;         // huidige keuze (mc: index, volgorde: array, open: tekst)
   let nagekeken = false;
+  let sessie = null;        // voor het logboek: één keer een oefening doen
 
   function huidigeLijst() { return MODI[modus].lijst(); }
 
@@ -390,6 +391,7 @@
     vraagNr = 0;
     antwoorden = [];
     reeks = 0;
+    sessie = Logboek.nieuweSessie();
     if (MODI[modus].stof === 'dictee') { startDictee(); return; }
 
     // Wat er in de lade bij de vragen zit: de tekst, of de regel van Kaia.
@@ -833,8 +835,30 @@
     noteer(alles ? 1 : aantalGoed > v.items.length / 2 ? 0.5 : 0, v);
   }
 
+  // Een antwoord leesbaar maken voor het logboek van de ouders.
+  function alsTekst(v, k) {
+    if (k === null || k === undefined) return '';
+    if (v.type === 'volgorde') return k.map((i) => v.items[i]).join(' → ');
+    if (v.type === 'sorteer') return v.items.map((item, i) => `${item}: ${v.categorieen[k[i]] ?? '?'}`).join(', ');
+    if (v.type === 'invul' || v.type === 'open') return String(k);
+    return v.opties ? v.opties[k] : String(k);
+  }
+  function juistTekst(v) {
+    if (v.type === 'volgorde') return alsTekst(v, v.goedeVolgorde);
+    if (v.type === 'sorteer') return alsTekst(v, v.goed);
+    if (v.type === 'invul') return alsLijst(v.goed)[0];
+    if (v.type === 'open') return v.voorbeeldantwoord;
+    return v.opties ? v.opties[v.goed] : '';
+  }
+
   function noteer(punten, v) {
     antwoorden[vraagNr] = { punten, gekozen: keuze };
+    Logboek.antwoord({
+      wie: 'kaia', onderdeel: modus, titel: oefening.titel, sessie, nr: vraagNr,
+      vraag: [v.vaardigheid, v.zin || v.vraag].filter(Boolean).join(' · ')
+        + (v.type === 'open' ? ' (zelf nagekeken)' : ''),
+      antwoord: alsTekst(v, keuze), juist: juistTekst(v), punten
+    });
     reeks = punten >= 1 ? reeks + 1 : 0;
 
     const goed = punten >= 1;
@@ -895,6 +919,10 @@
   function tekenScore(punten, totaal) {
     const percentage = Math.round((punten / totaal) * 100);
     const sterren = sterrenVoor(percentage);
+    Logboek.klaar({
+      wie: 'kaia', onderdeel: modus, titel: oefening.titel, sessie,
+      score: punten, totaal, resultaat: `${percentage}% · ${sterren} ster${sterren === 1 ? '' : 'ren'}`
+    });
 
     const eerder = voortgang[oefening.id];
     voortgang[oefening.id] = {
@@ -1073,6 +1101,12 @@
       if (zinnen) return { w, gegeven, ...kijkZinNa(w.zin, gegeven) };
       return { w, gegeven, punten: kijkWoordNa(w.w, gegeven) };
     });
+    uitslag.forEach((u, i) => Logboek.antwoord({
+      wie: 'kaia', onderdeel: 'dictee', titel: oefening.titel, sessie, nr: i,
+      vraag: [zinnen ? 'Zin opschrijven' : 'Woord opschrijven', u.w.pakket && u.w.pakket.titel !== oefening.titel ? u.w.pakket.titel : '']
+        .filter(Boolean).join(' · '),
+      antwoord: u.gegeven, juist: zinnen ? u.w.zin : u.w.w, punten: u.punten
+    }));
     const sterren = tekenScore(uitslag.reduce((n, u) => n + u.punten, 0), uitslag.length);
 
     // Advies: welke regel nog eens oefenen, of denk aan hoofdletters en leestekens.

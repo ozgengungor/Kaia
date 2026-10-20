@@ -28,6 +28,7 @@
   const LETTERS = ['A', 'B', 'C', 'D'];
   const WOORDEN_PER_BAND = 20;
   const WOORDRIJ_SECONDEN = 60;
+  const GEVOELENS = ['Vlot, bijna geen foutjes', 'Een paar keer gehaperd', 'Best lastig'];
 
   let voortgang = laad(OPSLAG, null) || { dagen: {} };
   let dagNr = 0;            // de dag die open is (0 = 20 oktober)
@@ -38,6 +39,7 @@
   let keuze = null;
   let nagekeken = false;
   let antwoorden = [];      // per vraag: { goed, gegeven }
+  let sessie = null;        // voor het logboek: één keer een onderdeel doen
   let klok = null;          // { start, interval, ... } van de woordrij of de stopwatch
   let meting = null;        // wat de woordrij of het hardop lezen opleverde
 
@@ -91,6 +93,11 @@
     if (!voortgang.dagen[dagNr]) voortgang.dagen[dagNr] = {};
     voortgang.dagen[dagNr][onderdeel.id] = { ...resultaat, op: new Date().toISOString().slice(0, 10) };
     bewaar(OPSLAG, voortgang);
+    Logboek.klaar({
+      wie: 'mochi', onderdeel: onderdeel.id, titel: onderdeel.titel, sessie, dag: dagNr,
+      score: resultaat.goed, totaal: resultaat.van, resultaat: resultaatTekst(onderdeel.id, resultaat)
+        + (GEVOELENS[resultaat.gevoel] ? ` · ${GEVOELENS[resultaat.gevoel]}` : '')
+    });
   }
 
   function resultaatTekst(id, r) {
@@ -217,6 +224,7 @@
     stopKlok();
     onderdeel = o;
     meting = null;
+    sessie = Logboek.nieuweSessie();
     $('#m-onderdeel-label').textContent = `${o.emoji} ${o.titel}`;
     $('#m-onderdeel-toets').textContent = `Dag ${dagNr + 1} · oefent voor ${o.toets} · ± ${o.minuten} min`;
     panda('#panda-oefen', 'blij');
@@ -367,6 +375,11 @@
       veld.classList.add(goed ? 'is-goed' : 'is-fout');
     }
     antwoorden[vraagNr] = { goed, gegeven: v.vorm === 'mc' ? v.opties[keuze] : keuze, juist: v.vorm === 'mc' ? v.opties[v.goed] : juist };
+    Logboek.antwoord({
+      wie: 'mochi', onderdeel: onderdeel.id, titel: onderdeel.titel, sessie, dag: dagNr, nr: vraagNr,
+      vraag: [v.label, v.zin || v.vraag].filter(Boolean).join(' · '),
+      antwoord: antwoorden[vraagNr].gegeven, juist: antwoorden[vraagNr].juist, punten: goed ? 1 : 0
+    });
 
     const fb = $('#m-feedback');
     fb.hidden = false;
@@ -507,7 +520,7 @@
       <div id="m-gevoel" hidden>
         <h3 class="regel-kop">Hoe ging het?</h3>
         <div class="opties">
-          ${['Vlot, bijna geen foutjes', 'Een paar keer gehaperd', 'Best lastig'].map((g, i) =>
+          ${GEVOELENS.map((g, i) =>
             `<button type="button" class="optie" data-gevoel="${i}"><span class="optie-letter">${['😄', '🙂', '😅'][i]}</span><span>${g}</span></button>`).join('')}
         </div>
       </div>`;

@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Voor ouders · Lezen met Kaia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fdf5e8; --kaart: #fffdf8; --inkt: #3d3128; --zacht: #6d5c4d; --rand: #e6d7bf;
+    --groen: #2f9e6e; --groen-licht: #dff3e8; --oranje: #e08a22; --oranje-licht: #fdeed8;
+    --rood: #d9534f; --rood-licht: #fbe3e2; --accent: #3d3128; --leeg: #f3ead9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1f1a16; --kaart: #2a241f; --inkt: #f3e9dc; --zacht: #bfae9b; --rand: #40372f;
+      --groen: #5cc795; --groen-licht: #1f3a2d; --oranje: #f0a64b; --oranje-licht: #3d2f1c;
+      --rood: #ef7c78; --rood-licht: #432523; --accent: #f3e9dc; --leeg: #332c26;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--inkt); font: 16px/1.5 'Nunito', system-ui, sans-serif; }
+  h1, h2 { font-family: 'Baloo 2', 'Nunito', system-ui, sans-serif; line-height: 1.15; margin: 0; }
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.25rem; margin-bottom: .6rem; }
+  main { max-width: 980px; margin: 0 auto; padding: 20px 16px 60px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .sub { color: var(--zacht); font-size: .9rem; }
+  button, select, input { font: inherit; color: inherit; }
+  .knop { background: var(--kaart); border: 1.5px solid var(--rand); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+  .knop:hover { border-color: var(--zacht); }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tab { background: var(--kaart); border: 1.5px solid var(--rand); border-radius: 999px; padding: 6px 14px; cursor: pointer; font-weight: 700; }
+  .tab[aria-pressed="true"] { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .tab small { font-weight: 400; opacity: .75; }
+  .balk { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+  select { background: var(--kaart); border: 1.5px solid var(--rand); border-radius: 10px; padding: 5px 10px; }
+  .kaart { background: var(--kaart); border: 1.5px solid var(--rand); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+  .cijfers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  .cijfer { background: var(--kaart); border: 1.5px solid var(--rand); border-radius: 16px; padding: 12px 14px; }
+  .cijfer b { display: block; font-family: 'Baloo 2', sans-serif; font-size: 1.7rem; line-height: 1.1; }
+  .cijfer span { color: var(--zacht); font-size: .85rem; }
+  .goed { color: var(--groen); } .fout { color: var(--rood); }
+  .rooster-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { padding: 6px 6px; text-align: left; border-bottom: 1px solid var(--rand); vertical-align: top; }
+  th { font-weight: 700; color: var(--zacht); font-size: .8rem; }
+  .rooster td.cel { text-align: center; white-space: nowrap; border-radius: 8px; }
+  .rooster th.kop { text-align: center; }
+  .cel.hoog { background: var(--groen-licht); color: var(--groen); font-weight: 700; }
+  .cel.midden { background: var(--oranje-licht); color: var(--oranje); font-weight: 700; }
+  .cel.laag { background: var(--rood-licht); color: var(--rood); font-weight: 700; }
+  .cel.leeg { color: var(--zacht); opacity: .5; }
+  .cel.info { font-weight: 600; }
+  .rooster td:first-child, #dagen td:first-child { white-space: nowrap; }
+  tr.vandaag td:first-child { font-weight: 700; }
+  .staaf { display: grid; grid-template-columns: 11rem 1fr 6.5rem; gap: 10px; align-items: center; margin: 7px 0; font-size: .92rem; }
+  .staaf .spoor { height: 12px; background: var(--leeg); border-radius: 99px; overflow: hidden; }
+  .staaf .vul { display: block; height: 100%; border-radius: 99px; background: var(--groen); }
+  .staaf .vul.midden { background: var(--oranje); } .staaf .vul.laag { background: var(--rood); }
+  .staaf .getal { text-align: right; color: var(--zacht); }
+  .fouten { list-style: none; margin: 0; padding: 0; }
+  .fouten li { border-top: 1px solid var(--rand); padding: 10px 0; }
+  .fouten li:first-child { border-top: 0; }
+  .fouten .wat { font-size: .8rem; color: var(--zacht); }
+  .fouten .vraag { margin: 2px 0 4px; }
+  .fouten .paar { display: flex; gap: 14px; flex-wrap: wrap; font-size: .92rem; }
+  .fouten .paar s { text-decoration-color: var(--rood); }
+  .leeg-bericht { color: var(--zacht); text-align: center; padding: 20px 0; }
+  .inlog { max-width: 380px; margin: 12vh auto 0; text-align: center; }
+  .inlog input { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1.5px solid var(--rand); background: var(--kaart); margin: 14px 0 10px; text-align: center; font-size: 1.1rem; }
+  .inlog .knop { padding: 9px 22px; font-weight: 700; background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .melding { color: var(--rood); min-height: 1.5em; }
+  .meer { margin-top: 10px; }
+  @media (max-width: 640px) {
+    .cijfers { grid-template-columns: repeat(2, 1fr); }
+    .staaf { grid-template-columns: 7.5rem 1fr 5.5rem; font-size: .85rem; }
+    th, td { padding: 5px 4px; }
+    .rooster .kop-woord { display: none; }
+    .rooster th.kop { font-size: 1.1rem; }
+    .rooster td { font-size: .8rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <section id="inlog" class="inlog" hidden>
+    <h1>Voor ouders</h1>
+    <p class="sub">Vul de oudercode in om te zien wat er geoefend is.</p>
+    <form id="inlog-form">
+      <input id="code" type="password" autocomplete="current-password" placeholder="Oudercode" aria-label="Oudercode">
+      <button class="knop" type="submit">Bekijk</button>
+    </form>
+    <p class="melding" id="melding"></p>
+  </section>
+
+  <section id="overzicht" hidden>
+    <header>
+      <div>
+        <h1>Wat is er geoefend?</h1>
+        <p class="sub" id="bijgewerkt"></p>
+      </div>
+      <div class="balk" style="margin:0">
+        <button class="knop" id="ververs" type="button">↻ Ververs</button>
+        <button class="knop" id="uitloggen" type="button">Uitloggen</button>
+      </div>
+    </header>
+
+    <div class="tabs" id="tabs"></div>
+    <div class="balk">
+      <label for="periode" class="sub">Periode</label>
+      <select id="periode">
+        <option value="1">Vandaag</option>
+        <option value="7">Laatste 7 dagen</option>
+        <option value="0" selected>Alles</option>
+      </select>
+    </div>
+
+    <div class="cijfers" id="cijfers"></div>
+    <div id="rooster"></div>
+    <div class="kaart"><h2>Per onderdeel</h2><div id="onderdelen"></div></div>
+    <div class="kaart"><h2>Per dag</h2><div id="dagen"></div></div>
+    <div class="kaart">
+      <h2>Wat ging er mis?</h2>
+      <div class="balk"><select id="fout-filter" aria-label="Onderdeel"></select></div>
+      <ul class="fouten" id="fouten"></ul>
+      <button class="knop meer" id="meer" type="button" hidden>Meer laten zien</button>
+    </div>
+  </section>
+</main>
+
+<script src="mochi.js"></script>
+<script>
+(() => {
+  'use strict';
+
+  const CODE = 'lezen-met-kaia:ouders:code';
+  const KIND = 'lezen-met-kaia:ouders:kind';
+  const $ = (s) => document.querySelector(s);
+  const esc = (t) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const lees = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const schrijf = (k, w) => { try { w === null ? localStorage.removeItem(k) : localStorage.setItem(k, w); } catch (e) { /* geen opslag */ } };
+
+  const KINDEREN = [
+    { id: 'mochi', naam: '🐼 Mochi', uitleg: 'toetstraining groep 8' },
+    { id: 'kaia', naam: '🦫 Kaia', uitleg: 'groep 8' },
+    { id: 'pluis', naam: '🐰 Pluis', uitleg: 'groep 5' }
+  ];
+  const ONDERDEEL_NAAM = {
+    kaia: { lezen: 'Begrijpend lezen', spelling: 'Spelling', taal: 'Taalverzorging', dictee: 'Dictee' },
+    pluis: { klank: 'Wortelkeuze', bouw: 'Woordbouwer', flits: 'Flitswoord', luister: 'Luisterwoord', dictee: 'Dictee' },
+    mochi: Object.fromEntries(MOCHI.onderdelen.map((o) => [o.id, `${o.emoji} ${o.titel}`]))
+  };
+  const naamVan = (wie, id) => (ONDERDEEL_NAAM[wie] && ONDERDEEL_NAAM[wie][id]) || id;
+
+  let alles = [];
+  let kind = lees(KIND) || 'mochi';
+  let foutenGetoond = 25;
+
+  /* ---------- Ophalen ---------- */
+
+  async function haalOp(code) {
+    const r = await fetch('/api/log', { headers: { 'x-ouder-code': code }, cache: 'no-store' });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(data.fout || `De server gaf fout ${r.status}.`);
+    return data.gebeurtenissen || [];
+  }
+
+  async function laad() {
+    const code = lees(CODE);
+    if (!code) { toonInlog(); return; }
+    try {
+      alles = bewerk(await haalOp(code));
+      $('#inlog').hidden = true;
+      $('#overzicht').hidden = false;
+      $('#bijgewerkt').textContent = `Bijgewerkt om ${new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })}`;
+      teken();
+    } catch (e) {
+      schrijf(CODE, null);
+      toonInlog(e.message);
+    }
+  }
+
+  function toonInlog(melding) {
+    $('#overzicht').hidden = true;
+    $('#inlog').hidden = false;
+    $('#melding').textContent = melding || '';
+    $('#code').focus();
+  }
+
+  // Een antwoord kan vaker binnenkomen (bij een open vraag mag het kind zijn
+  // zelfbeoordeling aanpassen): per sessie + vraag telt alleen de laatste.
+  function bewerk(lijst) {
+    const per = new Map();
+    lijst.sort((a, b) => a.t.localeCompare(b.t)).forEach((g) => {
+      const sleutel = g.soort === 'antwoord' ? `a:${g.sessie}:${g.onderdeel}:${g.nr}` : `k:${g.sessie}:${g.id}`;
+      per.set(sleutel, g);
+    });
+    return [...per.values()].sort((a, b) => a.t.localeCompare(b.t));
+  }
+
+  /* ---------- Hulpjes ---------- */
+
+  const dagSleutel = (t) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+  const dagNaam = (s) => new Date(`${s}T12:00:00`).toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short' });
+  const tijd = (t) => new Date(t).toLocaleString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const pct = (goed, van) => (van ? Math.round((goed / van) * 100) : 0);
+  const niveau = (p) => (p >= 80 ? 'hoog' : p >= 55 ? 'midden' : 'laag');
+  const punten = (lijst) => lijst.reduce((n, g) => n + (Number(g.punten) || 0), 0);
+  const getal = (n) => (Math.round(n * 10) / 10).toLocaleString('nl-NL');
+
+  // Oefentijd: per sessie van het eerste tot het laatste moment, met een
+  // pauze-grens zodat een open laten staan app niet als uren oefenen telt.
+  function minuten(lijst) {
+    const perSessie = new Map();
+    lijst.forEach((g) => {
+      const t = Date.parse(g.t);
+      if (!perSessie.has(g.sessie)) perSessie.set(g.sessie, []);
+      perSessie.get(g.sessie).push(t);
+    });
+    let ms = 0;
+    perSessie.forEach((ts) => {
+      ts.sort((a, b) => a - b);
+      ms += 30000; // het eerste antwoord kost ook tijd
+      for (let i = 1; i < ts.length; i++) ms += Math.min(ts[i] - ts[i - 1], 5 * 60000);
+    });
+    return Math.round(ms / 60000);
+  }
+
+  function binnenPeriode(lijst) {
+    const dagen = Number($('#periode').value);
+    if (!dagen) return lijst;
+    const grens = new Date();
+    grens.setHours(0, 0, 0, 0);
+    grens.setDate(grens.getDate() - (dagen - 1));
+    return lijst.filter((g) => Date.parse(g.t) >= grens.getTime());
+  }
+
+  /* ---------- Tekenen ---------- */
+
+  function teken() {
+    $('#tabs').innerHTML = KINDEREN.map((k) => {
+      const n = alles.filter((g) => g.wie === k.id && g.soort === 'antwoord').length;
+      return `<button type="button" class="tab" data-kind="${k.id}" aria-pressed="${k.id === kind}">${k.naam} <small>${esc(k.uitleg)} · ${n}</small></button>`;
+    }).join('');
+
+    const vanKind = binnenPeriode(alles.filter((g) => g.wie === kind));
+    const antwoorden = vanKind.filter((g) => g.soort === 'antwoord');
+    const goed = antwoorden.filter((g) => g.punten >= 1).length;
+    const fout = antwoorden.filter((g) => g.punten < 1).length;
+    const dagen = new Set(vanKind.map((g) => dagSleutel(g.t)));
+
+    $('#cijfers').innerHTML = [
+      [antwoorden.length ? `${pct(punten(antwoorden), antwoorden.length)}%` : '–', 'goed (punten)'],
+      [`<span class="goed">${goed}</span> / <span class="fout">${fout}</span>`, 'goed / niet goed'],
+      [`${minuten(vanKind)} min`, 'geschatte oefentijd'],
+      [dagen.size, dagen.size === 1 ? 'dag geoefend' : 'dagen geoefend']
+    ].map(([b, s]) => `<div class="cijfer"><b>${b}</b><span>${s}</span></div>`).join('');
+
+    tekenRooster(vanKind);
+    tekenOnderdelen(antwoorden);
+    tekenDagen(vanKind);
+    tekenFouten(antwoorden);
+  }
+
+  // Alleen voor Mochi: het rooster van twee weken, met per dag de uitslag.
+  function tekenRooster(lijst) {
+    const doel = $('#rooster');
+    if (kind !== 'mochi') { doel.innerHTML = ''; return; }
+    const klaar = new Map();
+    lijst.filter((g) => g.soort === 'klaar' && g.dag !== undefined).forEach((g) => klaar.set(`${g.dag}:${g.onderdeel}`, g));
+    const start = new Date(`${MOCHI.begin}T12:00:00`);
+    const vandaag = dagSleutel(new Date().toISOString());
+    const rijen = [];
+    for (let d = 0; d < MOCHI.dagen; d++) {
+      const datum = new Date(start); datum.setDate(start.getDate() + d);
+      const sleutel = dagSleutel(datum.toISOString());
+      const cellen = MOCHI.onderdelen.map((o) => {
+        const k = klaar.get(`${d}:${o.id}`);
+        if (!k) return '<td class="cel leeg">·</td>';
+        if (k.totaal) {
+          const p = pct(k.score, k.totaal);
+          return `<td class="cel ${niveau(p)}" title="${esc(k.resultaat)}">${getal(k.score)}/${k.totaal}</td>`;
+        }
+        // Woordrij en hardop lezen: geen goed/fout, maar een tempo.
+        const kort = String(k.resultaat || '✓').replace(' woorden per minuut', ' wpm').replace(' woorden', ' w').split(' · ')[0];
+        return `<td class="cel info" title="${esc(k.resultaat)}">${esc(kort)}</td>`;
+      }).join('');
+      rijen.push(`<tr class="${sleutel === vandaag ? 'vandaag' : ''}"><td>${d + 1}. ${dagNaam(sleutel)}${sleutel === vandaag ? ' 👈' : ''}</td>${cellen}</tr>`);
+    }
+    doel.innerHTML = `<div class="kaart"><h2>Rooster van twee weken</h2>
+      <p class="sub" style="margin-top:-.4rem">Groen ≥ 80% · oranje ≥ 55% · rood daaronder. Woordrij: aantal woorden in één minuut (w) · hardop lezen: woorden per minuut (wpm).</p>
+      <div class="rooster-wrap"><table class="rooster"><thead><tr><th>Dag</th>${MOCHI.onderdelen.map((o) =>
+        `<th class="kop" title="${esc(o.titel)} · ${esc(o.toets)}">${o.emoji}<span class="kop-woord"><br>${esc(o.titel.split(' ')[0])}</span></th>`).join('')}</tr></thead>
+      <tbody>${rijen.join('')}</tbody></table></div></div>`;
+  }
+
+  function tekenOnderdelen(antwoorden) {
+    const groepen = new Map();
+    antwoorden.forEach((g) => {
+      if (!groepen.has(g.onderdeel)) groepen.set(g.onderdeel, []);
+      groepen.get(g.onderdeel).push(g);
+    });
+    if (!groepen.size) { $('#onderdelen').innerHTML = '<p class="leeg-bericht">Nog geen antwoorden in deze periode.</p>'; return; }
+    const volgorde = Object.keys(ONDERDEEL_NAAM[kind] || {});
+    $('#onderdelen').innerHTML = [...groepen.entries()]
+      .sort((a, b) => volgorde.indexOf(a[0]) - volgorde.indexOf(b[0]))
+      .map(([id, lijst]) => {
+        const p = pct(punten(lijst), lijst.length);
+        const goed = lijst.filter((g) => g.punten >= 1).length;
+        return `<div class="staaf"><span>${esc(naamVan(kind, id))}</span>
+          <span class="spoor"><span class="vul ${niveau(p)}" style="width:${p}%"></span></span>
+          <span class="getal">${p}% · ${goed}/${lijst.length}</span></div>`;
+      }).join('');
+  }
+
+  function tekenDagen(lijst) {
+    const per = new Map();
+    lijst.forEach((g) => {
+      const d = dagSleutel(g.t);
+      if (!per.has(d)) per.set(d, []);
+      per.get(d).push(g);
+    });
+    if (!per.size) { $('#dagen').innerHTML = '<p class="leeg-bericht">Nog niets geoefend in deze periode.</p>'; return; }
+    const rijen = [...per.entries()].sort((a, b) => b[0].localeCompare(a[0])).map(([d, l]) => {
+      const a = l.filter((g) => g.soort === 'antwoord');
+      const onderdelen = [...new Set(a.map((g) => naamVan(kind, g.onderdeel)))].join(', ');
+      const p = pct(punten(a), a.length);
+      return `<tr><td>${dagNaam(d)}</td><td>${a.length}</td>
+        <td class="${a.length ? (p >= 80 ? 'goed' : p < 55 ? 'fout' : '') : ''}">${a.length ? `${p}%` : '–'}</td>
+        <td>${minuten(l)} min</td><td>${esc(onderdelen)}</td></tr>`;
+    });
+    $('#dagen').innerHTML = `<div class="rooster-wrap"><table><thead><tr><th>Dag</th><th>Vragen</th><th>Goed</th><th>Tijd</th><th>Onderdelen</th></tr></thead>
+      <tbody>${rijen.join('')}</tbody></table></div>`;
+  }
+
+  function tekenFouten(antwoorden) {
+    const filter = $('#fout-filter');
+    const gekozen = filter.value;
+    const ids = [...new Set(antwoorden.filter((g) => g.punten < 1).map((g) => g.onderdeel))];
+    filter.innerHTML = `<option value="">Alle onderdelen</option>${ids.map((id) =>
+      `<option value="${esc(id)}" ${id === gekozen ? 'selected' : ''}>${esc(naamVan(kind, id))}</option>`).join('')}`;
+
+    const fouten = antwoorden.filter((g) => g.punten < 1 && (!filter.value || g.onderdeel === filter.value)).reverse();
+    if (!fouten.length) {
+      $('#fouten').innerHTML = `<li class="leeg-bericht">${antwoorden.length ? 'Alles goed in deze periode! 🎉' : 'Nog geen antwoorden.'}</li>`;
+      $('#meer').hidden = true;
+      return;
+    }
+    $('#fouten').innerHTML = fouten.slice(0, foutenGetoond).map((g) => `
+      <li>
+        <div class="wat">${esc(naamVan(kind, g.onderdeel))} · ${esc(g.titel)}${g.dag !== undefined ? ` · dag ${g.dag + 1}` : ''} · ${tijd(g.t)}${g.punten > 0 ? ' · half goed' : ''}</div>
+        <div class="vraag">${esc(g.vraag)}</div>
+        <div class="paar">
+          <span>Antwoord: <s class="fout">${esc(g.antwoord || '(leeg)')}</s></span>
+          <span>Goed: <b class="goed">${esc(g.juist)}</b></span>
+        </div>
+      </li>`).join('');
+    $('#meer').hidden = fouten.length <= foutenGetoond;
+  }
+
+  /* ---------- Knoppen ---------- */
+
+  $('#inlog-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const code = $('#code').value.trim();
+    if (!code) return;
+    schrijf(CODE, code);
+    laad();
+  });
+  $('#tabs').addEventListener('click', (e) => {
+    const knop = e.target.closest('[data-kind]');
+    if (!knop) return;
+    kind = knop.dataset.kind;
+    schrijf(KIND, kind);
+    foutenGetoond = 25;
+    $('#fout-filter').value = '';
+    teken();
+  });
+  $('#periode').addEventListener('change', teken);
+  $('#fout-filter').addEventListener('change', () => { foutenGetoond = 25; teken(); });
+  $('#meer').addEventListener('click', () => { foutenGetoond += 50; teken(); });
+  $('#ververs').addEventListener('click', laad);
+  $('#uitloggen').addEventListener('click', () => { schrijf(CODE, null); alles = []; toonInlog(); });
+  setInterval(() => { if (!$('#overzicht').hidden && document.visibilityState === 'visible') laad(); }, 60000);
+
+  laad();
+})();
+</script>
+</body>
+</html>

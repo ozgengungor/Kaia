@@ -298,6 +298,32 @@ antwoord mag met een komma of een punt (`2,5`, `2.5`, `€ 12,50`).
 
 Mochi leest niets voor: bij lezen hoort het kind zelf te lezen.
 
+## Voor ouders: wat is er geoefend?
+
+Elk antwoord dat een kind geeft (bij Kaia, Pluis en Mochi) gaat naar de server:
+welke vraag, wat het kind antwoordde, wat het goede antwoord was en of het goed
+was. Op **`/ouders`** zie je dat terug, achter een oudercode:
+
+- per kind: percentage goed, aantal goed/niet goed, geschatte oefentijd en dagen;
+- bij Mochi het rooster van twee weken met de uitslag per onderdeel per dag;
+- per onderdeel en per dag hoe het ging;
+- **Wat ging er mis?**: elke fout met het antwoord van het kind en het goede antwoord.
+
+De antwoorden staan eerst in een wachtrij in de browser (`logboek.js`) en gaan
+daarna naar `POST /api/log`. Zonder internet blijven ze bewaard tot het weer lukt.
+De server schrijft ze naar `logboek.jsonl` in de datamap.
+
+Instellen op Railway:
+
+1. **Volume**: voeg bij de service een volume toe (bijvoorbeeld op `/data`).
+   De server gebruikt dan vanzelf `RAILWAY_VOLUME_MOUNT_PATH`. Zonder volume is
+   het logboek na elke deploy weer leeg.
+2. **Variabele `OUDER_CODE`**: de code waarmee je `/ouders` opent. Zonder deze
+   variabele blijft de ouderpagina dicht (antwoorden worden wel opgeslagen).
+
+Lokaal komt het logboek in `data/` (staat in `.gitignore`); met
+`OUDER_CODE=… npm start` kun je de ouderpagina ook lokaal bekijken.
+
 ## Voorleesaudio (ElevenLabs)
 
 In `audio/` staat per leestekst, per regelkaart, per hint, per dicteewoord (van
@@ -365,7 +391,9 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 | `spellen.js` | De logica van de spelletjes van groep 5. |
 | `werkplaats.js` | De logica van Knutselen: lessen, haakschema's, de teller en de voortgang. |
 | `toetstraining.js` | De logica van de toetstraining: dagen, woordrij, stopwatch, vragen en voortgang. |
-| `server.js` | Statische server voor lokaal draaien en deployen. |
+| `server.js` | Server voor lokaal draaien en deployen, met het logboek-API'tje (`/api/log`). |
+| `logboek.js` | Stuurt elk antwoord (met wachtrij) naar de server. |
+| `ouders.html` | De ouderpagina op `/ouders`: overzicht, rooster en fouten. |
 | `genereer-audio.js` | Neemt de teksten, regelkaarten, hints en dicteewoorden op met ElevenLabs, naar `audio/`. |
 | `audio/` | De opnames (mp3) en `manifest.json`. |
 

@@ -41,6 +41,7 @@
   let ronde = null;       // { woorden, nr, uitslag }
   let dictee = null;      // { d, items, nr, antwoorden } tijdens een dictee, anders null
   let timers = [];
+  let sessie = null;      // voor het logboek: één ronde of één dictee
 
   /* ------------------------------------------------------------------ */
   /*  Hulpjes                                                            */
@@ -199,6 +200,7 @@
 
   function startRonde(p) {
     pakket = p;
+    sessie = Logboek.nieuweSessie();
     ronde = {
       woorden: schud(p.woorden.map(ontleed)).slice(0, WOORDEN_PER_RONDE),
       nr: 0,
@@ -237,6 +239,10 @@
   // Elk spel roept dit precies één keer per woord aan.
   function rondAf(w, punten, gegeven) {
     ronde.uitslag[ronde.nr] = { w, punten, gegeven };
+    Logboek.antwoord({
+      wie: 'pluis', onderdeel: spel.id, titel: `${spel.titel} · ${pakket.titel}`, sessie, nr: ronde.nr,
+      vraag: w.zin ? `${w.woord} — ${w.zin}` : w.woord, antwoord: gegeven, juist: w.woord, punten
+    });
     if (punten > 0) {
       voortgang.wortels += 1;
       bewaar(OPSLAG, voortgang);
@@ -509,6 +515,11 @@
     const percentage = Math.round((punten / totaal) * 100);
     const sterren = sterrenVoor(percentage);
 
+    Logboek.klaar({
+      wie: 'pluis', onderdeel: spel.id, titel: `${spel.titel} · ${pakket.titel}`, sessie,
+      score: punten, totaal, resultaat: `${goedAantal} van de ${totaal} woorden goed`
+    });
+
     const sleutel = `${spel.id}:${pakket.id}`;
     const eerder = voortgang.scores[sleutel];
     voortgang.scores[sleutel] = {
@@ -582,6 +593,7 @@
     GROEP5.pakketten.forEach((p) => p.woorden.forEach((item) => alle.push({ ...ontleed(item), pakket: p })));
     const kandidaten = d.id === 'zinnen' ? alle.filter((w) => w.zinDictee !== false) : alle;
     dictee = { d, items: spreid(kandidaten, d.aantal), nr: 0, antwoorden: [] };
+    sessie = Logboek.nieuweSessie();
     toonScherm('scherm-g5-spel');
     dicteeVraag(true);
   }
@@ -668,6 +680,16 @@
     const goedAantal = uitslag.filter((u) => u.punten > 0).length;
     const percentage = Math.round((punten / totaal) * 100);
     const sterren = sterrenVoor(percentage);
+
+    uitslag.forEach((u, i) => Logboek.antwoord({
+      wie: 'pluis', onderdeel: 'dictee', titel: d.titel, sessie, nr: i,
+      vraag: zinnen ? 'Zin opschrijven' : `Woord opschrijven · ${u.w.pakket.titel}`,
+      antwoord: u.gegeven, juist: zinnen ? u.w.zin : u.w.woord, punten: u.punten
+    }));
+    Logboek.klaar({
+      wie: 'pluis', onderdeel: 'dictee', titel: d.titel, sessie,
+      score: punten, totaal, resultaat: `${goedAantal} van de ${totaal} goed`
+    });
 
     voortgang.wortels += goedAantal;
     const sleutel = `dictee:${d.id}`;
