@@ -76,8 +76,32 @@ function codeKlopt(gegeven) {
   return crypto.timingSafeEqual(a, b);
 }
 
+// Eenvoudige rem per IP-adres: zo kan niemand de oudercode raden door
+// heel vaak te proberen, of het logboek volspammen.
+const MAX_FOUTE_CODES = 10;        // per kwartier
+const MAX_POSTS = 60;              // per minuut
+const pogingen = new Map();        // sleutel -> tijdstippen
+
+function ipVan(req) {
+  const doorgestuurd = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  return doorgestuurd || req.socket.remoteAddress || '?';
+}
+function teVaak(sleutel, max, ms, tellen) {
+  const nu = Date.now();
+  const lijst = (pogingen.get(sleutel) || []).filter((t) => nu - t < ms);
+  if (tellen) lijst.push(nu);
+  if (lijst.length) pogingen.set(sleutel, lijst); else pogingen.delete(sleutel);
+  return lijst.length > max;
+}
+setInterval(() => {
+  const nu = Date.now();
+  for (const [k, lijst] of pogingen) if (lijst.every((t) => nu - t > 15 * 60000)) pogingen.delete(k);
+}, 5 * 60000).unref();
+
 function api(req, res) {
+  const ip = ipVan(req);
   if (req.method === 'POST') {
+    if (teVaak(`post:${ip}`, MAX_POSTS, 60000, true)) return stuurJson(res, 429, { fout: 'te veel verzoeken' });
     let body = '';
     let teGroot = false;
     req.on('data', (stuk) => {
@@ -103,7 +127,14 @@ function api(req, res) {
 
   if (req.method === 'GET') {
     if (!OUDER_CODE) return stuurJson(res, 503, { fout: 'Er is nog geen OUDER_CODE ingesteld op de server.' });
-    if (!codeKlopt(req.headers['x-ouder-code'])) return stuurJson(res, 401, { fout: 'Die code klopt niet.' });
+    const sleutel = `code:${ip}`;
+    if (teVaak(sleutel, MAX_FOUTE_CODES, 15 * 60000, false)) {
+      return stuurJson(res, 429, { fout: 'Te vaak een verkeerde code. Probeer het over een kwartier opnieuw.' });
+    }
+    if (!codeKlopt(req.headers['x-ouder-code'])) {
+      teVaak(sleutel, MAX_FOUTE_CODES, 15 * 60000, true);
+      return stuurJson(res, 401, { fout: 'Die code klopt niet.' });
+    }
     return stuurJson(res, 200, { gebeurtenissen: leesLogboek() });
   }
 
