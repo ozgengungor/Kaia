@@ -6,7 +6,9 @@
  * altijd dezelfde sommen, ook na herladen, en het antwoord en de uitleg
  * worden uitgerekend in plaats van overgetypt.
  *
- * Elke dag krijgt één som uit elk van de acht domeinen van de Boom-toets
+ * Elke dag krijgt twee sommen uit elk van de acht domeinen: een gewone en
+ * een moeilijkere in de stijl van de IEP-doorstroomtoets (meer stappen,
+ * verhaaltjes, terugrekenen). Eerder stond hier: één som uit elk van de acht domeinen van de Boom-toets
  * rekenen-wiskunde (getallen, bewerkingen, kommagetallen, breuken,
  * procenten, verhoudingen, meten, meetkunde en verbanden). Per domein draait
  * de soort som mee met de dag, en vanaf dag 6 en dag 11 worden de getallen
@@ -77,6 +79,60 @@ const Rekensommen = (() => {
   const DOMEINEN = [
     {
       naam: 'Getallen',
+      iep: [
+        (r, n) => {
+          const start = r.kies([1.5, 2.5, 0.75, 3.2, 1.25]);
+          const factor = n === 3 ? r.kies([2, 3]) : 2;
+          const rij = [start, start * factor, start * factor ** 2, start * factor ** 3];
+          const antwoord = start * factor ** 4;
+          return {
+            vraag: `Hoe gaat deze rij verder? ${rij.map((g) => nl(g)).join(' – ')} – ?`,
+            antwoord,
+            uitleg: `Kijk wat er elke keer gebeurt: ${nl(rij[0])} × ${factor} = ${nl(rij[1])}, ${nl(rij[1])} × ${factor} = ${nl(rij[2])}. Steeds × ${factor}. Dus ${nl(rij[3])} × ${factor} = ${nl(antwoord)}.`
+          };
+        },
+        (r) => {
+          const getal = r.getal(10001, 99999) / 1000;
+          const decimalen = r.kies([1, 2]);
+          const antwoord = Math.round(getal * 10 ** decimalen) / 10 ** decimalen;
+          const volgend = Math.floor((getal * 10 ** (decimalen + 1)) % 10);
+          return {
+            vraag: `Rond ${nl(getal, 3)} af op ${decimalen === 1 ? 'één cijfer' : 'twee cijfers'} achter de komma.`,
+            antwoord,
+            uitleg: `Kijk naar het cijfer dáárna: dat is een ${volgend}. ${volgend >= 5 ? 'Dat is 5 of meer, dus naar boven' : 'Dat is minder dan 5, dus naar beneden'}: ${nl(antwoord, decimalen)}.`
+          };
+        },
+        (r) => {
+          const miljoen = r.getal(1, 9);
+          const duizend = r.kies([4, 40, 400, 15, 250, 7]);
+          const een = r.kies([5, 30, 0, 18, 600]);
+          const woorden = {
+            4: 'vierduizend', 40: 'veertigduizend', 400: 'vierhonderdduizend', 15: 'vijftienduizend', 250: 'tweehonderdvijftigduizend', 7: 'zevenduizend',
+            5: ' vijf', 30: ' dertig', 0: '', 18: ' achttien', 600: ' zeshonderd'
+          };
+          const telwoord = ['', 'een', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen'][miljoen];
+          const antwoord = miljoen * 1000000 + duizend * 1000 + een;
+          return {
+            vraag: `Schrijf als getal: ${telwoord} miljoen ${woorden[duizend]}${woorden[een]}.`,
+            antwoord,
+            uitleg: `Miljoen heeft 6 nullen: ${nl(miljoen * 1000000)}. Daar komt ${nl(duizend * 1000)}${een ? ` en ${een}` : ''} bij. Samen ${nl(antwoord)}. Lege plekken vul je met een 0.`
+          };
+        },
+        (r) => {
+          const a = r.kies([398, 402, 497, 503, 698, 789, 812]);
+          const b = r.kies([49, 51, 19, 21, 99, 31]);
+          const ra = Math.round(a / 100) * 100;
+          const rb = Math.round(b / 10) * 10;
+          const goed = ra * rb;
+          const { opties, goed: plek } = meerkeuze(r, nl(goed), [nl(goed / 10), nl(goed * 10), nl(goed * 100)]);
+          return {
+            vraag: `Ongeveer hoeveel is ${a} × ${b}?`,
+            opties,
+            goed: plek,
+            uitleg: `Schatten: maak er mooie ronde getallen van. ${a} is ongeveer ${ra} en ${b} is ongeveer ${rb}. ${ra} × ${rb} = ${nl(goed)}.`
+          };
+        }
+      ],
       makers: [
         (r, n) => {
           const getal = r.getal(n === 1 ? 10000 : 100000, n === 1 ? 99999 : 999999);
@@ -128,6 +184,51 @@ const Rekensommen = (() => {
     },
     {
       naam: 'Bewerkingen',
+      iep: [
+        (r) => {
+          const a = r.getal(10, 40), b = r.getal(3, 9), c = r.getal(3, 9), d = r.kies([2, 4, 5]), e = d * r.getal(3, 12);
+          const antwoord = a + b * c - e / d;
+          return {
+            vraag: `Reken uit: ${a} + ${b} × ${c} − ${e} : ${d}`,
+            antwoord,
+            uitleg: `Eerst keer en delen, daarna plus en min. ${b} × ${c} = ${b * c} en ${e} : ${d} = ${e / d}. Dan ${a} + ${b * c} − ${e / d} = ${antwoord}.`
+          };
+        },
+        (r) => {
+          const aantal = r.getal(2, 4);
+          const prijs = r.getal(495, 1595) / 100;
+          const prijsAfgerond = Math.round(prijs * 20) / 20;
+          const totaal = Math.round(aantal * prijsAfgerond * 100) / 100;
+          const betaald = Math.ceil(totaal / 10) * 10 + r.kies([0, 10, 20]);
+          const antwoord = Math.round((betaald - totaal) * 100) / 100;
+          return {
+            vraag: `Je koopt ${aantal} boeken van ${euro(prijsAfgerond)} per stuk en betaalt met ${euro(betaald)}. Hoeveel krijg je terug?`,
+            antwoord,
+            voor: '€',
+            uitleg: `Eerst wat je moet betalen: ${aantal} × ${euro(prijsAfgerond)} = ${euro(totaal)}. Dan het wisselgeld: ${euro(betaald)} − ${euro(totaal)} = ${euro(antwoord)}.`
+          };
+        },
+        (r) => {
+          const touw = r.getal(30, 95) * 10;           // cm
+          const stuk = r.kies([15, 25, 35, 45, 60, 75]);
+          const antwoord = Math.floor(touw / stuk);
+          return {
+            vraag: `Een touw van ${nl(touw / 100)} meter wordt in stukken van ${stuk} cm geknipt. Hoeveel hele stukken krijg je?`,
+            antwoord,
+            na: 'stukken',
+            uitleg: `Maak eerst alles cm: ${nl(touw / 100)} m = ${touw} cm. ${touw} : ${stuk} = ${antwoord} rest ${touw % stuk}. Het stukje van ${touw % stuk} cm is te kort, dus ${antwoord} hele stukken.`
+          };
+        },
+        (r) => {
+          const a = r.getal(14, 48);
+          const b = r.getal(17, 36);
+          return {
+            vraag: `Welk getal moet op de puntjes? … × ${b} = ${nl(a * b)}`,
+            antwoord: a,
+            uitleg: `Het omgekeerde van keer is delen: ${nl(a * b)} : ${b} = ${a}. Controleer: ${a} × ${b} = ${nl(a * b)}.`
+          };
+        }
+      ],
       makers: [
         (r, n) => {
           const a = r.getal(23, n === 3 ? 189 : 89);
@@ -172,6 +273,52 @@ const Rekensommen = (() => {
     },
     {
       naam: 'Kommagetallen',
+      iep: [
+        (r) => {
+          const [a, b] = r.kies([[3.6, 2.5], [1.2, 0.5], [4.8, 0.25], [2.4, 1.5], [0.6, 0.4], [7.5, 0.2], [1.6, 2.5]]);
+          const antwoord = Math.round(a * b * 1000) / 1000;
+          return {
+            vraag: `Reken uit: ${nl(a)} × ${nl(b)}`,
+            antwoord,
+            uitleg: `Reken eerst zonder komma's: ${nl(a * 10)} × ${nl(b * (b < 1 && b * 10 % 1 ? 100 : 10))}. Tel dan hoeveel cijfers er samen achter de komma's stonden en zet de komma terug. Zo krijg je ${nl(antwoord)}.`
+          };
+        },
+        (r) => {
+          const a = r.getal(250, 480) / 100;
+          const b = r.getal(15, Math.floor(a * 10) - 3) / 10;
+          const antwoord = Math.round((a - b) * 100) / 100;
+          return {
+            vraag: `Lisa springt ${nl(a, 2)} m ver en Noah ${nl(b, 1)} m. Hoeveel meter sprong Lisa verder?`,
+            antwoord,
+            na: 'm',
+            uitleg: `Zet de komma's onder elkaar en vul aan met een 0: ${nl(a, 2)} − ${nl(b, 2)} = ${nl(antwoord, 2)} m.`
+          };
+        },
+        (r) => {
+          const kiloprijs = r.getal(80, 240) / 10;
+          const gram = r.kies([250, 300, 400, 450, 600, 750]);
+          const antwoord = Math.round(kiloprijs * gram / 10) / 100;
+          const wat = r.kies(['kaas', 'gehakt', 'kipfilet', 'drop']);
+          return {
+            vraag: `${wat[0].toUpperCase()}${wat.slice(1)} kost ${euro(kiloprijs)} per kilo. Je koopt ${gram} gram. Hoeveel betaal je? Rond af op hele centen.`,
+            antwoord,
+            voor: '€',
+            uitleg: `${gram} gram is ${nl(gram / 1000)} kilo. ${nl(gram / 1000)} × ${euro(kiloprijs)} = ${euro(antwoord)}. Handig: eerst 100 gram (${euro(kiloprijs / 10)}), dan × ${gram / 100}.`
+          };
+        },
+        (r) => {
+          const kinderen = r.kies([4, 5, 6, 8]);
+          const ieder = r.getal(250, 1275) / 100;
+          const per = Math.round(ieder * 4) / 4;
+          const totaal = per * kinderen;
+          return {
+            vraag: `${kinderen} kinderen verdelen ${euro(totaal)} eerlijk. Hoeveel krijgt ieder kind?`,
+            antwoord: per,
+            voor: '€',
+            uitleg: `${euro(totaal)} : ${kinderen}. Reken in centen als dat makkelijker is: ${Math.round(totaal * 100)} : ${kinderen} = ${Math.round(per * 100)} cent = ${euro(per)}.`
+          };
+        }
+      ],
       makers: [
         (r) => {
           const a = r.getal(105, 1995);       // in honderdsten
@@ -221,6 +368,61 @@ const Rekensommen = (() => {
     },
     {
       naam: 'Breuken',
+      iep: [
+        (r) => {
+          const [a, b, c, d] = r.kies([[1, 2, 1, 3], [1, 4, 2, 3], [2, 5, 1, 2], [1, 3, 1, 6], [3, 4, 1, 6], [1, 2, 2, 5]]);
+          const noemer = (b * d) / ggd(b, d);
+          const teller = a * (noemer / b) + c * (noemer / d);
+          const g = ggd(teller, noemer);
+          const goed = `${teller / g}/${noemer / g}`;
+          const fout = [`${a + c}/${b + d}`, `${a + c}/${noemer}`, `${teller + 1}/${noemer}`].filter((f) => f !== goed);
+          const { opties, goed: plek } = meerkeuze(r, goed, fout.slice(0, 3));
+          return {
+            vraag: `Reken uit: ${a}/${b} + ${c}/${d}`,
+            opties,
+            goed: plek,
+            uitleg: `Maak de noemers gelijk: ${noemer}. ${a}/${b} = ${a * (noemer / b)}/${noemer} en ${c}/${d} = ${c * (noemer / d)}/${noemer}. Samen ${teller}/${noemer}${g > 1 ? ` = ${goed}` : ''}. Tellers en noemers gewoon optellen mag niet!`
+          };
+        },
+        (r) => {
+          const [t, nm] = r.kies([[3, 5], [2, 3], [3, 4], [5, 8], [4, 7]]);
+          const stuk = r.getal(3, 7);
+          const deel = t * stuk;
+          const totaal = nm * stuk;
+          const wie = r.kies(['meisjes', 'kinderen met een huisdier', 'kinderen die op de fiets komen']);
+          return {
+            vraag: `${t}/${nm} deel van een groep zijn ${wie}. Dat zijn er ${deel}. Hoeveel kinderen zitten er in de groep?`,
+            antwoord: totaal,
+            na: 'kinderen',
+            uitleg: `${t}/${nm} deel is ${deel}, dus 1/${nm} deel is ${deel} : ${t} = ${stuk}. De hele groep is ${nm}/${nm}: ${nm} × ${stuk} = ${totaal}.`
+          };
+        },
+        (r) => {
+          const uren = r.getal(1, 4);
+          const [t, nm] = r.kies([[1, 4], [3, 4], [1, 3], [2, 3], [1, 2], [1, 6], [5, 6]]);
+          const antwoord = uren * 60 + (60 / nm) * t;
+          return {
+            vraag: `Hoeveel minuten is ${uren} ${t}/${nm} uur?`,
+            antwoord,
+            na: 'minuten',
+            uitleg: `${uren} uur is ${uren * 60} minuten. 1/${nm} uur is 60 : ${nm} = ${60 / nm} minuten, dus ${t}/${nm} uur is ${(60 / nm) * t} minuten. Samen ${antwoord} minuten.`
+          };
+        },
+        (r) => {
+          const [t, nm] = r.kies([[3, 4], [2, 3], [4, 5], [3, 8], [5, 6]]);
+          const k = r.getal(3, 6);
+          const groot = `${t * k}/${nm * k}`;
+          const goed = `${t}/${nm}`;
+          const fout = [`${t + 1}/${nm + 1}`, `${t}/${nm + 1}`, `${Math.max(1, t - 1)}/${nm}`].filter((f, i, l) => f !== goed && l.indexOf(f) === i);
+          const { opties, goed: plek } = meerkeuze(r, goed, fout);
+          return {
+            vraag: `Welke breuk is even groot als ${groot}?`,
+            opties,
+            goed: plek,
+            uitleg: `Deel teller en noemer door hetzelfde getal, hier ${k}: ${t * k} : ${k} = ${t} en ${nm * k} : ${k} = ${nm}. Dus ${groot} = ${goed}.`
+          };
+        }
+      ],
       makers: [
         (r, n) => {
           const noemer = r.kies(n === 1 ? [2, 3, 4, 5] : [3, 4, 5, 6, 8]);
@@ -278,6 +480,58 @@ const Rekensommen = (() => {
     },
     {
       naam: 'Procenten',
+      iep: [
+        (r) => {
+          const procent = r.kies([20, 25, 40, 50, 10]);
+          const oud = r.getal(3, 15) * 20;
+          const nieuw = oud * (100 - procent) / 100;
+          const ding = r.kies(['jas', 'skateboard', 'koptelefoon', 'tent']);
+          return {
+            vraag: `Na ${procent}% korting kost een ${ding} nog ${euro(nieuw)}. Wat was de prijs vóór de korting?`,
+            antwoord: oud,
+            voor: '€',
+            uitleg: `Na ${procent}% korting betaal je nog ${100 - procent}%. Dus ${100 - procent}% is ${euro(nieuw)}. Dan is 1% ${euro(nieuw)} : ${100 - procent} = ${euro(oud / 100)}, en 100% is ${euro(oud)}. Niet ${procent}% van ${euro(nieuw)} erbij tellen!`
+          };
+        },
+        (r) => {
+          const prijs = r.getal(2, 16) * 20;
+          const procent = r.kies([5, 10, 15, 20, 25]);
+          const antwoord = prijs * (100 + procent) / 100;
+          return {
+            vraag: `Een abonnement kost ${euro(prijs)} per jaar. Volgend jaar wordt het ${procent}% duurder. Wat kost het dan?`,
+            antwoord,
+            voor: '€',
+            uitleg: `${uitlegProcent(procent, prijs, prijs * procent / 100)} Dat komt erbij: ${euro(prijs)} + ${euro(prijs * procent / 100)} = ${euro(antwoord)}.`
+          };
+        },
+        (r) => {
+          const totaal = r.kies([40, 80, 120, 160, 200, 300]);
+          const procent = r.kies([15, 35, 45, 55, 65, 85].filter((p) => (totaal * p) % 100 === 0));
+          const deel = totaal * procent / 100;
+          return {
+            vraag: `Van de ${totaal} leerlingen komen er ${deel} op de fiets naar school. Hoeveel procent is dat?`,
+            antwoord: procent,
+            na: '%',
+            uitleg: `1% van ${totaal} is ${nl(totaal / 100)}. ${deel} : ${nl(totaal / 100)} = ${procent}. Of: ${deel}/${totaal} en maak de noemer 100. Dus ${procent}%.`
+          };
+        },
+        (r) => {
+          const a = r.getal(6, 15) * 10;
+          const pa = r.kies([20, 25, 30]);
+          const b = a - r.kies([5, 10, 15]);
+          const kortingB = r.kies([10, 15, 20]);
+          const prijsA = a * (100 - pa) / 100;
+          const prijsB = b - kortingB;
+          if (prijsA === prijsB) return { vraag: `Winkel A verkoopt een spel van ${euro(a)} met ${pa}% korting. Hoeveel betaal je?`, antwoord: prijsA, voor: '€', uitleg: `${uitlegProcent(pa, a, a * pa / 100)} ${euro(a)} − ${euro(a * pa / 100)} = ${euro(prijsA)}.` };
+          const goedkoopste = Math.min(prijsA, prijsB);
+          return {
+            vraag: `Winkel A: een spel van ${euro(a)} met ${pa}% korting. Winkel B: hetzelfde spel van ${euro(b)} met ${euro(kortingB)} korting. Wat betaal je in de goedkoopste winkel?`,
+            antwoord: goedkoopste,
+            voor: '€',
+            uitleg: `Winkel A: ${pa}% van ${euro(a)} is ${euro(a * pa / 100)}, dus ${euro(prijsA)}. Winkel B: ${euro(b)} − ${euro(kortingB)} = ${euro(prijsB)}. Winkel ${prijsA < prijsB ? 'A' : 'B'} is goedkoper: ${euro(goedkoopste)}.`
+          };
+        }
+      ],
       makers: [
         (r) => {
           const procent = r.kies([10, 20, 25, 50, 75, 5, 15, 30, 40]);
@@ -328,6 +582,52 @@ const Rekensommen = (() => {
     },
     {
       naam: 'Verhoudingen',
+      iep: [
+        (r) => {
+          const [snelheid, km] = r.kies([[90, 135], [80, 100], [60, 45], [120, 300], [100, 75], [40, 50], [15, 25]]);
+          const minuten = km / snelheid * 60;
+          return {
+            vraag: `Een ${snelheid >= 60 ? 'trein' : 'fietser'} gaat ${snelheid} km per uur. Hoeveel minuten doet hij over ${km} km?`,
+            antwoord: minuten,
+            na: 'minuten',
+            uitleg: `In 60 minuten gaat hij ${snelheid} km. Dat is ${nl(snelheid / 60)} km per minuut. ${km} : ${nl(snelheid / 60)} = ${minuten} minuten. Of met een verhoudingstabel: ${snelheid} km → 60 min, ${km} km → ${minuten} min.`
+          };
+        },
+        (r) => {
+          const water = r.kies([4, 5, 7, 9]);
+          const liter = r.kies([1, 1.5, 2, 2.5, 3]);
+          const delen = water + 1;
+          const ml = liter * 1000;
+          if (ml % delen) return { vraag: `Ranja maak je met 1 deel siroop op 4 delen water. Hoeveel ml siroop heb je nodig voor 1,5 liter ranja?`, antwoord: 300, na: 'ml', uitleg: `1 deel siroop + 4 delen water = 5 delen. 1,5 liter = 1.500 ml. Eén deel is 1.500 : 5 = 300 ml siroop.` };
+          return {
+            vraag: `Ranja maak je met 1 deel siroop op ${water} delen water. Hoeveel ml siroop heb je nodig voor ${nl(liter)} liter ranja?`,
+            antwoord: ml / delen,
+            na: 'ml',
+            uitleg: `1 deel siroop + ${water} delen water = ${delen} delen samen. ${nl(liter)} liter = ${nl(ml)} ml. Eén deel is ${nl(ml)} : ${delen} = ${nl(ml / delen)} ml siroop. Let op: niet delen door ${water}!`
+          };
+        },
+        (r) => {
+          const [na, pa, nb, pb] = r.kies([[6, 420, 8, 520], [4, 300, 6, 420], [3, 225, 5, 400], [10, 650, 6, 360], [12, 900, 8, 640]]);
+          const ca = pa / na, cb = pb / nb;
+          return {
+            vraag: `Pak A: ${na} blikjes voor ${euro(pa / 100)}. Pak B: ${nb} blikjes voor ${euro(pb / 100)}. Hoeveel cent kost één blikje uit het goedkoopste pak?`,
+            antwoord: Math.min(ca, cb),
+            na: 'cent',
+            uitleg: `Reken per blikje. A: ${pa} : ${na} = ${ca} cent. B: ${pb} : ${nb} = ${cb} cent. Pak ${ca < cb ? 'A' : 'B'} is goedkoper: ${Math.min(ca, cb)} cent per blikje.`
+          };
+        },
+        (r) => {
+          const schaal = r.kies([25000, 50000, 100000]);
+          const km = r.kies([1.5, 2, 3, 4, 5, 7.5]);
+          const cm = km * 100000 / schaal;
+          return {
+            vraag: `Op een kaart met schaal 1 : ${nl(schaal)} wil je een route tekenen die echt ${nl(km)} km lang is. Hoeveel cm wordt die lijn op de kaart?`,
+            antwoord: cm,
+            na: 'cm',
+            uitleg: `1 cm op de kaart is ${nl(schaal)} cm = ${nl(schaal / 100000)} km echt. ${nl(km)} : ${nl(schaal / 100000)} = ${nl(cm)} cm.`
+          };
+        }
+      ],
       makers: [
         (r) => {
           const basis = r.kies([2, 4, 5]);
@@ -379,6 +679,56 @@ const Rekensommen = (() => {
     },
     {
       naam: 'Meten',
+      iep: [
+        (r) => {
+          const m2 = r.kies([0.3, 0.5, 1.2, 2, 0.75, 0.04]);
+          return {
+            vraag: `Hoeveel cm² is ${nl(m2)} m²?`,
+            antwoord: Math.round(m2 * 10000),
+            na: 'cm²',
+            uitleg: `1 m² is 100 cm × 100 cm = 10.000 cm². Dus ${nl(m2)} × 10.000 = ${nl(Math.round(m2 * 10000))} cm². Niet × 100: bij oppervlakte tel je in het kwadraat.`
+          };
+        },
+        (r) => {
+          const fles = r.kies([1, 1.5, 2, 0.75]);
+          const glas = r.kies([150, 200, 250]);
+          const ml = fles * 1000;
+          const antwoord = Math.floor(ml / glas);
+          return {
+            vraag: `Een fles bevat ${nl(fles)} liter. Hoeveel glazen van ${glas} ml kun je helemaal vullen?`,
+            antwoord,
+            na: 'glazen',
+            uitleg: `${nl(fles)} liter = ${nl(ml)} ml. ${nl(ml)} : ${glas} = ${antwoord}${ml % glas ? ` rest ${ml % glas}. Met die ${ml % glas} ml vul je geen heel glas` : ''}. Dus ${antwoord} glazen.`
+          };
+        },
+        (r) => {
+          const vertrek = r.getal(19 * 4, 23 * 4) * 15;
+          const duur = r.getal(10, 22) * 15 + r.kies([0, 5, 10]);
+          const aankomst = (vertrek + duur) % (24 * 60);
+          const klok = (m) => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+          const goed = klok(aankomst);
+          const fout = [klok((aankomst + 60) % 1440), klok((aankomst + 1440 - 60) % 1440), klok((vertrek + Math.floor(duur / 60) * 100 % 1440 + duur % 60) % 1440)]
+            .filter((f, i, l) => f !== goed && l.indexOf(f) === i);
+          while (fout.length < 3) fout.push(klok((aankomst + 30 * (fout.length + 1)) % 1440));
+          const { opties, goed: plek } = meerkeuze(r, goed, fout.slice(0, 3));
+          return {
+            vraag: `Een nachtbus vertrekt om ${klok(vertrek)}. De reis duurt ${Math.floor(duur / 60)} uur en ${duur % 60} minuten. Hoe laat komt de bus aan?`,
+            opties,
+            goed: plek,
+            uitleg: `Tel eerst de hele uren erbij, dan de minuten. Na middernacht begin je weer bij 00:00. ${klok(vertrek)} + ${Math.floor(duur / 60)} uur en ${duur % 60} minuten = ${goed}.`
+          };
+        },
+        (r) => {
+          const [km, minuten] = r.kies([[12, 150], [9, 120], [6, 90], [15, 180], [10, 150], [21, 210]]);
+          const snelheid = km / (minuten / 60);
+          return {
+            vraag: `Een wandeling van ${km} km duurt ${Math.floor(minuten / 60)} uur${minuten % 60 ? ` en ${minuten % 60} minuten` : ''}. Wat is de gemiddelde snelheid in km per uur?`,
+            antwoord: snelheid,
+            na: 'km/u',
+            uitleg: `${minuten % 60 ? `${Math.floor(minuten / 60)} uur en ${minuten % 60} minuten is ${nl(minuten / 60)} uur. ` : ''}Snelheid = afstand : tijd = ${km} : ${nl(minuten / 60)} = ${nl(snelheid)} km per uur.`
+          };
+        }
+      ],
       makers: [
         (r) => {
           const soorten = [
@@ -435,6 +785,54 @@ const Rekensommen = (() => {
     },
     {
       naam: 'Meetkunde en verbanden',
+      iep: [
+        (r) => {
+          const l = r.getal(6, 10), b = r.getal(4, 7);
+          const el = r.getal(2, l - 3), eb = r.getal(1, b - 2);
+          const antwoord = l * b - el * eb;
+          return {
+            vraag: `Een kamer heeft de vorm van een L. Het is een rechthoek van ${l} bij ${b} meter, waar in één hoek een stuk van ${el} bij ${eb} meter uit is gehaald. Hoeveel m² vloer heeft de kamer?`,
+            antwoord,
+            na: 'm²',
+            uitleg: `Reken de grote rechthoek uit en haal het stuk eraf. ${l} × ${b} = ${l * b} m². ${el} × ${eb} = ${el * eb} m². ${l * b} − ${el * eb} = ${antwoord} m².`
+          };
+        },
+        (r) => {
+          const blok = r.kies([5, 10]);
+          const [l, b, h] = r.kies(blok === 5 ? [[30, 20, 10], [25, 15, 10], [40, 20, 15], [20, 20, 20]] : [[60, 40, 30], [50, 30, 20], [40, 40, 30]]);
+          const antwoord = (l / blok) * (b / blok) * (h / blok);
+          return {
+            vraag: `Een doos is ${l} cm lang, ${b} cm breed en ${h} cm hoog. Hoeveel kubusjes van ${blok} bij ${blok} bij ${blok} cm passen er precies in?`,
+            antwoord,
+            na: 'kubusjes',
+            uitleg: `In de lengte passen er ${l} : ${blok} = ${l / blok}, in de breedte ${b / blok} en in de hoogte ${h / blok}. ${l / blok} × ${b / blok} × ${h / blok} = ${antwoord} kubusjes.`
+          };
+        },
+        (r) => {
+          const aantal = r.kies([3, 4]);
+          const gem = r.kies([6, 6.5, 7, 7.5]);
+          const doel = gem + r.kies([0.2, 0.3, 0.5]);
+          const nodig = Math.round((doel * (aantal + 1) - gem * aantal) * 10) / 10;
+          if (nodig > 10 || nodig < 1) return { vraag: `Na 4 toetsen heeft Sem gemiddeld een 7. Welk cijfer moet hij voor de vijfde toets halen om gemiddeld een 7,2 te staan?`, antwoord: 8, uitleg: 'Na 4 toetsen heeft hij samen 4 × 7 = 28 punten. Voor gemiddeld 7,2 na 5 toetsen heb je 5 × 7,2 = 36 punten nodig. 36 − 28 = 8.' };
+          return {
+            vraag: `Na ${aantal} toetsen heeft Sem gemiddeld een ${nl(gem)}. Welk cijfer moet hij voor de volgende toets halen om gemiddeld een ${nl(doel)} te staan?`,
+            antwoord: nodig,
+            uitleg: `Na ${aantal} toetsen heeft hij samen ${aantal} × ${nl(gem)} = ${nl(aantal * gem)} punten. Voor gemiddeld ${nl(doel)} na ${aantal + 1} toetsen heb je ${aantal + 1} × ${nl(doel)} = ${nl(doel * (aantal + 1))} punten nodig. ${nl(doel * (aantal + 1))} − ${nl(aantal * gem)} = ${nl(nodig)}.`
+          };
+        },
+        (r) => {
+          const start = r.kies([3, 3.5, 4]);
+          const perKm = r.kies([2, 2.2, 2.5, 3]);
+          const km = r.getal(4, 15);
+          const totaal = Math.round((start + perKm * km) * 100) / 100;
+          return {
+            vraag: `Een taxi kost ${euro(start)} instaptarief plus ${euro(perKm)} per kilometer. Een rit kost ${euro(totaal)}. Hoeveel kilometer was de rit?`,
+            antwoord: km,
+            na: 'km',
+            uitleg: `Haal eerst het instaptarief eraf: ${euro(totaal)} − ${euro(start)} = ${euro(totaal - start)}. Dat is voor de kilometers: ${euro(totaal - start)} : ${euro(perKm)} = ${km} km.`
+          };
+        }
+      ],
       makers: [
         (r) => {
           const l = r.getal(6, 18);
@@ -495,13 +893,22 @@ const Rekensommen = (() => {
   ];
 
   // De sommen van één dag (dagNr begint bij 0). Altijd dezelfde voor die dag.
+  // Per domein eerst de gewone som, dan een moeilijkere in de stijl van de
+  // IEP-doorstroomtoets. De gewone sommen hebben hun eigen generator, zodat
+  // die hetzelfde blijven als voordat de IEP-sommen erbij kwamen.
   function vanDag(dagNr) {
     const r = generator(20261020 + dagNr * 7919);
+    const rIep = generator(20261020 + dagNr * 7919 + 104729);
     const niveau = dagNr < 5 ? 1 : dagNr < 10 ? 2 : 3;
-    return DOMEINEN.map((domein, i) => {
+    const gewoon = DOMEINEN.map((domein, i) => {
       const maker = domein.makers[(dagNr + i) % domein.makers.length];
       return { domein: domein.naam, ...maker(r, niveau) };
     });
+    const iep = DOMEINEN.map((domein, i) => {
+      const maker = domein.iep[(dagNr + i) % domein.iep.length];
+      return { domein: domein.naam, iep: true, ...maker(rIep, dagNr < 7 ? 2 : 3) };
+    });
+    return gewoon.flatMap((som, i) => [som, iep[i]]);
   }
 
   // Een getypt antwoord lezen: "3,5", "3.5", "4.678", "€ 12,50" en "−7" mogen.

@@ -8,7 +8,9 @@
  *   rekensommen.js     de rekensommen (die worden per dag uitgerekend)
  * De logica zit in toetstraining.js.
  *
- * Elke dag doet alle zeven toetsen mee, samen zo'n 30 minuten. De tijd is
+ * Elke dag doet alle zeven toetsen mee, samen zo'n 48 minuten. Sinds de
+ * IEP-doorstroomtoets (januari) het doel is, zijn begrijpend lezen,
+ * werkwoorden, rekenen en woorden verdubbeld met moeilijkere vragen. De tijd is
  * verdeeld naar de uitslag van de vorige toets: waar het kind een C haalde
  * (spelling werkwoorden, begrijpend lezen 2012 en rekenen) gaat de meeste
  * tijd naartoe, bij de B's wat minder en bij de A (technisch lezen tekst)
@@ -41,18 +43,18 @@ const MOCHI = {
       tip: 'Lees de tekst hardop voor, alsof je hem voorleest aan de klas. Let op de punten en komma\'s: daar adem je even.'
     },
     {
-      id: 'tekst', titel: 'Vragen bij de tekst', emoji: '🔍', toets: 'Begrijpend lezen', uitslag: 'B', minuten: 4,
-      uitleg: 'Drie vragen over de tekst die je net hardop las.',
+      id: 'tekst', titel: 'Vragen bij de tekst', emoji: '🔍', toets: 'Begrijpend lezen', uitslag: 'B', minuten: 7,
+      uitleg: 'Zes vragen over de tekst die je net hardop las. De laatste drie zijn pittig, net als bij de IEP-toets.',
       tip: 'Lees de vraag goed, en zoek dan het stukje in de tekst waar het antwoord staat. Kijk naar alle antwoorden voordat je kiest.'
     },
     {
-      id: 'werkwoorden', titel: 'Werkwoorden', emoji: '✍️', toets: 'Spelling werkwoorden', uitslag: 'C', minuten: 6,
-      uitleg: 'Zes zinnen: schrijf het werkwoord goed.',
+      id: 'werkwoorden', titel: 'Werkwoorden', emoji: '✍️', toets: 'Spelling werkwoorden', uitslag: 'C', minuten: 11,
+      uitleg: 'Twaalf zinnen: schrijf het werkwoord goed. De tweede helft zit vol instinkers.',
       tip: 'Elke keer dezelfde stappen: 1. Welke tijd is het (nu, vroeger, of met hebben/zijn)? 2. Wat is de stam? 3. Dan pas: d, t, dt, de of te?'
     },
     {
-      id: 'rekenen', titel: 'Rekenen', emoji: '🧮', toets: 'Rekenen-wiskunde', uitslag: 'C', minuten: 8,
-      uitleg: 'Acht sommen, uit elk deel van de rekentoets één.',
+      id: 'rekenen', titel: 'Rekenen', emoji: '🧮', toets: 'Rekenen-wiskunde', uitslag: 'C', minuten: 16,
+      uitleg: 'Zestien sommen: uit elk deel van de rekentoets een gewone en een pittige IEP-som.',
       tip: 'Schrijf tussenstappen op een kladblaadje, net als bij de echte toets. Lees aan het eind de vraag nog een keer: wat moest je ook alweer uitrekenen?'
     },
     {
@@ -61,8 +63,8 @@ const MOCHI = {
       tip: 'Lees eerst de vraag, en dan pas de tekst. Dan weet je waar je op moet letten. Bij een moeilijk woord: lees de zinnen eromheen.'
     },
     {
-      id: 'woorden', titel: 'Woorden spellen', emoji: '🔤', toets: 'Spelling woorden', uitslag: 'B', minuten: 3,
-      uitleg: 'Vijf woorden: kies hoe je het goed schrijft.',
+      id: 'woorden', titel: 'Woorden spellen', emoji: '🔤', toets: 'Spelling woorden', uitslag: 'B', minuten: 5,
+      uitleg: 'Tien woorden: kies hoe je het goed schrijft. Eerst vijf gewone, dan vijf moeilijke.',
       tip: 'Zeg het woord in je hoofd, en denk aan de regel: verdubbelen, ei of ij, een leenwoord? Lijken twee antwoorden goed, kijk dan heel precies.'
     }
   ],

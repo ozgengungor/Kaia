@@ -262,19 +262,24 @@ gebruiken. Een nieuw plan (breien, naaien) is een object in `plannen` in
 
 Een dagplan van **dinsdag 20 oktober tot en met maandag 2 november 2026**
 (14 dagen, ook in het weekend) voor een kind dat begin groep 8 de Boom-toetsen
-maakt. Elke dag komen alle zeven toetsen aan bod, samen ongeveer 30 minuten.
+maakt. Elke dag komen alle zeven toetsen aan bod, samen ongeveer 48 minuten.
 De tijd is verdeeld naar de vorige uitslag: de meeste tijd gaat naar de C's,
 minder naar de B's, en de A krijgt alleen een korte opwarmer.
+
+Sinds 25 oktober is het einddoel de **IEP-doorstroomtoets in januari**. Daarom
+zijn vragen bij de tekst, werkwoorden, rekenen en woorden verdubbeld: na de
+gewone vragen van de dag komt een even groot blok moeilijkere vragen in
+IEP-stijl. Woordrij, hardop lezen en de korte teksten zijn gelijk gebleven.
 
 | # | Onderdeel | Boom-toets | Vorige uitslag | Tijd | Wat het kind doet |
 | --- | --- | --- | --- | --- | --- |
 | 1 | ⚡ Woordrij | Technisch lezen woorden | B | 2 min | Eén minuut zo veel mogelijk woorden hardop lezen (80 woorden, van kort naar lang). Daarna tikt het kind het laatste woord aan. |
 | 2 | 🗣️ Hardop lezen | Technisch lezen tekst | A | 2 min | De tekst van de dag hardop voorlezen met een stopwatch, en zeggen hoe het ging. |
-| 3 | 🔍 Vragen bij de tekst | Begrijpend lezen | B | 4 min | Drie vragen over diezelfde tekst. |
-| 4 | ✍️ Werkwoorden | Spelling werkwoorden | C | 6 min | Zes zinnen met het werkwoord in de goede vorm. |
-| 5 | 🧮 Rekenen | Rekenen-wiskunde | C | 8 min | Acht sommen, één uit elk domein. |
+| 3 | 🔍 Vragen bij de tekst | Begrijpend lezen | B | 7 min | Zes vragen over diezelfde tekst; de laatste drie op IEP-niveau (verbanden over alinea's heen, tekststructuur, standpunt, "klopt NIET"). |
+| 4 | ✍️ Werkwoorden | Spelling werkwoorden | C | 11 min | Twaalf zinnen met het werkwoord in de goede vorm; de laatste zes vol instinkers. |
+| 5 | 🧮 Rekenen | Rekenen-wiskunde | C | 16 min | Zestien sommen: per domein een gewone en een IEP-som. |
 | 6 | 📰 Korte teksten | Begrijpend lezen (2012) | C | 5 min | Twee korte teksten (advertentie, recept, bericht, ...) met elk twee vragen. |
-| 7 | 🔤 Woorden spellen | Spelling woorden | B | 3 min | Vijf woorden: kies de goede schrijfwijze. |
+| 7 | 🔤 Woorden spellen | Spelling woorden | B | 5 min | Tien woorden: kies de goede schrijfwijze; de laatste vijf moeilijker. |
 
 Elke vraag wordt meteen nagekeken, met een uitleg die de aanpak laat zien.
 Bij de werkwoorden telt een hoofdletter niet. Op het startscherm staan de 14
@@ -293,7 +298,12 @@ het antwoord en de uitleg zijn uitgerekend in plaats van overgetypt. De acht
 domeinen zijn getallen, bewerkingen, kommagetallen, breuken, procenten,
 verhoudingen (schaal, recepten, snelheid), meten (lengte, inhoud, gewicht,
 tijd) en meetkunde en verbanden (oppervlakte, omtrek, inhoud, gemiddelde,
-een tabel lezen). Vanaf dag 6 en dag 11 worden de getallen groter. Een
+een tabel lezen). Vanaf dag 6 en dag 11 worden de getallen groter. Na elke
+gewone som komt een IEP-som uit hetzelfde domein: meer stappen en terugrekenen
+(prijs vóór korting, hele groep uit een breuk, taxirit terugrekenen),
+volgorde van bewerkingen, schatten, ongelijknamige breuken, m² naar cm²,
+snelheid, prijs per stuk vergelijken en tijd over middernacht. Die hebben een
+eigen toevalsgenerator, zodat de gewone sommen van een dag niet veranderd zijn. Een
 antwoord mag met een komma of een punt (`2,5`, `2.5`, `€ 12,50`).
 
 Mochi leest niets voor: bij lezen hoort het kind zelf te lezen.
