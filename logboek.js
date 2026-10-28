@@ -33,7 +33,10 @@
   let timer = null;
 
   function voegToe(gebeurtenis) {
-    wachtrij.push({ id: nieuwId(), t: new Date().toISOString(), apparaat, ...gebeurtenis });
+    // Het kind dat nu oefent (zie profiel.js); de server controleert met de
+    // koppelcode of dat kind echt bij dit apparaat hoort.
+    const kind = window.Profiel && window.Profiel.kind();
+    wachtrij.push({ id: nieuwId(), t: new Date().toISOString(), apparaat, ...(kind ? { kind } : {}), ...gebeurtenis });
     if (wachtrij.length > MAX_WACHTRIJ) wachtrij = wachtrij.slice(-MAX_WACHTRIJ);
     schrijf(WACHTRIJ, wachtrij);
     clearTimeout(timer);
@@ -47,7 +50,7 @@
     try {
       const antwoord = await fetch('/api/log', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-Gezin-Code': (window.Profiel && window.Profiel.code()) || '' },
         body: JSON.stringify(stuk),
         keepalive: Boolean(bijVertrek)
       });

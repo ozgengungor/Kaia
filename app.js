@@ -46,14 +46,16 @@
   }
 
   // localStorage kan geblokkeerd zijn (privémodus); dan werkt de app gewoon door.
+  // Elk kind op dit apparaat heeft zijn eigen voortgang (zie profiel.js).
+  const perKind = (sleutel) => (window.Profiel ? window.Profiel.sleutel(sleutel) : sleutel);
   function laad(sleutel, standaard) {
     try {
-      const ruw = localStorage.getItem(sleutel);
+      const ruw = localStorage.getItem(perKind(sleutel));
       return ruw ? JSON.parse(ruw) : standaard;
     } catch (e) { return standaard; }
   }
   function bewaar(sleutel, waarde) {
-    try { localStorage.setItem(sleutel, JSON.stringify(waarde)); } catch (e) { /* niet erg */ }
+    try { localStorage.setItem(perKind(sleutel), JSON.stringify(waarde)); } catch (e) { /* niet erg */ }
   }
 
   /* ------------------------------------------------------------------ */

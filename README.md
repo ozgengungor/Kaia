@@ -312,27 +312,58 @@ Mochi leest niets voor: bij lezen hoort het kind zelf te lezen.
 
 Elk antwoord dat een kind geeft (bij Kaia, Pluis en Mochi) gaat naar de server:
 welke vraag, wat het kind antwoordde, wat het goede antwoord was en of het goed
-was. Op **`/ouders`** zie je dat terug, achter een oudercode:
+was. Op **`/ouders`** ziet een ouder dat terug, maar alleen van de eigen kinderen:
 
-- per kind: percentage goed, aantal goed/niet goed, geschatte oefentijd en dagen;
+- per kind en per figuur: percentage goed, aantal goed/niet goed, geschatte
+  oefentijd en dagen;
 - bij Mochi het rooster van twee weken met de uitslag per onderdeel per dag;
 - per onderdeel en per dag hoe het ging;
 - **Wat ging er mis?**: elke fout met het antwoord van het kind en het goede antwoord.
 
-De antwoorden staan eerst in een wachtrij in de browser (`logboek.js`) en gaan
-daarna naar `POST /api/log`. Zonder internet blijven ze bewaard tot het weer lukt.
-De server schrijft ze naar `logboek.jsonl` in de datamap.
+### Gezinnen, kinderen en koppelen
+
+1. **De beheerder** logt op `/ouders` in met gebruikersnaam `beheer` en de
+   waarde van `OUDER_CODE` als wachtwoord. Onder **Beheer** maak je een gezin
+   aan: gezinsnaam, gebruikersnaam voor de ouder en de namen van de kinderen.
+   Je krijgt één keer het wachtwoord van de ouder te zien, en een
+   **koppelcode** voor de tablet.
+2. **Op de tablet van het kind** vul je die koppelcode één keer in (de app
+   vraagt erom bij de eerste start, of via 👤 rechtsboven). Daarna kiest het
+   kind zijn naam, zoals een profiel bij Netflix. Broertjes en zusjes kunnen
+   zo één tablet delen: elk kind heeft op dat apparaat zijn eigen voortgang.
+   Het eerste kind dat op een tablet gekozen wordt, krijgt de voortgang die
+   er al stond.
+3. **De ouder** logt in met de eigen gebruikersnaam en het wachtwoord en ziet
+   alleen de eigen kinderen. Op de ouderpagina staat ook de koppelcode, voor
+   een volgende tablet.
+
+De beheerder kan per gezin een kind toevoegen of weghalen, een nieuw
+wachtwoord maken (het oude en alle inlogsessies vervallen) en een nieuwe
+koppelcode maken (tablets met de oude code moeten opnieuw koppelen).
+Antwoorden zonder kind (van vóór het koppelen, of van een tablet die niet
+gekoppeld is) ziet alleen de beheerder; onder **Antwoorden zonder kind** wijs
+je ze per tablet en figuur toe aan een kind.
+
+### Hoe het werkt
+
+- De antwoorden staan eerst in een wachtrij in de browser (`logboek.js`) en
+  gaan daarna naar `POST /api/log`, met het kind en de koppelcode erbij. De
+  server bewaart een kind alleen als het bij die koppelcode hoort.
+- Alles staat in de datamap: `logboek.jsonl`, `gezinnen.json` (wachtwoorden
+  alleen als scrypt-hash) en `geheim.txt` (ondertekent de inlogtokens, die
+  30 dagen geldig zijn). Die map is nooit via de website op te vragen.
+- Na tien foute pogingen (inloggen of koppelen) blokkeert de server dat
+  IP-adres een kwartier.
 
 Instellen op Railway:
 
 1. **Volume**: voeg bij de service een volume toe (bijvoorbeeld op `/data`).
-   De server gebruikt dan vanzelf `RAILWAY_VOLUME_MOUNT_PATH`. Zonder volume is
-   het logboek na elke deploy weer leeg.
-2. **Variabele `OUDER_CODE`**: de code waarmee je `/ouders` opent. Zonder deze
-   variabele blijft de ouderpagina dicht (antwoorden worden wel opgeslagen).
+   De server gebruikt dan vanzelf `RAILWAY_VOLUME_MOUNT_PATH`. Zonder volume
+   zijn de gezinnen en het logboek na elke deploy weer weg.
+2. **Variabele `OUDER_CODE`**: het wachtwoord van de beheerder.
 
-Lokaal komt het logboek in `data/` (staat in `.gitignore`); met
-`OUDER_CODE=… npm start` kun je de ouderpagina ook lokaal bekijken.
+Lokaal komt alles in `data/` (staat in `.gitignore`); met
+`OUDER_CODE=… npm start` kun je ook lokaal als beheerder inloggen.
 
 ## Voorleesaudio (ElevenLabs)
 
@@ -401,9 +432,10 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 | `spellen.js` | De logica van de spelletjes van groep 5. |
 | `werkplaats.js` | De logica van Knutselen: lessen, haakschema's, de teller en de voortgang. |
 | `toetstraining.js` | De logica van de toetstraining: dagen, woordrij, stopwatch, vragen en voortgang. |
-| `server.js` | Server voor lokaal draaien en deployen, met het logboek-API'tje (`/api/log`). |
+| `server.js` | Server voor lokaal draaien en deployen, met het API voor logboek, inloggen, koppelen en beheer. |
+| `profiel.js` | Wie oefent er: de tablet koppelen aan een gezin en het kind kiezen; voortgang per kind. |
 | `logboek.js` | Stuurt elk antwoord (met wachtrij) naar de server. |
-| `ouders.html` | De ouderpagina op `/ouders`: overzicht, rooster en fouten. |
+| `ouders.html` | De ouderpagina op `/ouders`: inloggen, overzicht per kind, rooster, fouten en beheer. |
 | `genereer-audio.js` | Neemt de teksten, regelkaarten, hints en dicteewoorden op met ElevenLabs, naar `audio/`. |
 | `audio/` | De opnames (mp3) en `manifest.json`. |
 

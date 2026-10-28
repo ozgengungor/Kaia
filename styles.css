@@ -77,6 +77,40 @@ h1, h2, h3, .grote-knop, .balk-logo { font-family: 'Baloo 2', 'Nunito', system-u
 .icoonknop:hover { border-color: var(--groen); color: var(--groen-diep); }
 .icoonknop[aria-pressed="true"] { background: var(--groen-licht); border-color: var(--groen); color: var(--groen-diep); }
 
+/* ---------- Wie oefent er? (profiel.js) ---------- */
+.profielknop { display: inline-flex; align-items: center; gap: 8px; padding: 0 12px 0 8px; }
+.profielknop .profiel-naam { max-width: 9em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.profiel-letter {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--groen-licht); color: var(--groen-diep); font-family: 'Baloo 2', sans-serif; font-size: 1.4rem;
+}
+.profiel-letter.klein { width: 28px; height: 28px; font-size: 1rem; }
+.profiel-laag {
+  position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 16px;
+  background: rgba(61, 49, 40, .45);
+}
+.profiel-laag[hidden] { display: none; }
+.profiel-kaart {
+  width: min(440px, 100%); background: var(--papier); border-radius: var(--radius); padding: 24px 22px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.2); text-align: center;
+}
+.profiel-kaart h2 { margin: 0 0 6px; font-size: 1.6rem; }
+.profiel-kaart p { color: var(--inkt-zacht); margin: 0 0 14px; }
+.profiel-form { display: grid; gap: 10px; }
+.profiel-form input {
+  font: inherit; font-size: 1.4rem; letter-spacing: .12em; text-align: center; text-transform: uppercase;
+  padding: 10px 12px; border-radius: 14px; border: 2px solid var(--rand); background: #fff; color: var(--inkt);
+}
+.profiel-form input:focus { outline: none; border-color: var(--groen); }
+.profiel-melding { color: var(--rood) !important; min-height: 1.4em; margin: 10px 0 4px !important; }
+.profiel-melding:empty { min-height: 0; margin: 0 !important; }
+.profiel-kinderen { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 6px 0 12px; }
+.profiel-kind {
+  display: grid; justify-items: center; gap: 6px; padding: 14px 8px; border-radius: 16px; cursor: pointer;
+  border: 2px solid var(--rand); background: #fff; font: inherit; font-weight: 700; color: var(--inkt);
+}
+.profiel-kind:hover, .profiel-kind.actief { border-color: var(--groen); background: var(--groen-licht); }
+
 /* ---------- Schermen ---------- */
 main { max-width: 820px; margin: 0 auto; padding: 20px 16px 120px; }
 .scherm { display: none; animation: opkomen .28s ease-out; }
@@ -799,6 +833,8 @@ body.groep-mochi .balk { background: rgba(242,247,242,.92); }
 }
 
 @media (max-width: 560px) {
+  .profielknop .profiel-naam { display: none; }
+  .profielknop { padding: 0 8px; }
   body { font-size: 17px; }
   .modus-uitleg { display: none; }
   .modus-keuze { gap: 6px; }

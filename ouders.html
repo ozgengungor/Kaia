@@ -74,7 +74,25 @@
   .inlog .knop { padding: 9px 22px; font-weight: 700; background: var(--accent); color: var(--bg); border-color: var(--accent); }
   .melding { color: var(--rood); min-height: 1.5em; }
   .meer { margin-top: 10px; }
+  .figuren .tab { font-weight: 600; padding: 4px 12px; font-size: .9rem; }
+  .inlog input + input { margin-top: 0; }
+  .beheer-kop { margin: 28px 0 12px; font-size: 1.5rem; }
+  .beheer-form { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .beheer-form input, .gezin input { padding: 7px 10px; border-radius: 10px; border: 1.5px solid var(--rand); background: var(--kaart); }
+  .beheer-form input[name="kinderen"] { grid-column: 1 / -1; }
+  .beheer-form .knop { justify-self: start; font-weight: 700; }
+  .uitkomst { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: var(--groen-licht); }
+  .uitkomst code, .gezin code { font-size: 1rem; font-weight: 700; user-select: all; }
+  .gezin { border-top: 1px solid var(--rand); padding: 12px 0; }
+  .gezin:first-child { border-top: 0; }
+  .gezin .regel { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin: 4px 0; }
+  .chip { display: inline-flex; align-items: center; gap: 4px; background: var(--leeg); border-radius: 99px; padding: 2px 4px 2px 10px; }
+  .chip button, .klein-knop { border: 0; background: none; cursor: pointer; color: var(--zacht); font: inherit; padding: 2px 6px; border-radius: 99px; }
+  .klein-knop { border: 1.5px solid var(--rand); padding: 3px 10px; font-size: .85rem; background: var(--kaart); }
+  .klein-knop.gevaar { color: var(--rood); }
+  #los select { max-width: 14rem; }
   @media (max-width: 640px) {
+    .beheer-form { grid-template-columns: 1fr; }
     .cijfers { grid-template-columns: repeat(2, 1fr); }
     .staaf { grid-template-columns: 7.5rem 1fr 5.5rem; font-size: .85rem; }
     th, td { padding: 5px 4px; }
@@ -88,10 +106,11 @@
 <main>
   <section id="inlog" class="inlog" hidden>
     <h1>Voor ouders</h1>
-    <p class="sub">Vul de oudercode in om te zien wat er geoefend is.</p>
+    <p class="sub">Log in om te zien wat je kinderen geoefend hebben.</p>
     <form id="inlog-form">
-      <input id="code" type="password" autocomplete="current-password" placeholder="Oudercode" aria-label="Oudercode">
-      <button class="knop" type="submit">Bekijk</button>
+      <input id="gebruiker" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Gebruikersnaam" aria-label="Gebruikersnaam">
+      <input id="wachtwoord" type="password" autocomplete="current-password" placeholder="Wachtwoord" aria-label="Wachtwoord">
+      <button class="knop" type="submit">Inloggen</button>
     </form>
     <p class="melding" id="melding"></p>
   </section>
@@ -101,6 +120,7 @@
       <div>
         <h1>Wat is er geoefend?</h1>
         <p class="sub" id="bijgewerkt"></p>
+        <p class="sub" id="koppelcode"></p>
       </div>
       <div class="balk" style="margin:0">
         <button class="knop" id="ververs" type="button">↻ Ververs</button>
@@ -108,7 +128,8 @@
       </div>
     </header>
 
-    <div class="tabs" id="tabs"></div>
+    <div class="tabs" id="kinderen"></div>
+    <div class="tabs figuren" id="tabs"></div>
     <div class="balk">
       <label for="periode" class="sub">Periode</label>
       <select id="periode">
@@ -128,6 +149,27 @@
       <ul class="fouten" id="fouten"></ul>
       <button class="knop meer" id="meer" type="button" hidden>Meer laten zien</button>
     </div>
+
+    <section id="beheer" hidden>
+      <h2 class="beheer-kop">Beheer</h2>
+      <div class="kaart">
+        <h2>Nieuw gezin</h2>
+        <form id="gezin-form" class="beheer-form">
+          <input name="naam" placeholder="Gezinsnaam, bv. De Vries" aria-label="Gezinsnaam" required>
+          <input name="gebruikersnaam" placeholder="Gebruikersnaam ouder, bv. devries" aria-label="Gebruikersnaam" autocapitalize="none" spellcheck="false" required>
+          <input name="kinderen" placeholder="Kinderen, met komma's: Emma, Daan" aria-label="Kinderen">
+          <button class="knop" type="submit">Aanmaken</button>
+        </form>
+        <div id="beheer-uitkomst" class="uitkomst" hidden></div>
+        <p class="melding" id="beheer-melding"></p>
+      </div>
+      <div class="kaart"><h2>Gezinnen</h2><div id="gezinnen"></div></div>
+      <div class="kaart">
+        <h2>Antwoorden zonder kind</h2>
+        <p class="sub">Van vóór het koppelen, of van een tablet die niet gekoppeld is. Kies bij wie ze horen.</p>
+        <div id="los"></div>
+      </div>
+    </section>
   </section>
 </main>
 
@@ -136,14 +178,16 @@
 (() => {
   'use strict';
 
-  const CODE = 'lezen-met-kaia:ouders:code';
-  const KIND = 'lezen-met-kaia:ouders:kind';
+  const TOKEN = 'lezen-met-kaia:ouders:token';
+  const KIND = 'lezen-met-kaia:ouders:figuur';
+  const KIND_ID = 'lezen-met-kaia:ouders:kind';
+  const LOS = '__los';   // de beheerder: antwoorden die (nog) bij geen kind horen
   const $ = (s) => document.querySelector(s);
   const esc = (t) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const lees = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
   const schrijf = (k, w) => { try { w === null ? localStorage.removeItem(k) : localStorage.setItem(k, w); } catch (e) { /* geen opslag */ } };
 
-  const KINDEREN = [
+  const FIGUREN = [
     { id: 'mochi', naam: '🐼 Mochi', uitleg: 'toetstraining groep 8' },
     { id: 'kaia', naam: '🦫 Kaia', uitleg: 'groep 8' },
     { id: 'pluis', naam: '🐰 Pluis', uitleg: 'groep 5' }
@@ -156,30 +200,41 @@
   const naamVan = (wie, id) => (ONDERDEEL_NAAM[wie] && ONDERDEEL_NAAM[wie][id]) || id;
 
   let alles = [];
-  let kind = lees(KIND) || 'mochi';
+  let figuur = lees(KIND) || 'mochi';
   let foutenGetoond = 25;
+  let info = { rol: 'ouder', kinderen: [] };   // wie is ingelogd, en welke kinderen
+  let kindId = lees(KIND_ID);
 
   /* ---------- Ophalen ---------- */
 
-  async function haalOp(code) {
-    const r = await fetch('/api/log', { headers: { 'x-ouder-code': code }, cache: 'no-store' });
+  async function vraag(pad, opties = {}) {
+    const r = await fetch(pad, {
+      ...opties,
+      cache: 'no-store',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${lees(TOKEN) || ''}` }
+    });
     const data = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(data.fout || `De server gaf fout ${r.status}.`);
-    return data.gebeurtenissen || [];
+    if (!r.ok) { const fout = new Error(data.fout || `De server gaf fout ${r.status}.`); fout.status = r.status; throw fout; }
+    return data;
   }
 
   async function laad() {
-    const code = lees(CODE);
-    if (!code) { toonInlog(); return; }
+    if (!lees(TOKEN)) { toonInlog(); return; }
     try {
-      alles = bewerk(await haalOp(code));
+      const data = await vraag('/api/log');
+      info = data;
+      alles = bewerk(data.gebeurtenissen || []);
       $('#inlog').hidden = true;
       $('#overzicht').hidden = false;
-      $('#bijgewerkt').textContent = `Bijgewerkt om ${new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })}`;
+      $('#bijgewerkt').textContent = `${data.rol === 'beheer' ? 'Beheerder' : `Gezin ${data.naam}`} · bijgewerkt om ${new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })}`;
+      $('#koppelcode').innerHTML = data.code
+        ? `Koppelcode voor de tablet van je kind: <b>${esc(data.code)}</b> (eenmalig invullen bij 👤 in de app)`
+        : '';
       teken();
+      if (data.rol === 'beheer') laadBeheer();
     } catch (e) {
-      schrijf(CODE, null);
-      toonInlog(e.message);
+      if (e.status === 401 || e.status === 403) { schrijf(TOKEN, null); toonInlog(e.message); }
+      else $('#bijgewerkt').textContent = `Bijwerken lukte niet: ${e.message}`;
     }
   }
 
@@ -187,7 +242,7 @@
     $('#overzicht').hidden = true;
     $('#inlog').hidden = false;
     $('#melding').textContent = melding || '';
-    $('#code').focus();
+    $('#gebruiker').focus();
   }
 
   // Een antwoord kan vaker binnenkomen (bij een open vraag mag het kind zijn
@@ -241,12 +296,28 @@
   /* ---------- Tekenen ---------- */
 
   function teken() {
-    $('#tabs').innerHTML = KINDEREN.map((k) => {
-      const n = alles.filter((g) => g.wie === k.id && g.soort === 'antwoord').length;
-      return `<button type="button" class="tab" data-kind="${k.id}" aria-pressed="${k.id === kind}">${k.naam} <small>${esc(k.uitleg)} · ${n}</small></button>`;
-    }).join('');
+    // Eerst het kind kiezen (de beheerder ziet ook de antwoorden zonder kind).
+    const kinderen = info.kinderen.map((k) => ({ ...k, n: alles.filter((g) => g.kind === k.id && g.soort === 'antwoord').length }));
+    const los = alles.filter((g) => !g.kind && g.soort === 'antwoord').length;
+    if (info.rol === 'beheer' && los) kinderen.push({ id: LOS, naam: 'Zonder kind', n: los });
+    if (!kinderen.some((k) => k.id === kindId)) {
+      const meeste = kinderen.slice().sort((a, b) => b.n - a.n)[0];
+      kindId = meeste ? meeste.id : null;
+    }
+    $('#kinderen').innerHTML = kinderen.length
+      ? kinderen.map((k) => `<button type="button" class="tab" data-kind-id="${esc(k.id)}" aria-pressed="${k.id === kindId}">${esc(k.naam)} <small>${k.n}</small></button>`).join('')
+      : '<p class="sub">Er staan nog geen kinderen bij dit gezin.</p>';
 
-    const vanKind = binnenPeriode(alles.filter((g) => g.wie === kind));
+    const vanDitKind = alles.filter((g) => (kindId === LOS ? !g.kind : g.kind === kindId));
+    const telling = Object.fromEntries(FIGUREN.map((f) => [f.id, vanDitKind.filter((g) => g.wie === f.id && g.soort === 'antwoord').length]));
+    if (!telling[figuur]) {
+      const beste = FIGUREN.slice().sort((a, b) => telling[b.id] - telling[a.id])[0];
+      if (telling[beste.id]) figuur = beste.id;
+    }
+    $('#tabs').innerHTML = FIGUREN.filter((f) => telling[f.id] || f.id === figuur).map((k) =>
+      `<button type="button" class="tab" data-figuur="${k.id}" aria-pressed="${k.id === figuur}">${k.naam} <small>${esc(k.uitleg)} · ${telling[k.id]}</small></button>`).join('');
+
+    const vanKind = binnenPeriode(vanDitKind.filter((g) => g.wie === figuur));
     const antwoorden = vanKind.filter((g) => g.soort === 'antwoord');
     const goed = antwoorden.filter((g) => g.punten >= 1).length;
     const fout = antwoorden.filter((g) => g.punten < 1).length;
@@ -268,7 +339,7 @@
   // Alleen voor Mochi: het rooster van twee weken, met per dag de uitslag.
   function tekenRooster(lijst) {
     const doel = $('#rooster');
-    if (kind !== 'mochi') { doel.innerHTML = ''; return; }
+    if (figuur !== 'mochi') { doel.innerHTML = ''; return; }
     const klaar = new Map();
     lijst.filter((g) => g.soort === 'klaar' && g.dag !== undefined).forEach((g) => klaar.set(`${g.dag}:${g.onderdeel}`, g));
     const start = new Date(`${MOCHI.begin}T12:00:00`);
@@ -304,13 +375,13 @@
       groepen.get(g.onderdeel).push(g);
     });
     if (!groepen.size) { $('#onderdelen').innerHTML = '<p class="leeg-bericht">Nog geen antwoorden in deze periode.</p>'; return; }
-    const volgorde = Object.keys(ONDERDEEL_NAAM[kind] || {});
+    const volgorde = Object.keys(ONDERDEEL_NAAM[figuur] || {});
     $('#onderdelen').innerHTML = [...groepen.entries()]
       .sort((a, b) => volgorde.indexOf(a[0]) - volgorde.indexOf(b[0]))
       .map(([id, lijst]) => {
         const p = pct(punten(lijst), lijst.length);
         const goed = lijst.filter((g) => g.punten >= 1).length;
-        return `<div class="staaf"><span>${esc(naamVan(kind, id))}</span>
+        return `<div class="staaf"><span>${esc(naamVan(figuur, id))}</span>
           <span class="spoor"><span class="vul ${niveau(p)}" style="width:${p}%"></span></span>
           <span class="getal">${p}% · ${goed}/${lijst.length}</span></div>`;
       }).join('');
@@ -326,7 +397,7 @@
     if (!per.size) { $('#dagen').innerHTML = '<p class="leeg-bericht">Nog niets geoefend in deze periode.</p>'; return; }
     const rijen = [...per.entries()].sort((a, b) => b[0].localeCompare(a[0])).map(([d, l]) => {
       const a = l.filter((g) => g.soort === 'antwoord');
-      const onderdelen = [...new Set(a.map((g) => naamVan(kind, g.onderdeel)))].join(', ');
+      const onderdelen = [...new Set(a.map((g) => naamVan(figuur, g.onderdeel)))].join(', ');
       const p = pct(punten(a), a.length);
       return `<tr><td>${dagNaam(d)}</td><td>${a.length}</td>
         <td class="${a.length ? (p >= 80 ? 'goed' : p < 55 ? 'fout' : '') : ''}">${a.length ? `${p}%` : '–'}</td>
@@ -341,7 +412,7 @@
     const gekozen = filter.value;
     const ids = [...new Set(antwoorden.filter((g) => g.punten < 1).map((g) => g.onderdeel))];
     filter.innerHTML = `<option value="">Alle onderdelen</option>${ids.map((id) =>
-      `<option value="${esc(id)}" ${id === gekozen ? 'selected' : ''}>${esc(naamVan(kind, id))}</option>`).join('')}`;
+      `<option value="${esc(id)}" ${id === gekozen ? 'selected' : ''}>${esc(naamVan(figuur, id))}</option>`).join('')}`;
 
     const fouten = antwoorden.filter((g) => g.punten < 1 && (!filter.value || g.onderdeel === filter.value)).reverse();
     if (!fouten.length) {
@@ -351,7 +422,7 @@
     }
     $('#fouten').innerHTML = fouten.slice(0, foutenGetoond).map((g) => `
       <li>
-        <div class="wat">${esc(naamVan(kind, g.onderdeel))} · ${esc(g.titel)}${g.dag !== undefined ? ` · dag ${g.dag + 1}` : ''} · ${tijd(g.t)}${g.punten > 0 ? ' · half goed' : ''}</div>
+        <div class="wat">${esc(naamVan(figuur, g.onderdeel))} · ${esc(g.titel)}${g.dag !== undefined ? ` · dag ${g.dag + 1}` : ''} · ${tijd(g.t)}${g.punten > 0 ? ' · half goed' : ''}</div>
         <div class="vraag">${esc(g.vraag)}</div>
         <div class="paar">
           <span>Antwoord: <s class="fout">${esc(g.antwoord || '(leeg)')}</s></span>
@@ -363,18 +434,34 @@
 
   /* ---------- Knoppen ---------- */
 
-  $('#inlog-form').addEventListener('submit', (e) => {
+  $('#inlog-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const code = $('#code').value.trim();
-    if (!code) return;
-    schrijf(CODE, code);
-    laad();
+    const gebruikersnaam = $('#gebruiker').value.trim();
+    const wachtwoord = $('#wachtwoord').value;
+    if (!gebruikersnaam || !wachtwoord) return;
+    try {
+      const { token } = await vraag('/api/login', { method: 'POST', body: JSON.stringify({ gebruikersnaam, wachtwoord }) });
+      schrijf(TOKEN, token);
+      $('#wachtwoord').value = '';
+      laad();
+    } catch (fout) {
+      $('#melding').textContent = fout.message;
+    }
+  });
+  $('#kinderen').addEventListener('click', (e) => {
+    const knop = e.target.closest('[data-kind-id]');
+    if (!knop) return;
+    kindId = knop.dataset.kindId;
+    schrijf(KIND_ID, kindId);
+    foutenGetoond = 25;
+    $('#fout-filter').value = '';
+    teken();
   });
   $('#tabs').addEventListener('click', (e) => {
-    const knop = e.target.closest('[data-kind]');
+    const knop = e.target.closest('[data-figuur]');
     if (!knop) return;
-    kind = knop.dataset.kind;
-    schrijf(KIND, kind);
+    figuur = knop.dataset.figuur;
+    schrijf(KIND, figuur);
     foutenGetoond = 25;
     $('#fout-filter').value = '';
     teken();
@@ -383,7 +470,108 @@
   $('#fout-filter').addEventListener('change', () => { foutenGetoond = 25; teken(); });
   $('#meer').addEventListener('click', () => { foutenGetoond += 50; teken(); });
   $('#ververs').addEventListener('click', laad);
-  $('#uitloggen').addEventListener('click', () => { schrijf(CODE, null); alles = []; toonInlog(); });
+  $('#uitloggen').addEventListener('click', () => { schrijf(TOKEN, null); alles = []; $('#beheer').hidden = true; toonInlog(); });
+
+  /* ---------- Beheer (alleen de beheerder) ---------- */
+
+  let beheerData = { gezinnen: [], los: [] };
+
+  async function laadBeheer() {
+    try { beheerData = await vraag('/api/beheer'); tekenBeheer(); } catch (e) { $('#beheer-melding').textContent = e.message; }
+  }
+
+  async function actie(gegevens) {
+    $('#beheer-melding').textContent = '';
+    try {
+      const data = await vraag('/api/beheer', { method: 'POST', body: JSON.stringify(gegevens) });
+      beheerData = data;
+      tekenBeheer();
+      return data;
+    } catch (e) {
+      $('#beheer-melding').textContent = e.message;
+      return null;
+    }
+  }
+
+  function toonUitkomst(html) {
+    const vak = $('#beheer-uitkomst');
+    vak.innerHTML = html;
+    vak.hidden = !html;
+  }
+
+  const FIGUUR_NAAM = Object.fromEntries(FIGUREN.map((f) => [f.id, f.naam]));
+  const datum = (t) => new Date(t).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
+
+  function tekenBeheer() {
+    $('#beheer').hidden = false;
+    const { gezinnen, los } = beheerData;
+    $('#gezinnen').innerHTML = gezinnen.length ? gezinnen.map((g) => `
+      <div class="gezin" data-gezin="${esc(g.id)}">
+        <div class="regel"><b>${esc(g.naam)}</b><span class="sub">gebruiker <code>${esc(g.gebruikersnaam)}</code></span><span class="sub">koppelcode <code>${esc(g.code)}</code></span></div>
+        <div class="regel">${g.kinderen.map((k) => `<span class="chip">${esc(k.naam)}<button type="button" data-actie="kind-weg" data-kind="${esc(k.id)}" aria-label="${esc(k.naam)} weghalen" title="Weghalen">×</button></span>`).join('')}
+          <form class="kind-form"><input name="naam" placeholder="Kind erbij" aria-label="Naam van kind" size="10"><button class="klein-knop" type="submit">+</button></form></div>
+        <div class="regel">
+          <button type="button" class="klein-knop" data-actie="wachtwoord-nieuw">Nieuw wachtwoord</button>
+          <button type="button" class="klein-knop" data-actie="code-nieuw">Nieuwe koppelcode</button>
+          <button type="button" class="klein-knop gevaar" data-actie="gezin-weg">Gezin verwijderen</button>
+        </div>
+      </div>`).join('') : '<p class="sub">Nog geen gezinnen. Maak hierboven het eerste aan, bijvoorbeeld je eigen gezin.</p>';
+
+    const alleKinderen = gezinnen.flatMap((g) => g.kinderen.map((k) => ({ id: k.id, naam: `${k.naam} (${g.naam})` })));
+    $('#los').innerHTML = los.length ? `<div class="rooster-wrap"><table><thead><tr><th>Tablet</th><th>Figuur</th><th>Vragen</th><th>Periode</th><th>Hoort bij</th></tr></thead><tbody>
+      ${los.map((r) => `<tr><td><code>…${esc(String(r.apparaat || '?').slice(-6))}</code></td><td>${esc(FIGUUR_NAAM[r.wie] || r.wie)}</td><td>${r.aantal}</td>
+        <td>${datum(r.eerste)} – ${datum(r.laatste)}</td>
+        <td><select data-apparaat="${esc(r.apparaat)}" data-wie="${esc(r.wie)}" aria-label="Kind kiezen">
+          <option value="">— niemand —</option>${alleKinderen.map((k) => `<option value="${esc(k.id)}" ${k.id === r.kind ? 'selected' : ''}>${esc(k.naam)}</option>`).join('')}
+        </select></td></tr>`).join('')}</tbody></table></div>` : '<p class="sub">Alle antwoorden horen bij een kind.</p>';
+  }
+
+  $('#gezin-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const data = await actie({
+      actie: 'gezin-nieuw', naam: f.naam.value, gebruikersnaam: f.gebruikersnaam.value,
+      kinderen: f.kinderen.value.split(',').map((k) => k.trim()).filter(Boolean)
+    });
+    if (!data) return;
+    f.reset();
+    toonUitkomst(`Geef dit aan de ouder (het wachtwoord zie je maar één keer):<br>
+      Inloggen op <b>${esc(location.origin)}/ouders</b> met gebruikersnaam <code>${esc(data.gezinnen.find((g) => g.id === data.gezin).gebruikersnaam)}</code>
+      en wachtwoord <code>${esc(data.wachtwoord)}</code>.<br>Koppelcode voor de tablet: <code>${esc(data.code)}</code>`);
+    laad();
+  });
+
+  $('#gezinnen').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const gezin = e.target.closest('[data-gezin]').dataset.gezin;
+    const naam = e.target.naam.value.trim();
+    if (naam && await actie({ actie: 'kind-nieuw', gezin, naam })) laad();
+  });
+
+  $('#gezinnen').addEventListener('click', async (e) => {
+    const knop = e.target.closest('[data-actie]');
+    if (!knop) return;
+    const blok = knop.closest('[data-gezin]');
+    const gezin = blok.dataset.gezin;
+    const naam = blok.querySelector('b').textContent;
+    const soort = knop.dataset.actie;
+    if (soort === 'gezin-weg' && !confirm(`Gezin ${naam} verwijderen? De ouder kan dan niet meer inloggen. De antwoorden blijven bewaard.`)) return;
+    if (soort === 'kind-weg' && !confirm('Dit kind weghalen? De antwoorden blijven bewaard, maar niemand ziet ze nog.')) return;
+    if (soort === 'code-nieuw' && !confirm('Nieuwe koppelcode maken? Tablets met de oude code moeten opnieuw koppelen.')) return;
+    if (soort === 'wachtwoord-nieuw' && !confirm(`Nieuw wachtwoord voor ${naam}? Het oude werkt dan niet meer.`)) return;
+    const data = await actie({ actie: soort, gezin, kind: knop.dataset.kind });
+    if (!data) return;
+    if (data.wachtwoord) toonUitkomst(`Nieuw wachtwoord voor ${esc(naam)}: <code>${esc(data.wachtwoord)}</code>`);
+    else if (data.code) toonUitkomst(`Nieuwe koppelcode voor ${esc(naam)}: <code>${esc(data.code)}</code>`);
+    else toonUitkomst('');
+    laad();
+  });
+
+  $('#los').addEventListener('change', async (e) => {
+    const s = e.target.closest('select[data-apparaat]');
+    if (!s) return;
+    if (await actie({ actie: 'toewijzen', apparaat: s.dataset.apparaat, wie: s.dataset.wie, kind: s.value || null })) laad();
+  });
   setInterval(() => { if (!$('#overzicht').hidden && document.visibilityState === 'visible') laad(); }, 60000);
 
   laad();
