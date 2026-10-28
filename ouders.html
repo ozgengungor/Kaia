@@ -38,7 +38,7 @@
   .balk { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
   select { background: var(--kaart); border: 1.5px solid var(--rand); border-radius: 10px; padding: 5px 10px; }
   .kaart { background: var(--kaart); border: 1.5px solid var(--rand); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
-  .cijfers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  .cijfers { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 16px; }
   .cijfer { background: var(--kaart); border: 1.5px solid var(--rand); border-radius: 16px; padding: 12px 14px; }
   .cijfer b { display: block; font-family: 'Baloo 2', sans-serif; font-size: 1.7rem; line-height: 1.1; }
   .cijfer span { color: var(--zacht); font-size: .85rem; }
@@ -61,6 +61,8 @@
   .staaf .vul { display: block; height: 100%; border-radius: 99px; background: var(--groen); }
   .staaf .vul.midden { background: var(--oranje); } .staaf .vul.laag { background: var(--rood); }
   .staaf .getal { text-align: right; color: var(--zacht); }
+  .niveau-regel { margin: -4px 0 10px 11rem; padding-left: 10px; font-size: .82rem; display: flex; gap: 6px; flex-wrap: wrap; }
+  .niveau-regel small { opacity: .7; }
   .fouten { list-style: none; margin: 0; padding: 0; }
   .fouten li { border-top: 1px solid var(--rand); padding: 10px 0; }
   .fouten li:first-child { border-top: 0; }
@@ -95,6 +97,7 @@
     .beheer-form { grid-template-columns: 1fr; }
     .cijfers { grid-template-columns: repeat(2, 1fr); }
     .staaf { grid-template-columns: 7.5rem 1fr 5.5rem; font-size: .85rem; }
+    .niveau-regel { margin-left: 7.5rem; }
     th, td { padding: 5px 4px; }
     .rooster .kop-woord { display: none; }
     .rooster th.kop { font-size: 1.1rem; }
@@ -174,6 +177,8 @@
 </main>
 
 <script src="mochi.js"></script>
+<script src="mochi-niveaus.js"></script>
+<script src="niveaus.js"></script>
 <script>
 (() => {
   'use strict';
@@ -223,7 +228,7 @@
     try {
       const data = await vraag('/api/log');
       info = data;
-      alles = bewerk(data.gebeurtenissen || []);
+      alles = metNiveau(bewerk(data.gebeurtenissen || []));
       $('#inlog').hidden = true;
       $('#overzicht').hidden = false;
       $('#bijgewerkt').textContent = `${data.rol === 'beheer' ? 'Beheerder' : `Gezin ${data.naam}`} · bijgewerkt om ${new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })}`;
@@ -254,6 +259,31 @@
       per.set(sleutel, g);
     });
     return [...per.values()].sort((a, b) => a.t.localeCompare(b.t));
+  }
+
+  // Mochi: het referentieniveau van elk antwoord. Nieuwe antwoorden hebben het
+  // al bij zich; voor oudere zoeken we het op met dag en vraagnummer.
+  function metNiveau(lijst) {
+    if (typeof Niveaus === 'undefined') return lijst;
+    return lijst.map((g) => {
+      if (g.wie !== 'mochi' || g.soort !== 'antwoord' || g.niveau) return g;
+      const label = Niveaus.van(g.onderdeel, g.dag, g.nr, g.t);
+      return label ? { ...g, niveau: label.niveau, rk: label.domein } : g;
+    });
+  }
+
+  // "1F: 90% (12) · 2F: 60% (10)". Onder de 10 antwoorden zegt een percentage nog weinig.
+  function niveauRegel(lijst) {
+    const metLabel = lijst.filter((g) => g.niveau);
+    if (!metLabel.length) return '';
+    const deel = (filter, naam) => {
+      const l = metLabel.filter(filter);
+      if (!l.length) return `<span class="sub">${naam}: –</span>`;
+      const p = pct(punten(l), l.length);
+      return `<span class="${l.length < 10 ? 'sub' : p >= 80 ? 'goed' : p < 55 ? 'fout' : ''}" title="${l.length} antwoorden${l.length < 10 ? ', nog weinig' : ''}">${naam}: ${p}% <small>(${l.length})</small></span>`;
+    };
+    const hoogNaam = metLabel.some((g) => g.niveau === '1S') ? '1S+' : '2F+';
+    return `<div class="niveau-regel">${deel((g) => !Niveaus.isHoog(g.niveau), '1F')} · ${deel((g) => Niveaus.isHoog(g.niveau), hoogNaam)}</div>`;
   }
 
   /* ---------- Hulpjes ---------- */
@@ -327,7 +357,12 @@
       [antwoorden.length ? `${pct(punten(antwoorden), antwoorden.length)}%` : '–', 'goed (punten)'],
       [`<span class="goed">${goed}</span> / <span class="fout">${fout}</span>`, 'goed / niet goed'],
       [`${minuten(vanKind)} min`, 'geschatte oefentijd'],
-      [dagen.size, dagen.size === 1 ? 'dag geoefend' : 'dagen geoefend']
+      [dagen.size, dagen.size === 1 ? 'dag geoefend' : 'dagen geoefend'],
+      ...(figuur === 'mochi' && typeof Niveaus !== 'undefined' ? [(() => {
+        const hoog = antwoorden.filter((g) => Niveaus.isHoog(g.niveau));
+        return [hoog.length ? `${pct(punten(hoog), hoog.length)}%` : '–',
+          `goed op streefniveau eind groep 8 (2F/1S) of hoger, ${hoog.length} vragen`];
+      })()] : [])
     ].map(([b, s]) => `<div class="cijfer"><b>${b}</b><span>${s}</span></div>`).join('');
 
     tekenRooster(vanKind);
@@ -383,7 +418,7 @@
         const goed = lijst.filter((g) => g.punten >= 1).length;
         return `<div class="staaf"><span>${esc(naamVan(figuur, id))}</span>
           <span class="spoor"><span class="vul ${niveau(p)}" style="width:${p}%"></span></span>
-          <span class="getal">${p}% · ${goed}/${lijst.length}</span></div>`;
+          <span class="getal">${p}% · ${goed}/${lijst.length}</span></div>${figuur === 'mochi' ? niveauRegel(lijst) : ''}`;
       }).join('');
   }
 

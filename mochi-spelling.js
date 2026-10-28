@@ -181,14 +181,11 @@ const MOCHI_SPELLING = {
         uitleg: 'Gisteren: verleden tijd. De stam is skate, net als in het Engels. Je hoort aan het eind een t, en die zit in \'t kofschip: -te. Skate + te = skatete.' },
       { soort: 'engels', zin: 'Ik heb mijn werkstuk gisteren naar de juf ___.', cue: 'mailen', goed: 'gemaild',
         uitleg: 'Heb + deelwoord. De stam is mail; de l zit niet in \'t kofschip, dus een d: gemaild.' },
-      { soort: 'engels', zin: 'Mijn tablet is midden in het spel ___.', cue: 'crashen', goed: 'gecrasht',
-        uitleg: 'Is + deelwoord. De stam is crash. Je hoort aan het eind een sj-klank, die telt als de s van \'t kofschip. Dus een t: gecrasht.' },
+      { soort: 'vt-sterk', zin: 'Toen de zon onderging, ___ het op het strand snel koud.', cue: 'worden', goed: 'werd', uitleg: 'Het gebeurde toen: verleden tijd. Worden is een sterk werkwoord, de verleden tijd is werd. Daar komt nooit een t achter, ook niet bij het of hij.' },
       { soort: 'engels', zin: 'De app is vannacht vanzelf ___.', cue: 'updaten', goed: 'geüpdatet',
         uitleg: 'Is + deelwoord. De stam is update, en je hoort aan het eind een t: \'t kofschip, dus een t erachter. Ge + update + t, met een trema op de u zodat je ge-up leest: geüpdatet.' },
-      { soort: 'engels', zin: 'Mijn broer heeft de hele zaterdag ___.', cue: 'gamen', goed: 'gegamed',
-        uitleg: 'Heeft + deelwoord. De stam is game. Je hoort aan het eind een m, en die zit niet in \'t kofschip. Dus een d: gegamed.' },
-      { soort: 'engels', zin: 'Gisteren ___ mijn broer een nieuw spel op zijn tablet.', cue: 'downloaden', goed: 'downloadde',
-        uitleg: 'Gisteren: verleden tijd. De stam is download, met een d, en die zit niet in \'t kofschip: -de. Eén d van de stam en één van -de: downloadde.' }
+      { soort: 'vt-sterk', zin: 'Mijn zus ___ gisteren een briefje van tien euro op straat.', cue: 'vinden', goed: 'vond', uitleg: 'Gisteren: verleden tijd. Vinden is sterk: ik vind, ik vond. De verleden tijd is vond, zonder t erachter.' },
+      { soort: 'vt-sterk', zin: 'In het park ___ opa de hond los, en die rende meteen naar de vijver.', cue: 'laten', goed: 'liet', uitleg: 'Het verhaal speelt zich af in het verleden ("rende"). Laten is sterk: de verleden tijd is liet. Je hoort een t en schrijft ook een t, maar niet twee.' }
     ],
     // Dag 12 — alles door elkaar, zoals op de toets
     [
@@ -495,7 +492,7 @@ const MOCHI_SPELLING_IEP = {
       { soort: 'val', zin: 'Niemand wist precies wat er ___, want alle getuigen vertelden een ander verhaal.', cue: 'gebeuren', goed: 'gebeurde', uitleg: '"Wist" en "vertelden": verleden tijd. De stam is gebeur en eindigt op een r. Die zit niet in \'t kofschip, dus gebeur + de = gebeurde.' },
       { soort: 'vt', zin: 'Mijn oma ___ de oude stoel knalgeel, want ze vond bruin zo saai.', cue: 'verven', goed: 'verfde', uitleg: '"Vond": verleden tijd. De stam is verf, maar het hele werkwoord is verven, met een v. De v zit niet in \'t kofschip, dus verf + de = verfde.' },
       { soort: 'vd', zin: 'Hebben jullie de tafels en stoelen al naar de gymzaal ___?', cue: 'verplaatsen', goed: 'verplaatst', uitleg: 'Bij hebben hoort een voltooid deelwoord. Verplaatsen begint met ver-, dus er komt geen ge- voor. De stam verplaats eindigt op een s, die zit in \'t kofschip: verplaatst, met één t.' },
-      { soort: 'engels', zin: 'Mijn vader heeft alle oude vakantiefoto\'s in de computer ___.', cue: 'scannen', goed: 'gescand', uitleg: 'Bij heeft hoort een voltooid deelwoord. De stam is scan. De n zit niet in \'t kofschip, dus ge + scan + d = gescand.' },
+      { soort: 'dd', zin: 'Mijn fiets was nog maar een week oud, dus de winkel ___ de kapotte bel.', cue: 'vergoeden', goed: 'vergoedde', uitleg: 'Was: verleden tijd. De stam is vergoed, de d zit niet in \'t kofschip, dus -de erachter: vergoed + de = vergoedde. Niet verwarren met vergoeden.' },
       { soort: 'tt', zin: 'Hoe ___ je opa al die oude verhalen toch? Hij is al negentig!', cue: 'onthouden', goed: 'onthoudt', uitleg: '"Is": tegenwoordige tijd. Je opa betekent jouw opa, dus het onderwerp is een hij en niet jij. Stam + t: onthoud + t = onthoudt.' }
     ],
     // Dag 4
@@ -541,7 +538,7 @@ const MOCHI_SPELLING_IEP = {
       { soort: 'dd', zin: 'Na de wedstrijd ___ de trainer elke speler met een handdruk, en daarna gingen ze naar huis.', cue: 'groeten', goed: 'groette', uitleg: '"Gingen": verleden tijd. De stam is groet en eindigt op een t. De t zit in \'t kofschip, dus groet + te = groette.' },
       { soort: 'vt', zin: 'Mijn opa vertelde dat hij als jongen elke winter op de bevroren sloten ___.', cue: 'schaatsen', goed: 'schaatste', uitleg: '"Vertelde": verleden tijd. De stam is schaats en eindigt op een s. De s zit in \'t kofschip, dus schaats + te = schaatste.' },
       { soort: 'tt', zin: 'De doos met oude kerstballen en slingers ___ al jaren op zolder, en niemand weet nog wat erin zit.', cue: 'staan', goed: 'staat', uitleg: '"Weet": tegenwoordige tijd. Wat staat er op zolder? De doos, niet de kerstballen. De doos is één ding, dus stam + t: staat.' },
-      { soort: 'engels', zin: 'Mijn zus ___ elke avond met haar vriendinnen, totdat mijn moeder zei dat het genoeg was.', cue: 'chatten', goed: 'chatte', uitleg: '"Zei": verleden tijd. De stam is chat en eindigt op een t. De t zit in \'t kofschip, dus chat + te = chatte.' }
+      { soort: 'vt-sterk', zin: 'Vroeger ___ mijn oma kippen achter in de tuin.', cue: 'houden', goed: 'hield', uitleg: 'Vroeger: verleden tijd. Houden is sterk: ik houd, ik hield. De verleden tijd eindigt op een d die je als t hoort: hield.' }
     ],
     // Dag 9
     [
@@ -577,7 +574,7 @@ const MOCHI_SPELLING_IEP = {
       { soort: 'vd', zin: 'Wij hebben het zieke vogeltje een week lang met een pipetje ___.', cue: 'voeden', goed: 'gevoed', uitleg: 'Bij hebben hoort een voltooid deelwoord: ge + stam + d of t. De stam voed eindigt al op een d, dus er komt niets meer bij: gevoed.' },
       { soort: 'bijv', zin: 'Een ___ kind gaat soms de gekste dingen doen.', cue: 'vervelen', goed: 'verveeld', uitleg: 'Het voltooid deelwoord is verveeld. Kind is een het-woord en er staat een voor, dus er komt geen e achter: een verveeld kind.' },
       { soort: 'dd', zin: 'De herder ___ zijn schapen elke avond terug naar de stal, waar ze veilig sliepen.', cue: 'leiden', goed: 'leidde', uitleg: '"Sliepen": verleden tijd. De stam is leid en eindigt op een d. Die zit niet in \'t kofschip, dus leid + de = leidde.' },
-      { soort: 'engels', zin: 'Mijn broer ___ de software van zijn telefoon, en daarna werkte alles weer.', cue: 'updaten', goed: 'updatete', uitleg: '"Werkte": verleden tijd. Updaten spreek je uit met een t-klank aan het eind, en die zit in \'t kofschip. Dus update + te = updatete.' }
+      { soort: 'dd', zin: 'Vorig jaar ___ de school alle leerlingen om tijdens de fietstocht een helm te dragen.', cue: 'verplichten', goed: 'verplichtte', uitleg: 'Vorig jaar: verleden tijd. De stam is verplicht, de t zit in \'t kofschip, dus -te erachter: verplicht + te = verplichtte.' }
     ],
     // Dag 13
     [
@@ -649,7 +646,7 @@ const MOCHI_SPELLING_IEP = {
     ],
     // Dag 7
     [
-      { soort: 'leenwoord', zin: 'Alle leerlingen vulden een ___ in over het schoolplein.', goed: 'enquête', fout: ['enquete', 'enkête'], uitleg: 'Enquête komt uit het Frans: met qu en een dakje op de e (ê).' },
+      { soort: 'verkleinwoord', zin: 'Het regende een beetje, dus ik nam mijn kleine ___ mee.', goed: 'parapluutje', fout: ['paraplutje', 'parapluetje'], uitleg: 'Paraplu eindigt op een lange u. Om die lang te houden in het verkleinwoord, schrijf je twee u\'s: parapluutje.' },
       { soort: 'dubbel', zin: 'Mijn moeder zit in de ___ die het schoolfeest organiseert.', goed: 'commissie', fout: ['comissie', 'commisie'], uitleg: 'Commissie heeft twee keer dubbel: twee m\'en en twee s\'en.' },
       { soort: 'tussen-n', zin: 'Als ik ziek ben, maakt mijn vader ___ voor me.', goed: 'kippensoep', fout: ['kippesoep', 'kipensoep'], uitleg: 'Kip heeft als meervoud kippen. Daarom schrijf je kippensoep, met -en ertussen.' },
       { soort: 'c-k-s', zin: 'Mijn broer moet volgende week ___ doen voor zijn diploma.', goed: 'examen', fout: ['eksamen', 'exsamen'], uitleg: 'De x klinkt als ks. Je schrijft gewoon een x: examen, net als extra.' },
@@ -667,7 +664,7 @@ const MOCHI_SPELLING_IEP = {
     [
       { soort: 'leenwoord', zin: 'Het ___ van de wiskundetoets was best hoog.', goed: 'niveau', fout: ['nivo', 'nieveau'], uitleg: 'Niveau komt uit het Frans: de o-klank aan het eind schrijf je als eau, net als bij cadeau en bureau.' },
       { soort: 'dubbel', zin: 'Mijn oom is een ___ fotograaf.', goed: 'professioneel', fout: ['profesioneel', 'proffessioneel'], uitleg: 'Het komt van professie: één f en twee s\'en. Pro-fes-sio-neel.' },
-      { soort: 'koppelteken', zin: 'Bij de kust zagen we een ___ duiken naar vis.', goed: 'zee-eend', fout: ['zeeëend', 'zeeeend'], uitleg: 'Zee + eend geeft drie e\'s op een rij. Bij een samenstelling zet je dan een streepje: zee-eend.' },
+      { soort: 'meervoud', zin: 'Aan het eind van het schoolfeest bedankte de juf ___ die hadden geholpen.', goed: 'allen', fout: ['alle', 'alen'], uitleg: 'Hier staat allen alleen, zonder zelfstandig naamwoord erachter: het betekent alle mensen. Dan schrijf je allen. Met een woord erachter is het alle: alle ouders.' },
       { soort: '-tie', zin: 'Bij de ___ van het hotel kregen we de sleutel van onze kamer.', goed: 'receptie', fout: ['recepsie', 'resepsie'], uitleg: 'Receptie schrijf je met een c die als s klinkt, en -tie aan het eind.' },
       { soort: 'hoofdletter', zin: 'Op ___ verkoop ik oude spullen op de vrijmarkt.', goed: 'Koningsdag', fout: ['koningsdag', 'Koningdag'], uitleg: 'Koningsdag is de naam van een feestdag. Feestdagen krijgen een hoofdletter, net als Pasen en Kerstmis.' }
     ],
@@ -684,14 +681,14 @@ const MOCHI_SPELLING_IEP = {
       { soort: 'leenwoord', zin: 'Bij het ontbijt at ik een ___ met jam.', goed: 'croissant', fout: ['croisant', 'kroissant'], uitleg: 'Croissant is Frans: met een c vooraan en twee s\'en in het midden.' },
       { soort: '-tie', zin: 'Het is bij ons een ___ om met oud en nieuw oliebollen te eten.', goed: 'traditie', fout: ['tradisie', 'traditsie'], uitleg: 'Traditie eindigt op -tie. Je hoort "sie", maar je schrijft tie.' },
       { soort: 'tussen-s', zin: 'We wachtten in de ___ op de trein.', goed: 'stationshal', fout: ['stationhal', 'stationsshal'], uitleg: 'Je hoort een s tussen station en hal, dus schrijf je hem. Maar niet twee: stations-hal.' },
-      { soort: 'trema', zin: 'Het is ___ om alle snoepjes zelf op te eten.', goed: 'egoïstisch', fout: ['egoistisch', 'egoïstich'], uitleg: 'Zonder trema lees je "oi". Het trema laat zien dat de i een nieuwe klank begint: e-go-ïs-tisch. En aan het eind -isch.' },
+      { soort: 'bijvoeglijk', zin: 'Opa maakte in de schuur een ___ vogelhuisje.', goed: 'houten', fout: ['houte', 'houtte'], uitleg: 'Een vogelhuisje van hout is een houten vogelhuisje. Een woord dat zegt waarvan iets gemaakt is, krijgt -en: houten, gouden, wollen.' },
       { soort: 'koppelteken', zin: 'Op safari in ___ zagen we leeuwen en olifanten.', goed: 'Zuid-Afrika', fout: ['Zuid Afrika', 'Zuidafrika'], uitleg: 'Bij een windrichting voor een landnaam zet je een streepje, en beide delen krijgen een hoofdletter: Zuid-Afrika, net als Noord-Holland.' }
     ],
     // Dag 12
     [
       { soort: 'leenwoord', zin: 'Als je je afval scheidt, is dat goed voor het ___.', goed: 'milieu', fout: ['millieu', 'milieuw'], uitleg: 'Milieu komt uit het Frans: één l, en aan het eind ieu.' },
       { soort: '-tie', zin: 'Door elke dag hard te lopen heb ik een goede ___.', goed: 'conditie', fout: ['konditie', 'condisie'], uitleg: 'Conditie begint met een c en eindigt op -tie.' },
-      { soort: 'dubbel', zin: 'Onze ___ in Italië had een zwembad.', goed: 'accommodatie', fout: ['accomodatie', 'acommodatie'], uitleg: 'Accommodatie heeft twee keer dubbel: twee c\'s en twee m\'en. Ac-com-mo-da-tie.' },
+      { soort: 'weetwoord', zin: 'Ik fiets ___ altijd samen met mijn buurmeisje naar school.', goed: '\'s ochtends', fout: ['s\'ochtends', 'sochtends'], uitleg: '\'s ochtends is een verkorting van des ochtends. De apostrof staat op de plek van de weggelaten letters, vóór de s: \'s ochtends.' },
       { soort: 'tussen-n', zin: 'Bij het ontbijt drink ik een glas ___.', goed: 'bessensap', fout: ['bessesap', 'besensap'], uitleg: 'Bes heeft als meervoud bessen. Daarom schrijf je bessensap, met -en ertussen.' },
       { soort: 'hoofdletter', zin: 'Tijdens de vakantie in Spanje zwommen we in de ___.', goed: 'Middellandse Zee', fout: ['middellandse zee', 'Middellandse zee'], uitleg: 'Middellandse Zee is een naam. Beide woorden krijgen een hoofdletter, net als bij de Tweede Wereldoorlog.' }
     ],
@@ -701,13 +698,13 @@ const MOCHI_SPELLING_IEP = {
       { soort: '-tie', zin: 'Gisteren keken we een film op ___.', goed: 'televisie', fout: ['televiesie', 'televizie'], uitleg: 'Televisie eindigt op -sie, net als discussie. Je hoort "zie", maar je schrijft sie.' },
       { soort: 'tussen-s', zin: 'Op het strand keken we naar de ___.', goed: 'zonsondergang', fout: ['zonondergang', 'zonssondergang'], uitleg: 'Je hoort een s tussen zon en ondergang. Die schrijf je ook, maar maar één: zons-ondergang.' },
       { soort: 'meervoud', zin: 'In het orkest spelen vier ___.', goed: 'cello\'s', fout: ['cellos', 'celloos'], uitleg: 'Cello eindigt op een lange o. Bij het meervoud zet je een apostrof voor de s: cello\'s.' },
-      { soort: 'trema', zin: 'Het was heel ___ om te denken dat de kat van de vis zou afblijven.', goed: 'naïef', fout: ['naief', 'naiëf'], uitleg: 'Zonder trema lees je "ai". Het trema op de i laat zien dat je na-ief zegt.' }
+      { soort: 'hoofdletter', zin: 'Mama riep vanuit de keuken: "___ is klaar!"', goed: 'Het eten', fout: ['het eten', 'het Eten'], uitleg: 'Na de dubbele punt en het aanhalingsteken begint een nieuwe zin: wat mama zegt. Die zin begint met een hoofdletter, maar eten is een gewoon woord en krijgt er geen.' }
     ],
     // Dag 14
     [
       { soort: 'leenwoord', zin: 'Mijn tante is ___ en ontwerpt bruggen.', goed: 'ingenieur', fout: ['ingeneur', 'inzjenieur'], uitleg: 'Ingenieur komt uit het Frans: in-ge-nieur. De zj-klank schrijf je als g.' },
       { soort: 'leenwoord', zin: 'Vanavond eten we ___ met tomatensaus.', goed: 'spaghetti', fout: ['spagetti', 'spaghetty'], uitleg: 'Spaghetti is Italiaans: na de g komt een h, en in het midden staan twee t\'s.' },
-      { soort: 'koppelteken', zin: 'In het ___ van mijn oma zitten foto\'s van vroeger.', goed: 'fotoalbum', fout: ['foto-album', 'fotoälbum'], uitleg: 'Een o en een a naast elkaar lees je niet verkeerd. Daarom is geen streepje nodig: fotoalbum. Alleen bij botsende klinkers, zoals in auto-ongeluk, zet je een streepje.' },
+      { soort: 'verkleinwoord', zin: 'In het ___ op de hoek drinken we warme chocolademelk.', goed: 'cafeetje', fout: ['caféetje', 'cafétje'], uitleg: 'Café eindigt op een lange e. In het verkleinwoord schrijf je die als ee en valt het accent weg: cafeetje.' },
       { soort: 'hoofdletter', zin: 'De schilder Rembrandt leefde in de ___.', goed: 'Gouden Eeuw', fout: ['gouden eeuw', 'Gouden eeuw'], uitleg: 'De Gouden Eeuw is de naam van een bepaalde tijd in de geschiedenis. Beide woorden krijgen een hoofdletter.' },
       { soort: 'dubbel', zin: 'Mijn vriendin is ___ voor pinda\'s.', goed: 'allergisch', fout: ['alergisch', 'allergies'], uitleg: 'Allergisch heeft twee l\'en en eindigt op -isch, net als logisch.' }
     ]

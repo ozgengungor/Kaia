@@ -182,7 +182,7 @@ function leesToken(req) {
 /* ---------- Logboek ---------- */
 
 // Alleen deze velden worden bewaard; alles wordt ingekort.
-const TEKSTVELDEN = ['id', 't', 'apparaat', 'sessie', 'soort', 'wie', 'kind', 'onderdeel', 'titel', 'vraag', 'antwoord', 'juist', 'resultaat'];
+const TEKSTVELDEN = ['id', 't', 'apparaat', 'sessie', 'soort', 'wie', 'kind', 'onderdeel', 'titel', 'vraag', 'antwoord', 'juist', 'resultaat', 'niveau', 'rk'];
 const GETALVELDEN = ['nr', 'punten', 'score', 'totaal', 'dag'];
 
 function schoon(g) {

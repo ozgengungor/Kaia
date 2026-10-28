@@ -306,6 +306,17 @@ snelheid, prijs per stuk vergelijken en tijd over middernacht. Die hebben een
 eigen toevalsgenerator, zodat de gewone sommen van een dag niet veranderd zijn. Een
 antwoord mag met een komma of een punt (`2,5`, `2.5`, `€ 12,50`).
 
+**Referentieniveaus.** Elke vraag van Mochi is ingedeeld volgens het
+Referentiekader taal en rekenen (taal 1F/2F, rekenen 1F/1S) en de
+SLO-concretisering rekenen 1F/1S: domein, niveau, bij rekenen de laag
+(paraat, functioneel, weten waarom) en de descriptor letterlijk uit het
+referentiekader, met paginanummer. Dat staat in `mochi-niveaus.js`;
+`niveaus.js` zoekt het label op. De app stuurt het niveau mee met elk
+antwoord, en de ouderpagina laat per onderdeel zien hoe het gaat op 1F en op
+het streefniveau eind groep 8 (2F/1S, met de paar 3F/2F-vragen erbij). Onder de
+tien antwoorden staat een percentage grijs: dan zegt het nog weinig. Het kind
+ziet hier niets van.
+
 Mochi leest niets voor: bij lezen hoort het kind zelf te lezen.
 
 ## Voor ouders: wat is er geoefend?
@@ -431,6 +442,8 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 | `app.js` | Groep kiezen en alle logica van groep 8: schermen, nakijken, dictee, score, voortgang. |
 | `spellen.js` | De logica van de spelletjes van groep 5. |
 | `werkplaats.js` | De logica van Knutselen: lessen, haakschema's, de teller en de voortgang. |
+| `mochi-niveaus.js` | Het referentieniveau van elke vraag van Mochi, met de descriptor uit het referentiekader. |
+| `niveaus.js` | Zoekt het niveau van een vraag op (voor de app en de ouderpagina). |
 | `toetstraining.js` | De logica van de toetstraining: dagen, woordrij, stopwatch, vragen en voortgang. |
 | `server.js` | Server voor lokaal draaien en deployen, met het API voor logboek, inloggen, koppelen en beheer. |
 | `profiel.js` | Wie oefent er: de tablet koppelen aan een gezin en het kind kiezen; voortgang per kind. |

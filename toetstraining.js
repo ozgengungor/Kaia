@@ -375,8 +375,10 @@
       veld.classList.add(goed ? 'is-goed' : 'is-fout');
     }
     antwoorden[vraagNr] = { goed, gegeven: v.vorm === 'mc' ? v.opties[keuze] : keuze, juist: v.vorm === 'mc' ? v.opties[v.goed] : juist };
+    const label = typeof Niveaus !== 'undefined' ? Niveaus.van(onderdeel.id, dagNr, vraagNr) : null;
     Logboek.antwoord({
       wie: 'mochi', onderdeel: onderdeel.id, titel: onderdeel.titel, sessie, dag: dagNr, nr: vraagNr,
+      ...(label ? { niveau: label.niveau, rk: label.domein } : {}),
       vraag: [v.label, v.zin || v.vraag].filter(Boolean).join(' · '),
       antwoord: antwoorden[vraagNr].gegeven, juist: antwoorden[vraagNr].juist, punten: goed ? 1 : 0
     });
