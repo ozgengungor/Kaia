@@ -1,5 +1,6 @@
 /*
- * Mochi — twee weken toetstraining voor de Boom-toetsen van groep 8.
+ * Mochi — toetstraining voor groep 8: eerst twee weken voor de Boom-toetsen,
+ * daarna door tot de IEP-doorstroomtoets (t/m 15 januari 2027).
  *
  * Dit bestand is het plan: welke dagen, welke onderdelen per dag, hoe lang
  * en wat Mochi zegt. De oefenstof zelf staat in:
@@ -28,8 +29,8 @@
 
 const MOCHI = {
   coach: 'Mochi',
-  begin: '2026-10-20',   // dag 1; het plan loopt 14 dagen, tot en met 2 november
-  dagen: 14,
+  begin: '2026-10-20',   // dag 1; het plan loopt 88 dagen, tot en met 15 januari 2027
+  dagen: 88,              // dag 1–14 voor de Boom-toetsen, dag 15–88 op weg naar de IEP-toets
 
   onderdelen: [
     {
@@ -71,15 +72,15 @@ const MOCHI = {
 
   // Wat Mochi zegt. {naam} wordt Mochi, {dag} het nummer van de dag.
   welkom: [
-    'Hoi! Ik ben {naam}. Elke dag een halfuurtje oefenen, en over twee weken ben je helemaal klaar voor de toetsen.',
+    'Hoi! Ik ben {naam}. Elke dag een stukje oefenen, en in januari ben je helemaal klaar voor de toets.',
     'Hé, daar ben je! Zullen we het plan van vandaag doen? Een beetje bamboe erbij en we gaan.',
     'Elke dag een klein stukje, dat werkt het beste. Kies je dag maar!'
   ],
   voorBegin: 'Het plan begint op dinsdag 20 oktober. Je mag alvast rondkijken!',
-  naEinde: 'De twee weken zijn om. Wat heb je hard gewerkt! Je mag alle dagen nog een keer doen.',
+  naEinde: 'Het plan is af: je bent klaar voor de toets. Wat heb je hard gewerkt! Je mag alle dagen nog een keer doen.',
   dagIntro: [
     'Dit is het plan voor dag {dag}. Begin maar bovenaan, dan doe je ze in een handige volgorde.',
-    'Dag {dag}! Zeven korte stukjes, samen ongeveer een halfuur.',
+    'Dag {dag}! Zeven korte stukjes. Neem gerust een pauze tussendoor.',
     'Klaar voor dag {dag}? We beginnen met opwarmen: hardop lezen.'
   ],
   dagKlaar: [

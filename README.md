@@ -258,11 +258,13 @@ stokje. De les over patronen legt uit dat Engelse patronen andere namen
 gebruiken. Een nieuw plan (breien, naaien) is een object in `plannen` in
 `knutselen.js`; de structuur staat bovenaan dat bestand.
 
-## Toetstraining: twee weken met Mochi
+## Toetstraining met Mochi: van 20 oktober tot de IEP-toets
 
-Een dagplan van **dinsdag 20 oktober tot en met maandag 2 november 2026**
-(14 dagen, ook in het weekend) voor een kind dat begin groep 8 de Boom-toetsen
-maakt. Elke dag komen alle zeven toetsen aan bod, samen ongeveer 48 minuten.
+Een dagplan van **dinsdag 20 oktober 2026 tot en met vrijdag 15 januari 2027**
+(88 dagen, ook in het weekend en de vakanties). De eerste 14 dagen waren voor
+de Boom-toetsen van begin groep 8; dag 15 tot en met 88 werken toe naar de
+IEP-doorstroomtoets in januari. Op het startscherm staan de dagen per week; de
+week van vandaag staat open. Elke dag komen alle zeven toetsen aan bod, samen ongeveer 48 minuten.
 De tijd is verdeeld naar de vorige uitslag: de meeste tijd gaat naar de C's,
 minder naar de B's, en de A krijgt alleen een korte opwarmer.
 
@@ -270,6 +272,20 @@ Sinds 25 oktober is het einddoel de **IEP-doorstroomtoets in januari**. Daarom
 zijn vragen bij de tekst, werkwoorden, rekenen en woorden verdubbeld: na de
 gewone vragen van de dag komt een even groot blok moeilijkere vragen in
 IEP-stijl. Woordrij, hardop lezen en de korte teksten zijn gelijk gebleven.
+
+**Dag 15–88** (`mochi-lezen-2.js`, `mochi-spelling-2.js`): elke dag een nieuwe
+hardop-tekst met zes vragen, twee nieuwe korte teksten met elk twee vragen,
+tien werkwoordzinnen en acht woorden; rekenen en de woordrij maakt de app zelf.
+De onderwerpen volgen de seizoenen (Sint-Maarten, Sinterklaas, kerst, oud en
+nieuw) en de tekstsoorten wisselen (informatief, verhalend, betoog, nieuws,
+instructie, gedicht; korte teksten met tabellen, roosters en dienstregelingen).
+Alle vragen zijn ingedeeld op referentieniveau, net als die van dag 1–14.
+
+**Herhaling.** Wat fout ging bij werkwoorden, woorden of rekenen komt terug op
+een dag die minstens twee plandagen later is: maximaal twee per onderdeel,
+gemarkeerd met 🔁. Goed bij de herhaling: klaar. Weer fout: dan komt hij later
+nog eens. Lezen herhaalt niet, want die vragen horen bij de tekst van die dag.
+De ouderpagina laat herhalingen in de foutenlijst zien, en het rooster per week.
 
 | # | Onderdeel | Boom-toets | Vorige uitslag | Tijd | Wat het kind doet |
 | --- | --- | --- | --- | --- | --- |
@@ -433,6 +449,7 @@ in `.env`. De API-sleutel heeft alleen de permissie *text-to-speech* nodig.
 | `mochi.js` | **Toetstraining**: het dagplan, de zeven onderdelen met hun tijd, en wat Mochi zegt. |
 | `mochi-lezen.js` | De teksten en vragen voor hardop lezen en begrijpend lezen, per dag. |
 | `mochi-spelling.js` | De werkwoordzinnen en spellingwoorden per dag, en de woorden voor de woordrij. |
+| `mochi-lezen-2.js`, `mochi-spelling-2.js` | De oefenstof voor dag 15–88 (3 november – 15 januari), achter de eerste 14 dagen gezet. |
 | `rekensommen.js` | Maakt de rekensommen van elke dag, met antwoord en uitleg. |
 | `zinnen.js` | De vaste, opneembare zinnen van Kaia: reacties na een vraag en de eindschermen. |
 | `capybara.js` | Kaia als SVG, met zes stemmingen. |

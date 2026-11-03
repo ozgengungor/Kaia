@@ -314,7 +314,7 @@
     Capybara.render($('#capy-keuze'), 'zwaai');
     Schaap.render($('#schaap-keuze'), 'blij', KNUTSELEN.coach);
     Panda.render($('#panda-keuze'), 'blij', MOCHI.coach);
-    $('#groep-mochi-uitleg').textContent = `Elke dag een halfuur oefenen voor de toetsen van groep 8, met ${MOCHI.coach} de panda`;
+    $('#groep-mochi-uitleg').textContent = `Elke dag oefenen voor de IEP-toets in januari, met ${MOCHI.coach} de panda`;
     $('#groep-knutsel-uitleg').textContent = `Leren haken met ${KNUTSELEN.coach} het schaap`;
     $('#groep-5-uitleg').textContent = `Spellingspelletjes en dictee met ${GROEP5.konijn} het konijn`;
     toonScherm('scherm-groep');

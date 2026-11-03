@@ -209,6 +209,7 @@
   let foutenGetoond = 25;
   let info = { rol: 'ouder', kinderen: [] };   // wie is ingelogd, en welke kinderen
   let kindId = lees(KIND_ID);
+  let roosterWeek = null;   // welke week van het Mochi-rooster open staat
 
   /* ---------- Ophalen ---------- */
 
@@ -255,7 +256,7 @@
   function bewerk(lijst) {
     const per = new Map();
     lijst.sort((a, b) => a.t.localeCompare(b.t)).forEach((g) => {
-      const sleutel = g.soort === 'antwoord' ? `a:${g.sessie}:${g.onderdeel}:${g.nr}` : `k:${g.sessie}:${g.id}`;
+      const sleutel = g.soort === 'antwoord' ? `a:${g.sessie}:${g.onderdeel}:${g.dag ?? ''}:${g.nr}` : `k:${g.sessie}:${g.id}`;
       per.set(sleutel, g);
     });
     return [...per.values()].sort((a, b) => a.t.localeCompare(b.t));
@@ -378,11 +379,22 @@
     const klaar = new Map();
     lijst.filter((g) => g.soort === 'klaar' && g.dag !== undefined).forEach((g) => klaar.set(`${g.dag}:${g.onderdeel}`, g));
     const start = new Date(`${MOCHI.begin}T12:00:00`);
+    const datumVan = (d) => { const x = new Date(start); x.setDate(start.getDate() + d); return x; };
     const vandaag = dagSleutel(new Date().toISOString());
-    const rijen = [];
+    // Het plan is lang: per week (maandag t/m zondag) laten zien, standaard de week van vandaag.
+    const weken = [];
     for (let d = 0; d < MOCHI.dagen; d++) {
-      const datum = new Date(start); datum.setDate(start.getDate() + d);
-      const sleutel = dagSleutel(datum.toISOString());
+      if (!weken.length || datumVan(d).getDay() === 1) weken.push([]);
+      weken[weken.length - 1].push(d);
+    }
+    if (roosterWeek === null || roosterWeek >= weken.length) {
+      const nu = weken.findIndex((w) => w.some((d) => dagSleutel(datumVan(d).toISOString()) === vandaag));
+      roosterWeek = nu >= 0 ? nu : (vandaag < dagSleutel(datumVan(0).toISOString()) ? 0 : weken.length - 1);
+    }
+    const datumKort = (d) => datumVan(d).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
+    const rijen = [];
+    for (const d of weken[roosterWeek]) {
+      const sleutel = dagSleutel(datumVan(d).toISOString());
       const cellen = MOCHI.onderdelen.map((o) => {
         const k = klaar.get(`${d}:${o.id}`);
         if (!k) return '<td class="cel leeg">·</td>';
@@ -396,7 +408,9 @@
       }).join('');
       rijen.push(`<tr class="${sleutel === vandaag ? 'vandaag' : ''}"><td>${d + 1}. ${dagNaam(sleutel)}${sleutel === vandaag ? ' 👈' : ''}</td>${cellen}</tr>`);
     }
-    doel.innerHTML = `<div class="kaart"><h2>Rooster van twee weken</h2>
+    doel.innerHTML = `<div class="kaart"><h2>Rooster</h2>
+      <div class="balk"><select id="rooster-week" aria-label="Week">${weken.map((w, i) =>
+        `<option value="${i}" ${i === roosterWeek ? 'selected' : ''}>Week ${i + 1}: ${datumKort(w[0])} – ${datumKort(w[w.length - 1])} · ${w.filter((d) => MOCHI.onderdelen.every((o) => klaar.has(`${d}:${o.id}`))).length}/${w.length} dagen af</option>`).join('')}</select></div>
       <p class="sub" style="margin-top:-.4rem">Groen ≥ 80% · oranje ≥ 55% · rood daaronder. Woordrij: aantal woorden in één minuut (w) · hardop lezen: woorden per minuut (wpm).</p>
       <div class="rooster-wrap"><table class="rooster"><thead><tr><th>Dag</th>${MOCHI.onderdelen.map((o) =>
         `<th class="kop" title="${esc(o.titel)} · ${esc(o.toets)}">${o.emoji}<span class="kop-woord"><br>${esc(o.titel.split(' ')[0])}</span></th>`).join('')}</tr></thead>
@@ -457,7 +471,7 @@
     }
     $('#fouten').innerHTML = fouten.slice(0, foutenGetoond).map((g) => `
       <li>
-        <div class="wat">${esc(naamVan(figuur, g.onderdeel))} · ${esc(g.titel)}${g.dag !== undefined ? ` · dag ${g.dag + 1}` : ''} · ${tijd(g.t)}${g.punten > 0 ? ' · half goed' : ''}</div>
+        <div class="wat">${esc(naamVan(figuur, g.onderdeel))} · ${esc(g.titel)}${g.dag !== undefined ? ` · dag ${g.dag + 1}` : ''} · ${tijd(g.t)}${g.punten > 0 ? ' · half goed' : ''}${g.herhaling ? ' · 🔁 herhaling' : ''}</div>
         <div class="vraag">${esc(g.vraag)}</div>
         <div class="paar">
           <span>Antwoord: <s class="fout">${esc(g.antwoord || '(leeg)')}</s></span>
@@ -502,6 +516,11 @@
     teken();
   });
   $('#periode').addEventListener('change', teken);
+  $('#rooster').addEventListener('change', (e) => {
+    if (e.target.id !== 'rooster-week') return;
+    roosterWeek = Number(e.target.value);
+    teken();
+  });
   $('#fout-filter').addEventListener('change', () => { foutenGetoond = 25; teken(); });
   $('#meer').addEventListener('click', () => { foutenGetoond += 50; teken(); });
   $('#ververs').addEventListener('click', laad);

@@ -1,5 +1,5 @@
 /*
- * Mochi — de toetstraining: een dagplan van twee weken.
+ * Mochi — de toetstraining: een dagplan van 20 oktober tot en met 15 januari.
  *
  * Drie schermen: alle dagen, één dag met zijn zeven onderdelen, en het
  * oefenscherm. Op het oefenscherm draait één van drie soorten:
@@ -108,7 +108,8 @@
   }
   function perMinuut(woorden, seconden) { return Math.round((woorden / Math.max(1, seconden)) * 60); }
   function telWoorden(tekst) { return tekst.split(/\s+/).filter((w) => /[\p{L}\d]/u.test(w)).length; }
-  function tekstVan(alineas) { return alineas.map((a) => `<p>${escapeHtml(a)}</p>`).join(''); }
+  // Een regelovergang (\n) blijft staan: zo komen de regels van een gedicht onder elkaar.
+  function tekstVan(alineas) { return alineas.map((a) => `<p>${escapeHtml(a).replace(/\n/g, '<br>')}</p>`).join(''); }
 
   function stopKlok() {
     if (klok) clearInterval(klok.interval);
@@ -129,20 +130,38 @@
     $('#m-ondertitel').textContent =
       `Van ${langDatum(0)} tot en met ${langDatum(MOCHI.dagen - 1)}. Elke dag alle zeven toetsen, samen ongeveer ${MOCHI.onderdelen.reduce((s, o) => s + o.minuten, 0)} minuten.`;
 
+    // De dagen per week (maandag t/m zondag). De week van vandaag staat open.
     const houder = $('#m-dagen');
     houder.innerHTML = '';
+    const weken = [];
     for (let nr = 0; nr < MOCHI.dagen; nr++) {
-      const gedaan = aantalGedaan(nr);
-      const knop = document.createElement('button');
-      knop.type = 'button';
-      knop.className = `m-dag ${dagKlaar(nr) ? 'is-klaar' : gedaan ? 'is-bezig' : ''} ${nr === nu ? 'is-vandaag' : ''}`;
-      knop.innerHTML = `
-        <span class="m-dag-nr">Dag ${nr + 1}</span>
-        <span class="m-dag-datum">${escapeHtml(kortDatum(nr))}</span>
-        <span class="m-dag-status">${dagKlaar(nr) ? '✅ Klaar' : gedaan ? `${gedaan} van ${MOCHI.onderdelen.length}` : nr === nu ? '👉 Vandaag' : ''}</span>`;
-      knop.addEventListener('click', () => toonDag(nr));
-      houder.appendChild(knop);
+      if (!weken.length || datumVan(nr).getDay() === 1) weken.push([]);
+      weken[weken.length - 1].push(nr);
     }
+    const open = Math.min(Math.max(nu, 0), MOCHI.dagen - 1);
+    weken.forEach((week, w) => {
+      const blok = document.createElement('details');
+      blok.className = 'm-week';
+      blok.open = week.includes(open);
+      const klaar = week.filter(dagKlaar).length;
+      const maand = (nr) => datumVan(nr).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
+      blok.innerHTML = `<summary><b>Week ${w + 1}</b> <span>${escapeHtml(maand(week[0]))} – ${escapeHtml(maand(week[week.length - 1]))}</span>
+        <span class="m-week-stand">${klaar === week.length ? '✅' : `${klaar} van ${week.length} klaar`}</span></summary><div class="m-dagen"></div>`;
+      const rij = blok.querySelector('.m-dagen');
+      week.forEach((nr) => {
+        const gedaan = aantalGedaan(nr);
+        const knop = document.createElement('button');
+        knop.type = 'button';
+        knop.className = `m-dag ${dagKlaar(nr) ? 'is-klaar' : gedaan ? 'is-bezig' : ''} ${nr === nu ? 'is-vandaag' : ''}`;
+        knop.innerHTML = `
+          <span class="m-dag-nr">Dag ${nr + 1}</span>
+          <span class="m-dag-datum">${escapeHtml(kortDatum(nr))}</span>
+          <span class="m-dag-status">${dagKlaar(nr) ? '✅ Klaar' : gedaan ? `${gedaan} van ${MOCHI.onderdelen.length}` : nr === nu ? '👉 Vandaag' : ''}</span>`;
+        knop.addEventListener('click', () => toonDag(nr));
+        rij.appendChild(knop);
+      });
+      houder.appendChild(blok);
+    });
 
     tekenStand();
     toonScherm('scherm-m-start');
@@ -236,7 +255,8 @@
     else if (o.id === 'hardop') { soort = 'hardop'; tekenHardop(); }
     else {
       soort = 'vragen';
-      vragen = maakVragen(o.id);
+      vragen = maakVragen(o.id).map((v, i) => ({ ...v, bron: { dag: dagNr, nr: i } }));
+      if (HERHAAL.has(o.id)) vragen = vragen.concat(herhalingen(o.id));
       vraagNr = 0;
       antwoorden = [];
       tekenVraag();
@@ -245,8 +265,8 @@
   }
 
   // Alle vraagsoorten worden hier één vorm: { vorm: 'mc' | 'invul' | 'getal', ... }.
-  function maakVragen(id) {
-    const lezen = MOCHI_LEZEN[dagNr];
+  function maakVragen(id, dag = dagNr) {
+    const lezen = MOCHI_LEZEN[dag];
     if (id === 'tekst') {
       return lezen.hardop.vragen.map((v) => ({ vorm: 'mc', label: v.vaardigheid, ...v, lade: lezen.hardop }));
     }
@@ -254,20 +274,54 @@
       return lezen.kort.flatMap((t) => t.vragen.map((v) => ({ vorm: 'mc', label: v.vaardigheid, ...v, kort: t })));
     }
     if (id === 'werkwoorden') {
-      return MOCHI_SPELLING.werkwoorden[dagNr].map((v) => ({
+      return MOCHI_SPELLING.werkwoorden[dag].map((v) => ({
         vorm: 'invul', label: 'Werkwoord', vraag: 'Schrijf het werkwoord in de goede vorm.', zin: v.zin, cue: `werkwoord: ${v.cue}`, goed: v.goed, uitleg: v.uitleg
       }));
     }
     if (id === 'woorden') {
-      return MOCHI_SPELLING.woorden[dagNr].map((v, i) => {
-        const opties = schud([v.goed, ...v.fout], dagNr * 100 + i + 1);
+      return MOCHI_SPELLING.woorden[dag].map((v, i) => {
+        const opties = schud([v.goed, ...v.fout], dag * 100 + i + 1);
         return { vorm: 'mc', label: 'Spelling', vraag: 'Welk woord hoort op de puntjes?', zin: v.zin, opties, goed: opties.indexOf(v.goed), uitleg: v.uitleg };
       });
     }
     // rekenen
-    return Rekensommen.vanDag(dagNr).map((s) => (s.opties
+    return Rekensommen.vanDag(dag).map((s) => (s.opties
       ? { vorm: 'mc', label: s.domein, vraag: s.vraag, opties: s.opties, goed: s.goed, uitleg: s.uitleg }
       : { vorm: 'getal', label: s.domein, vraag: s.vraag, som: s, voor: s.voor, na: s.na, uitleg: s.uitleg }));
+  }
+
+  /* ---------- Herhaling ---------- */
+  // Wat fout ging bij werkwoorden, woorden en rekenen komt later terug: op
+  // een dag die minstens twee plandagen verder is, maximaal twee per onderdeel.
+  // Goed bij de herhaling: klaar. Weer fout: dan komt hij nog een keer terug.
+  // (Lezen niet: die vragen horen bij de tekst van hun eigen dag.)
+  const HERHAAL = new Set(['werkwoorden', 'woorden', 'rekenen']);
+  const HERHAAL_PER_KEER = 2;
+  const HERHAAL_NA = 2;
+
+  function fouten() {
+    if (!voortgang.fouten) voortgang.fouten = [];
+    return voortgang.fouten;
+  }
+  function onthoudFout(o, d, n) {
+    const f = fouten().find((x) => x.o === o && x.d === d && x.n === n);
+    if (f) f.op = dagNr; else fouten().push({ o, d, n, op: dagNr });
+    bewaar(OPSLAG, voortgang);
+  }
+  function vergeetFout(o, d, n) {
+    voortgang.fouten = fouten().filter((x) => !(x.o === o && x.d === d && x.n === n));
+    bewaar(OPSLAG, voortgang);
+  }
+  function herhalingen(id) {
+    return fouten()
+      .filter((f) => f.o === id && f.d !== dagNr && f.op <= dagNr - HERHAAL_NA)
+      .sort((a, b) => a.op - b.op)
+      .slice(0, HERHAAL_PER_KEER)
+      .map((f) => {
+        const v = maakVragen(id, f.d)[f.n];
+        return v ? { ...v, label: `🔁 Herhaling · ${v.label}`, herhaling: true, bron: { dag: f.d, nr: f.n } } : null;
+      })
+      .filter(Boolean);
   }
 
   /* ---------- Vragen ---------- */
@@ -375,9 +429,14 @@
       veld.classList.add(goed ? 'is-goed' : 'is-fout');
     }
     antwoorden[vraagNr] = { goed, gegeven: v.vorm === 'mc' ? v.opties[keuze] : keuze, juist: v.vorm === 'mc' ? v.opties[v.goed] : juist };
-    const label = typeof Niveaus !== 'undefined' ? Niveaus.van(onderdeel.id, dagNr, vraagNr) : null;
+    if (HERHAAL.has(onderdeel.id)) {
+      if (!goed) onthoudFout(onderdeel.id, v.bron.dag, v.bron.nr);
+      else if (v.herhaling) vergeetFout(onderdeel.id, v.bron.dag, v.bron.nr);
+    }
+    const label = typeof Niveaus !== 'undefined' ? Niveaus.van(onderdeel.id, v.bron.dag, v.bron.nr) : null;
     Logboek.antwoord({
-      wie: 'mochi', onderdeel: onderdeel.id, titel: onderdeel.titel, sessie, dag: dagNr, nr: vraagNr,
+      wie: 'mochi', onderdeel: onderdeel.id, titel: onderdeel.titel, sessie, dag: v.bron.dag, nr: v.bron.nr,
+      ...(v.herhaling ? { herhaling: 1 } : {}),
       ...(label ? { niveau: label.niveau, rk: label.domein } : {}),
       vraag: [v.label, v.zin || v.vraag].filter(Boolean).join(' · '),
       antwoord: antwoorden[vraagNr].gegeven, juist: antwoorden[vraagNr].juist, punten: goed ? 1 : 0
@@ -627,5 +686,6 @@
     toonStart();
   });
 
-  window.Mochi = { toonStart };
+  // huidigeVraag is alleen om te lezen (handig bij het testen).
+  window.Mochi = { toonStart, huidigeVraag: () => (soort === 'vragen' ? vragen[vraagNr] : null) };
 })();
